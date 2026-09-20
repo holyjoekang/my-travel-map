@@ -695,7 +695,8 @@ function itinSection(t){
   const list = itinOf.get(t.id); if (!list) return "";
   const card = i => {
     const when = i.start === i.end ? i.start : `${i.start} ~ ${i.end}`;
-    return `<a class="itin" href="${esc(itinHref(i))}" target="_blank" rel="noopener">
+    // 새 창을 띄우지 않는다 — 이 창에서 열고, 일정표의 '나의 여행 지도'로 돌아온다.
+    return `<a class="itin" href="${esc(itinHref(i))}">
       <b>${esc(i.title)}</b>
       <span class="sub">${when} · ${i.days}일 · ${
         esc(i.subtitle) || i.cities.map(esc).join(" · ")}</span>
@@ -1119,6 +1120,14 @@ addEventListener("keydown", e => {
 if (CANDS.length) document.getElementById('candTab').hidden = false;
 renderAside();
 render();
+
+/* 일정표에서 돌아왔을 때(index.html?trip=…) 그 여정을 다시 펴 준다.
+   일정표는 새 창이 아니라 이 창에서 열리므로, 돌아오면 보던 자리가 그대로 있어야 한다. */
+{
+  const back = new URLSearchParams(location.search).get("trip");
+  const t = back && TRIPS.find(x => x.id === back);
+  if (t){ state.year = Math.max(state.year, endYear(t)); go("timeline"); openTrip(t.id); }
+}
 </script>
 </body>
 </html>

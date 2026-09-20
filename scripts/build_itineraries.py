@@ -308,13 +308,20 @@ BACK_LINK = """
 """
 
 
-def emit(path: Path, out: Path) -> None:
-    """일정표를 배포 폴더로 옮기고 돌아가기 링크를 한 줄 넣는다."""
+def emit(path: Path, out: Path, trip_id: str = "") -> None:
+    """일정표를 배포 폴더로 옮기고 돌아가기 링크를 한 줄 넣는다.
+
+    일정표는 새 창이 아니라 같은 창에서 열린다. 그래서 돌아가기 링크에 여정 id를 달아
+    `index.html?trip=…` 로 보내고, 앱이 그 여정을 다시 펴 준다.
+    """
     raw = path.read_text(encoding="utf-8")
     if "나의 여행 지도</a>" not in raw:
         low = raw.lower()
         i = low.rfind("</body>")
         raw = raw[:i] + BACK_LINK + raw[i:] if i > 0 else raw + BACK_LINK
+    if trip_id:
+        raw = raw.replace('href="../index.html"',
+                          f'href="../index.html?trip={trip_id}"')
     out.write_text(raw, encoding="utf-8")
 
 
@@ -384,7 +391,7 @@ def build(check: bool = False) -> dict:
             old.unlink()
     for m in manifest:
         src = (PRIVATE_DIR if m["private"] else SRC_DIR) / m["source"]
-        emit(src, OUT_DIR / m["file"])
+        emit(src, OUT_DIR / m["file"], m["tripId"])
 
     MANIFEST.write_text(
         json.dumps({"_note": "빌드 산출물 · scripts/build_itineraries.py 가 만든다.",
