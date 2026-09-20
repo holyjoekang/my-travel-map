@@ -3,6 +3,9 @@
 1996년 입사 이후 30년간의 출장·주재·여행 기록을 **지도 한 장과 연표 한 줄**로 모으는 개인 아카이브.
 설계 문서는 [PRD_MyTravel.md](PRD_MyTravel.md).
 
+**공개본: https://holyjoekang.github.io/my-travel-map/**
+(실명을 뺀 `--public` 빌드다. 개인 빌드는 아래 방법으로 직접 만든다.)
+
 ## 빠른 시작
 
 ```bash
@@ -89,6 +92,8 @@ python scripts/classify_posts.py --apply data/llm_verdicts.json   # 또는 밖�
 ## 공개 빌드
 
 출장 기록에는 거래선·동료 실명과 업무 내용이 들어 있다.
+GitHub Pages(https://holyjoekang.github.io/my-travel-map/)에는 **공개 빌드만** 올라간다 —
+CI에는 `data/private.json` 이 없으므로 애초에 실명을 알 수 없다.
 
 ```bash
 python scripts/build_app.py --public   # → app/index.public.html
