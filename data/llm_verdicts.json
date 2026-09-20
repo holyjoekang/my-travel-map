@@ -1,0 +1,579 @@
+[
+ {
+  "logNo": "224190909290",
+  "verdict": "travel",
+  "cities": [
+   "쑤저우 시",
+   "항저우 시",
+   "난징 시"
+  ],
+  "date": "2012-09"
+ },
+ {
+  "logNo": "224190722783",
+  "verdict": "travel",
+  "cities": [
+   "구이린 시",
+   "양숴 현"
+  ],
+  "date": ""
+ },
+ {
+  "logNo": "224190324086",
+  "verdict": "travel",
+  "cities": [],
+  "date": ""
+ },
+ {
+  "logNo": "224190308166",
+  "verdict": "travel",
+  "cities": [
+   "옌볜 조선족 자치주"
+  ],
+  "date": ""
+ },
+ {
+  "logNo": "224190281867",
+  "verdict": "travel",
+  "cities": [
+   "우루무치 시"
+  ],
+  "date": ""
+ },
+ {
+  "logNo": "224190215266",
+  "verdict": "travel",
+  "cities": [
+   "리장 시"
+  ],
+  "date": ""
+ },
+ {
+  "logNo": "223965344249",
+  "verdict": "travel",
+  "cities": [
+   "유명산"
+  ],
+  "date": "2025-08"
+ },
+ {
+  "logNo": "223964109771",
+  "verdict": "travel",
+  "cities": [
+   "유명산"
+  ],
+  "date": "2025-08"
+ },
+ {
+  "logNo": "223948053141",
+  "verdict": "travel",
+  "cities": [
+   "양평"
+  ],
+  "date": "2025-07"
+ },
+ {
+  "logNo": "223906592155",
+  "verdict": "travel",
+  "cities": [
+   "충칭"
+  ],
+  "date": ""
+ },
+ {
+  "logNo": "223877407731",
+  "verdict": "travel",
+  "cities": [
+   "싱가포르"
+  ],
+  "date": "2025-05"
+ },
+ {
+  "logNo": "223876950550",
+  "verdict": "travel",
+  "cities": [
+   "싱가포르"
+  ],
+  "date": "2025-05"
+ },
+ {
+  "logNo": "223876946484",
+  "verdict": "travel",
+  "cities": [
+   "싱가포르"
+  ],
+  "date": "2025-05"
+ },
+ {
+  "logNo": "223876937898",
+  "verdict": "travel",
+  "cities": [
+   "싱가포르"
+  ],
+  "date": "2025-05"
+ },
+ {
+  "logNo": "223859328873",
+  "verdict": "travel",
+  "cities": [
+   "여수",
+   "광주광역시",
+   "세종"
+  ],
+  "date": "2025-05"
+ },
+ {
+  "logNo": "223475717808",
+  "verdict": "travel",
+  "cities": [
+   "제주"
+  ],
+  "date": "2024-06"
+ },
+ {
+  "logNo": "223224814632",
+  "verdict": "travel",
+  "cities": [
+   "안동"
+  ],
+  "date": "2023-09"
+ },
+ {
+  "logNo": "223200975229",
+  "verdict": "travel",
+  "cities": [
+   "상하이"
+  ],
+  "date": "2023-09"
+ },
+ {
+  "logNo": "223199109775",
+  "verdict": "travel",
+  "cities": [
+   "암스테르담"
+  ],
+  "date": "2023-08"
+ },
+ {
+  "logNo": "221111255683",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2017-10"
+ },
+ {
+  "logNo": "221110978540",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2017-10"
+ },
+ {
+  "logNo": "221110891314",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2017-10"
+ },
+ {
+  "logNo": "221110293715",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2017-10"
+ },
+ {
+  "logNo": "220912673257",
+  "verdict": "travel",
+  "cities": [
+   "상하이"
+  ],
+  "date": "2017-01"
+ },
+ {
+  "logNo": "220897069373",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2016-12"
+ },
+ {
+  "logNo": "220895370760",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2016-12"
+ },
+ {
+  "logNo": "220893851126",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2016-12"
+ },
+ {
+  "logNo": "130135510014",
+  "verdict": "travel",
+  "cities": [
+   "시안 시"
+  ],
+  "date": "2012-04"
+ },
+ {
+  "logNo": "130030333947",
+  "verdict": "travel",
+  "cities": [
+   "상하이"
+  ],
+  "date": "2008-04"
+ },
+ {
+  "logNo": "130005014684",
+  "verdict": "travel",
+  "cities": [
+   "베이징"
+  ],
+  "date": "2006-06"
+ },
+ {
+  "logNo": "130005014648",
+  "verdict": "travel",
+  "cities": [
+   "청더 시"
+  ],
+  "date": "2006-03"
+ },
+ {
+  "logNo": "130005014528",
+  "verdict": "travel",
+  "cities": [
+   "주하이 시"
+  ],
+  "date": "2006-01"
+ },
+ {
+  "logNo": "224265324940",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224211706365",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224197891081",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224197164427",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224196330294",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224195879190",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224195771727",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224195760074",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224194908140",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224191225632",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224010702669",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223989555974",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223891421793",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223828344871",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223823821061",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223823640301",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223436520330",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222729483658",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222714600353",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222518562922",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222435838165",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221911122135",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224194467080",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223740647984",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223676309939",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223399946821",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223245037418",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223231374587",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223219642475",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223219277346",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223158819737",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223144477756",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222990624987",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221579763588",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221216071963",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221113113910",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221036222414",
+  "verdict": "no"
+ },
+ {
+  "logNo": "220999446227",
+  "verdict": "no"
+ },
+ {
+  "logNo": "220896068196",
+  "verdict": "no"
+ },
+ {
+  "logNo": "220080215187",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130137599983",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130136216375",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130135280942",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130121131258",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130039057955",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130032614066",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130005014576",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130001610353",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224221419791",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224190298186",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224152788064",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224150133282",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224015557406",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223917055633",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223830461976",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223730355439",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223719501279",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223198996974",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223111706444",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223099341537",
+  "verdict": "no"
+ },
+ {
+  "logNo": "223042251169",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222981445470",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222761397117",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222506319567",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222505718597",
+  "verdict": "no"
+ },
+ {
+  "logNo": "222470786433",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221630471724",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221530209246",
+  "verdict": "no"
+ },
+ {
+  "logNo": "221524662458",
+  "verdict": "no"
+ },
+ {
+  "logNo": "220996489356",
+  "verdict": "no"
+ },
+ {
+  "logNo": "220803990959",
+  "verdict": "no"
+ },
+ {
+  "logNo": "220721391217",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130131714394",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130109724045",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130102549908",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130102416531",
+  "verdict": "no"
+ },
+ {
+  "logNo": "130102187738",
+  "verdict": "no"
+ },
+ {
+  "logNo": "224229520146",
+  "verdict": "travel",
+  "cities": [],
+  "date": "2026-03"
+ },
+ {
+  "logNo": "223197578130",
+  "verdict": "no"
+ }
+]

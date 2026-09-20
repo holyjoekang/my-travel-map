@@ -1,0 +1,57 @@
+name: build & deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # data/private.json 은 저장소에 없다. 그래서 CI는 공개 표기만으로 빌드한다.
+      - name: 빌드
+        run: python scripts/build_all.py --public
+
+      - name: 테스트
+        run: python -m unittest discover -s tests -v
+
+      # GitHub Pages 는 공개다. 실명이 빠진 공개 빌드만 올린다(PRD §11).
+      - name: Pages 자료 준비
+        run: |
+          mkdir -p _site
+          cp app/index.public.html _site/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app
+          path: app/index*.html
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

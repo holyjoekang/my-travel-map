@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>나의 여행 지도</title>
+<style>
+:root{
+  --bg:#f6f4ef; --panel:#fffdf8; --line:#e0dacd; --ink:#26221c; --dim:#7b7264;
+  --accent:#8a6d3b; --shadow:0 1px 3px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06);
+  --sea:#e8eef3; --land:#ded7c8; --landline:#c9c0ad;
+  --business:#2563eb; --expat:#7c3aed; --family:#059669; --couple:#db2777;
+  --friends:#d97706; --pilgrimage:#0891b2; --solo:#64748b;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
+  --accent:#d8b478; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
+  --shadow:0 1px 3px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.4);
+}}
+:root[data-theme="dark"]{
+  --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
+  --accent:#d8b478; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.6 -apple-system,"Segoe UI","Noto Sans KR",sans-serif;
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:var(--accent)}
+
+header{display:flex;align-items:center;gap:12px;padding:12px 16px;
+  border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:20}
+header h1{font-size:17px;white-space:nowrap}
+header .sub{color:var(--dim);font-size:12px;white-space:nowrap}
+.tabs{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.tabs button{padding:6px 12px;border-radius:999px;font-size:13px;color:var(--dim)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+#search{padding:7px 12px;border:1px solid var(--line);border-radius:999px;
+  background:var(--bg);color:var(--ink);width:170px;font-size:16px}
+#menuBtn{display:none;font-size:20px;padding:4px 8px}
+
+.wrap{display:grid;grid-template-columns:210px 1fr;gap:0;min-height:calc(100vh - 57px)}
+aside{border-right:1px solid var(--line);padding:16px;background:var(--panel)}
+aside h3{font-size:11px;letter-spacing:.08em;color:var(--dim);
+  text-transform:uppercase;margin:18px 0 8px}
+aside h3:first-child{margin-top:0}
+.chip{display:block;width:100%;text-align:left;padding:5px 9px;border-radius:7px;
+  font-size:13px;color:var(--dim)}
+.chip:hover{background:var(--bg)}
+.chip[aria-pressed="true"]{background:var(--bg);color:var(--ink);font-weight:600}
+.chip .n{float:right;font-variant-numeric:tabular-nums;font-size:11px;opacity:.7}
+.legend{display:flex;align-items:center;gap:7px;padding:3px 9px;font-size:12.5px;color:var(--dim)}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+
+main{padding:16px;min-width:0}
+.bar{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.bar .seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.bar .seg button{padding:5px 12px;font-size:13px;color:var(--dim)}
+.bar .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+#year{flex:1;min-width:140px;accent-color:var(--accent)}
+.yearlab{font-variant-numeric:tabular-nums;font-weight:600;min-width:84px}
+
+svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line);
+  border-radius:12px;display:block;touch-action:none}
+.land{fill:var(--land);stroke:var(--landline);stroke-width:.5;vector-effect:non-scaling-stroke}
+.pin{cursor:pointer;stroke:var(--panel);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.pin:hover{stroke:var(--ink);stroke-width:2}
+.plabel{font-size:9px;fill:var(--ink);pointer-events:none;paint-order:stroke;
+  stroke:var(--panel);stroke-width:2.5px;stroke-linejoin:round}
+
+.tl{display:grid;grid-template-columns:54px 1fr;gap:0 10px}
+.tl .yr{font-variant-numeric:tabular-nums;color:var(--dim);font-size:12px;
+  border-top:1px solid var(--line);padding:6px 0}
+.tl .row{border-top:1px solid var(--line);padding:5px 0;display:flex;
+  flex-wrap:wrap;gap:5px;align-items:flex-start;min-height:30px}
+.tbadge{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;
+  border:1px solid var(--line);background:var(--panel);font-size:12.5px;cursor:pointer;max-width:100%}
+.tbadge:hover{border-color:var(--ink)}
+.tbadge span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.eratag{font-size:10.5px;color:var(--dim);padding:2px 0 6px}
+
+.tree{columns:2;column-gap:20px}
+@media(max-width:900px){.tree{columns:1}}
+.tree section{break-inside:avoid;margin-bottom:16px}
+.tree h4{margin:0 0 5px;font-size:13.5px;display:flex;justify-content:space-between}
+.tree button{display:block;width:100%;text-align:left;padding:3px 8px;border-radius:6px;
+  font-size:13px;color:var(--dim)}
+.tree button:hover{background:var(--panel);color:var(--ink)}
+.tree .n{float:right;font-size:11px;opacity:.6;font-variant-numeric:tabular-nums}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--panel)}
+.card b{display:block;font-size:26px;font-variant-numeric:tabular-nums;line-height:1.2}
+.card small{color:var(--dim);font-size:12px}
+
+#panel{position:fixed;top:57px;right:0;bottom:0;width:340px;background:var(--panel);
+  border-left:1px solid var(--line);box-shadow:var(--shadow);padding:18px;
+  overflow:auto;z-index:30;transform:translateX(100%);transition:transform .22s}
+#panel.open{transform:none}
+#panel .close{position:absolute;top:12px;right:14px;font-size:19px;color:var(--dim)}
+#panel h2{font-size:18px;padding-right:28px}
+#panel .meta{color:var(--dim);font-size:12.5px;margin:2px 0 14px}
+#panel section{border-top:1px solid var(--line);padding:12px 0}
+#panel section h4{margin:0 0 7px;font-size:11px;letter-spacing:.08em;
+  color:var(--dim);text-transform:uppercase}
+#panel li{font-size:13px;margin:3px 0}
+#panel ul{margin:0;padding-left:16px}
+.rowlink{display:block;width:100%;text-align:left;font-size:13px;padding:4px 7px;
+  border-radius:6px;color:var(--ink)}
+.rowlink:hover{background:var(--bg)}
+.rowlink em{color:var(--dim);font-style:normal;font-size:11.5px}
+.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+  border:1px solid var(--line);color:var(--dim);margin:0 4px 4px 0}
+
+#drop{border:1.5px dashed var(--line);border-radius:10px;padding:14px;text-align:center;
+  color:var(--dim);font-size:12.5px;cursor:pointer}
+#drop.hot{border-color:var(--accent);color:var(--accent)}
+#shots{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:9px}
+#shots img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px}
+.empty{color:var(--dim);font-size:13px;padding:30px 0;text-align:center}
+
+@media(max-width:820px){
+  .wrap{grid-template-columns:1fr}
+  aside{position:fixed;inset:57px auto 0 0;width:240px;z-index:25;overflow:auto;
+    transform:translateX(-100%);transition:transform .2s;box-shadow:var(--shadow)}
+  aside.open{transform:none}
+  #menuBtn{display:block}
+  #search{width:120px}
+  header h1{font-size:15px}
+  header .sub{display:none}
+  #panel{top:auto;left:0;width:auto;max-height:76vh;border-left:0;
+    border-top:1px solid var(--line);border-radius:16px 16px 0 0;
+    transform:translateY(100%);padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+  #panel.open{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <button id="menuBtn" aria-label="메뉴">☰</button>
+  <h1>나의 여행 지도</h1>
+  <span class="sub" id="hdrSub"></span>
+  <input id="search" placeholder="도시·여정 검색" autocomplete="off">
+  <nav class="tabs" id="tabs">
+    <button data-view="map" aria-selected="true">지도</button>
+    <button data-view="timeline" aria-selected="false">연표</button>
+    <button data-view="region" aria-selected="false">지역</button>
+    <button data-view="stats" aria-selected="false">통계</button>
+    <button data-view="candidates" aria-selected="false" id="candTab" hidden>후보</button>
+  </nav>
+</header>
+
+<div class="wrap">
+  <aside id="aside">
+    <h3>시대</h3>
+    <div id="eraList"></div>
+    <h3>성격</h3>
+    <div id="scopeList"></div>
+    <h3>목적</h3>
+    <div id="legend"></div>
+  </aside>
+  <main>
+    <div class="bar" id="bar"></div>
+    <div id="view"></div>
+  </main>
+</div>
+
+<div id="panel"><button class="close" aria-label="닫기">✕</button><div id="panelBody"></div></div>
+
+<script>
+const DATA = /*__DATA__*/;
+const {eras:ERAS, trips:TRIPS, places:PLACES, world:WORLD} = DATA;
+const CANDS = DATA.candidates || [];
+
+const PURPOSE = {
+  business:"출장", expat:"주재", family:"가족여행", couple:"부부여행",
+  friends:"친구여행", pilgrimage:"성지순례", solo:"혼자"
+};
+const SRC = {blog:"블로그", gdoc:"구글 문서", gsheet:"구글 시트", gmaps_saved:"지도 저장목록",
+  calendar:"캘린더", memory:"기억", photo:"사진"};
+
+const byName = new Map(PLACES.map(p => [p.name, p]));
+const year = t => +String(t.start).slice(0,4);
+const endYear = t => +String(t.end).slice(0,4);
+const YEARS = TRIPS.map(year);
+const Y0 = Math.min(...YEARS), Y1 = Math.max(...YEARS.concat(TRIPS.map(endYear)));
+
+// 도시마다 어떤 여정이 걸리는지 (포괄 여정 포함)
+const tripsOf = new Map();
+for (const t of TRIPS) for (const c of t.cities) {
+  if (!tripsOf.has(c)) tripsOf.set(c, []);
+  tripsOf.get(c).push(t);
+}
+for (const p of PLACES) {
+  const ts = tripsOf.get(p.name) || [];
+  const tally = {};
+  ts.forEach(t => tally[t.purpose] = (tally[t.purpose]||0) + (t.umbrella?0.2:1));
+  p.purpose = Object.keys(tally).sort((a,b)=>tally[b]-tally[a])[0] || "expat";
+  p.firstYear = ts.length ? Math.min(...ts.map(year)) : null;
+}
+
+const state = {view:"map", scale:"world", era:null, scope:null, year:Y1, q:""};
+
+/* ── 투영 ── */
+const VIEWS = {
+  world:{lon:[-180,180], lat:[84,-58], w:1000},
+  china:{lon:[72,136],   lat:[54,16],  w:1000},
+  asia: {lon:[66,148],   lat:[54,-12], w:1000}
+};
+function frame(){
+  const v = VIEWS[state.scale];
+  const h = v.w * (v.lat[0]-v.lat[1]) / (v.lon[1]-v.lon[0]);
+  return {...v, h};
+}
+function proj(lat, lng, f){
+  return [ (lng - f.lon[0]) / (f.lon[1]-f.lon[0]) * f.w,
+           (f.lat[0] - lat) / (f.lat[0]-f.lat[1]) * f.h ];
+}
+
+/* ── 필터 ── */
+function visibleTrips(){
+  return TRIPS.filter(t =>
+    (!state.era || t.era === state.era) &&
+    (!state.scope || t.scope === state.scope) &&
+    year(t) <= state.year);
+}
+function visiblePlaces(){
+  const ok = new Set();
+  visibleTrips().forEach(t => t.cities.forEach(c => ok.add(c)));
+  return PLACES.filter(p => ok.has(p.name) && p.lat !== null);
+}
+
+/* ── 사이드바 ── */
+function renderAside(){
+  const eraCount = {};
+  TRIPS.forEach(t => eraCount[t.era] = (eraCount[t.era]||0)+1);
+  const el = document.getElementById("eraList");
+  el.innerHTML = "";
+  el.append(chip("전체", null, "era", TRIPS.length));
+  ERAS.forEach(e => el.append(chip(
+    `${e.id} ${e.name}`, e.id, "era", eraCount[e.id]||0,
+    `${e.start.slice(0,4)}~${e.end?e.end.slice(0,4):"현재"} · ${e.role}`)));
+
+  const sc = document.getElementById("scopeList");
+  sc.innerHTML = "";
+  sc.append(chip("전체", null, "scope", TRIPS.length));
+  [["overseas","해외"],["domestic","국내"]].forEach(([k,label]) =>
+    sc.append(chip(label, k, "scope", TRIPS.filter(t=>t.scope===k).length)));
+
+  document.getElementById("legend").innerHTML = Object.entries(PURPOSE).map(([k,v]) =>
+    `<div class="legend"><i class="dot" style="background:var(--${k})"></i>${v}</div>`).join("");
+}
+function chip(label, value, key, n, title){
+  const b = document.createElement("button");
+  b.className = "chip";
+  b.innerHTML = `${label}<span class="n">${n}</span>`;
+  if (title) b.title = title;
+  b.setAttribute("aria-pressed", String(state[key] === value));
+  b.onclick = () => { state[key] = value; renderAside(); render(); closeAside(); };
+  return b;
+}
+
+/* ── 상단 도구 ── */
+function renderBar(){
+  const bar = document.getElementById("bar");
+  bar.innerHTML = "";
+  if (state.view === "map"){
+    const seg = document.createElement("div");
+    seg.className = "seg";
+    [["world","세계"],["asia","아시아"],["china","중국"]].forEach(([k,label])=>{
+      const b = document.createElement("button");
+      b.textContent = label;
+      b.setAttribute("aria-pressed", String(state.scale===k));
+      b.onclick = ()=>{ state.scale=k; render(); };
+      seg.append(b);
+    });
+    bar.append(seg);
+  }
+  if (state.view === "candidates") return;
+  if (state.view === "map" || state.view === "timeline"){
+    const lab = document.createElement("span");
+    lab.className = "yearlab";
+    lab.textContent = `~ ${state.year}년`;
+    const sl = document.createElement("input");
+    sl.type = "range"; sl.id = "year"; sl.min = Y0; sl.max = Y1; sl.value = state.year;
+    sl.oninput = e => { state.year = +e.target.value; lab.textContent = `~ ${state.year}년`; render(true); };
+    bar.append(sl, lab);
+  }
+}
+
+/* ── 지도 ── */
+function viewMap(){
+  const f = frame();
+  const pts = visiblePlaces();
+  const paths = WORLD.map(c => c.rings.map(r =>
+    "M" + r.map(([lo,la]) => proj(la,lo,f).map(n=>n.toFixed(1)).join(",")).join("L") + "Z"
+  ).join("")).join("");
+
+  const big = pts.filter(p => p.level !== "poi");
+  const pins = pts.map(p => {
+    const [x,y] = proj(p.lat, p.lng, f);
+    const r = p.level === "poi" ? 2.2 : 3.2 + Math.min(Math.sqrt(p.visits)*1.7, 6);
+    return `<circle class="pin" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"
+      fill="var(--${p.purpose})" fill-opacity="${p.level==="poi"?.55:.85}"
+      data-place="${esc(p.name)}"><title>${esc(p.name)}${p.visits?` · ${p.visits}회`:""}</title></circle>`;
+  }).join("");
+
+  // 이름은 겹치지 않을 때만 — 지도가 지저분해지지 않게
+  const taken = [];
+  const labels = state.scale === "world" ? "" : big
+    .sort((a,b)=>b.visits-a.visits).map(p => {
+      const [x,y] = proj(p.lat, p.lng, f);
+      if (taken.some(t => Math.abs(t[0]-x)<42 && Math.abs(t[1]-y)<11)) return "";
+      taken.push([x,y]);
+      return `<text class="plabel" x="${(x+6).toFixed(1)}" y="${(y+3).toFixed(1)}">${esc(p.name)}</text>`;
+    }).join("");
+
+  if (!pts.length) return `<div class="empty">이 조건에 해당하는 장소가 없습니다.</div>`;
+  return `<svg class="map" viewBox="0 0 ${f.w} ${f.h.toFixed(0)}" role="img"
+    aria-label="방문 도시 지도"><path class="land" d="${paths}"/>${pins}${labels}</svg>
+    <p style="color:var(--dim);font-size:12px;margin:8px 2px">
+      점 ${pts.length}개 · 큰 점은 도시, 작은 점은 그 안의 장소. 점을 누르면 상세가 열립니다.</p>`;
+}
+
+/* ── 연표 ── */
+function viewTimeline(){
+  const ts = visibleTrips();
+  if (!ts.length) return `<div class="empty">해당하는 여정이 없습니다.</div>`;
+  const byYear = {};
+  ts.forEach(t => (byYear[year(t)] ||= []).push(t));
+  let html = `<div class="tl">`;
+  for (let y = Y1; y >= Y0; y--){
+    const list = byYear[y];
+    if (!list) continue;
+    const era = ERAS.find(e => e.id === list[0].era);
+    html += `<div class="yr">${y}</div><div class="row">` +
+      (era ? `<div class="eratag" style="width:100%">${era.id} · ${era.name}</div>` : "") +
+      list.map(t => badge(t)).join("") + `</div>`;
+  }
+  return html + `</div>`;
+}
+function badge(t){
+  return `<button class="tbadge" data-trip="${esc(t.id)}">
+    <i class="dot" style="background:var(--${t.purpose})"></i>
+    <span>${esc(t.title)}</span></button>`;
+}
+
+/* ── 지역 ── */
+function viewRegion(){
+  const ok = new Set(); visibleTrips().forEach(t => t.cities.forEach(c => ok.add(c)));
+  const groups = {};
+  PLACES.filter(p => ok.has(p.name)).forEach(p => {
+    (groups[p.country || "미분류"] ||= []).push(p);
+  });
+  const keys = Object.keys(groups).sort((a,b)=>groups[b].length-groups[a].length);
+  if (!keys.length) return `<div class="empty">해당하는 지역이 없습니다.</div>`;
+  return `<div class="tree">` + keys.map(country => {
+    const list = groups[country].sort((a,b)=> (b.visits-a.visits) || a.name.localeCompare(b.name,"ko"));
+    return `<section><h4>${esc(country)}<span class="n">${list.length}</span></h4>` +
+      list.map(p => `<button class="rowlink" data-place="${esc(p.name)}">
+        ${esc(p.name)}${p.level==="poi"?'<em> · 장소</em>':""}
+        <span class="n">${p.visits||""}</span></button>`).join("") + `</section>`;
+  }).join("") + `</div>`;
+}
+
+/* ── 통계 ── */
+function viewStats(){
+  const ts = visibleTrips();
+  const cities = new Set(), countries = new Set();
+  ts.forEach(t => t.cities.forEach(c => {
+    const p = byName.get(c); if (!p) return;
+    if (p.level !== "poi") cities.add(c);
+    if (p.country) countries.add(p.country);
+  }));
+  const counted = ts.filter(t => !t.umbrella);
+  const top = [...byName.values()].filter(p=>p.visits).sort((a,b)=>b.visits-a.visits).slice(0,8);
+  const first = counted.filter(t=>t.confidence!=="low").sort((a,b)=>t2n(a)-t2n(b))[0];
+  const cards = [
+    [cities.size, "도시"], [countries.size, "나라"], [counted.length, "여정"],
+    [new Set(ts.map(t=>t.era)).size, "시대"],
+    [ts.filter(t=>t.purpose==="business").length, "출장"],
+    [ts.filter(t=>["family","couple","friends"].includes(t.purpose)).length, "가족·친구 여행"]
+  ];
+  return `<div class="cards">` + cards.map(([n,l]) =>
+    `<div class="card"><b>${n}</b><small>${l}</small></div>`).join("") + `</div>
+    <div class="card" style="margin-top:12px">
+      <h4 style="font-size:12px;color:var(--dim);margin:0 0 8px">가장 많이 간 곳</h4>
+      ${top.map(p=>`<button class="rowlink" data-place="${esc(p.name)}">${esc(p.name)}
+        <span class="n">${p.visits}회</span></button>`).join("") || "<small>없음</small>"}
+      ${first?`<p style="font-size:12.5px;color:var(--dim);margin:10px 0 0">
+        가장 이른 확정 여정 · ${esc(first.title)} (${first.start})</p>`:""}
+    </div>`;
+}
+const t2n = t => String(t.start).padEnd(10,"0");
+
+/* ── 후보 승인 (PRD Phase 2) ──
+   블로그에서 뽑은 여정 후보. 자동 등록하지 않고 여기서 승인한 것만 내보낸다. */
+const DEC_KEY = "candidateDecisions";
+function decisions(){
+  try { return JSON.parse(localStorage.getItem(DEC_KEY) || "{}"); } catch { return {}; }
+}
+function decide(logNo, how){
+  const d = decisions();
+  if (how) d[logNo] = how; else delete d[logNo];
+  try { localStorage.setItem(DEC_KEY, JSON.stringify(d)); } catch {}
+  render();
+}
+function viewCandidates(){
+  if (!CANDS.length) return `<div class="empty">후보가 없습니다.
+    <br><small>python scripts/classify_posts.py 를 먼저 돌리세요.</small></div>`;
+  const d = decisions();
+  const f = state.candFilter || "todo";
+  const pick = {
+    todo: c => !d[c.logNo],
+    ok:   c => d[c.logNo] === "ok",
+    drop: c => d[c.logNo] === "drop",
+    all:  () => true
+  }[f];
+  const list = CANDS.filter(pick);
+  const n = k => CANDS.filter({todo:c=>!d[c.logNo], ok:c=>d[c.logNo]==="ok",
+    drop:c=>d[c.logNo]==="drop", all:()=>true}[k]).length;
+
+  return `<div class="bar">
+      <div class="seg">${[["todo","검토 전"],["ok","승인"],["drop","버림"],["all","전체"]]
+        .map(([k,l])=>`<button data-cf="${k}" aria-pressed="${f===k}">${l} ${n(k)}</button>`).join("")}</div>
+      <button class="tbadge" id="exportBtn">승인한 것 내보내기</button>
+    </div>
+    <p style="color:var(--dim);font-size:12.5px;margin:0 0 10px">
+      블로그 글에서 뽑은 여정 후보입니다. 승인한 것만 <code>trips.json</code> 으로 내보냅니다.
+      “LLM 판정”이 아닌 것은 제목 규칙으로 고른 것이라 오탐이 있습니다.</p>
+    ${list.slice(0,300).map(c=>candRow(c, d[c.logNo])).join("") ||
+      `<div class="empty">해당하는 후보가 없습니다.</div>`}
+    ${list.length>300?`<p style="color:var(--dim);font-size:12px">외 ${list.length-300}건</p>`:""}`;
+}
+function candRow(c, dec){
+  return `<div class="card" style="margin-bottom:8px;padding:11px 13px">
+    <div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap">
+      <b style="font-size:13px;color:var(--dim);font-weight:500">${esc(c.date || c.posted)}</b>
+      <span style="flex:1;min-width:180px;font-size:14px">${esc(c.title)}</span>
+      <a href="${esc(c.url)}" target="_blank" rel="noopener"
+         style="font-size:12px">원문</a>
+    </div>
+    <div style="margin-top:6px">
+      ${c.cities.map(x=>`<span class="tag">${esc(x)}</span>`).join("") ||
+        `<span class="tag">도시 못 찾음</span>`}
+      <span class="tag">${c.verdict==="ask"?"미판정":"여행"}</span>
+      <span class="tag">${esc(c.why)}</span>
+    </div>
+    <div style="margin-top:7px;display:flex;gap:6px">
+      <button class="tbadge" data-dec="ok" data-log="${c.logNo}"
+        ${dec==="ok"?'style="border-color:var(--family);color:var(--family)"':""}>승인</button>
+      <button class="tbadge" data-dec="drop" data-log="${c.logNo}"
+        ${dec==="drop"?'style="border-color:var(--couple);color:var(--couple)"':""}>버림</button>
+      ${dec?`<button class="tbadge" data-dec="" data-log="${c.logNo}">되돌리기</button>`:""}
+    </div></div>`;
+}
+function exportApproved(){
+  const d = decisions();
+  const rows = CANDS.filter(c => d[c.logNo] === "ok").map(c => ({
+    id: "t-blog-" + c.logNo,
+    title: c.title,
+    start: c.date || c.posted,
+    end: c.date || c.posted,
+    era: eraOf(c.date || c.posted),
+    purpose: "couple",
+    scope: c.cities.some(x => ["서울","제주","부여","양평","평택","남해","유명산"]
+      .includes(x)) ? "domestic" : "overseas",
+    cities: c.cities,
+    sources: ["blog"],
+    confidence: "medium",
+    blog: c.url
+  }));
+  panel(`<h2>승인한 후보 ${rows.length}건</h2>
+    <div class="meta">아래를 <code>data/trips.json</code> 의 <code>trips</code> 배열에 붙여 넣고
+      다시 빌드하세요. 목적(purpose)과 성격(scope)은 추정값이라 손봐야 합니다.</div>
+    <textarea readonly style="width:100%;height:340px;font:12px/1.5 ui-monospace,monospace;
+      background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;
+      padding:10px">${esc(JSON.stringify(rows, null, 1))}</textarea>`);
+}
+function eraOf(date){
+  const d = String(date).slice(0,7);
+  for (const e of ERAS)
+    if (d >= e.start.slice(0,7) && (!e.end || d <= e.end.slice(0,7))) return e.id;
+  return ERAS[ERAS.length-1].id;
+}
+
+/* ── 상세 패널 ── */
+function openPlace(name){
+  const p = byName.get(name); if (!p) return;
+  const ts = (tripsOf.get(name) || []).sort((a,b)=>t2n(a).localeCompare(t2n(b)));
+  const kids = PLACES.filter(k => k.parent === name);
+  panel(`<h2>${esc(p.name)}</h2>
+    <div class="meta">${[p.country, p.region].filter(Boolean).join(" · ") || "&nbsp;"}</div>
+    ${p.aliasesSeen?.length ? `<div>${p.aliasesSeen.map(a=>`<span class="tag">${esc(a)}</span>`).join("")}</div>`:""}
+    ${p.note ? `<p style="font-size:12.5px;color:var(--dim)">${esc(p.note)}</p>`:""}
+    ${p.needsReview ? `<span class="tag">확인 필요</span>`:""}
+    <section><h4>여정 ${ts.length}</h4>
+      ${ts.map(t=>`<button class="rowlink" data-trip="${esc(t.id)}">
+        ${esc(t.title)}<em> · ${t.start}${t.umbrella?" (포괄)":""}</em></button>`).join("") ||
+        "<small style='color:var(--dim)'>연결된 여정이 없습니다.</small>"}</section>
+    ${kids.length?`<section><h4>이 도시의 장소 ${kids.length}</h4>
+      ${kids.map(k=>`<button class="rowlink" data-place="${esc(k.name)}">${esc(k.name)}
+        ${k.kind?`<em> · ${esc(k.kind)}</em>`:""}</button>`).join("")}</section>`:""}
+    <section><h4>출처</h4>${(p.sources||[]).map(s=>`<span class="tag">${SRC[s]||s}</span>`).join("")}</section>
+    ${photoBox("place:"+name)}`);
+}
+function openTrip(id){
+  const t = TRIPS.find(x => x.id === id); if (!t) return;
+  const era = ERAS.find(e => e.id === t.era);
+  panel(`<h2>${esc(t.title)}</h2>
+    <div class="meta">${t.start}${t.end!==t.start?` ~ ${t.end}`:""} ·
+      ${PURPOSE[t.purpose]} · ${t.scope==="domestic"?"국내":"해외"}</div>
+    ${t.summary?`<p style="font-size:13.5px">${esc(t.summary)}</p>`:""}
+    ${t.note?`<p style="font-size:12.5px;color:var(--dim)">${esc(t.note)}</p>`:""}
+    <section><h4>도시 ${t.cities.length}</h4>
+      ${t.cities.slice(0,60).map(c=>`<button class="rowlink" data-place="${esc(c)}">${esc(c)}</button>`).join("")}
+      ${t.cities.length>60?`<small style="color:var(--dim)">외 ${t.cities.length-60}곳</small>`:""}</section>
+    ${t.companions.length?`<section><h4>동행</h4>
+      ${t.companions.map(c=>`<span class="tag">${esc(c)}</span>`).join("")}</section>`:""}
+    <section><h4>맥락</h4>
+      <ul>${era?`<li>${era.id} ${era.name} (${era.role})</li>`:""}
+      ${t.role?`<li>당시 직책 · ${esc(t.role)}</li>`:""}
+      <li>기록 신뢰도 · ${({high:"확정",medium:"보통",low:"기억"})[t.confidence]}</li></ul></section>
+    <section><h4>출처</h4>${t.sources.map(s=>`<span class="tag">${SRC[s]||s}</span>`).join("")}</section>
+    ${photoBox("trip:"+t.id)}`);
+}
+function panel(html){
+  document.getElementById("panelBody").innerHTML = html;
+  document.getElementById("panel").classList.add("open");
+  wirePhotos();
+}
+
+/* ── 사진: EXIF 촬영일시·GPS로 여정에 붙인다 (PRD §7) ── */
+function photoBox(key){
+  return `<section><h4>사진</h4>
+    <div id="drop" data-key="${esc(key)}">사진을 끌어놓거나 눌러서 고르기<br>
+      <small>촬영일시·GPS를 읽어 여정을 맞춥니다</small></div>
+    <div id="shots"></div>
+    <p id="exifMsg" style="font-size:12px;color:var(--dim);margin:8px 0 0"></p></section>`;
+}
+function wirePhotos(){
+  const drop = document.getElementById("drop"); if (!drop) return;
+  const key = drop.dataset.key, shots = document.getElementById("shots");
+  const load = () => {
+    let saved = [];
+    try { saved = JSON.parse(localStorage.getItem("photos:"+key) || "[]"); } catch {}
+    shots.innerHTML = saved.map(s=>`<img src="${s.thumb}" alt="" title="${s.when||""}">`).join("");
+  };
+  load();
+  const input = Object.assign(document.createElement("input"),
+    {type:"file", accept:"image/*", multiple:true});
+  input.onchange = e => handle([...e.target.files]);
+  drop.onclick = () => input.click();
+  drop.ondragover = e => { e.preventDefault(); drop.classList.add("hot"); };
+  drop.ondragleave = () => drop.classList.remove("hot");
+  drop.ondrop = e => { e.preventDefault(); drop.classList.remove("hot");
+    handle([...e.dataTransfer.files].filter(f=>f.type.startsWith("image/"))); };
+
+  async function handle(files){
+    const msg = document.getElementById("exifMsg");
+    let saved = [];
+    try { saved = JSON.parse(localStorage.getItem("photos:"+key) || "[]"); } catch {}
+    const notes = [];
+    for (const f of files.slice(0,12)){
+      const buf = await f.arrayBuffer();
+      const ex = readExif(buf);
+      const thumb = await thumbnail(f, 200);
+      saved.push({thumb, when: ex.when, lat: ex.lat, lng: ex.lng});
+      if (ex.when){
+        const hit = TRIPS.find(t => !t.umbrella &&
+          ex.when.slice(0,10) >= t.start && ex.when.slice(0,10) <= t.end);
+        notes.push(hit ? `${f.name} → ${hit.title}` : `${f.name} → ${ex.when.slice(0,10)} (맞는 여정 없음)`);
+      } else notes.push(`${f.name} → 촬영일시 없음`);
+    }
+    try {
+      localStorage.setItem("photos:"+key, JSON.stringify(saved.slice(-24)));
+      msg.innerHTML = notes.map(esc).join("<br>");
+    } catch {
+      msg.textContent = "브라우저 저장 공간이 가득 찼습니다. 사진은 화면에만 남습니다.";
+    }
+    load();
+  }
+}
+// JPEG APP1(EXIF)에서 DateTimeOriginal과 GPS만 읽는 최소 구현
+function readExif(buf){
+  const v = new DataView(buf), out = {when:null, lat:null, lng:null};
+  if (v.byteLength < 4 || v.getUint16(0) !== 0xFFD8) return out;
+  let off = 2;
+  while (off < v.byteLength - 4){
+    if (v.getUint8(off) !== 0xFF) break;
+    const marker = v.getUint8(off+1), size = v.getUint16(off+2);
+    if (marker === 0xE1){
+      const base = off + 10;                       // "Exif\0\0" 다음
+      if (v.getUint32(off+4) !== 0x45786966) break;
+      const le = v.getUint16(base) === 0x4949;
+      const u16 = p => v.getUint16(p, le), u32 = p => v.getUint32(p, le);
+      const rat = p => u32(p) / (u32(p+4) || 1);
+      const walk = (dir, want) => {
+        const n = u16(dir); const found = {};
+        for (let i=0;i<n;i++){
+          const e = dir + 2 + i*12, tag = u16(e);
+          if (want.includes(tag)) found[tag] = e;
+        }
+        return found;
+      };
+      const ifd0 = base + u32(base+4);
+      const f0 = walk(ifd0, [0x8769, 0x8825]);
+      if (f0[0x8769]){
+        const sub = base + u32(f0[0x8769]+8);
+        const fe = walk(sub, [0x9003, 0x9004]);
+        const p = fe[0x9003] || fe[0x9004];
+        if (p){
+          const at = base + u32(p+8);
+          let s = "";
+          for (let i=0;i<19;i++) s += String.fromCharCode(v.getUint8(at+i));
+          out.when = s.replace(/^(\d{4}):(\d{2}):(\d{2})/, "$1-$2-$3");
+        }
+      }
+      if (f0[0x8825]){
+        const g = base + u32(f0[0x8825]+8);
+        const fg = walk(g, [1,2,3,4]);
+        const dms = p => { const at = base + u32(p+8);
+          return rat(at) + rat(at+8)/60 + rat(at+16)/3600; };
+        // Ref는 2바이트 ASCII라 엔트리 안에 그대로 들어 있다. 'S'/'W'면 음수.
+        if (fg[2] && fg[1]) out.lat = dms(fg[2]) * (v.getUint8(fg[1]+8) === 83 ? -1 : 1);
+        if (fg[4] && fg[3]) out.lng = dms(fg[4]) * (v.getUint8(fg[3]+8) === 87 ? -1 : 1);
+      }
+      break;
+    }
+    off += 2 + size;
+  }
+  return out;
+}
+function thumbnail(file, size){
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => {
+      const s = size / Math.max(img.width, img.height);
+      const c = document.createElement("canvas");
+      c.width = Math.round(img.width*s); c.height = Math.round(img.height*s);
+      c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(img.src);
+      res(c.toDataURL("image/jpeg", .7));
+    };
+    img.onerror = () => res("");
+    img.src = URL.createObjectURL(file);
+  });
+}
+
+/* ── 검색 ── */
+function runSearch(q){
+  const s = q.trim().toLowerCase();
+  if (!s) return;
+  const p = PLACES.find(x => x.name.toLowerCase().includes(s) ||
+    (x.aliasesSeen||[]).some(a => a.toLowerCase().includes(s)));
+  if (p) return openPlace(p.name);
+  const t = TRIPS.find(x => x.title.toLowerCase().includes(s));
+  if (t) return openTrip(t.id);
+  panel(`<h2>검색</h2><div class="meta">“${esc(q)}”에 맞는 도시나 여정이 없습니다.</div>`);
+}
+
+/* ── 렌더 ── */
+function render(keepBar){
+  if (!keepBar) renderBar();
+  const v = {map:viewMap, timeline:viewTimeline, region:viewRegion,
+    stats:viewStats, candidates:viewCandidates}[state.view];
+  document.getElementById("view").innerHTML = v();
+  document.getElementById("hdrSub").textContent =
+    `${PLACES.filter(p=>p.level!=="poi").length}개 도시 · ${TRIPS.length}개 여정 · ${Y0}–${Y1}`;
+}
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function closeAside(){ document.getElementById("aside").classList.remove("open"); }
+
+document.getElementById("tabs").onclick = e => {
+  const b = e.target.closest("button[data-view]"); if (!b) return;
+  state.view = b.dataset.view;
+  [...e.currentTarget.children].forEach(x =>
+    x.setAttribute("aria-selected", String(x === b)));
+  render();
+};
+document.body.addEventListener("click", e => {
+  const cf = e.target.closest("[data-cf]");
+  if (cf){ state.candFilter = cf.dataset.cf; return render(); }
+  const dc = e.target.closest("[data-dec]");
+  if (dc) return decide(dc.dataset.log, dc.dataset.dec);
+  if (e.target.id === "exportBtn") return exportApproved();
+  const pl = e.target.closest("[data-place]"); if (pl) return openPlace(pl.dataset.place);
+  const tr = e.target.closest("[data-trip]");  if (tr) return openTrip(tr.dataset.trip);
+});
+document.querySelector("#panel .close").onclick = () =>
+  document.getElementById("panel").classList.remove("open");
+document.getElementById("menuBtn").onclick = () =>
+  document.getElementById("aside").classList.toggle("open");
+document.getElementById("search").addEventListener("keydown", e => {
+  if (e.key === "Enter") runSearch(e.target.value);
+});
+addEventListener("keydown", e => {
+  if (e.key === "Escape") document.getElementById("panel").classList.remove("open");
+});
+
+if (CANDS.length) document.getElementById('candTab').hidden = false;
+renderAside();
+render();
+</script>
+</body>
+</html>

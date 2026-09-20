@@ -1,0 +1,2920 @@
+{
+ "places": [
+  {
+   "name": "Chunguang Shopping Plaza",
+   "level": "poi",
+   "country": null,
+   "region": null,
+   "parent": null,
+   "kind": "쇼핑몰",
+   "lat": null,
+   "lng": null,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true
+  },
+  {
+   "name": "Dongshan Hotel",
+   "level": "poi",
+   "country": null,
+   "region": null,
+   "parent": null,
+   "kind": "호텔",
+   "lat": null,
+   "lng": null,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true
+  },
+  {
+   "name": "타이베이",
+   "level": "city",
+   "country": "대만",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 25.03,
+   "lng": 121.57,
+   "sources": [
+    "gsheet",
+    "gdoc"
+   ],
+   "tripIds": [
+    "t-2016-08-02",
+    "t-2017-10-30",
+    "t-2019-02-18",
+    "t-2019-08-01",
+    "t-2019-11-04",
+    "t-2024-12-14"
+   ],
+   "eras": [
+    "E6",
+    "E7"
+   ],
+   "aliasesSeen": [
+    "대만"
+   ],
+   "needsReview": false
+  },
+  {
+   "name": "남해",
+   "level": "city",
+   "country": "대한민국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 34.84,
+   "lng": 127.89,
+   "sources": [
+    "gdoc"
+   ],
+   "tripIds": [
+    "t-2025-namhae"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "부여",
+   "level": "city",
+   "country": "대한민국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 36.28,
+   "lng": 126.91,
+   "sources": [
+    "blog"
+   ],
+   "tripIds": [
+    "t-2026-07-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "유명산",
+   "level": "city",
+   "country": "대한민국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 37.63,
+   "lng": 127.49,
+   "sources": [
+    "gdoc"
+   ],
+   "tripIds": [
+    "t-2025-namhae"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "평택",
+   "level": "city",
+   "country": "대한민국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 36.99,
+   "lng": 127.11,
+   "sources": [
+    "gdoc"
+   ],
+   "tripIds": [
+    "t-2025-namhae"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "쿠알라룸푸르",
+   "level": "city",
+   "country": "말레이시아",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 3.14,
+   "lng": 101.69,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-e1-sgmy"
+   ],
+   "eras": [
+    "E1"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "뉴욕",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-e1-ny"
+   ],
+   "eras": [
+    "E1"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "뉴저지",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 40.74,
+   "lng": -74.17,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-e1-ny"
+   ],
+   "eras": [
+    "E1"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "실리콘밸리",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 37.34,
+   "lng": -121.89,
+   "sources": [
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [
+    "미국 필드트립"
+   ],
+   "needsReview": false
+  },
+  {
+   "name": "하노이",
+   "level": "city",
+   "country": "베트남",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 21.03,
+   "lng": 105.85,
+   "sources": [
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2019-03-13",
+    "t-2019-05-07",
+    "t-2019-10-07"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [
+    "베트남 하노이"
+   ],
+   "needsReview": false
+  },
+  {
+   "name": "호치민",
+   "level": "city",
+   "country": "베트남",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 10.82,
+   "lng": 106.63,
+   "sources": [
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2019-03-13",
+    "t-2019-10-07"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "싱가포르",
+   "level": "city",
+   "country": "싱가포르",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 1.35,
+   "lng": 103.82,
+   "sources": [
+    "memory",
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-e1-sgmy",
+    "t-2019-05-07",
+    "t-2019-10-07"
+   ],
+   "eras": [
+    "E1",
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "런던",
+   "level": "city",
+   "country": "영국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 51.51,
+   "lng": -0.13,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-e1-london"
+   ],
+   "eras": [
+    "E1"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "뉴델리",
+   "level": "city",
+   "country": "인도",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 28.61,
+   "lng": 77.21,
+   "sources": [
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2019-02-11"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "오사카",
+   "level": "city",
+   "country": "일본",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 34.69,
+   "lng": 135.5,
+   "sources": [
+    "gdoc"
+   ],
+   "tripIds": [
+    "t-2024-05-10"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "Beijing Chaoyang Side Park",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "공원",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Changbaishan Airport",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "옌볜 조선족 자치주",
+   "kind": "공항",
+   "lat": 42.07,
+   "lng": 127.6,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true
+  },
+  {
+   "name": "Dong Huang Hotel Beijing",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "호텔",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Dr. Sun Yat-sen's Mausoleum",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "난징 시",
+   "kind": "역사적 명소",
+   "lat": 32.06,
+   "lng": 118.85,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "중산릉"
+  },
+  {
+   "name": "Ganbai Street Night Market",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "시솽반나 다이족 자치주",
+   "kind": "명승지",
+   "lat": 22.01,
+   "lng": 100.8,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Huangguoshu Waterfall",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "안순 시",
+   "kind": "관광 명소",
+   "lat": 25.99,
+   "lng": 105.68,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "note": "구이저우. 안순은 이 목록에 도시로는 없다"
+  },
+  {
+   "name": "Huaqingjiayuan 12 Building",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "주거",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "note": "华清嘉园 — 칭화대 인근 아파트. 지역전문가 시절 거주지로 추정",
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Huashan Mountain",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "시안 시",
+   "kind": "산봉우리",
+   "lat": 34.48,
+   "lng": 110.08,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "화산"
+  },
+  {
+   "name": "Humble Administrator's Garden",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "쑤저우 시",
+   "kind": "관광 명소",
+   "lat": 31.32,
+   "lng": 120.63,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "졸정원"
+  },
+  {
+   "name": "Inner Mongolia Buddhist Culture Museum",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "후허하오터 시",
+   "kind": "박물관",
+   "lat": 40.84,
+   "lng": 111.75,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Jindingxuan Ditan Branch",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "중식",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Jinqianbao",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "음식점",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Jiuzhaigou Valley",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": null,
+   "kind": "국립공원",
+   "lat": 33.26,
+   "lng": 103.92,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "note": "쓰촨 아바주. 상위 도시가 목록에 없다"
+  },
+  {
+   "name": "Ka Nasi Lake",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "아러타이 지구",
+   "kind": "호수",
+   "lat": 48.72,
+   "lng": 87.02,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "카나스 호수"
+  },
+  {
+   "name": "Liugong Island National Forest Park",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "웨이하이 시",
+   "kind": "국립공원",
+   "lat": 37.5,
+   "lng": 122.18,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "Longmen Grottoes Ticket Office",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "뤄양 시",
+   "kind": "관광안내소",
+   "lat": 34.56,
+   "lng": 112.47,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "Meizhou Dongpo Restaurant",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "중식",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "New World Department Store",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "쇼핑몰",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Penglai Pavilion",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "펑라이 시",
+   "kind": "관광 명소",
+   "lat": 37.82,
+   "lng": 120.76,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "Peter's Tex-Mex Grill",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "음식점",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Sai Kung Seafood Street",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "홍콩",
+   "kind": "관광 명소",
+   "lat": 22.38,
+   "lng": 114.27,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "Shaolin Temple",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "정저우 시",
+   "kind": "불교사찰",
+   "lat": 34.51,
+   "lng": 112.94,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "덩펑"
+  },
+  {
+   "name": "Shaoyuan",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "관광 명소",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "The Ritz-Carlton, Tianjin",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "톈진",
+   "kind": "호텔",
+   "lat": 39.13,
+   "lng": 117.2,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "Tunxi Old Street",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "황산 시",
+   "kind": "명승지",
+   "lat": 29.71,
+   "lng": 118.31,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Upper East Side Fitness Chamber",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "체력단련실",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Xishuangbanna Primitive Forest Park (West Gate)",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "시솽반나 다이족 자치주",
+   "kind": "국립공원",
+   "lat": 22.01,
+   "lng": 100.8,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Xishuangbanna Tropical Flowers Garden (Southwest Gate)",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "시솽반나 다이족 자치주",
+   "kind": "국립공원",
+   "lat": 22.01,
+   "lng": 100.8,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Yangshuo Tourist Port Impression Liusanjie Ticket Office",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "양숴 현",
+   "kind": null,
+   "lat": 24.78,
+   "lng": 110.5,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Yixuan Dumplings",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "음식점",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "Yueya Spring",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "둔황 시",
+   "kind": "명소",
+   "lat": 40.09,
+   "lng": 94.66,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "월아천"
+  },
+  {
+   "name": "东来顺",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "음식점",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "五大道",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "톈진",
+   "kind": "관광 명소",
+   "lat": 39.12,
+   "lng": 117.2,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "告庄西双景",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "시솽반나 다이족 자치주",
+   "kind": null,
+   "lat": 22.01,
+   "lng": 100.8,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "地坛公园",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "공원",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "山塘街",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "쑤저우 시",
+   "kind": null,
+   "lat": 31.3,
+   "lng": 120.59,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "景山",
+   "level": "poi",
+   "country": "중국",
+   "region": "Beijing, Xicheng District",
+   "parent": "베이징",
+   "kind": "공원",
+   "lat": 39.93,
+   "lng": 116.39,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "朝阳公园",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "공원",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "海河观光游船",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "톈진",
+   "kind": "관광",
+   "lat": 39.14,
+   "lng": 117.21,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "烟雨楼",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "청더 시",
+   "kind": "명소",
+   "lat": 40.95,
+   "lng": 117.94,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "狗不理",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "톈진",
+   "kind": "중식",
+   "lat": 39.14,
+   "lng": 117.19,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "虎山长城",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "단둥 시",
+   "kind": "관광 명소",
+   "lat": 40.22,
+   "lng": 124.62,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "阳光上东",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "주거",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "광저우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Guangdong",
+   "parent": null,
+   "kind": null,
+   "lat": 23.13,
+   "lng": 113.26,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "구이린 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Guangxi",
+   "parent": null,
+   "kind": null,
+   "lat": 25.28,
+   "lng": 110.29,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "구이양 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Guizhou",
+   "parent": null,
+   "kind": null,
+   "lat": 26.65,
+   "lng": 106.63,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "난닝 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Guangxi",
+   "parent": null,
+   "kind": null,
+   "lat": 22.82,
+   "lng": 108.32,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "난징 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Jiangsu",
+   "parent": null,
+   "kind": null,
+   "lat": 32.06,
+   "lng": 118.8,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "난창 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Jiangxi",
+   "parent": null,
+   "kind": null,
+   "lat": 28.68,
+   "lng": 115.86,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "다롄 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Liaoning",
+   "parent": null,
+   "kind": null,
+   "lat": 38.91,
+   "lng": 121.61,
+   "sources": [
+    "gmaps_saved",
+    "gdoc",
+    "blog"
+   ],
+   "tripIds": [
+    "t-2026-07-17"
+   ],
+   "eras": [
+    "E3",
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "다리 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Yunnan",
+   "parent": null,
+   "kind": null,
+   "lat": 25.61,
+   "lng": 100.27,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "다퉁 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shanxi",
+   "parent": null,
+   "kind": null,
+   "lat": 40.08,
+   "lng": 113.3,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "단둥 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Liaoning",
+   "parent": null,
+   "kind": null,
+   "lat": 40.13,
+   "lng": 124.39,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "둔황 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Gansu, Jiuquan",
+   "parent": null,
+   "kind": null,
+   "lat": 40.14,
+   "lng": 94.66,
+   "sources": [
+    "gmaps_saved",
+    "blog"
+   ],
+   "tripIds": [
+    "t-e3-dunhuang"
+   ],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "둥잉 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shandong",
+   "parent": null,
+   "kind": null,
+   "lat": 37.43,
+   "lng": 118.67,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "란저우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Gansu",
+   "parent": null,
+   "kind": null,
+   "lat": 36.06,
+   "lng": 103.83,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "랑팡 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hebei",
+   "parent": null,
+   "kind": null,
+   "lat": 39.54,
+   "lng": 116.68,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "룽먼 석굴",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "뤄양 시",
+   "kind": "역사적 장소",
+   "lat": 34.56,
+   "lng": 112.47,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "뤄양 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Henan",
+   "parent": null,
+   "kind": null,
+   "lat": 34.62,
+   "lng": 112.45,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "리장 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Yunnan",
+   "parent": null,
+   "kind": null,
+   "lat": 26.87,
+   "lng": 100.23,
+   "sources": [
+    "gmaps_saved",
+    "gdoc",
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2026-04-15"
+   ],
+   "eras": [
+    "E3",
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "마카오",
+   "level": "territory",
+   "country": "중국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 22.2,
+   "lng": 113.54,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "만리장성",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "역사적 장소",
+   "lat": 40.36,
+   "lng": 116.02,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": true
+  },
+  {
+   "name": "만저우리 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Inner Mongolia, Hulunbuir",
+   "parent": "후룬베이얼 시",
+   "kind": null,
+   "lat": 49.6,
+   "lng": 117.45,
+   "sources": [
+    "gmaps_saved",
+    "blog"
+   ],
+   "tripIds": [
+    "t-e3-hulunbuir"
+   ],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "바오딩 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hebei",
+   "parent": null,
+   "kind": null,
+   "lat": 38.87,
+   "lng": 115.46,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "바오터우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Inner Mongolia",
+   "parent": null,
+   "kind": null,
+   "lat": 40.66,
+   "lng": 109.84,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "베이징",
+   "level": "city",
+   "country": "중국",
+   "region": "Beijing",
+   "parent": null,
+   "kind": null,
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved",
+    "memory",
+    "blog",
+    "gsheet",
+    "gdoc"
+   ],
+   "tripIds": [
+    "t-e5-beijing",
+    "t-2017-02-08",
+    "t-2017-06-14",
+    "t-2018-05-24",
+    "t-2018-06-27",
+    "t-2018-07-18",
+    "t-2018-07-30",
+    "t-2018-09-03",
+    "t-2018-10-18",
+    "t-2019-01-18",
+    "t-2019-03-07",
+    "t-2019-06-27",
+    "t-2024-11-15"
+   ],
+   "eras": [
+    "E3",
+    "E5",
+    "E6",
+    "E7"
+   ],
+   "aliasesSeen": [
+    "북경"
+   ],
+   "needsReview": false
+  },
+  {
+   "name": "베이징 서우두 국제공항",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "공항",
+   "lat": 40.08,
+   "lng": 116.58,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "베이징대학교",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "대학교",
+   "lat": 39.99,
+   "lng": 116.31,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "병마용",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "시안 시",
+   "kind": "박물관",
+   "lat": 34.38,
+   "lng": 109.28,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "빅토리아 피크",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "홍콩",
+   "kind": "산봉우리",
+   "lat": 22.27,
+   "lng": 114.15,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "상하이",
+   "level": "city",
+   "country": "중국",
+   "region": "Shanghai",
+   "parent": null,
+   "kind": null,
+   "lat": 31.23,
+   "lng": 121.47,
+   "sources": [
+    "gmaps_saved",
+    "gsheet",
+    "gdoc"
+   ],
+   "tripIds": [
+    "t-2017-01-08",
+    "t-2017-05-17",
+    "t-2017-08-23",
+    "t-2018-01-19",
+    "t-2018-03-12",
+    "t-2018-07-18",
+    "t-2019-01-18",
+    "t-2025-05-12",
+    "t-2025-11"
+   ],
+   "eras": [
+    "E3",
+    "E6",
+    "E7"
+   ],
+   "aliasesSeen": [
+    "중국 상해",
+    "상해"
+   ],
+   "needsReview": false
+  },
+  {
+   "name": "샤먼 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Fujian",
+   "parent": null,
+   "kind": null,
+   "lat": 24.48,
+   "lng": 118.09,
+   "sources": [
+    "gmaps_saved",
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2016-08-02",
+    "t-2017-03-05",
+    "t-2017-08-23",
+    "t-2017-10-30",
+    "t-2019-08-01"
+   ],
+   "eras": [
+    "E3",
+    "E6"
+   ],
+   "aliasesSeen": [
+    "하문"
+   ],
+   "needsReview": false,
+   "note": "출장표의 '하문'과 같은 도시"
+  },
+  {
+   "name": "선양 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Liaoning",
+   "parent": null,
+   "kind": null,
+   "lat": 41.8,
+   "lng": 123.43,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "선전 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Guangdong",
+   "parent": null,
+   "kind": null,
+   "lat": 22.54,
+   "lng": 114.06,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "쉐라톤 옌타이 골든 비치 리조트",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "옌타이 시",
+   "kind": "호텔",
+   "lat": 37.46,
+   "lng": 121.45,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "스자좡 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hebei",
+   "parent": null,
+   "kind": null,
+   "lat": 38.04,
+   "lng": 114.51,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "시 호",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "항저우 시",
+   "kind": "호수",
+   "lat": 30.24,
+   "lng": 120.15,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "서호"
+  },
+  {
+   "name": "시솽반나 다이족 자치주",
+   "level": "prefecture",
+   "country": "중국",
+   "region": "Yunnan",
+   "parent": null,
+   "kind": null,
+   "lat": 22.01,
+   "lng": 100.8,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "시안 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shaanxi",
+   "parent": null,
+   "kind": null,
+   "lat": 34.34,
+   "lng": 108.94,
+   "sources": [
+    "gmaps_saved",
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2017-09-18"
+   ],
+   "eras": [
+    "E3",
+    "E6"
+   ],
+   "aliasesSeen": [
+    "서안"
+   ],
+   "needsReview": false
+  },
+  {
+   "name": "쑤저우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Jiangsu",
+   "parent": null,
+   "kind": null,
+   "lat": 31.3,
+   "lng": 120.59,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "아러타이 지구",
+   "level": "prefecture",
+   "country": "중국",
+   "region": "Xinjiang",
+   "parent": null,
+   "kind": null,
+   "lat": 47.85,
+   "lng": 88.14,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "양숴 현",
+   "level": "district",
+   "country": "중국",
+   "region": "Guangxi, Guilin",
+   "parent": "구이린 시",
+   "kind": null,
+   "lat": 24.78,
+   "lng": 110.5,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "옌볜 조선족 자치주",
+   "level": "prefecture",
+   "country": "중국",
+   "region": "Jilin",
+   "parent": null,
+   "kind": null,
+   "lat": 42.91,
+   "lng": 129.48,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "옌지 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Jilin, Yanbian Korean Autonomous Prefecture",
+   "parent": "옌볜 조선족 자치주",
+   "kind": null,
+   "lat": 42.91,
+   "lng": 129.51,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "옌타이 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shandong",
+   "parent": null,
+   "kind": null,
+   "lat": 37.46,
+   "lng": 121.45,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "우루무치 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Xinjiang",
+   "parent": null,
+   "kind": null,
+   "lat": 43.83,
+   "lng": 87.62,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "우한 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hubei",
+   "parent": null,
+   "kind": null,
+   "lat": 30.59,
+   "lng": 114.31,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "원저우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Zhejiang",
+   "parent": null,
+   "kind": null,
+   "lat": 27.99,
+   "lng": 120.7,
+   "sources": [
+    "gmaps_saved",
+    "blog"
+   ],
+   "tripIds": [
+    "t-e3-wenzhou"
+   ],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "블로그 2006년 글의 '온주'"
+  },
+  {
+   "name": "웨이팡 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shandong",
+   "parent": null,
+   "kind": null,
+   "lat": 36.71,
+   "lng": 119.16,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "웨이하이 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shandong",
+   "parent": null,
+   "kind": null,
+   "lat": 37.51,
+   "lng": 122.12,
+   "sources": [
+    "gmaps_saved",
+    "blog"
+   ],
+   "tripIds": [
+    "t-2026-09-07"
+   ],
+   "eras": [
+    "E3",
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "자금성",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "역사 유적지",
+   "lat": 39.92,
+   "lng": 116.39,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "정저우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Henan",
+   "parent": null,
+   "kind": null,
+   "lat": 34.75,
+   "lng": 113.62,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "주하이 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Guangdong",
+   "parent": null,
+   "kind": null,
+   "lat": 22.27,
+   "lng": 113.58,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "목록 표기는 Zhuhai"
+  },
+  {
+   "name": "지난 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shandong",
+   "parent": null,
+   "kind": null,
+   "lat": 36.67,
+   "lng": 117.0,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "창사 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hunan",
+   "parent": null,
+   "kind": null,
+   "lat": 28.23,
+   "lng": 112.94,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "천단",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "사원",
+   "lat": 39.88,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "천지",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "옌볜 조선족 자치주",
+   "kind": "호수",
+   "lat": 42.01,
+   "lng": 128.06,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "백두산 천지"
+  },
+  {
+   "name": "청더 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hebei",
+   "parent": null,
+   "kind": null,
+   "lat": 40.95,
+   "lng": 117.94,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "청두 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Sichuan",
+   "parent": null,
+   "kind": null,
+   "lat": 30.57,
+   "lng": 104.07,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "청화대",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "대학교",
+   "lat": 40.0,
+   "lng": 116.33,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "충칭",
+   "level": "city",
+   "country": "중국",
+   "region": "Chongqing",
+   "parent": null,
+   "kind": null,
+   "lat": 29.56,
+   "lng": 106.55,
+   "sources": [
+    "gmaps_saved",
+    "gdoc",
+    "blog"
+   ],
+   "tripIds": [
+    "t-2026-06-03"
+   ],
+   "eras": [
+    "E3",
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "친황다오 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hebei",
+   "parent": null,
+   "kind": null,
+   "lat": 39.94,
+   "lng": 119.6,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "칭다오 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shandong",
+   "parent": null,
+   "kind": null,
+   "lat": 36.07,
+   "lng": 120.38,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "카스 지구",
+   "level": "prefecture",
+   "country": "중국",
+   "region": "Xinjiang",
+   "parent": null,
+   "kind": null,
+   "lat": 39.47,
+   "lng": 75.99,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "카슈가르"
+  },
+  {
+   "name": "쿤밍 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Yunnan",
+   "parent": null,
+   "kind": null,
+   "lat": 25.04,
+   "lng": 102.72,
+   "sources": [
+    "gmaps_saved",
+    "gdoc",
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2026-04-15"
+   ],
+   "eras": [
+    "E3",
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "크라운 플라자 베이징 리도",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "베이징",
+   "kind": "호텔",
+   "lat": 39.9,
+   "lng": 116.41,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "타이산 구",
+   "level": "district",
+   "country": "중국",
+   "region": "Shandong, Taian",
+   "parent": "타이안 시",
+   "kind": null,
+   "lat": 36.19,
+   "lng": 117.13,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "타이위안 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shanxi",
+   "parent": null,
+   "kind": null,
+   "lat": 37.87,
+   "lng": 112.55,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "탕산 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Hebei",
+   "parent": null,
+   "kind": null,
+   "lat": 39.63,
+   "lng": 118.18,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "태산",
+   "level": "poi",
+   "country": "중국",
+   "region": null,
+   "parent": "타이안 시",
+   "kind": "산봉우리",
+   "lat": 36.25,
+   "lng": 117.1,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "톈진",
+   "level": "city",
+   "country": "중국",
+   "region": "Tianjin",
+   "parent": null,
+   "kind": null,
+   "lat": 39.13,
+   "lng": 117.2,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "투루판 지구",
+   "level": "prefecture",
+   "country": "중국",
+   "region": "Xinjiang",
+   "parent": null,
+   "kind": null,
+   "lat": 42.95,
+   "lng": 89.19,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "툰시 구",
+   "level": "district",
+   "country": "중국",
+   "region": "Anhui, Huangshan City",
+   "parent": "황산 시",
+   "kind": null,
+   "lat": 29.72,
+   "lng": 118.3,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "펑라이 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Shandong, Yantai",
+   "parent": null,
+   "kind": null,
+   "lat": 37.81,
+   "lng": 120.76,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "포산 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Guangdong",
+   "parent": null,
+   "kind": null,
+   "lat": 23.02,
+   "lng": 113.12,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "푸저우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Fujian",
+   "parent": null,
+   "kind": null,
+   "lat": 26.07,
+   "lng": 119.3,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "핑야오 현",
+   "level": "district",
+   "country": "중국",
+   "region": "Shanxi, Jinzhong",
+   "parent": null,
+   "kind": null,
+   "lat": 37.2,
+   "lng": 112.18,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "하얼빈 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Heilongjiang",
+   "parent": null,
+   "kind": null,
+   "lat": 45.8,
+   "lng": 126.53,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "항저우 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Zhejiang",
+   "parent": null,
+   "kind": null,
+   "lat": 30.27,
+   "lng": 120.16,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "허페이 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Anhui",
+   "parent": null,
+   "kind": null,
+   "lat": 31.82,
+   "lng": 117.23,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "홍콩",
+   "level": "territory",
+   "country": "중국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 22.32,
+   "lng": 114.17,
+   "sources": [
+    "gmaps_saved",
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2017-08-23",
+    "t-2019-02-18",
+    "t-2019-11-04"
+   ],
+   "eras": [
+    "E3",
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "황산 시",
+   "level": "poi",
+   "country": "중국",
+   "region": "Anhui",
+   "parent": "황산 시",
+   "kind": "산봉우리",
+   "lat": 29.71,
+   "lng": 118.31,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [
+    "황산"
+   ],
+   "needsReview": false
+  },
+  {
+   "name": "후룬베이얼 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Inner Mongolia",
+   "parent": null,
+   "kind": null,
+   "lat": 49.21,
+   "lng": 119.77,
+   "sources": [
+    "gmaps_saved",
+    "blog"
+   ],
+   "tripIds": [
+    "t-e3-hulunbuir"
+   ],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "블로그 2006년 글 '2005년7월 첫 여름 여행 내몽고 후룬베이얼'과 연결됨"
+  },
+  {
+   "name": "후허하오터 시",
+   "level": "city",
+   "country": "중국",
+   "region": "Inner Mongolia",
+   "parent": null,
+   "kind": null,
+   "lat": 40.84,
+   "lng": 111.75,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "방콕",
+   "level": "city",
+   "country": "태국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 13.76,
+   "lng": 100.5,
+   "sources": [
+    "gsheet"
+   ],
+   "tripIds": [
+    "t-2019-02-11",
+    "t-2019-11-04"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "침사추이",
+   "level": "district",
+   "country": "홍콩",
+   "region": "Kowloon",
+   "parent": "홍콩",
+   "kind": null,
+   "lat": 22.3,
+   "lng": 114.17,
+   "sources": [
+    "gmaps_saved"
+   ],
+   "tripIds": [],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  }
+ ],
+ "missingCoords": [
+  "Chunguang Shopping Plaza",
+  "Dongshan Hotel"
+ ]
+}
