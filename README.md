@@ -38,6 +38,8 @@ python scripts/build_all.py
 ```
 data/
   site.json               홈 화면 문구·표지·모집 코스 ← 사이트 얼굴은 여기서 고친다
+  design_pics/            홈 표지 원화 한 장 (콜라주)
+  design_pics/crops/      ← 거기서 오려 낸 장식 그림 · 빌드가 번들에 박는다
   tripcom_places.json     장소 이름 → trip.com 목적지 번호
   destinations.json       ← 캐시 · trip.com 사진 주소와 소개 발췌
   gmaps_saved_2005.json   지도 저장 목록 「2005년 지역전문가」 128개 (수집 완료)
@@ -62,6 +64,7 @@ scripts/
   fetch_world_map.py      세계지도 내려받아 캐시 (빌드 때 1회)
   fetch_blog_bodies.py    블로그 본문 수집 (이어받기)
   fetch_destinations.py   trip.com 여행지 사진·소개 수집 (캐시)
+  crop_design.py          홈 표지 원화 → 장식 그림 조각 (Pillow · 가끔만 돌린다)
   classify_posts.py       글 → 여정 후보 판정 (규칙 + LLM)
   itinerary_agent.py      내용 → 일정표 HTML → 홈페이지 → 푸시까지 (에이전트)
   build_itineraries.py    trip_html 일정표를 여정에 붙인다 (규칙만 쓴다 · LLM 없음)
@@ -81,9 +84,9 @@ tests/
 
 ## 화면
 
-- **홈** — 표지 사진 한 장과 숫자 띠, **다시 가고 싶은 곳**(3D 투어), 최근의 여정,
-  안내할 수 있는 코스, 동행 문의. 문구와 표지와 코스는 `data/site.json` 에서 고친다
-  (아래 [3D 여행지 투어](#3d-여행지-투어-곁들이))
+- **홈** — 콜라주 표지와 숫자 띠, **다시 가고 싶은 곳**(3D 투어 · 격자로 보면 대표 도시가 큰 카드로),
+  최근의 여정, 안내할 수 있는 코스, 동행 문의. 문구와 대표 도시와 코스는 `data/site.json` 에서 고친다
+  (아래 [홈 표지](#홈-표지-원화-한-장에서), [3D 여행지 투어](#3d-여행지-투어-곁들이))
 - **여행지** — 다녀온 도시를 사진 카드로. 나라별로 걸러 본다. 카드를 누르면 그 도시의 내 기록이,
   “Trip.com 가이드”를 누르면 원문이 열린다
 - **지도** — 세계 / 아시아 / 중국 축척. 점 크기는 방문 횟수, 색은 목적. 연도 슬라이더를 끌면 시간순으로 켜진다.
@@ -228,6 +231,35 @@ python scripts/itinerary_agent.py data/trip_source/대련.txt --push -m "대련 
 gitignore 라 저장소에 올라가지 않고 개인 빌드에만 들어간다(PRD §11).
 공개 폴더에 그런 것이 보이면 **빌드가 멈춘다**(이름+직책·전화·이메일·집 호수 형태로 잡는다).
 
+## 홈 표지 (원화 한 장에서)
+
+홈의 표지는 사진 한 장이 아니라 **수채 콜라주 원화 한 장을 조각낸 것**이다.
+원화는 `data/design_pics/` 에 두고, `scripts/crop_design.py` 가 글자가 없는 자리만
+다섯 조각으로 오려 `data/design_pics/crops/*.webp` 에 남긴다.
+
+```
+hero-left    사람과 폴라로이드   표지 왼쪽
+hero-right   바다·나침반·여권     표지 오른쪽
+torn         찢어진 종이 가장자리  표지 아래
+map          수채 세계지도        숫자 띠 오른쪽
+invite       산과 걷는 사람       초대 띠 왼쪽
+```
+
+**원화에 그려진 글자는 쓰지 않는다.** 제목·소개·버튼·숫자는 화면에서 글자로 다시 쓴다.
+그래야 화면 크기에 따라 접히고, 검색되고, 숫자가 데이터를 따라 움직인다.
+그림은 양 옆과 바닥의 장식이라 좁은 화면(900px 아래)에서는 접힌다.
+
+조각은 `scripts/build_app.py` 가 빌드할 때 `--art-<이름>` CSS 변수에 data URI 로 박는다.
+번들은 파일 하나로 돌아야 하기 때문이다(PRD §8). 다섯 조각 합쳐 114KB, 번들에서는 약 151KB.
+조각이 없으면 변수도 없고, 표지는 그림 없이 종이색 바탕으로 그대로 돈다.
+
+원화를 바꾸려면 `data/design_pics/` 에 새 그림을 넣고
+
+```
+python scripts/crop_design.py 새그림.png   # 자르는 자리는 스크립트 위쪽 BOXES 에 있다
+python scripts/build_all.py
+```
+
 ## 여행지 사진 (trip.com)
 
 도시 이름과 날짜만으로는 처음 보는 사람에게 그림이 안 그려진다.
@@ -255,7 +287,7 @@ trip.com 에 가이드가 없는 곳(남해·부여·평택·유명산 등)은 �
 홈의 **안내할 수 있는 길**과 **동행 문의**는 `data/site.json` 에서 온다.
 
 ```json
-{ "tagline": "30년, 발로 그린 아시아",
+{ "tagline": "30년의 기록, 그리고 이어질 여정",
   "heroPlace": "베이징",
   "offers": [{ "title": "…", "body": "…", "places": ["시안 시", "둔황 시"] }],
   "invite": { "title": "…", "body": "…",

@@ -19,8 +19,21 @@
   --serif:Georgia,"Noto Serif KR","Apple SD Gothic Neo",serif;
   --sans:-apple-system,"Segoe UI","Noto Sans KR",sans-serif;
   --head:57px;
+  /* 홈 표지의 색. 콜라주 원화에서 그대로 뽑았다. */
+  --paper:#fbf6ee; --navy:#003261;
+  --hero-bg:linear-gradient(180deg,#e7eff6 0%,#fbf6ee 66%);
+  --hero-ink:#003261; --hero-sub:#4c5d6e; --hero-btn-ink:#fbf6ee;
+  --hero-ghost:rgba(255,255,255,.55); --hero-ghost-on:rgba(255,255,255,.88);
+  --art-op:1; --art-filter:none;
+  /* 홈 장식 그림(--art-*)은 scripts/build_app.py 가 여기에 박는다. */
+  /*__ART__*/
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#1b1913; --navy:#cfe0f0;
+  --hero-bg:linear-gradient(180deg,#131a21 0%,#1b1913 66%);
+  --hero-ink:#e9eff6; --hero-sub:#9eb0c1; --hero-btn-ink:#10161c;
+  --hero-ghost:rgba(233,239,246,.07); --hero-ghost-on:rgba(233,239,246,.16);
+  --art-op:.52; --art-filter:saturate(.75) brightness(.82);
   --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
   --accent:#d8b478; --accent-ink:#1b1810; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
   --ph1:#3a3529; --ph2:#22201a;
@@ -28,6 +41,11 @@
   --lift:0 6px 14px rgba(0,0,0,.5),0 22px 48px rgba(0,0,0,.45);
 }}
 :root[data-theme="dark"]{
+  --paper:#1b1913; --navy:#cfe0f0;
+  --hero-bg:linear-gradient(180deg,#131a21 0%,#1b1913 66%);
+  --hero-ink:#e9eff6; --hero-sub:#9eb0c1; --hero-btn-ink:#10161c;
+  --hero-ghost:rgba(233,239,246,.07); --hero-ghost-on:rgba(233,239,246,.16);
+  --art-op:.52; --art-filter:saturate(.75) brightness(.82);
   --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
   --accent:#d8b478; --accent-ink:#1b1810; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
   --ph1:#3a3529; --ph2:#22201a;
@@ -80,39 +98,104 @@ aside h3:first-child{margin-top:0}
 main{padding:16px;min-width:0}
 main.home{padding:0}
 
-/* ── 홈: 히어로 ── */
-.hero{position:relative;min-height:min(74vh,560px);display:flex;align-items:flex-end;
-  overflow:hidden;background:linear-gradient(140deg,var(--ph1),var(--ph2))}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(12,10,7,.30) 0%,rgba(12,10,7,.12) 34%,rgba(12,10,7,.82) 100%)}
-.hero .inner{position:relative;z-index:1;padding:40px 24px 26px;max-width:960px;color:#fff}
-.hero .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
-.hero h2{font:600 clamp(30px,5.4vw,52px)/1.15 var(--serif);margin:10px 0 0;
-  text-shadow:0 2px 18px rgba(0,0,0,.35)}
-.hero p{margin:12px 0 0;font-size:clamp(14px,1.7vw,17px);max-width:56ch;opacity:.93}
-.hero .acts{display:flex;gap:9px;margin-top:20px;flex-wrap:wrap}
-.hero .ghost{padding:9px 17px;border-radius:999px;border:1px solid rgba(255,255,255,.5);
-  color:#fff;font-size:13.5px;font-weight:600}
-.hero .ghost:hover{background:rgba(255,255,255,.14)}
-.hero .credit{position:absolute;right:12px;bottom:8px;z-index:2;font-size:10.5px;
-  color:rgba(255,255,255,.72)}
-.hero .credit a{color:inherit}
+/* ── 홈: 표지 ──
+   data/design_pics 의 콜라주 한 장을 조각내 양 옆에 세우고, 글자는 살려 둔다.
+   그림은 장식이라 좁은 화면에서는 접는다. */
+.hero{position:relative;overflow:hidden;isolation:isolate;background:var(--hero-bg)}
+.hero::before,.hero::after{content:"";position:absolute;top:0;bottom:0;z-index:0;
+  background-repeat:no-repeat;pointer-events:none;
+  opacity:var(--art-op);filter:var(--art-filter)}
+.hero::before{left:0;width:min(31%,352px);background-image:var(--art-hero-left);
+  background-size:cover;background-position:right bottom;
+  -webkit-mask-image:linear-gradient(90deg,#000 58%,transparent);
+  mask-image:linear-gradient(90deg,#000 58%,transparent)}
+.hero::after{right:0;width:min(22%,244px);background-image:var(--art-hero-right);
+  background-size:cover;background-position:left center;
+  -webkit-mask-image:linear-gradient(270deg,#000 54%,transparent);
+  mask-image:linear-gradient(270deg,#000 54%,transparent)}
+.hero .inner{position:relative;z-index:1;max-width:680px;margin:0 auto;
+  padding:58px 24px 46px;text-align:center;color:var(--hero-ink)}
+.hero .kicker{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--hero-sub);font-weight:700}
+.hero h2{font:600 clamp(29px,4.6vw,50px)/1.16 var(--serif);margin:12px 0 0;
+  color:var(--hero-ink);letter-spacing:-.02em;
+  /* 두 줄로 갈릴 때 '여정' 한 낱말만 떨어지지 않게 한다. */
+  text-wrap:balance;word-break:keep-all}
+.hero p{margin:14px auto 0;font-size:clamp(13.5px,1.5vw,16px);max-width:46ch;
+  color:var(--hero-sub);word-break:keep-all}
+.hero .acts{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap;justify-content:center}
+.hero .solid,.hero .ghost{display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:999px;font-size:14px;font-weight:600}
+.hero .solid{background:var(--hero-ink);color:var(--hero-btn-ink);
+  box-shadow:0 6px 18px rgba(0,50,97,.22)}
+.hero .solid:hover{filter:brightness(1.12)}
+.hero .ghost{border:1.5px solid var(--hero-ink);color:var(--hero-ink);
+  background:var(--hero-ghost)}
+.hero .ghost:hover{background:var(--hero-ghost-on)}
+.hero svg{width:17px;height:17px;flex:none}
+.torn{height:22px;margin-top:-22px;position:relative;z-index:2;
+  background:var(--art-torn) center bottom/100% 100% no-repeat;
+  opacity:var(--art-op);filter:var(--art-filter)}
+@media (max-width:900px){
+  .hero::before,.hero::after{display:none}
+  .hero .inner{padding:40px 18px 34px}
+  .torn{display:none}
+}
 
-.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));
-  border-bottom:1px solid var(--line);background:var(--panel)}
-.band div{padding:16px 10px;text-align:center;border-right:1px solid var(--line)}
-.band div:last-child{border-right:0}
-.band b{display:block;font:600 27px/1.1 var(--serif);font-variant-numeric:tabular-nums}
+/* ── 홈: 숫자 띠 (오른쪽에 수채 지도) ── */
+.band{position:relative;overflow:hidden;background:var(--paper);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band::after{content:"";position:absolute;right:0;top:0;bottom:0;width:min(44%,460px);
+  background:var(--art-map) right center/cover no-repeat;
+  opacity:var(--art-op);filter:var(--art-filter);
+  -webkit-mask-image:linear-gradient(270deg,#000 52%,transparent);
+  mask-image:linear-gradient(270deg,#000 52%,transparent)}
+.band .eyebrow{position:relative;z-index:1;padding:15px 24px 0;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.band .nums{position:relative;z-index:1;display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));max-width:620px;padding:10px 24px 18px}
+.band .nums div{text-align:center;border-right:1px solid var(--line);padding:4px 6px}
+.band .nums div:last-child{border-right:0}
+.band .nums svg{width:19px;height:19px;color:var(--navy);opacity:.85;margin-bottom:3px}
+.band b{display:block;font:600 26px/1.1 var(--serif);font-variant-numeric:tabular-nums}
 .band small{color:var(--dim);font-size:11.5px;letter-spacing:.04em}
+@media (max-width:760px){
+  .band::after{display:none}
+  .band .nums{max-width:none;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:4px}
+}
 
 /* ── 홈: 섹션 ── */
 .sec{padding:44px 24px;max-width:1180px;margin:0 auto}
 .sechead{display:flex;align-items:flex-end;gap:14px;margin-bottom:20px;flex-wrap:wrap}
 .sechead .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.sechead h3 svg{width:23px;height:23px;flex:none;color:var(--navy);opacity:.9;
+  vertical-align:-4px;margin-right:9px;display:inline-block}
 .sechead h3{font:600 clamp(21px,2.6vw,29px)/1.25 var(--serif);flex-basis:100%}
 .sechead p{margin:0;color:var(--dim);font-size:13.5px;max-width:60ch}
 .sechead .more{margin-left:auto;font-size:13px;color:var(--accent);white-space:nowrap}
+
+/* 대표 여행지 한 장 — 원화의 큰 카드 자리다. */
+.dfeat{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--panel);
+  box-shadow:var(--shadow);margin-bottom:18px}
+.dfeat .ph{position:relative;min-height:270px;overflow:hidden;cursor:pointer;
+  background:linear-gradient(140deg,var(--ph1),var(--ph2))}
+.dfeat .ph img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.dfeat:hover .ph img{transform:scale(1.04)}
+.dfeat .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:34px 18px 14px;
+  color:#fff;background:linear-gradient(transparent,rgba(12,10,7,.8))}
+.dfeat .cap b{font:600 clamp(22px,2.4vw,28px)/1.2 var(--serif)}
+.dfeat .cap span{font-size:12.5px;opacity:.86;margin-left:9px}
+.dfeat .body{padding:22px 24px 20px;display:flex;flex-direction:column}
+.dfeat .body p{margin:0;font-size:13.5px;color:var(--dim)}
+.dfeat .acts{display:flex;gap:9px;margin-top:auto;padding-top:20px;flex-wrap:wrap;
+  align-items:center}
+.dfeat .acts .solid{padding:9px 17px;border-radius:999px;background:var(--navy);
+  color:var(--paper);font-size:13px;font-weight:600}
+.dfeat .acts .out{padding:9px 17px;border-radius:999px;border:1px solid var(--line);
+  font-size:13px;font-weight:600;text-decoration:none;color:var(--ink);background:var(--bg)}
+.dfeat .src{margin-top:11px;font-size:10.5px;color:var(--dim)}
+@media (max-width:760px){.dfeat{grid-template-columns:1fr}.dfeat .ph{min-height:210px}}
 
 .dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:18px}
 .dcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);
@@ -123,7 +206,8 @@ main.home{padding:0}
 .dcard .ph img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;
   transition:transform .5s}
 .dcard:hover .ph img{transform:scale(1.045)}
-.dcard .ph .nolabel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+.dcard .ph .nolabel,.dfeat .ph .nolabel{position:absolute;inset:0;display:flex;
+  align-items:center;justify-content:center;
   font:600 19px/1.2 var(--serif);color:rgba(255,255,255,.92)}
 .dcard .visits{position:absolute;z-index:2;left:10px;top:10px;padding:3px 9px;
   border-radius:999px;background:rgba(12,10,7,.55);color:#fff;font-size:11px}
@@ -189,7 +273,19 @@ main.home{padding:0}
 .offer p{margin:0;font-size:13.5px;color:var(--dim)}
 .offer .tags{margin-top:11px}
 
-.invite{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.invite{position:relative;overflow:hidden;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);background:var(--hero-bg)}
+.invite::before{content:"";position:absolute;left:0;top:0;bottom:0;width:min(28%,310px);
+  background:var(--art-invite) left bottom/cover no-repeat;
+  opacity:var(--art-op);filter:var(--art-filter);
+  -webkit-mask-image:linear-gradient(90deg,#000 62%,transparent);
+  mask-image:linear-gradient(90deg,#000 62%,transparent)}
+.invite .sec{position:relative;z-index:1;padding-left:min(31%,340px)}
+.invite h3{color:var(--hero-ink)}
+@media (max-width:860px){
+  .invite::before{display:none}
+  .invite .sec{padding-left:24px}
+}
 .invite h3{font:600 clamp(23px,3vw,33px)/1.25 var(--serif)}
 .invite p{color:var(--dim);font-size:14.5px;max-width:58ch;margin:12px 0 0}
 .invite .acts{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;align-items:center}
@@ -997,6 +1093,29 @@ const shot = (url, alt) => url
 const guideLink = d => `<a href="${esc(d.url)}" target="_blank" rel="noopener nofollow"
   title="trip.com 여행 가이드에서 보기">Trip.com 가이드 →</a>`;
 
+/* 홈의 선화 아이콘 한 벌. 원화의 작은 표지들을 자리만 같게 옮겨 놓은 것이다. */
+const I = (d, extra = "") => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+  aria-hidden="true">${d}${extra}</svg>`;
+const ICON = {
+  map: I(`<path d="M9 3 3 5.4v15.1L9 18l6 3 6-2.4V3.5L15 6Z"/><path d="M9 3v15"/>
+          <path d="M15 6v15"/>`),
+  photo: I(`<rect x="3" y="5" width="18" height="14" rx="2.4"/>
+            <circle cx="8.6" cy="10.2" r="1.5"/><path d="m4 17 5-4.6 4 3.4 3-2.4 4 3.6"/>`),
+  city: I(`<path d="M3 21h18"/><path d="M5 21V8.5L11 5v16"/><path d="M11 11h6.5V21"/>
+           <path d="M8 10.5h0M8 14h0M8 17.5h0M14 14.5h0M14 18h0"/>`),
+  globe: I(`<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/>
+            <path d="M12 3c2.6 2.6 3.9 5.7 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.7-3.9-9S9.4 5.6 12 3Z"/>`),
+  bag: I(`<rect x="3" y="7.5" width="18" height="13" rx="2.2"/>
+          <path d="M9 7.5V5.6A1.6 1.6 0 0 1 10.6 4h2.8A1.6 1.6 0 0 1 15 5.6v1.9"/>
+          <path d="M3 12.6h18"/>`),
+  cal: I(`<rect x="3" y="5" width="18" height="16" rx="2.2"/><path d="M3 10h18"/>
+          <path d="M8 3v4M16 3v4"/><path d="M7.5 14h0M12 14h0M16.5 14h0M7.5 17.5h0M12 17.5h0"/>`),
+  compass: I(`<circle cx="12" cy="12" r="9"/><path d="m15.4 8.6-2 4.8-4.8 2 2-4.8Z"/>`),
+  pin: I(`<path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/>
+          <circle cx="12" cy="10" r="2.6"/>`),
+};
+
 /** 사진이 있는 여행지를 방문 횟수 순으로. 홈의 표지와 머리 사진이 이걸 쓴다. */
 function featured(){
   return DESTS.filter(d => d.cover).map(d => {
@@ -1016,6 +1135,26 @@ function gallery(){
   }).sort((a,b) => b.visits - a.visits ||
                    (!!b.cover) - (!!a.cover) ||
                    a.name.localeCompare(b.name, "ko"));
+}
+
+/** 대표 여행지 한 장. site.json 의 heroPlace 가 이 자리에 선다. */
+function destFeature(d){
+  return `<article class="dfeat">
+    <div class="ph" data-place="${esc(d.place)}">
+      <div class="nolabel">${esc(d.name)}</div>
+      ${shot(sized(d.cover, 1180, 558), d.name + " 사진")}
+      <div class="cap"><b>${esc(d.name)}</b>${
+        d.visits ? `<span>${esc(d.country || "")} · ${d.visits}번 갔다</span>` : ""}</div>
+    </div>
+    <div class="body">
+      <p class="intro">${esc(d.intro || "가장 여러 번 다녀온 도시입니다.")}</p>
+      <div class="acts">
+        <button class="solid" data-place="${esc(d.place)}">이 도시의 여정 열기 →</button>
+        ${d.url ? `<a class="out" href="${esc(d.url)}" target="_blank"
+          rel="noopener nofollow">Trip.com 가이드</a>` : ""}
+      </div>
+      ${d.url ? `<div class="src">사진·소개 © Trip.com</div>` : ""}
+    </div></article>`;
 }
 
 function destCard(d){
@@ -1340,26 +1479,27 @@ function viewHome(){
 
   return `
   <section class="hero">
-    ${hero ? shot(sized(hero.cover, 1180, 558), hero.name + " 사진") : ""}
     <div class="inner">
-      <div class="kicker">${Y0} — ${Y1}</div>
+      <div class="kicker">${Y0} — ${Y1}+</div>
       <h2>${esc(SITE.tagline || "30년, 나의 여행 발자취, 그리고 미래")}</h2>
       <p>${esc(SITE.lead || "")}</p>
       <div class="acts">
-        <button class="cta-btn" data-go="map">여정 지도 보기</button>
-        <button class="ghost" data-go="destinations">여행지 둘러보기</button>
+        <button class="solid" data-go="map">${ICON.map}여정 지도 보기</button>
+        <button class="ghost" data-go="destinations">${ICON.photo}여행지 둘러보기</button>
       </div>
     </div>
-    ${hero ? `<div class="credit">표지 · ${esc(hero.name)}
-      <a href="${esc(hero.url)}" target="_blank" rel="noopener nofollow">© Trip.com</a></div>` : ""}
   </section>
+  <div class="torn" aria-hidden="true"></div>
 
   <div class="band">
-    <div><b>${cities}</b><small>도시</small></div>
-    <div><b>${countries}</b><small>나라</small></div>
-    <div><b>${counted.length}</b><small>여정</small></div>
-    <div><b>${Y1 - Y0 + 1}</b><small>해</small></div>
-    <div><b>${ERAS.length}</b><small>시대</small></div>
+    <div class="eyebrow">My Travel Story</div>
+    <div class="nums">
+      <div>${ICON.city}<b>${cities}</b><small>도시</small></div>
+      <div>${ICON.globe}<b>${countries}</b><small>나라</small></div>
+      <div>${ICON.bag}<b>${counted.length}</b><small>여정</small></div>
+      <div>${ICON.cal}<b>${Y1 - Y0 + 1}</b><small>해</small></div>
+      <div>${ICON.compass}<b>${ERAS.length}</b><small>시대</small></div>
+    </div>
   </div>
 
   <section class="sec${state.tour && tourItems().length ? " tourOn" : ""}">
@@ -1369,7 +1509,7 @@ function viewHome(){
         state.tour ? "격자로 보기 →" : "3D 투어로 보기 →"}</button>
       <button class="more" style="margin-left:0"
         data-go="destinations">여행지 전체 ${feat.length} →</button>
-      <h3>다시 가고 싶은 곳</h3>
+      <h3>${ICON.pin}다시 가고 싶은 곳</h3>
       <p>가장 여러 번 다녀온 도시들입니다. 사진과 소개 글은
         <a href="https://kr.trip.com/travel-guide/destination/" target="_blank"
            rel="noopener nofollow">Trip.com 여행 가이드</a>에서 가져왔고, 카드를 누르면
@@ -1384,7 +1524,9 @@ function viewHome(){
       <div class="cap" id="tourCap"></div>
     </div>` : ""}
     ${feat.length
-      ? `<div class="dgrid">${feat.slice(0, 8).map(destCard).join("")}</div>`
+      ? `${state.tour && tourItems().length ? "" : hero ? destFeature(hero) : ""}
+         <div class="dgrid">${feat.filter(d => d !== hero).slice(0, 8)
+           .map(destCard).join("")}</div>`
       : `<div class="empty">아직 받아 둔 여행지 사진이 없습니다.
           <br><small>python scripts/fetch_destinations.py 를 돌리세요.</small></div>`}
   </section>
@@ -1393,7 +1535,7 @@ function viewHome(){
     <div class="sechead">
       <span class="eyebrow">Journeys</span>
       <button class="more" data-go="timeline">연표로 보기 →</button>
-      <h3>최근의 여정</h3>
+      <h3>${ICON.cal}최근의 여정</h3>
     </div>
     <div class="tgrid">${recent.map(t => `
       <button class="tcard" data-trip="${esc(t.id)}">
@@ -1410,7 +1552,7 @@ function viewHome(){
   ${offers.length ? `<section class="sec" style="padding-top:0">
     <div class="sechead">
       <span class="eyebrow">Itineraries</span>
-      <h3>제가 안내할 수 있는 길</h3>
+      <h3>${ICON.compass}제가 안내할 수 있는 길</h3>
       <p>30년 동안 직접 다닌 곳 중에서, 다시 안내할 수 있는 코스입니다.</p>
     </div>
     <div class="offers">${offers.map((o, i) => `
