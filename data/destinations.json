@@ -1,0 +1,2258 @@
+{
+ "_": "빌드 산출물이 아니라 캐시다. scripts/fetch_destinations.py 가 채운다.",
+ "source": "https://kr.trip.com/travel-guide/destination/",
+ "credit": "사진·소개 글 © Trip.com. 발췌만 싣고 원문으로 링크한다.",
+ "fetched": "2026-09-20",
+ "destinations": [
+  {
+   "place": "베이징",
+   "id": 1,
+   "name": "베이징",
+   "enName": "Beijing",
+   "country": "중국",
+   "url": "https://kr.trip.com/travel-guide/destination/beijing-1/",
+   "cover": "https://ak-d.tripcdn.com/images/0101o12000kzeat2rBDCF_D_1180_558.jpg",
+   "intro": "베이징은 중국의 수도입니다. 약 3천년 전 건설된 도시로, 역사적으로 800년이 넘는 시간 동안 수도의 역할을 수행하고 있습니다. 길고도 깊은 역사와 문화를 자랑하는 이 도시를 방문해보세요. 천안문 광장과 인민대회당은 중국의 험난한 시대를 지켜온 장본인입니다. 자금성, 이화원 및 천단으로 향해 비할 데 없이 훌륭한 황실의 양식을 감상해보세요. 베이징은 모던함과 세련된 우아함을 갖춘 국제도시이기도 합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/010671200087d4o7zEA88_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "고궁박물원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100c0u000000jjsf87E14_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "바다링창청(팔달령장성)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/01062120008y7o56t54AF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "유니버셜 스튜디오 베이징"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102y12000hxkc5n61AF4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "중국국가박물관"
+    }
+   ],
+   "lat": 39.90421,
+   "lng": 116.4074
+  },
+  {
+   "place": "상하이",
+   "id": 2,
+   "name": "상하이",
+   "enName": "Shanghai",
+   "country": "중국",
+   "url": "https://kr.trip.com/travel-guide/destination/shanghai-2/",
+   "cover": "https://ak-d.tripcdn.com/images/100e0h0000008rp39A12F_D_1180_558.jpg",
+   "intro": "“동양의 파리”라고 불리는 상하이로 가서 동양과 서양이 조우하며 탄생한 국제도시를 만나보세요. 오늘날 푸시(Puxi)의 황포강 강변에 미국인, 프랑스인 및 영국인이 건설한 10마일 상하이 국제 정착촌이 발전을 거듭해 지금의 국제도시가 되어 매일 변화를 모색합니다. 번드와 신톈디(Xintiandi)에 늘어선 역사적, 문화적 건축물과 더불어 동방명주와 상하이 디즈니랜드 리조트 등 푸동에 자리한 매력적인 관광 명소를 돌아보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102p1200082jbvtcD451_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "와이탄"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2e12000qgdu20b7BC1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "TASTE OF CHINA 중궈웨이 몰입형 레스토랑"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4w12000oclfr63447B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "상하이 하이창 해양공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1r12000m95gfxk01B6_D_1180_558.png?proc=source%2ftrip",
+     "poi": "상하이 레고랜드® 리조트"
+    }
+   ],
+   "lat": 31.230415,
+   "lng": 121.4737
+  },
+  {
+   "place": "타이베이",
+   "id": 360,
+   "name": "타이베이",
+   "enName": "Taipei",
+   "country": "대만",
+   "url": "https://kr.trip.com/travel-guide/destination/taipei-360/",
+   "cover": "https://ak-d.tripcdn.com/images/100o0h000000907edD905_D_1180_558.jpg",
+   "intro": "대만의 심장부 타이베이는 교통이 편리하고 관광 명소가 많아 대만을 찾아가는 여행자가 제일 먼저 가보는 곳입니다. 타이베이 101과 타이베이 고궁박물관은 타이베이의 2대 랜드마크입니다. 타이베이 101에서 도시 전체의 화려한 야경을 감상해보고 타이베이 고궁박물관으로 향해 심도 깊은 중국 전통문화의 향연을 경험해보세요. 아울러 타이베이는 생동감 넘치는 여러 야시장에서 맛있는 간식을 맛볼 수 있기로도 유명한데, 야시장마다 저마다 독특한 개성을 뽐낸답니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/fd/tg/g4/M01/72/7D/CggYHFY7F7iAF6-bAAtq3wFHDJY069_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "대만 국립 고궁 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6512000nye4tcqACA1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이베이 101"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100h12000f6rczdp9584_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "예류지질공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3w12000c6n3ma502C9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이베이 시립 동물원"
+    }
+   ],
+   "lat": 25.041649,
+   "lng": 121.54373
+  },
+  {
+   "place": "샤먼 시",
+   "id": 21,
+   "name": "샤먼",
+   "enName": "Xiamen",
+   "country": "푸젠",
+   "url": "https://kr.trip.com/travel-guide/destination/xiamen-21/",
+   "cover": "https://ak-d.tripcdn.com/images/100w1f000001gwb0k4589_D_1180_558.jpg",
+   "intro": "샤먼은 걷기 좋은 도시로 이런저런 생각을 하며 햇볕을 즐기기에 그만입니다. 창의적이고 예술적인 사람들, 좀 더 여유로운 삶을 즐기려는 이들에게 낙원과도 같은 곳이랍니다. “바다의 정원”이라 불리는 이곳은 해외에서 살아가는 중국인에게 고향 같은 특별한 분위기를 선사합니다. 어디에서나 맛있는 해산물과 푸젠 특산 음식을 맛볼 수 있으며 이국적인 건축물로부터 샤먼 특유의 개성을 느낄 수 있습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106r1200087cuwjt4D32_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "구랑위(고랑서)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2c12000ta6hlctB6DC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "샤먼 원림식물원(하문 원림식물원)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3412000sh702w23598_D_1180_558.png?proc=source%2ftrip",
+     "poi": "중구 케이블카"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6t12000c35o4p52F69_D_1180_558.png?proc=source%2ftrip",
+     "poi": "후리산 파오타이(호리산 포대)"
+    }
+   ],
+   "lat": 24.479834,
+   "lng": 118.089424
+  },
+  {
+   "place": "싱가포르",
+   "id": 53,
+   "name": "싱가포르",
+   "enName": "Singapore",
+   "country": "싱가포르",
+   "url": "https://kr.trip.com/travel-guide/destination/singapore-53/",
+   "cover": "https://ak-d.tripcdn.com/images/100m1c000001dggjf1658_D_1180_558.jpg",
+   "intro": "싱가포르는 작은 국가이지만 놀라운 매력이 가득합니다. 현지인 특유의 문화를 경험해보세요. 싱가포르 차이나타운, 리틀 인디아 및 캄퐁 글람(Kampong Gelam)은 이 섬의 다양한 매력이 녹아 있는 대표 지역입니다. 멋진 대자연 속으로 한 걸음 더 들어가보고 싶다면 싱가포르 동물원, 나이트 사파리, 보타닉 가든, 부킷티마자연보호지역(Bukit Timah Natural Reserve)을 방문해보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4v12000kx5bg3mEC55_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "만다이 와일드라이프 리저브"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100m0x000000lnmo463CC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "센토사섬"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100d0z000000ncwdqEEF4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "마리나 만"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3k12000so939v35930_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "주얼 창이 공항"
+    }
+   ],
+   "lat": 1.2800945,
+   "lng": 103.85095
+  },
+  {
+   "place": "하노이",
+   "id": 181,
+   "name": "하노이",
+   "enName": "Hanoi",
+   "country": "베트남",
+   "url": "https://kr.trip.com/travel-guide/destination/hanoi-181/",
+   "cover": "https://ak-d.tripcdn.com/images/0101t12000rn0mk3jD04D_D_1180_558.jpg",
+   "intro": "하노이는 베트남의 수도입니다. 오래된 것과 새로운 것이 융합된 도시로 떠나보세요. 시선이 닿는 거의 모든 곳에 문화적인 유적지가 존재합니다. 성 요셉 대성당은 노트르담 드 파리를 본 따 건설되었습니다. 성당 곳곳에 역사를 알려주는 다양한 요소가 가득합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104012000f6t4wpqD291_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "탕롱 수상인형극장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105q12000etgnixc91A8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "호안끼엠 호"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3y12000dbenmfiB3BA_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "롯데센터 전망대"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101812000f0rhedv1C7B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "36거리(구시가지)"
+    }
+   ],
+   "lat": 21.030735,
+   "lng": 105.8524
+  },
+  {
+   "place": "홍콩",
+   "id": 38,
+   "name": "홍콩",
+   "enName": "Hong Kong",
+   "country": "중국",
+   "url": "https://kr.trip.com/travel-guide/destination/hong-kong-38/",
+   "cover": "https://ak-d.tripcdn.com/images/0101k12000admkld4652D_D_1180_558.jpg",
+   "intro": "“동양의 진주”라고 불리는 홍콩은 정말 독특한 도시입니다. 번화하면서도 문화적으로 풍성하고 전통을 간직하면서도 미래를 추구하는 철학이 깃든 도시죠. 빅토리아 하버 양쪽으로 다수의 상업 지구가 자리해 여행자에게 멋진 쇼핑 경험을 제공하며 구룡과 홍콩섬을 오가는 스타 페리(Star Ferry)가 벌써 백 년도 넘게 운영되고 있습니다. 이 외에도 홍콩은 중국 최초의 디즈니랜드가 있으며, 수많은 맛집과 특별한 찻집 문화를 경험할 수 있는 곳이기도 합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3b12000rnhx4196B38_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "홍콩해양공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ3d12000sfipgbc5C5B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "홍콩 마카오 페리 터미널"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6812000stnm89aAD17_D_1180_558.webp?proc=source%2ftrip",
+     "poi": "Hong Kong Airport Express"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ1n12000gnc2z7j9A1F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "홍콩 섬"
+    }
+   ],
+   "lat": 22.319304,
+   "lng": 114.16936
+  },
+  {
+   "place": "방콕",
+   "id": 191,
+   "name": "방콕",
+   "enName": "Bangkok",
+   "country": "태국",
+   "url": "https://kr.trip.com/travel-guide/destination/bangkok-191/",
+   "cover": "https://ak-d.tripcdn.com/images/0104c120005ww2m2yF324_D_1180_558.jpg",
+   "intro": "태국의 수도 방콕이 짜릿한 모험을 찾는 여행자에게 모든 즐거움을 제공합니다. 열대의 멋진 풍경, 풍부한 불교 문화, 독특한 현지인들의 풍습이 한데 어우러져 수많은 여행자에게 거부할 수 없는 매력을 선사하죠. 동양과 서양의 문화가 완벽하게 융합된 가운데 과거와 현재가 공존하는 공간이 펼쳐지는 이 도시에서 태국 고유의 삶을 체험해보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100f0u000000jh5qyCC3D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "방콕 왕궁"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4612000ckdvifq8928_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "방콕 사파리 월드"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105w12000k1ciubw0E2A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "므엉 보란 (고대 도시)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6x12000ikwra42576F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "랏차담넌 무에타이 스타디움"
+    }
+   ],
+   "lat": 13.727896,
+   "lng": 100.524124
+  },
+  {
+   "place": "호치민",
+   "id": 434,
+   "name": "호찌민시",
+   "enName": "Ho Chi Minh City",
+   "country": "베트남",
+   "url": "https://kr.trip.com/travel-guide/destination/ho-chi-minh-city-434/",
+   "cover": "https://ak-d.tripcdn.com/images/100v0x000000lra8w0D50_D_1180_558.jpg",
+   "intro": "호치민은 사이공이라 불리던 도시입니다. 베트남에서 가장 활기찬 도시 가운데 하나이자 상업과 문화의 중심지입니다. 우아함이 깃든 전형적인 프랑스 건축물이 곳곳을 장식하며 식민지 시대의 과거를 보여줍니다. 마치 파리에 있는 듯한 기분이 들 것입니다. 사이공 노트르담 성당, 호치민 시청, 시민 극장 등의 유명한 관광 명소 외에도 중앙 우체국으로 엽서를 보내러 갈 때 어느 외딴 길에서 웅장한 프랑스식 건축물을 볼 수도 있답니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ0j12000h00rqso61E5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "팜 누 라오 거리"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100o12000mdmlmbn8B8B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "랜드마크 81"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0h12000kz7sifnE639_D_1180_558.png?proc=source%2ftrip",
+     "poi": "호치민 홉온홉오프 버스"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ4z12000h002zkm4BE0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "호치민 전쟁박물관"
+    }
+   ],
+   "lat": 10.779791,
+   "lng": 106.69682
+  },
+  {
+   "place": "뉴델리",
+   "id": 579,
+   "name": "뉴델리",
+   "enName": "New Delhi",
+   "country": "델리",
+   "url": "https://kr.trip.com/travel-guide/destination/new-delhi-579/",
+   "cover": "https://ak-d.tripcdn.com/images/0103712000brd2xgjF90E_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100a12000lyozicd3C31_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "내셔널 뮤지엄, 뉴델리"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100t1f000001gqbmgD88F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "인도문"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102g12000865squ330B6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "레드 포르"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/fd/tg/g4/M0A/C3/E9/CggYHVXVcyWABacUAA6Es-3E7TM366_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "퀴텁 미너"
+    }
+   ],
+   "lat": 28.635307,
+   "lng": 77.22496
+  },
+  {
+   "place": "뉴욕",
+   "id": 248,
+   "name": "뉴욕",
+   "enName": "New York",
+   "country": "뉴욕주",
+   "url": "https://kr.trip.com/travel-guide/destination/new-york-248/",
+   "cover": "https://ak-d.tripcdn.com/images/0103f12000aq7bnorD834_D_1180_558.jpg",
+   "intro": "뉴욕은 미국 동부 해안에 자리한 대도시입니다. 자유의 여신상은 뉴욕에서 가장 유명한 랜드마크이자 상징물 중 하나입니다. 아울러 뉴욕에는 영화와 TV 프로그램에 단골로 등장하는 엠파이어 스테이트 빌딩도 있습니다. 월스트리트는 세계 최대의 금융 중심가라고 할 수 있습니다. 타임스퀘어는 잠들지 않는 곳으로 낮에도 밤에도 화려한 조명이 반짝입니다. 다음 시즌에 선보일 가장 최신의 가장 멋진 패션을 구경하며 아이 쇼핑을 즐기고 싶다면 5번가로 향해보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100c12000iptda56E3D4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "스테츄 오브 리버티 국가기념물"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3k12000tn5ekao6B1B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "엠파이어 스테이트 빌딩"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0912000ed5d919BEA6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "뉴욕 현대 미술관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2j12000iq25z1z6136_D_1180_558.png?proc=source%2ftrip",
+     "poi": "써밋 원 밴더빌트 전망대"
+    }
+   ],
+   "lat": 40.71435,
+   "lng": -74.005974
+  },
+  {
+   "place": "다롄 시",
+   "id": 4,
+   "name": "다롄",
+   "enName": "Dalian",
+   "country": "랴오닝",
+   "url": "https://kr.trip.com/travel-guide/destination/dalian-4/",
+   "cover": "https://ak-d.tripcdn.com/images/0106212000jn7vf89327C_D_1180_558.jpg",
+   "intro": "랴오둥반도 남쪽 끝, 산과 바다를 끼고 있는 다롄에서는 햇살 좋은 해변과 아름다운 자연, 그리고 문화적 명소를 즐길 수 있습니다. 동북아시아 금융의 중심지이기도 한 이곳은 중구에서 가장 살기 좋은 도시로 뽑혔답니다. 다롄을 방문하면 맛있는 해산물 요리에 푹 빠지고 말 것입니다. 7월 말에는 국제 맥주 축제도 열려 활기찬 도시가 됩니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100u0x000000l37rbD547_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "다롄 하이창 오리엔탈 워터 시티"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4t12000slkkxg1BFF0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "라오후탄 하이양공위안(노호탄 해양공원)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3512000i1dn10yACEA_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "다롄 삼림동물원(대련 삼림동물원)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102g12000j4jejhhFA11_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "싱하이 공원"
+    }
+   ],
+   "lat": 38.914,
+   "lng": 121.614685
+  },
+  {
+   "place": "둔황 시",
+   "id": 8,
+   "name": "둔황",
+   "enName": "Dunhuang",
+   "country": "주취안",
+   "url": "https://kr.trip.com/travel-guide/destination/dunhuang-8/",
+   "cover": "https://ak-d.tripcdn.com/images/0104p120009ehd17r3F18_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104c12000mhobqn6C902_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "명사산 월아천"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3012000rhjav58193E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "막고굴"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3p12000j5c9ugkD4EF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "둔황 서국"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103z12000hypobkzFB3B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "둔황박물관"
+    }
+   ],
+   "lat": 40.14213,
+   "lng": 94.66188
+  },
+  {
+   "place": "런던",
+   "id": 309,
+   "name": "런던",
+   "enName": "London",
+   "country": "그레이터 런던",
+   "url": "https://kr.trip.com/travel-guide/destination/london-309/",
+   "cover": "https://ak-d.tripcdn.com/images/fd/tg/g3/M03/D7/26/CggYG1bGymyAYcDvAA2KNxQbifw151_D_1180_558.jpg",
+   "intro": "영국의 수도 런던에는 대영제국의 영광이 가득합니다. 런던에 깊게 뿌리내려 곳곳에 스며든 영국 전통문화를 알아보세요. 시선을 사로잡는 국회의사당과 런던 타워 브리지는 런던을 상징하는 랜드마크이며 템즈강을 유람하는 보트 투어를 하면 고전적인 건축물의 경관을 쉽게 감상할 수 있습니다. 한편 세계 3대 금융의 도시 가운데 하나이자 세계 각지의 문화가 한데 모인 런던에서는 현대화가 급속하게 진행되고 있습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100s13000000u3nqm8913_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "영국 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1g12000swtitut712C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "런던 아이"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100l0u000000j7ee5EA81_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "윈저 성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2s12000ridjzyi17AF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "버킹엄 궁전"
+    }
+   ],
+   "lat": 51.508514,
+   "lng": -0.1254872
+  },
+  {
+   "place": "리장 시",
+   "id": 32,
+   "name": "리장",
+   "enName": "Lijiang",
+   "country": "윈난",
+   "url": "https://kr.trip.com/travel-guide/destination/lijiang-32/",
+   "cover": "https://ak-d.tripcdn.com/images/100b11000000qcd4zEAD7_D_1180_558.jpg",
+   "intro": "세계문화유산으로 등재된 리장고성(Lijiang Old Town)은 그 유명한 실크로드와 차마고도(Tea Horse Road)의 경유지이자 교차로로 북적북적하고 소란스러운 마을이었습니다. 오래된 이 마을에는 성벽이 있던 적이 없습니다. 이곳은 강과 산을 끼고 있어 경치가 아름답습니다. 오래된 마을 안으로 들어서면 매끈매끈한 작은 돌이 깔린 도로가 나옵니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/10080h00000091sqyC8C0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "위룽쉐산(옥룡설산)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100t1f000001gqbm5EF3C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "노고호(루구후)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100j12000g2oj728A7F4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "리장고성(리쟝구청)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100e1f000001gt1yqCA73_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "납시해(라스하이)"
+    }
+   ],
+   "lat": 26.855047,
+   "lng": 100.22775
+  },
+  {
+   "place": "만저우리 시",
+   "id": 319,
+   "name": "만저우리",
+   "enName": "Manzhouli",
+   "country": "후룬베이얼",
+   "url": "https://kr.trip.com/travel-guide/destination/manzhouli-319/",
+   "cover": "https://ak-d.tripcdn.com/images/0104u1200085zyqqtE996_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103z12000f2agbeoAF60_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "만저우리 중러 국경관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104j12000f6t78ic7704_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "변경 고속도로"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10061f000001gqvv9FE9E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "만저우리 북호공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100h1f000001grutz7F0B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "만저우리 웨딩 팰리스"
+    }
+   ],
+   "lat": 49.592644,
+   "lng": 117.45253
+  },
+  {
+   "place": "시안 시",
+   "id": 7,
+   "name": "시안",
+   "enName": "Xi'an",
+   "country": "산시",
+   "url": "https://kr.trip.com/travel-guide/destination/xi-an-7/",
+   "cover": "https://ak-d.tripcdn.com/images/0106m120004eks4oyF624_D_1180_558.jpg",
+   "intro": "시안(Xi’an)은 세계 4대 고대 도시 가운데 하나로 실크 로드의 출발지로 널리 알려져 있습니다. 과거에는 장안(Chang'an)이라는 이름으로 유명세를 떨쳤습니다. 중국인이라면 누구나 아는 이 이름은 자부심을 고취시킵니다. 시안은 중국 역사상 가장 위대한 도시로 간주됩니다. 주, 진, 한, 당과 같은 역대 왕조가 이곳을 수도로 삼았습니다. 진나라 초대 황제의 묘가 도시 외곽의 평화로운 장소에 마련되어 방문객을 맞이합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104012000f6rbl4996B9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "진시황 병마용 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100412000t33kac8C3FF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "산시 역사박물관(섬서역사박물관)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100f120005q6fsy8B56A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "시안성벽(서안성장)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100510000000o6ke620CB_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "화청궁"
+    }
+   ],
+   "lat": 34.259422,
+   "lng": 108.94704
+  },
+  {
+   "place": "오사카",
+   "id": 293,
+   "name": "오사카",
+   "enName": "Osaka",
+   "country": "오사카 부",
+   "url": "https://kr.trip.com/travel-guide/destination/osaka-293/",
+   "cover": "https://ak-d.tripcdn.com/images/0104z12000ikwg5jd9422_D_1180_558.jpg",
+   "intro": "오사카는 일본 서부 지대의 중심지로 미식가를 위한 장소이자 일본 해안 지대의 수도이며 일본 도시 가운데 “부통령”으로 불리는 도시입니다. 이곳의 상징인 오사카성은 끊임없이 변하는 오사카의 역사를 대변하는 곳으로 놓쳐선 안 될 명소입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104t120003u2sw0v5E11_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "유니버셜 스튜디오 재팬"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101r12000a5mkr6569CC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "오사카 성 공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1512000rtz6mhwBBE3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하루카스 300 전망대"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101d12000rhtv3n7BBD3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "신세카이"
+    }
+   ],
+   "lat": 34.693737,
+   "lng": 135.50217
+  },
+  {
+   "place": "원저우 시",
+   "id": 153,
+   "name": "원저우",
+   "enName": "Wenzhou",
+   "country": "저장",
+   "url": "https://kr.trip.com/travel-guide/destination/wenzhou-153/",
+   "cover": "https://ak-d.tripcdn.com/images/100610000000p0ztpFD5E_D_1180_558.jpg",
+   "intro": "원저우는 저장성 남동쪽에 있습니다. 정말 독특한 도시죠. 원저우 사람들은 스스로를 \"동양의 유대인\"이라고 부릅니다. 상업이 아주 발달되어 있거든요. 사실 원저우의 모든 가구가 비즈니스와 어느 정도 관련되어 있습니다. 이곳 사람들이 전 세계 5대륙, 4대양에 걸쳐 기업을 설립했답니다. 원저우 사람들은 정신력이 강하기로 유명합니다. 이곳에서 풍부한 관광 자원을 돌아보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/01A5z120008odbc8eE010_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "옌당산(안탕산)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105a1200092m0cm92F94_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "유백온(류보원)의 고향-바이장지(백장제)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106812000kl24sot46C6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "난시강 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105a12000h4r5bno33F8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "인샹난 저수지(인샹 난탕)"
+    }
+   ],
+   "lat": 27.993828,
+   "lng": 120.69936
+  },
+  {
+   "place": "웨이하이 시",
+   "id": 169,
+   "name": "웨이하이",
+   "enName": "Weihai",
+   "country": "산둥",
+   "url": "https://kr.trip.com/travel-guide/destination/weihai-169/",
+   "cover": "https://ak-d.tripcdn.com/images/10051f000001gssg0D0D8_D_1180_558.jpg",
+   "intro": "거의 1,000km에 이르는 해안과 깨끗한 바닷물이 넘실대고 바닷새가 모여드는 하이루섬의 웨이하이는 아름다운 해안 정원 같은 도시입니다. 웨이하이 국제 해수욕장(Weihai International Bathing Beach), 루산 실버 비치(Rushan Silver Beach), 원덩 시아오구완 골든 비치(Wendeng Xiaoguan Golden Beach) 등 사랑스러운 해변이 많으니 관광 자원을 풍성하게 이용할 수 있는 마음에 드는 해안가를 찾아보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101y12000rqbe42iFC27_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "리우궁다오(유공도)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106312000joe3hg6D7D7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "시샤커우 관광 리조트"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105e12000rb04mxt9DB6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "화거 8번가"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3q12000myuax3n4470_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "나샹하이"
+    }
+   ],
+   "lat": 37.51307,
+   "lng": 122.12042
+  },
+  {
+   "place": "충칭",
+   "id": 158,
+   "name": "충칭",
+   "enName": "Chongqing",
+   "country": "중국",
+   "url": "https://kr.trip.com/travel-guide/destination/chongqing-158/",
+   "cover": "https://ak-d.tripcdn.com/images/100u1c000001dbc8s0A2E_D_1180_558.jpg",
+   "intro": "충칭은 중국의 \"산악 도시\"로 유명합니다. 그리고 눈부신 야경 또한 이에 못지않게 유명합니다. 도시 전체가 높은 산, 얕은 계곡, 산허리의 비스듬한 언덕 위에 건설되었습니다. 높은 건물은 대부분 상층, 중층, 하층 입구가 각각 다릅니다. 시내를 걷다 보면 경사진 거리를 따라 오르막길과 내리막길을 반복됨을 알게 됩니다. 충칭 중부에서는 양쯔강과 자링강(Jialing River)이 합류합니다. 이곳은 양쯔강의 항구 가운데 가장 중요한 항구이기도 하죠.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/10020s000000hqkwh48D9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "홍야동"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100n0n000000e0e6kAFA0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "무릉(우릉)카르스트 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/01A511200090idw6fDB4A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "장강 케이블카(장강삭도)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/350818000001513roB5BF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "충칭 동물원(중경 동물원)"
+    }
+   ],
+   "lat": 29.56301,
+   "lng": 106.55156
+  },
+  {
+   "place": "쿠알라룸푸르",
+   "id": 45,
+   "name": "쿠알라룸푸르",
+   "enName": "Kuala Lumpur",
+   "country": "말레이시아",
+   "url": "https://kr.trip.com/travel-guide/destination/kuala-lumpur-45/",
+   "cover": "https://ak-d.tripcdn.com/images/100r0g0000007qiyzA76B_D_1180_558.jpg",
+   "intro": "쿠알라룸푸르는 말레이시아의 수도입니다. 열대성 기후 지대인 덕분에 일 년 내내 여름이 지속됩니다. 그래서 어디에서나 싱그러운 식물을 볼 수 있죠. 야외 활동 마니아라면 바투 동굴로 트레킹을 가보거나 겐팅 하일랜드에서 대자연의 장관을 감상해보고, 문화를 좋아하는 여행자라면 메르데카 광장(독립 광장)이나 국립 모스크를 찾아가보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100n0s000000hh9j5ACA9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "페트로나스 트윈 타워"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/35091c000001dqu0f1EA2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "아쿠아리아 KLCC"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10080q000000gbo0rE101_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "선웨이 라군 테마파크"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0112000tkwfsisC839_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "쿠알라룸푸르 홉온홉오프 버스"
+    }
+   ],
+   "lat": 3.1579416,
+   "lng": 101.71163
+  },
+  {
+   "place": "쿤밍 시",
+   "id": 29,
+   "name": "쿤밍",
+   "enName": "Kunming",
+   "country": "윈난",
+   "url": "https://kr.trip.com/travel-guide/destination/kunming-29/",
+   "cover": "https://ak-d.tripcdn.com/images/100v11000000r8baxE37B_D_1180_558.jpg",
+   "intro": "쿤밍은 사시사철 봄기운이 가득해 \"봄의 도시\"라고 불립니다. 윈난성에서 휴가를 보내는 여행자라면 대부분 쿤밍에 먼저 들립니다. 이곳에서 가까운 뎬츠호(Dianchi Lake)는 호안의 길이가 250km에 이르는데, 어디에서나 눈부신 자연을 즐길 수 있답니다. 이곳에서 초대형 꽃시장을 방문해보세요. 물론 윈난대학교, 윈난육군사관학교, 남서연합대학교 구관 등 문화적인 관광지도 있습니다. 쿤밍 음식, 윈난 토속 음식, 자연산 버섯 훠궈는 꼭 맛보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101712000l9f17290372_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "뎬츠(전지)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10011f000001h392tDEBC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "석림"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0312000q7pam3l4961_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "윈난 민족촌(운남 민족촌)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0g12000hxvulscAD8C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "윈난성 동물원"
+    }
+   ],
+   "lat": 25.03341,
+   "lng": 102.70991
+  },
+  {
+   "place": "후룬베이얼 시",
+   "id": 458,
+   "name": "후룬베이얼",
+   "enName": "Hulunbuir",
+   "country": "내몽골",
+   "url": "https://kr.trip.com/travel-guide/destination/hulunbuir-458/",
+   "cover": "https://ak-d.tripcdn.com/images/0104h12000826u0709CC1_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/10091f000001gso4wC2C0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "후룬베이얼 대초원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103z12000f2agbeoAF60_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "만저우리 중러 국경관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100212000j10wuj8A317_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "어얼구나 국가습지공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/01007120009oo00ovE867_D_1180_558.png?proc=source%2ftrip",
+     "poi": "모얼다오가 국가삼림공원"
+    }
+   ],
+   "lat": 49.213737,
+   "lng": 119.74729
+  },
+  {
+   "place": "광저우 시",
+   "id": 152,
+   "name": "광저우",
+   "enName": "Guangzhou",
+   "country": "광둥",
+   "url": "https://kr.trip.com/travel-guide/destination/guangzhou-152/",
+   "cover": "https://ak-d.tripcdn.com/images/100c180000014rkpq4C68_D_1180_558.jpg",
+   "intro": "광저우는 과거와 현재가 아름답게 조화를 이루는 멋진 국제도시입니다. 그리고 미식가의 낙원입니다. 주장 뉴타운(Zhujiang New Town)을 가득 메운 고층 빌딩 숲은 새로운 광저우의 모습을 대변합니다. 이곳으로 가서 현대 건축사를 장식하는 수많은 건축물을 살펴보세요. 링난 전통 양식을 경험하고 싶다면 올드 시관(Old Xiguan)을 방문해보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102212000f6tvovl4925_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "창롱 관광리조트"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105j12000bzanxfaBAF2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "광저우 타워(광주탑)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10070z000000nv020AB0F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "서한 남월왕 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3512000ptwfhtmD956_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "펄 리버 나이트 크루즈"
+    }
+   ],
+   "lat": 23.137465,
+   "lng": 113.325066
+  },
+  {
+   "place": "구이린 시",
+   "id": 28,
+   "name": "구이린",
+   "enName": "Guilin",
+   "country": "광시",
+   "url": "https://kr.trip.com/travel-guide/destination/guilin-28/",
+   "cover": "https://ak-d.tripcdn.com/images/0103z12000ixt4l7w7E64_D_1180_558.jpg",
+   "intro": "구이린의 산과 강이 선사하는 아름다운 경치는 중국 전역에서 유명합니다. 반짝이는 맑은 물이 흐르는 이강(Li River) 양편으로 신비한 모양의 바위와 푸른 산이 연이어 나타납니다. 대나무 뗏목을 타고 강을 유람해보세요. 경치가 정말로 빼어납니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102v12000g2oavbuAB86_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "상비산 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4y12000jo9pky283AD_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "독수봉 정강왕성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105d120008245j400186_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "룽지티톈(용척제전)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1112000r3lb1mgE95A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "계림양강사호(량장쓰후)"
+    }
+   ],
+   "lat": 25.275076,
+   "lng": 110.29611
+  },
+  {
+   "place": "구이양 시",
+   "id": 33,
+   "name": "구이양",
+   "enName": "Guiyang",
+   "country": "구이저우",
+   "url": "https://kr.trip.com/travel-guide/destination/guiyang-33/",
+   "cover": "https://ak-d.tripcdn.com/images/100s0m000000dml5k4360_D_1180_558.jpg",
+   "intro": "구이양은 여름 피서지로 유명한 도시이자 숲의 도시입니다. 산과 물이 만나 절경을 선사하는 도시로 떠나보세요. 이 도시는 날씨가 좋아 살기 좋습니다. 여름에는 시원하고 겨울에는 크게 춥지 않죠. 도심 지역을 여행하고 싶다면 자시우 빌딩(Jiaxiu Building)이나 주청 플라자(Zhucheng Plaza) 같은 랜드마크를 방문해보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100913000000tgynfD431_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "황과수(황궈수)폭포"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100m12000f6qzo5bB649_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "화시예랑 계곡"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4z12000fsda3vlBC1C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "청암 고진"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10080q000000gcafwFB2B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "톈허탄"
+    }
+   ],
+   "lat": 26.647661,
+   "lng": 106.63016
+  },
+  {
+   "place": "난닝 시",
+   "id": 166,
+   "name": "난닝",
+   "enName": "Nanning",
+   "country": "광시",
+   "url": "https://kr.trip.com/travel-guide/destination/nanning-166/",
+   "cover": "https://ak-d.tripcdn.com/images/0103612000jnc86wp592B_D_1180_558.jpg",
+   "intro": "난닝은 “그린 시티”로 잘 알려진 도시답게 온갖 종류의 나무가 가득합니다. 코튼 트리 스트리트(Cotton Tree Street), 반얀 트리 스트리트(Banyan Tree Street) 등 거리 이름 또한 다양한 나무의 이름을 따서 지었죠. 경치가 아름다운 이 도시에는 활력이 가득합니다. 도시 외곽으로 향해 삼림이 울창한 청수산(Qingxiu Mountain)과 다밍산(Daming Mountain)에 올라보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100k1f000001guig348B5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭시우산(청수산)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/01A6r120008mb2hy80B84_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "판타와일드 아시안 레전드"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106j12000iiwkfcw9DE7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "광시 장족 자치구 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4l12000s52cxo139C7_D_1180_558.png?proc=source%2ftrip",
+     "poi": "난닝 동물원"
+    }
+   ],
+   "lat": 22.819057,
+   "lng": 108.32105
+  },
+  {
+   "place": "난징 시",
+   "id": 9,
+   "name": "난징",
+   "enName": "Nanjing",
+   "country": "장쑤",
+   "url": "https://kr.trip.com/travel-guide/destination/nanjing-9/",
+   "cover": "https://ak-d.tripcdn.com/images/10070y000000mksq823D9_D_1180_558.jpg",
+   "intro": "난징은 오래전에 진링(Jinling)이라고 불렸습니다. 이곳은 수천년 전 개발된 도시로 여러 왕조와 제국이 흥망성쇠를 거듭한 곳이므로 발길 닿는 곳마다 역사의 발자취를 발견할 수 있답니다. 난징에 도착하면 쉬안우호(Xuanwu Lake)의 명장성(明長城) 정상에서 5분 남짓 이동해 타이중(Taicheng) 정상에 서 보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101712000a7j9rplCF68_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "니우서우산 문화관광지(우수산 문화관광지)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104s120009bgdrb55311_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "홍산삼림동물원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103e12000hykpqtoB370_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "난징 박물원(남경박물원)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100g1f000001gqya4D90B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "부자묘 진회 풍광대"
+    }
+   ],
+   "lat": 32.041912,
+   "lng": 118.784004
+  },
+  {
+   "place": "난창 시",
+   "id": 175,
+   "name": "난창",
+   "enName": "Nanchang",
+   "country": "장시",
+   "url": "https://kr.trip.com/travel-guide/destination/nanchang-175/",
+   "cover": "https://ak-d.tripcdn.com/images/0106q12000j0g9uraA4C9_D_1180_558.jpg",
+   "intro": "난창 봉기가 시작되고 인민 해방군이 결성된 난창은 중국 역사에서 괄목할 만한 한 획을 그은 곳입니다. 난창에서는 난창봉기기념박물관(Nanchang Uprising Memorial Museum), 신사군의 최초 주둔지 및 혁명과 관련된 의미 있는 장소를 돌아보세요. 물론 장시 박물관(Jiangxi Museum)으로 향해 장시성에 대해 알아보셔도 좋습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100g1f000001gqwviAF2C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "텅왕거(등왕각)관광 지역"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6912000hyj8n4b7E43_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "난창 한대 해혼후국 유적공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101012000hyluy019DA5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "장시성(강서성) 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10021f000001gxbdbA68A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "난창의 별 관람차"
+    }
+   ],
+   "lat": 28.682892,
+   "lng": 115.8582
+  },
+  {
+   "place": "다리 시",
+   "id": 31,
+   "name": "다리 바이족 자치주",
+   "enName": "Dali Prefecture",
+   "country": "윈난",
+   "url": "https://kr.trip.com/travel-guide/destination/dali-prefecture-31/",
+   "cover": "https://ak-d.tripcdn.com/images/100n0w000000k4n3fB3A0_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1A0t1f000001g47by6723_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "창산"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6n12000l3438lkEE08_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "성사삼탑문화관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102a12000f6scutxD6C9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "얼하이 호"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101t12000jco2p76D9FE_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "대리고성"
+    }
+   ],
+   "lat": 25.606668,
+   "lng": 100.268166
+  },
+  {
+   "place": "다퉁 시",
+   "id": 275,
+   "name": "다퉁",
+   "enName": "Datong",
+   "country": "산시",
+   "url": "https://kr.trip.com/travel-guide/destination/datong-275/",
+   "cover": "https://ak-d.tripcdn.com/images/0101812000jneo73zB9FF_D_1180_558.jpg",
+   "intro": "다퉁은 산시성 북부에 자리한 역사적인 도시입니다. 과거 북위 왕조의 수도였습니다. 북부의 유목민들은 운강석굴(Yungang Grottoes)을 비롯해 소중한 문화유산을 풍성하게 남겼습니다. 도시 안으로 들어가 보기 드문 요나라 시대의 사원인 화암사(Huayan Monastery)로 향해보세요. 사원 안의 모든 것이 역사를 사랑하는 사람들에게 경외감을 선사할 것입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2c12000rhitlf82992_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "윈광스쿠(운강석굴)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103c120007ywziam312C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "응현목탑"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100k12000m3nh11f0849_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "대동 고성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100q10000000pcgdl8B65_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "항산"
+    }
+   ],
+   "lat": 40.076817,
+   "lng": 113.300125
+  },
+  {
+   "place": "단둥 시",
+   "id": 315,
+   "name": "단둥",
+   "enName": "Dandong",
+   "country": "랴오닝",
+   "url": "https://kr.trip.com/travel-guide/destination/dandong-315/",
+   "cover": "https://ak-d.tripcdn.com/images/0105q12000fqxulnl35A0_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/01A0s120008rhz0jrEFA8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "압록강 단교"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101c120009zirh5jED81_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "호산장성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/010231200093cwxqeBABC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "단동함 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100812000jyw05yn4C7C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "봉황산"
+    }
+   ],
+   "lat": 40.124252,
+   "lng": 124.38803
+  },
+  {
+   "place": "둥잉 시",
+   "id": 612,
+   "name": "둥잉",
+   "enName": "Dongying",
+   "country": "산둥",
+   "url": "https://kr.trip.com/travel-guide/destination/dongying-612/",
+   "cover": "https://ak-d.tripcdn.com/images/0105d1200083aix8pB74E_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/10030z000000nfzzpD5E1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "황하구 생태 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ6912000rem1iab535D_D_1180_558.png?proc=source%2ftrip",
+     "poi": "황허 삼각주 동물원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100e0r000000hfsur9864_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "손자문화원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100r12000ndx7e2731CE_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "고동 해제"
+    }
+   ],
+   "lat": 37.43475,
+   "lng": 118.67477
+  },
+  {
+   "place": "란저우 시",
+   "id": 231,
+   "name": "란저우",
+   "enName": "Lanzhou",
+   "country": "간쑤",
+   "url": "https://kr.trip.com/travel-guide/destination/lanzhou-231/",
+   "cover": "https://ak-d.tripcdn.com/images/100g0x000000lgz6t7BB3_D_1180_558.jpg",
+   "intro": "란저우는 황허강 강변에 있으며 간쑤성의 성도입니다. 란저우로 향해 중국 북서부 문화에 푹 빠져보세요. 수많은 여행자가 이곳을 경유지로 삼아 잠시 머무른 후 간쑤성 남쪽이나 황허강 서쪽으로 여정을 옮겨갑니다. 그러나 란저우는 란저우만의 매력을 간직한 여행지랍니다. 란저우에 도착하면 소고기 국수를 한 그릇 먹고 달콤한 \"산파오타이(sanpaotai)\" 차를 한잔 마신 후 황허강을 따라 산책해보세요. 그러면 광대한 중국 북서부를 탐험할 준비가 된 것입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106i12000h1ae9qx8E3D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "란저우 수묵단하 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100r1f000001gopbzB1AD_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "간쑤성 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100i12000p8k7tdwEFAD_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "황허루(황허탑)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100312000nmqinvh1DF4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "란저우 옛거리"
+    }
+   ],
+   "lat": 36.06109,
+   "lng": 103.834305
+  },
+  {
+   "place": "랑팡 시",
+   "id": 582,
+   "name": "랑팡",
+   "enName": "Langfang",
+   "country": "허베이",
+   "url": "https://kr.trip.com/travel-guide/destination/langfang-582/",
+   "cover": "https://ak-d.tripcdn.com/images/100j1f000001gpul2A33D_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo7312000ss1q669DFE5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "유일한 홍루몽 희극환성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103f12000f6skp1a9BF4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "성팡구전/승방고진"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100j1f000001gpul2A33D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "명나라 판타지 세계의 첫 번째 도시"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo5212000gocgajm0D87_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "실크로드 국제 예술 교류센터"
+    }
+   ],
+   "lat": 39.538048,
+   "lng": 116.683754
+  },
+  {
+   "place": "뤄양 시",
+   "id": 198,
+   "name": "뤄양",
+   "enName": "Luoyang",
+   "country": "허난",
+   "url": "https://kr.trip.com/travel-guide/destination/luoyang-198/",
+   "cover": "https://ak-d.tripcdn.com/images/0101712000jn8g1vo12C3_D_1180_558.jpg",
+   "intro": "뤄양은 중국 문명의 발상지 가운데 하나입니다. 유네스코 세계문화유산으로 등재된 룽먼석굴(Longmen Grottoes)과 중국 최초의 불교 사원으로 전해내려오는 백마사(White Horse Temple)를 방문해보세요. 한편 아름다운 뤄양 모란 정원(Luoyang Peony Garden)도 놓쳐선 안 된답니다. 뤄양의 신비한 역사와 문화를 체험하고 싶다면 룽먼석굴에 가보세요. 부처를 모신 중국 4대 석굴 가운데 하나랍니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104p12000rpdckmaD19D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "룽먼 석굴"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102e120006jgbhpyF176_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "뤄양 노군산(라오쥔산)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101a120005ybuydo5E5D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "낙양(뤄양) 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105312000ros8q5t94F2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "바이마쓰(백마사)"
+    }
+   ],
+   "lat": 34.619682,
+   "lng": 112.45404
+  },
+  {
+   "place": "마카오",
+   "id": 39,
+   "name": "마카오",
+   "enName": "Macau",
+   "country": "중국",
+   "url": "https://kr.trip.com/travel-guide/destination/macau-39/",
+   "cover": "https://ak-d.tripcdn.com/images/100a0y000000m6k1lB326_D_1180_558.jpg",
+   "intro": "중국 본토 동부 해안에 자리한 마카오는 400년 동안 중국 문화와 서양 문화, 특히 포르투갈 문화의 교차점 역할을 담당하고 있습니다. 시선을 돌리면 보게 되는 마카오의 거의 모든 건축물에 사용된 세세한 장식과 패턴 및 이미지에서 문화적 융합의 진수를 감상해보세요. 특히 주목받는 역사 지구에는 지금도 위용을 자랑하는 오래된 건축물이 마카오의 다양한 문화유산의 생생함과 신비함을 뿜어내고 있습니다. 마카오는 크기가 아주 작아 29.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2312000bbuepuv7844_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "시티 오브 드림즈"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100g0y000000m5y22D503_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "마카오 타워"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100o12000apk3q0417A5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "스튜디오 시티 마카오"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103a12000bxv978h8E94_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "마카오 오픈탑 관광버스"
+    }
+   ],
+   "lat": 22.186928,
+   "lng": 113.543076
+  },
+  {
+   "place": "바오딩 시",
+   "id": 459,
+   "name": "바오딩",
+   "enName": "Baoding",
+   "country": "허베이",
+   "url": "https://kr.trip.com/travel-guide/destination/baoding-459/",
+   "cover": "https://ak-d.tripcdn.com/images/100a15000000xbnfs4B3B_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/350716000001007pk0DB9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "야삼포(예샨포)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105812000h15e4fc14BF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "직예총독서(즈리쭝두수)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0512000bl8q1tg9A7A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "백석산(바이스산) 세계 지질공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101q120009il2njr0577_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "이수이호 관광지"
+    }
+   ],
+   "lat": 38.87406,
+   "lng": 115.464806
+  },
+  {
+   "place": "바오터우 시",
+   "id": 347,
+   "name": "바오터우",
+   "enName": "Baotou",
+   "country": "내몽골",
+   "url": "https://kr.trip.com/travel-guide/destination/baotou-347/",
+   "cover": "https://ak-d.tripcdn.com/images/01016120008k2rxpuFF51_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/01047120008k2sh5bFF55_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "우당자오(우동소)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104i120009kjqdyp331A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "북방병기성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/350q170000011qqsfD0F0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "춘쿤산"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101212000m60qmlx3A14_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "메이다이자오"
+    }
+   ],
+   "lat": 40.65927,
+   "lng": 109.85388
+  },
+  {
+   "place": "선양 시",
+   "id": 155,
+   "name": "선양",
+   "enName": "Shenyang",
+   "country": "랴오닝",
+   "url": "https://kr.trip.com/travel-guide/destination/shenyang-155/",
+   "cover": "https://ak-d.tripcdn.com/images/0100i12000jn8cd9nE3D8_D_1180_558.jpg",
+   "intro": "선양은 랴오닝성(Liaoning Province)의 성도이자 가장 큰 도시로 엄청난 변화와 현대화 그리고 회복력의 측면에서 강한 인상을 심어줍니다. 제국의 성벽 역할을 담당했던 선양은 청나라의 흥망성쇠를 목격했습니다. 지난 400년의 세월 동안 선양에서 시대를 풍미한 사람들이 남긴 왕궁, 황제의 묘 2개, 다양한 왕실의 건축학적 유산을 살펴보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo5912000e7fzn92067A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "선양 방성(팡청) 문화 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106v12000hyjy3z123E6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "랴오닝성 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6o12000iwtz51rA478_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "선양(심양) 팡터환러스제(방특환러세계)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104p120008axkr4mD003_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭허 반도 온천"
+    }
+   ],
+   "lat": 41.677395,
+   "lng": 123.46469
+  },
+  {
+   "place": "선전 시",
+   "id": 26,
+   "name": "선전",
+   "enName": "Shenzhen",
+   "country": "광둥",
+   "url": "https://kr.trip.com/travel-guide/destination/shenzhen-26/",
+   "cover": "https://ak-d.tripcdn.com/images/10051f000001gsu9xBA0E_D_1180_558.jpg",
+   "intro": "선전은 현대적인 대도시입니다. 중국 최초의 경제특구인 이곳은 시장 경제의 세계적 중심지이며 인접한 홍콩과 함께 혁신과 다양성으로 활기 넘치는 도시로 자리매김했습니다. 선전은 바다와 산 사이에 있습니다. 그래서 경치가 우아하면서도 아름답습니다. 공기가 맑고 기후가 쾌적하기까지 합니다. 국제적인 대도시에서는 좀처럼 누리기 어려운 혜택이죠. 선전은 살기 좋은 곳입니다. 이곳에는 가족 여행을 위한 장소는 물론 아이들을 데리고 나가기 좋은 테마파크가 많습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/10031c000001dcdk19FC2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "간컹고진"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102r120009bxheibA1C8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "해피 환락항만"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4n12000rorvpyg697D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "소매사(샤오메이샤) 해양 세계"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3612000tjpwgxx97A8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "다메이사 해변공원"
+    }
+   ],
+   "lat": 22.543098,
+   "lng": 114.05787
+  },
+  {
+   "place": "스자좡 시",
+   "id": 199,
+   "name": "스자좡",
+   "enName": "Shijiazhuang",
+   "country": "허베이",
+   "url": "https://kr.trip.com/travel-guide/destination/shijiazhuang-199/",
+   "cover": "https://ak-d.tripcdn.com/images/0103z120004fu4h5p85FC_D_1180_558.jpg",
+   "intro": "스자좡은 허베이성의 성도입니다. 마천루가 즐비하고 번화한 거리가 북적이는 현대적인 도시로 여행을 떠나보세요. 깊은 역사를 간직한 도시가 여행자 여러분을 기다립니다. 도시 외곽에 놓인 자오저우 다리(Zhaozhou Bridge)는 수나라 시대에 건설된 것입니다. 무려 1,400년이 넘었죠.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102d120008jzkp6nEF8B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "정정고성(정딩구청)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104o12000i106u2sCC8F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "허베이박물원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103412000f7kz4em2BF3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "정딩 룽궈푸"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3512000r4w9m127C34_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "룽취안 전통마을·희극환성"
+    }
+   ],
+   "lat": 38.04231,
+   "lng": 114.51486
+  },
+  {
+   "place": "시솽반나 다이족 자치주",
+   "id": 30,
+   "name": "시솽반나",
+   "enName": "Xishuangbanna",
+   "country": "윈난",
+   "url": "https://kr.trip.com/travel-guide/destination/xishuangbanna-30/",
+   "cover": "https://ak-d.tripcdn.com/images/0100c1200089kgftp6E16_D_1180_558.jpg",
+   "intro": "시솽반나는 윈난성에서 유명한 관광지로 신비한 우림과 민족 고유의 독특한 풍습으로 잘 알려져 있습니다. 시솽반나는 다이족의 고향입니다. 태국과 미얀마 등 불교 국가와 지리적으로 가까워 일반적으로 이족 사람들은 불교를 믿습니다. 시솽반나에는 남방불교의 사원과 사탑이 많습니다. 뿐만 아니라 다양한 야생동물과 식물 자원이 풍부한 동식물의 왕국이기도 한데, 이곳에서 서식하는 많은 종이 희귀종이거나 멸종위기종입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103l12000f5hd84cF266_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "중국과학원 시솽반나 열대 식물원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100212000jo0l186C176_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "만팅 공원(만청 공원)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100512000f6sd36o6B73_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "야상곡"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1p12000hstx14k371D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "시솽반나 원시삼림공원(서쌍판납 원시삼림공원)"
+    }
+   ],
+   "lat": 22.007198,
+   "lng": 100.79748
+  },
+  {
+   "place": "쑤저우 시",
+   "id": 11,
+   "name": "쑤저우",
+   "enName": "Suzhou",
+   "country": "장쑤",
+   "url": "https://kr.trip.com/travel-guide/destination/suzhou-11/",
+   "cover": "https://ak-d.tripcdn.com/images/100o1f000001gp41vC05F_D_1180_558.jpg",
+   "intro": "소주의 아름다움은 도시를 장식하는 정원, 산, 강 어디에서나 묻어나며 다채롭고 오래된 문화가 선사하는 다양성과 예술적인 분위기 또한 이곳에 만연합니다. 소주 안팎에 자리한 오래된 수변 마을, 졸정원(Humble Administrator’s Garden)과 세계문화유산, 소주 박물관 등 소주에서 즐기는 여행의 즐거움에는 끝이 없답니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100212000jtbwjzpB415_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "줘정위안(졸정원)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105712000f9vdqtz31A2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "풍교 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104h12000f6t2q2h452C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "스쯔린(사자림)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1o12000fuik8g81110_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "호구(후치우) 관광지"
+    }
+   ],
+   "lat": 31.298885,
+   "lng": 120.58532
+  },
+  {
+   "place": "아러타이 지구",
+   "id": 427,
+   "name": "아러타이 지구",
+   "enName": "Altay Prefecture",
+   "country": "신장",
+   "url": "https://kr.trip.com/travel-guide/destination/altay-prefecture-427/",
+   "cover": "https://ak-d.tripcdn.com/images/010741200099zjitrC667_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100t0z000000mqgft13FF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "카나스관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2h12000dq5ul31839E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "오채탄"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1k12000blg85sc31B4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "장군산 스키장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/010281200087dc2p6AB55_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "커커퉈하이경구"
+    }
+   ],
+   "lat": 47.844925,
+   "lng": 88.14125
+  },
+  {
+   "place": "양숴 현",
+   "id": 702,
+   "name": "양숴",
+   "enName": "Yangshuo",
+   "country": "구이린",
+   "url": "https://kr.trip.com/travel-guide/destination/yangshuo-702/",
+   "cover": "https://ak-d.tripcdn.com/images/100m0i0000009ldzo6986_D_1180_558.jpg",
+   "intro": "구이린에 편입된 양숴현과 구이린 최고의 절경이 이곳에 집중 분포되어 있습니다. 이강(Li River)과 위룽강(Yulong River) 또한 이 아름다운 절경의 한편을 장식하니, 보트나 대나무 뗏목을 타고 물길을 헤쳐 나가보세요. 서가(West Street)는 양숴를 대표하는 도로입니다. 양숴의 아름다운 자연환경 덕분에 세계에서 수많은 여행자가 찾아온답니다. 서가에는 커피숍은 물론 서양식 레스토랑이 많아 서양인의 거리라고도 부릅니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/01059120005qzc6xp3CF2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "계림 이강 풍경구"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101a12000a4t7qi49F79_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "여의봉 케이블카 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105z12000abrjn57B4E8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "시제(서가)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103w120005quonp495C1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "옥룡강(위룽강) 관광지"
+    }
+   ],
+   "lat": 24.77848,
+   "lng": 110.49659
+  },
+  {
+   "place": "옌볜 조선족 자치주",
+   "id": 415,
+   "name": "옌볜",
+   "enName": "Yanbian",
+   "country": "지린",
+   "url": "https://kr.trip.com/travel-guide/destination/yanbian-415/",
+   "cover": "https://ak-d.tripcdn.com/images/0100p12000o4w6mzj7416_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1A0211000000rkvitC3C1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "백두산(장백산)관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104g120003to7jeq9E4A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "백두산 취용(쥐롱) 화산온천"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105g12000f0vncozCA67_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "투먼코우안"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105v120008d99mgt54EC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "중국 조선민속원"
+    }
+   ],
+   "lat": 42.891254,
+   "lng": 129.50894
+  },
+  {
+   "place": "옌지 시",
+   "id": 475,
+   "name": "옌지",
+   "enName": "Yanji",
+   "country": "옌볜",
+   "url": "https://kr.trip.com/travel-guide/destination/yanji-475/",
+   "cover": "https://ak-d.tripcdn.com/images/100610000000okq968A76_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105g12000f0vncozCA67_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "투먼코우안"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105v120008d99mgt54EC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "중국 조선민속원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104z120009ucrmqt66DF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "연길공룡왕국"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100312000mabu49yE25E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "대학성 인기 벽"
+    }
+   ],
+   "lat": 42.891254,
+   "lng": 129.50894
+  },
+  {
+   "place": "옌타이 시",
+   "id": 170,
+   "name": "옌타이",
+   "enName": "Yantai",
+   "country": "산둥",
+   "url": "https://kr.trip.com/travel-guide/destination/yantai-170/",
+   "cover": "https://ak-d.tripcdn.com/images/100e10000000omtweFC51_D_1180_558.jpg",
+   "intro": "옌타이는 해안에 자리한 도시로 경치가 동화처럼 아름답습니다. 이곳에서는 어디에서나 파란 바다, 하얀 모래사장, 깨끗한 물, 파란 파도를 만날 수 있답니다. 파도를 즐기며 한여름 열기를 식히기에 제격입니다. 펑라이정(Penglai Pavilion)으로 걸음을 옮겨 바다를 건넌 여덟 불사신에 관한 전설을 알아보고 탄생지를 살펴보세요. 지푸섬(Zhifu Island) 정상에 올라 진시황제의 발자취가 2천 년도 지난 지금도 남아 있는 모습을 구경해보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3n12000hsp1j133EAE_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "펑라이거(봉래각)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100y12000ikmrxtmAF22_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "장위 술 문화 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100h12000lojgcliEE44_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "봉래 팔선과해 국제관광휴양지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100e1f000001gt0vuA8CA_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "양마섬"
+    }
+   ],
+   "lat": 37.46382,
+   "lng": 121.44794
+  },
+  {
+   "place": "우루무치 시",
+   "id": 117,
+   "name": "우루무치",
+   "enName": "Urumqi",
+   "country": "신장",
+   "url": "https://kr.trip.com/travel-guide/destination/urumqi-117/",
+   "cover": "https://ak-d.tripcdn.com/images/100f0m000000dxl7eABE2_D_1180_558.jpg",
+   "intro": "수많은 중국인이 우루무치(중국 북서쪽 거의 끝)는 멀고도 신비한 장소라고 말합니다. 우루무치는 신장 자치구의 주도로 \"아름다운 목초지\"라는 뜻입니다. 이 도시는 민족적 특성이 대담하게 드러나는데 이슬람 문화권의 영향이 큽니다. 우루무치는 신장 북쪽과 남쪽을 교차하는 지점에 위치합니다. 신장으로 떠나는 여행자라면 꼭 방문해보세요. 활기 넘치는 신장 국제 대바자르는 상인들이 상상할 수 있는 신장의 모든 특산품을 판매하는 거대한 시장입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104212000tlr2c44230F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "신장위구르자치구(신장웨이우얼자치구) 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10011f000001h37tn1715_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "신장 국제 대바자르"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104k12000527ejly1E9A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "우루무치 천산대협곡"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102p12000m3vmotpCC87_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "잉어산(이어산) 공원"
+    }
+   ],
+   "lat": 43.825592,
+   "lng": 87.61685
+  },
+  {
+   "place": "우한 시",
+   "id": 145,
+   "name": "우한",
+   "enName": "Wuhan",
+   "country": "후베이",
+   "url": "https://kr.trip.com/travel-guide/destination/wuhan-145/",
+   "cover": "https://ak-d.tripcdn.com/images/0103612000jnbmu8p2DA9_D_1180_558.jpg",
+   "intro": "우한은 양쯔강과 한강이 만나는 \"강의 도시\"로, 한커우(Hankou), 우창(Wuchang), 한양(Hanyang)의 세 지역으로 나뉩니다. 오래전에 근대화 운동이 전개될 때 이곳에 다수의 일류 공장이 들어섰습니다. 한커우의 건축물들은 한 세기를 보내며 이곳의 번영을 목격하고 있습니다. 바로 이곳에서 1911년 우창 봉기가 발발하며 중국 공화국이 탄생하기도 했습니다. 현재 우한에는 여러 고등교육 기관이 개교해 활력을 불어넣고 있습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100a12000t33rdwtFFFB_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "황학루"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103w12000hyg3apk3EBF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "호북성(후베이성) 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102s12000jgo2twg871C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "청천각"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100512000j6bxlg4CFC1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "둥후(동호)"
+    }
+   ],
+   "lat": 30.5931,
+   "lng": 114.30539
+  },
+  {
+   "place": "웨이팡 시",
+   "id": 226,
+   "name": "웨이팡",
+   "enName": "Weifang",
+   "country": "산둥",
+   "url": "https://kr.trip.com/travel-guide/destination/weifang-226/",
+   "cover": "https://ak-d.tripcdn.com/images/0105212000n52u0oc6B2F_D_1180_558.jpg",
+   "intro": "웨이팡은 산둥성에 있습니다. 연이 탄생한 곳으로, 세계적 연의 수도로 알려져 있습니다. 그리고 흥미진진한 관광도시이기도 합니다. 시내에 개관한 연 박물관(Kite Meseum)으로 향해 중국 국내는 물론 해외에서 온 각양각색의 연을 관람해보세요. 팡제 유로타운(Fangtze Eurotown)을 찾아가 백년 된 독일과 일본 양식의 건축물이 선사하는 아름다운 조화를 구경해보세요. 이곳에는 그때 그 시절의 매력이 보존되어 있습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103512000nltyoho6D7A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "청주고성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100p0z000000nj86o0A6E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭저우박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0f12000hs4ecdr2B82_D_1180_558.png?proc=source%2ftrip",
+     "poi": "십홀원(스후위안)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100n12000nlpvj9d3393_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "운문산 관광지"
+    }
+   ],
+   "lat": 36.706776,
+   "lng": 119.16176
+  },
+  {
+   "place": "정저우 시",
+   "id": 157,
+   "name": "정저우",
+   "enName": "Zhengzhou",
+   "country": "허난",
+   "url": "https://kr.trip.com/travel-guide/destination/zhengzhou-157/",
+   "cover": "https://ak-d.tripcdn.com/images/0103p120005sjxoevE3B6_D_1180_558.jpg",
+   "intro": "정저우는 중국 중심부에 있습니다. 철도의 요지로 중요한 역할을 수행하며 활기 넘치는 라이프스타일로 점점 인기가 많아지고 있습니다. 얼치 기념탑(Erqi Memorial Tower) 주변 지역은 과거의 정저우를 대변합니다. 젠동신구(Zhengdong New District)는 유명 건축가 키쇼 구로카와(Kisho Kurokawa)가 설계한 곳으로 정저우의 새로운 미래를 대변합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100112000ma956mv9CFD_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "허난 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100b12000j07uim6711F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "인기국제관광휴양지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101e12000f6re8z6EC39_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "숭산 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1512000bonljub5BD7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "정주 영화 마을"
+    }
+   ],
+   "lat": 34.751976,
+   "lng": 113.66666
+  },
+  {
+   "place": "주하이 시",
+   "id": 27,
+   "name": "주하이",
+   "enName": "Zhuhai",
+   "country": "광둥",
+   "url": "https://kr.trip.com/travel-guide/destination/zhuhai-27/",
+   "cover": "https://ak-d.tripcdn.com/images/10080g0000007tef35D6D_D_1180_558.jpg",
+   "intro": "주하이는 백 개의 섬의 도시라고 불립니다. 여유로운 삶의 속도와 낭만적인 바다 풍경 덕분에 살기 좋은 곳입니다. 주하이는 마카오에서 가깝습니다. 도심에서 연인의 길을 걸을 때는 바다 풍경을 감상해보세요. 저 멀리 마카오가 다 보인답니다. 여성 어부의 동상과 조개 모양의 주하이 오페라 하우스는 주하이를 대표하는 랜드마크입니다. 바다를 테마로 조성된 헝친 주하이 해양낙원(Chimelong Ocean Kingdom)은 아이들에게 큰 사랑을 받는 관광지입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1712000riygma58697_D_1180_558.png?proc=source%2ftrip",
+     "poi": "징산(경산) 공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105s120005otkgzlA5A3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "강주아오 대교"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102112000rqslsh7CD10_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "동오도(둥아오다오)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/350a170000010srdkEAA3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "와이링딩다오(외령정도)"
+    }
+   ],
+   "lat": 22.270716,
+   "lng": 113.57673
+  },
+  {
+   "place": "지난 시",
+   "id": 128,
+   "name": "지난",
+   "enName": "Jinan",
+   "country": "산둥",
+   "url": "https://kr.trip.com/travel-guide/destination/jinan-128/",
+   "cover": "https://ak-d.tripcdn.com/images/100m11000000rhzcqD3D4_D_1180_558.jpg",
+   "intro": "지난은 역사에 깊게 뿌리내린 고대 도시입니다. 샘이 워낙 많아 콴청(Quancheng) 즉 ‘샘의 도시’라고 불리죠. 오래된 도시 곳곳에는 바투(Baotu), 헤이후(Heihu), 젠쥬(Zhenzhu) 및 우롱탕(Wulongtan)이라는 이름의 샘 네 개가 있으며 어느 곳 하나 놓쳐서는 안 됩니다. 지난에는 평화로운 대명천(Daming Lake)도 있지만 신비한 기운으로 종교적인 장소로 여겨지는 천불산(Thousand Buddha Mountain)도 있습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100612000j0755ee4AA3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "천하제일천 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106w12000fe23h358DCB_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "산둥 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1A011a000001962iqDD17_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "첸포산"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3412000c3whvafD116_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "청조천성·밍수이 고성 국제 샘물 관광 휴양지"
+    }
+   ],
+   "lat": 36.651215,
+   "lng": 117.12
+  },
+  {
+   "place": "창사 시",
+   "id": 148,
+   "name": "창사",
+   "enName": "Changsha",
+   "country": "후난",
+   "url": "https://kr.trip.com/travel-guide/destination/changsha-148/",
+   "cover": "https://ak-d.tripcdn.com/images/10071800000152zqqD2BB_D_1180_558.jpg",
+   "intro": "혁신적인 샤오샹(Xiaoxiang) 문화, 풍미 강한 후난 음식, 잘 발달된 엔터테인먼트 산업이 뿌리 깊은 역사를 간직한 창사에 자유롭고 역동적인 분위기를 선사합니다. 후난 박물관(Hunan Museum), 천심각(Tianxian Pavilion), 타이핑 스트리트(Taiping Street)를 찾아가 창사의 역사적 유산을 살펴보세요. 오렌지섬과 후난사범대학(Hunan First Normal University) 등을 돌아보며 마오쩌둥의 업적에 대해 알아보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103o120005pr19sjA7F7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "쥐쯔저우(귤자주)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102w12000hxmbahsCCAE_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "후난성 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101w120008fx0x18BC91_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "악록산(웨루산)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/010051200089l2ye57D84_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "두보강각"
+    }
+   ],
+   "lat": 28.19179,
+   "lng": 112.97984
+  },
+  {
+   "place": "청더 시",
+   "id": 135,
+   "name": "청더",
+   "enName": "Chengde",
+   "country": "허베이",
+   "url": "https://kr.trip.com/travel-guide/destination/chengde-135/",
+   "cover": "https://ak-d.tripcdn.com/images/100g0n000000e4g1o0F98_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100g0n000000e4g1o0F98_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "피서산장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0107012000h14v1vxF977_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "보타종승지묘"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/010541200066hbte6AD25_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "진산링 장성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/010631200065shr3mC1E3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "보녕사"
+    }
+   ],
+   "lat": 40.95294,
+   "lng": 117.96275
+  },
+  {
+   "place": "청두 시",
+   "id": 104,
+   "name": "청두",
+   "enName": "Chengdu",
+   "country": "쓰촨",
+   "url": "https://kr.trip.com/travel-guide/destination/chengdu-104/",
+   "cover": "https://ak-d.tripcdn.com/images/100r1f000001gon9mBC5D_D_1180_558.jpg",
+   "intro": "떠오르는 도시 청두는 계속 다시 가보고 싶은 도시입니다. 깊고 풍부한 역사를 간직한 곳이죠. 따끈하고 매콤한 맛의 수많은 음식과 삶의 여유도 이곳의 특징입니다. 마음을 사로잡는 예스러움이 압도적인 역사적인 진리(Jinli), 귀여운 자이언트 판다, 거리를 가득 메운 훠궈 레스토랑이 가까운 곳 또는 먼 곳에서 찾아온 여행자들에게 손짓합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105p12000f6scno87BC5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "청두 자이언트 판다기지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101v12000t3324t123AB_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "두장옌 관광지(도강언 관광지)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103l1200080wlbqpD19D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "두보초당(두푸차오탕)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100412000l5yt9fx1FF7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭청산(청성산)"
+    }
+   ],
+   "lat": 30.657423,
+   "lng": 104.06584
+  },
+  {
+   "place": "친황다오 시",
+   "id": 132,
+   "name": "친황다오",
+   "enName": "Qinhuangdao",
+   "country": "허베이",
+   "url": "https://kr.trip.com/travel-guide/destination/qinhuangdao-132/",
+   "cover": "https://ak-d.tripcdn.com/images/10081f000001gqhpwF43B_D_1180_558.jpg",
+   "intro": "친황다오의 이름은 중국 역사에서 유명한 인물인 진시황제에서 유래합니다. 기원전 215년, 진시황제는 이곳에서 기동전을 펼쳤습니다. 산하이관(Shanhaiguan(중국 명장성의 동쪽 종착점)) 또한 친황다오에 있습니다. 땅끝에 우뚝 선 장엄한 산을 따라 놓인 명장성이 발해(Bohai Sea)의 바다와 만나는 모습을 구경해보세요. 감탄이 절로 나는 명소이자 역사적 의의를 가진 곳이니 놓쳐선 안 되겠죠.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105612000h0gphqx90BB_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "아나야(아나아)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100r1f000001gonz01F00_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "산하이관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105e12000l698bq0A6A2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "난다이허"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6d12000s3g840tB950_D_1180_558.png?proc=source%2ftrip",
+     "poi": "어전 칠리해 휴양지"
+    }
+   ],
+   "lat": 39.935375,
+   "lng": 119.600494
+  },
+  {
+   "place": "칭다오 시",
+   "id": 5,
+   "name": "칭다오",
+   "enName": "Qingdao",
+   "country": "산둥",
+   "url": "https://kr.trip.com/travel-guide/destination/qingdao-5/",
+   "cover": "https://ak-d.tripcdn.com/images/100i0m000000dp8mc69DB_D_1180_558.jpg",
+   "intro": "칭다오에 관해 여행자가 처음 떠올리는 이미지는 붉은 타일, 푸른 나무, 파란 바다, 더 파란 하늘, 노산(Laoshan)의 도교 성지가 조합된 아름다운 도시의 모습입니다. 바다를 보기 위해 진시황제가 이곳을 찾으면서 서복(Xu Fu)은 이곳에서부터 동푸(Dongpu)까지 이르는 길고 긴 여정을 계획했는데, 이것이 오사운동(May Fourth Movement)의 모태가 되었습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104n12000loeq6o9FDA8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭다오 맥주박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/010141200087e556s7C80_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "노산 풍경구"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3712000dzy1nafAA5F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭다오 극지해양세계"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1612000nz9ghx3D18F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭다오 판타와일드 드림랜드"
+    }
+   ],
+   "lat": 36.06708,
+   "lng": 120.38264
+  },
+  {
+   "place": "카스 지구",
+   "id": 124,
+   "name": "카슈가르 지구",
+   "enName": "Kashgar Prefecture",
+   "country": "신장",
+   "url": "https://kr.trip.com/travel-guide/destination/kashgar-prefecture-124/",
+   "cover": "https://ak-d.tripcdn.com/images/0101i120008oxt2myD303_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100n1200086v4y4rC5C6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "카스고성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104t120008npdguk479B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "향비원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104u12000m93ooi1EBB0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "홍치라푸 국경문"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104r1200086tuwsvB6D0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "파미르 고원"
+    }
+   ],
+   "lat": 39.4704,
+   "lng": 75.98975
+  },
+  {
+   "place": "타이산 구",
+   "id": 6,
+   "name": "태산",
+   "enName": "Mount Taishan",
+   "country": "타이안",
+   "url": "https://kr.trip.com/travel-guide/destination/mount-taishan-6/",
+   "cover": "https://ak-d.tripcdn.com/images/100v0n000000ebugq5308_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100c0z000000nnlzdA153_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이산"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4512000bexor8w5763_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "태산 석감당 문화원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2912000c2dfyq9FDB4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이안 팡터환러스제"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4o12000ln7jhmlFF71_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이안 류라오겐 대무대"
+    }
+   ],
+   "lat": 36.263527,
+   "lng": 117.092224
+  },
+  {
+   "place": "타이위안 시",
+   "id": 167,
+   "name": "타이위안",
+   "enName": "Taiyuan",
+   "country": "산시",
+   "url": "https://kr.trip.com/travel-guide/destination/taiyuan-167/",
+   "cover": "https://ak-d.tripcdn.com/images/100q12000000s4rv6B063_D_1180_558.jpg",
+   "intro": "타이위안은 산시성의 성도입니다. 기록에 따르면 2,500년의 역사를 간직한 도시입니다. 과거에는 진양이라고 불렸습니다. 많은 여행자가 산시성의 성도, 타이위안을 찾아와 머무른 후 산시성의 다른 지역으로 이동합니다. 진시사(Jinci Temple)는 타이위안 여행에서 꼭 가봐야 할 곳으로 천년의 세월을 간직한 건축물과 다채로운 점토상이 지금도 건재합니다. 시내로 돌아오면 이 지역 특유의 국수를 드셔보세요. 현지인들이 금방 만들어 내놓는데 맛이 그만입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100u1f000001gq9bh9986_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "산시성 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100j12000j0e5ki87BC3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이위안 식물원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1c12000jx7ljtp3B8F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "동호 식초원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106v1200090g5essC7F4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이위안 진상 박물관"
+    }
+   ],
+   "lat": 37.87059,
+   "lng": 112.54888
+  },
+  {
+   "place": "탕산 시",
+   "id": 200,
+   "name": "탕산",
+   "enName": "Tangshan",
+   "country": "허베이",
+   "url": "https://kr.trip.com/travel-guide/destination/tangshan-200/",
+   "cover": "https://ak-d.tripcdn.com/images/0102n12000tdroaj0458C_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1j12000fywvb28CE8D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하두 옛 거리"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2912000e4l0fmmA579_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "청동릉"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2b12000nzejvoyC8B8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "당산 남호 카이루안 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100l120008qnxf1s5EB2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "도마 랜드"
+    }
+   ],
+   "lat": 39.630867,
+   "lng": 118.18019
+  },
+  {
+   "place": "톈진",
+   "id": 154,
+   "name": "톈진",
+   "enName": "Tianjin",
+   "country": "중국",
+   "url": "https://kr.trip.com/travel-guide/destination/tianjin-154/",
+   "cover": "https://ak-d.tripcdn.com/images/100n1c000001d5zaf9BCE_D_1180_558.jpg",
+   "intro": "도회적인 분위기가 만연한 도시, 톈진으로 떠나보세요. 이곳은 동서양 문화가 조우해 융합한 역사적인 도시로도 유명합니다. 톈진에서는 우아한 우다 애비뉴(Wuda Avenue)를 방문해보고 수많은 서양식 저택을 구경해보세요. 마치 서양의 어느 나라에 있는 듯한 기분이 들 것입니다. 그러나 일단 하이허강 유역의 구원화제(Ancient Culture Street)로 자리를 옮기면 중국 전통문화의 진수를 경험하게 된답니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106112000aamnof49355_D_1180_558.png?proc=source%2ftrip",
+     "poi": "국립해양박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100a0w000000kpaqe01A1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "타이다 항공모함 테마파크"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100n10000000oj2u077A6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "톈진즈옌 관람차(천진지안마천륜)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104e120008bhx2xiA1A7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "톈진 도자기 박물관(츠팡쯔)"
+    }
+   ],
+   "lat": 39.117107,
+   "lng": 117.21476
+  },
+  {
+   "place": "투루판 지구",
+   "id": 35,
+   "name": "투루판",
+   "enName": "Turpan",
+   "country": "신장",
+   "url": "https://kr.trip.com/travel-guide/destination/turpan-35/",
+   "cover": "https://ak-d.tripcdn.com/images/0102a1200086v5avqA3B9_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102t120009ed1msl8AD9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "푸타오거우(포도벨리)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103y120009egtfms1453_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "화염산"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo1p12000bit2e4w3912_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "쿠무타커사막"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0312000eanwm435655_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "카레즈(칸얼징) 민속원"
+    }
+   ],
+   "lat": 42.94233,
+   "lng": 89.185875
+  },
+  {
+   "place": "툰시 구",
+   "id": 19,
+   "name": "황산관광벨트",
+   "enName": "Huangshan Scenic Area",
+   "country": "황산",
+   "url": "https://kr.trip.com/travel-guide/destination/huangshan-scenic-area-19/",
+   "cover": "https://ak-d.tripcdn.com/images/100q0z000000nm6w7F15F_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo5q12000ttn0kxb930C_D_1180_558.png?proc=source%2ftrip",
+     "poi": "황산 풍경구"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106312000mwoydlm4691_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "탕커우진"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106v12000myx4hkkCBFB_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "톈호 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100r1f000001gopof46CA_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "부용곡"
+    }
+   ],
+   "lat": 30.12454,
+   "lng": 118.161545
+  },
+  {
+   "place": "포산 시",
+   "id": 207,
+   "name": "포산",
+   "enName": "Foshan",
+   "country": "광둥",
+   "url": "https://kr.trip.com/travel-guide/destination/foshan-207/",
+   "cover": "https://ak-d.tripcdn.com/images/0105t1200089lijo69EB3_D_1180_558.jpg",
+   "intro": "포산은 링난 문화의 중심지입니다. 월극, 우슈(쿵푸로도 알려짐), 용춤 및 도자기 모두 이곳에서 흔히 볼 수 있습니다. 불산조묘(Foshan’s Ancestral Temple)로 향해 현지 문화의 진수를 경험해보세요. 우아한 링난 건축 양식의 전형을 감상할 수 있을 뿐만 아니라 우슈와 용춤 공연을 즐길 수도 있답니다. 포산은 엽문, 황비홍, 이소룡 등 수많은 우슈 마스터의 고향이기도 합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0912000crse5ae225F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "서초산(시바오산) 관광지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100t0z000000ngqy44DF1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "불산조묘"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102a12000f9atcnm63FC_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "칭후이 가든 뮤지엄"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4r12000jvo1lqjAAFF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "순더 해피 코스트 PLUS"
+    }
+   ],
+   "lat": 23.021547,
+   "lng": 113.121414
+  },
+  {
+   "place": "푸저우 시",
+   "id": 164,
+   "name": "푸저우",
+   "enName": "Fuzhou",
+   "country": "푸젠",
+   "url": "https://kr.trip.com/travel-guide/destination/fuzhou-164/",
+   "cover": "https://ak-d.tripcdn.com/images/100q0m000000dhhmt9F5A_D_1180_558.jpg",
+   "intro": "푸저우는 오래전 중국 도시의 전형을 보여줍니다. 민장강(Minjiang River)이 도시를 관통하며 흐르는 가운데 곳곳에 벵골보리수가 심어져 있어 ‘벵골보리수의 도시’라고 불리기도 합니다. 맑은 강 주변을 장식하는 수많은 역사유적지와 푸른 산을 돌아보세요.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106x12000h867oop13E4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "핑탄다오(평담도)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102p1200082hvxfcB9C2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "삼방칠항(싼팡치샹)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4512000my3bj6m3796_D_1180_558.png?proc=source%2ftrip",
+     "poi": "민장강 야간 투어"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100o1c000001cyyfl8BD7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "북산(구산) 관광지"
+    }
+   ],
+   "lat": 26.074509,
+   "lng": 119.29649
+  },
+  {
+   "place": "핑야오 현",
+   "id": 365,
+   "name": "핑야오",
+   "enName": "Pingyao County",
+   "country": "진중",
+   "url": "https://kr.trip.com/travel-guide/destination/pingyao-county-365/",
+   "cover": "https://ak-d.tripcdn.com/images/0106f120004g91xncB321_D_1180_558.jpg",
+   "intro": "핑야오는 산시성 중부에 있으며 중국에서 가장 잘 보존된 고성 가운데 하나로 마을 전체가 유네스코 세계문화유산으로 등재된 곳입니다. 이곳은 청나라 시대 중국 금융의 중심지이기도 했습니다. 도시를 감싼 거대한 성벽은 오래되었지만 두껍고 튼튼하며 200년을 훌쩍 넘은 돌이 깔린 거리를 천천히 걷다 보면 어디에서나 산시성의 상업 문화를 느낄 수 있습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102z12000f6pnna58EEF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "핑야오 고성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10030z000000nhyjb0865_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "쌍림사"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105w12000f6df6ydA284_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "진국사"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106t12000rff9vka7D40_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Another Glance at Pingyao Theater"
+    }
+   ],
+   "lat": 37.20528,
+   "lng": 112.18366
+  },
+  {
+   "place": "하얼빈 시",
+   "id": 151,
+   "name": "하얼빈",
+   "enName": "Harbin",
+   "country": "헤이룽장",
+   "url": "https://kr.trip.com/travel-guide/destination/harbin-151/",
+   "cover": "https://ak-d.tripcdn.com/images/100s0z000000ng5sn3ED6_D_1180_558.jpg",
+   "intro": "아름다운 도시 하얼빈이 수년에 걸쳐 점점 더 완벽해지고 있습니다. 사람들이 얼음과 눈 세상에 푹 빠질 수 있는 도시가 과연 얼마나 될까요? 해마다 겨울이 되면 꽁꽁 언 쑹화강에 하얼빈 얼음 축제(Harbin Ice and Snow World)가 열리면 행복한 웃음이 가득 피어오릅니다. 사람들은 축제를 즐기며 추위를 잊고 얼어버린 세상을 즐기죠.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4e12000s7hhl3s7315_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하얼빈 빙설대세계"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103m12000g2p5gaeDB3A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "동북 호림원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100s12000lgs6uk3A4F2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하야오 제약 6공장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6m12000fmztpfm188F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "쑹화강 케이블카"
+    }
+   ],
+   "lat": 45.757507,
+   "lng": 126.641426
+  },
+  {
+   "place": "항저우 시",
+   "id": 14,
+   "name": "항저우",
+   "enName": "Hangzhou",
+   "country": "저장",
+   "url": "https://kr.trip.com/travel-guide/destination/hangzhou-14/",
+   "cover": "https://ak-d.tripcdn.com/images/100u1f000001gq800E7D7_D_1180_558.jpg",
+   "intro": "항저우는 2,200년의 긴 역사를 자랑하는 곳으로 중국의 8대 고대 수도 가운데 하나입니다. 서호가 자리해 그 아름다움이 한층 무르익은 항저우는 호수 자체도 아름답지만 삼면이 산으로, 한 면이 물로 둘러싸여 호수 주변 경관이 장관을 이룹니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106g12000t33a728DBB2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "서호"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6t12000t2omfpj8286_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "항저우 송성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo5o12000rhj6nmu05F8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "첸다오후 관광지(천도호 관광지)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0h12000s7wjid6190D_D_1180_558.png?proc=source%2ftrip",
+     "poi": "시시 국가습지공원(서계 습지공원)"
+    }
+   ],
+   "lat": 30.274084,
+   "lng": 120.15507
+  },
+  {
+   "place": "허페이 시",
+   "id": 196,
+   "name": "허페이",
+   "enName": "Hefei",
+   "country": "안후이",
+   "url": "https://kr.trip.com/travel-guide/destination/hefei-196/",
+   "cover": "https://ak-d.tripcdn.com/images/0105o12000ismlt19E8E1_D_1180_558.jpg",
+   "intro": "허페이는 삼국시대의 무대가 되는 역사적인 장소이자 포청천의 고향입니다. 허페이에는 취향이 제각각인 모든 여행자를 만족시킬 관광 자원이 풍부합니다. 수변의 회랑과 발코니가 있는 정자가 결합해 다채로운 모습을 선보이는 시아오야진 공원(Xiaoyaojin Park)을 돌아보세요. 검은 얼굴의 포청천의 위엄이 느껴지는 공간은 “은반 위의 푸른 소라”와 같은 분위기를 연출합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3x12000rglrvuiADA8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "삼하고진(싼허구전)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103s12000i0lcg8tD6B7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "안후이성 박물관(신관)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100212000j5hxzdk53B0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "샤오야오진 공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103n12000m5spwdm323F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "이홍장 고택"
+    }
+   ],
+   "lat": 31.864119,
+   "lng": 117.29164
+  },
+  {
+   "place": "후허하오터 시",
+   "id": 156,
+   "name": "후허하오터",
+   "enName": "Hohhot",
+   "country": "내몽골",
+   "url": "https://kr.trip.com/travel-guide/destination/hohhot-156/",
+   "cover": "https://ak-d.tripcdn.com/images/0100h12000j1pae390D51_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103712000fq39sv25EE6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "대소사"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103h12000liefoh7154F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "석력도소"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo7212000fdhioadFF3B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하다먼 국가삼림공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100712000j1p0szg272D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "측륵천 초원"
+    }
+   ],
+   "lat": 40.81697,
+   "lng": 111.66893
+  }
+ ]
+}

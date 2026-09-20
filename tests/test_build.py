@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -14,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_app  # noqa: E402
+import fetch_destinations  # noqa: E402
 import build_places  # noqa: E402
 import topojson  # noqa: E402
 
@@ -196,17 +198,69 @@ class PublicBuild(unittest.TestCase):
                 self.assertIsNone(t["summary"], t["id"])
 
 
+class Destinations(unittest.TestCase):
+    """trip.com 여행지 캐시 (PRD §14)."""
+
+    def setUp(self):
+        self.doc = load("data/destinations.json")
+        self.mapping = build_app.strip_notes(load("data/tripcom_places.json"))
+
+    def test_every_destination_is_a_place_we_went(self):
+        places = {p["name"] for p in load("data/places.json")["places"]}
+        for d in self.doc["destinations"]:
+            self.assertIn(d["place"], places, d["place"])
+            self.assertIn(d["place"], self.mapping, f"{d['place']} 가 목적지 표에 없다")
+
+    def test_photos_are_linked_not_copied(self):
+        """사진은 번들에 넣지 않는다 — 주소만 넣고 원본을 링크로 건다."""
+        for d in self.doc["destinations"]:
+            self.assertTrue(d["url"].startswith("https://kr.trip.com/travel-guide/destination/"),
+                            d["place"])
+            for url in [d["cover"]] + [p["url"] for p in d["photos"]]:
+                if url:
+                    self.assertTrue(url.startswith("https://"), d["place"])
+                    self.assertNotIn("data:", url, d["place"])
+
+    def test_intro_is_an_excerpt(self):
+        """소개 글은 발췌만 싣는다. 전문은 trip.com 에서 본다."""
+        for d in self.doc["destinations"]:
+            self.assertLessEqual(len(d["intro"] or ""),
+                                 fetch_destinations.INTRO_MAX + 1, d["place"])
+
+    def test_payload_carries_site_and_destinations(self):
+        for public in (False, True):
+            payload = build_app.build_payload(public=public)
+            self.assertTrue(payload["destinations"], public)
+            self.assertIn("offers", payload["site"], public)
+
+
 class Bundle(unittest.TestCase):
+    # 화면이 사진을 받아도 되는 곳. 이 밖의 주소가 들어오면 빌드가 아니라 테스트가 잡는다.
+    IMG_HOSTS = ("https://ak-d.tripcdn.com/",)
+
     def test_placeholder_replaced(self):
         html = (ROOT / "app/index.html").read_text(encoding="utf-8")
         self.assertNotIn("/*__DATA__*/", html)
         self.assertIn("나의 여행 지도", html)
 
-    def test_no_external_resources(self):
-        """외부 스크립트·이미지를 받지 않아야 아티팩트에서도 뜬다 (PRD §8)."""
+    def test_no_external_code(self):
+        """스크립트·스타일은 전부 파일 안에 있다. 파일 하나로 돌아야 한다 (PRD §8)."""
         html = (ROOT / "app/index.html").read_text(encoding="utf-8")
         for bad in ["<script src=", "<link rel=\"stylesheet\"", "https://maps.googleapis"]:
             self.assertNotIn(bad, html)
+
+    def test_images_only_from_tripcom(self):
+        """사진만 밖에서 받는다. 그것도 trip.com 한 곳에서만 (PRD §14)."""
+        html = (ROOT / "app/index.html").read_text(encoding="utf-8")
+        found = re.findall(r'https?://[^\s"<>]+?\.(?:jpg|jpeg|png|webp|gif)', html)
+        self.assertTrue(found, "여행지 사진이 하나도 없다")
+        for url in set(found):
+            self.assertTrue(url.startswith(self.IMG_HOSTS), url)
+
+    def test_map_still_draws_without_network(self):
+        """지도는 사진과 달리 외부를 안 탄다 — 국경은 번들 안에 있다."""
+        payload = build_app.build_payload(public=False)
+        self.assertGreater(len(payload["world"]), 100)
 
 
 if __name__ == "__main__":

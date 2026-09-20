@@ -21,6 +21,8 @@ DATA = Path("data")
 APP = Path("app")
 TEMPLATE = APP / "index.template.html"
 PRIVATE = DATA / "private.json"   # .gitignore — 실명과 업무 요약
+SITE = DATA / "site.json"         # 홈 화면 문구 — 없어도 기본값으로 돈다
+DESTS = DATA / "destinations.json"  # trip.com 여행지 캐시 — 없어도 사진 없이 돈다
 OUT = APP / "index.html"
 
 NEUTRAL = {
@@ -52,6 +54,18 @@ def person_label(pid: str, person: dict, public: bool, seq: dict) -> str:
     rel = person.get("relation", "colleague")
     seq[rel] = seq.get(rel, 0) + 1
     return f"{NEUTRAL.get(rel, '동행')} {chr(ord('A') + seq[rel] - 1)}"
+
+
+def site_and_destinations() -> tuple[dict, list]:
+    """홈 화면 문구와 trip.com 여행지 캐시. 둘 다 없어도 앱은 그대로 돈다.
+
+    사진과 소개 글은 번들에 넣지 않는다 — 주소만 넣고 원본을 링크로 건다(PRD §14).
+    """
+    site = strip_notes(load(SITE)) if SITE.exists() else {}
+    dests = load(DESTS)["destinations"] if DESTS.exists() else []
+    if "invite" in site:
+        site["invite"] = strip_notes(site["invite"])
+    return site, dests
 
 
 def build_payload(public: bool) -> dict:
@@ -125,7 +139,13 @@ def build_payload(public: bool) -> dict:
                                ("logNo", "title", "url", "posted", "date",
                                 "cities", "verdict", "why")})
 
+    site, dests = site_and_destinations()
+    # 방문한 적 없는 도시의 사진은 실을 이유가 없다.
+    dests = [d for d in dests if d["place"] in places]
+
     return {
+        "site": site,
+        "destinations": dests,
         "eras": trips_doc["eras"],
         "trips": sorted(trips, key=lambda t: t["start"]),
         "places": list(places.values()),

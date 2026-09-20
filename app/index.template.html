@@ -4,45 +4,70 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>나의 여행 지도</title>
+<meta name="description" content="1996년부터 30년, 출장과 주재와 여행으로 지나온 도시들의 기록.">
+<meta name="referrer" content="no-referrer">
 <style>
 :root{
-  --bg:#f6f4ef; --panel:#fffdf8; --line:#e0dacd; --ink:#26221c; --dim:#7b7264;
-  --accent:#8a6d3b; --shadow:0 1px 3px rgba(0,0,0,.08),0 8px 24px rgba(0,0,0,.06);
+  --bg:#f7f5f0; --panel:#fffdf8; --line:#e2dcd0; --ink:#1f1c17; --dim:#7b7264;
+  --accent:#9a6a3a; --accent-ink:#fff8ee;
+  --shadow:0 1px 2px rgba(31,28,23,.06),0 10px 30px rgba(31,28,23,.07);
+  --lift:0 4px 10px rgba(31,28,23,.09),0 20px 44px rgba(31,28,23,.11);
   --sea:#e8eef3; --land:#ded7c8; --landline:#c9c0ad;
+  --ph1:#cbb79c; --ph2:#9a8f7c;
   --business:#2563eb; --expat:#7c3aed; --family:#059669; --couple:#db2777;
   --friends:#d97706; --pilgrimage:#0891b2; --solo:#64748b;
+  --serif:Georgia,"Noto Serif KR","Apple SD Gothic Neo",serif;
+  --sans:-apple-system,"Segoe UI","Noto Sans KR",sans-serif;
+  --head:57px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
-  --accent:#d8b478; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
+  --accent:#d8b478; --accent-ink:#1b1810; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
+  --ph1:#3a3529; --ph2:#22201a;
   --shadow:0 1px 3px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.4);
+  --lift:0 6px 14px rgba(0,0,0,.5),0 22px 48px rgba(0,0,0,.45);
 }}
 :root[data-theme="dark"]{
   --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
-  --accent:#d8b478; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
+  --accent:#d8b478; --accent-ink:#1b1810; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
+  --ph1:#3a3529; --ph2:#22201a;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-  font:15px/1.6 -apple-system,"Segoe UI","Noto Sans KR",sans-serif;
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.65 var(--sans);
   padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
-h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.01em}
+h1,h2,h3,h4{margin:0;font-weight:600;letter-spacing:-.015em}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 a{color:var(--accent)}
+img{display:block}
 
-header{display:flex;align-items:center;gap:12px;padding:12px 16px;
-  border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:20}
-header h1{font-size:17px;white-space:nowrap}
-header .sub{color:var(--dim);font-size:12px;white-space:nowrap}
-.tabs{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
-.tabs button{padding:6px 12px;border-radius:999px;font-size:13px;color:var(--dim)}
+/* ── 상단 ── */
+header.site{display:flex;align-items:center;gap:12px;padding:10px 20px;height:var(--head);
+  border-bottom:1px solid var(--line);background:var(--panel);
+  position:sticky;top:0;z-index:40}
+.brand{display:flex;align-items:baseline;gap:9px;cursor:pointer;padding:0}
+.brand b{font:600 17px/1.2 var(--serif);letter-spacing:0;white-space:nowrap}
+.brand span{color:var(--dim);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  white-space:nowrap}
+.tabs{display:flex;gap:2px;margin-left:auto;min-width:0;flex-wrap:nowrap;overflow-x:auto;
+  scrollbar-width:none;-ms-overflow-style:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none}
+.tabs button{padding:6px 12px;border-radius:999px;font-size:13.5px;color:var(--dim)}
+.tabs button:hover{color:var(--ink)}
 .tabs button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
-#search{padding:7px 12px;border:1px solid var(--line);border-radius:999px;
-  background:var(--bg);color:var(--ink);width:170px;font-size:16px}
+#search{flex:none;padding:7px 12px;border:1px solid var(--line);border-radius:999px;
+  background:var(--bg);color:var(--ink);width:160px;font-size:16px}
+.cta-btn{padding:7px 15px;border-radius:999px;background:var(--accent);color:var(--accent-ink);
+  font-size:13.5px;font-weight:600;white-space:nowrap}
+.cta-btn:hover{filter:brightness(1.07)}
 #menuBtn{display:none;font-size:20px;padding:4px 8px}
 
-.wrap{display:grid;grid-template-columns:210px 1fr;gap:0;min-height:calc(100vh - 57px)}
+/* ── 앱 레이아웃 ── */
+.wrap{display:grid;grid-template-columns:212px 1fr;min-height:calc(100vh - var(--head))}
+.wrap.full{grid-template-columns:1fr}
+.wrap.full aside{display:none}
 aside{border-right:1px solid var(--line);padding:16px;background:var(--panel)}
-aside h3{font-size:11px;letter-spacing:.08em;color:var(--dim);
+aside h3{font-size:11px;letter-spacing:.09em;color:var(--dim);
   text-transform:uppercase;margin:18px 0 8px}
 aside h3:first-child{margin-top:0}
 .chip{display:block;width:100%;text-align:left;padding:5px 9px;border-radius:7px;
@@ -52,11 +77,100 @@ aside h3:first-child{margin-top:0}
 .chip .n{float:right;font-variant-numeric:tabular-nums;font-size:11px;opacity:.7}
 .legend{display:flex;align-items:center;gap:7px;padding:3px 9px;font-size:12.5px;color:var(--dim)}
 .dot{width:9px;height:9px;border-radius:50%;flex:none}
-
 main{padding:16px;min-width:0}
+main.home{padding:0}
+
+/* ── 홈: 히어로 ── */
+.hero{position:relative;min-height:min(74vh,560px);display:flex;align-items:flex-end;
+  overflow:hidden;background:linear-gradient(140deg,var(--ph1),var(--ph2))}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(12,10,7,.30) 0%,rgba(12,10,7,.12) 34%,rgba(12,10,7,.82) 100%)}
+.hero .inner{position:relative;z-index:1;padding:40px 24px 26px;max-width:960px;color:#fff}
+.hero .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.hero h2{font:600 clamp(30px,5.4vw,52px)/1.15 var(--serif);margin:10px 0 0;
+  text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.hero p{margin:12px 0 0;font-size:clamp(14px,1.7vw,17px);max-width:56ch;opacity:.93}
+.hero .acts{display:flex;gap:9px;margin-top:20px;flex-wrap:wrap}
+.hero .ghost{padding:9px 17px;border-radius:999px;border:1px solid rgba(255,255,255,.5);
+  color:#fff;font-size:13.5px;font-weight:600}
+.hero .ghost:hover{background:rgba(255,255,255,.14)}
+.hero .credit{position:absolute;right:12px;bottom:8px;z-index:2;font-size:10.5px;
+  color:rgba(255,255,255,.72)}
+.hero .credit a{color:inherit}
+
+.band{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));
+  border-bottom:1px solid var(--line);background:var(--panel)}
+.band div{padding:16px 10px;text-align:center;border-right:1px solid var(--line)}
+.band div:last-child{border-right:0}
+.band b{display:block;font:600 27px/1.1 var(--serif);font-variant-numeric:tabular-nums}
+.band small{color:var(--dim);font-size:11.5px;letter-spacing:.04em}
+
+/* ── 홈: 섹션 ── */
+.sec{padding:44px 24px;max-width:1180px;margin:0 auto}
+.sechead{display:flex;align-items:flex-end;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.sechead .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.sechead h3{font:600 clamp(21px,2.6vw,29px)/1.25 var(--serif);flex-basis:100%}
+.sechead p{margin:0;color:var(--dim);font-size:13.5px;max-width:60ch}
+.sechead .more{margin-left:auto;font-size:13px;color:var(--accent);white-space:nowrap}
+
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:18px}
+.dcard{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);
+  box-shadow:var(--shadow);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s}
+.dcard:hover{transform:translateY(-3px);box-shadow:var(--lift)}
+.dcard .ph{position:relative;aspect-ratio:16/10;background:linear-gradient(140deg,var(--ph1),var(--ph2));
+  cursor:pointer;overflow:hidden}
+.dcard .ph img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s}
+.dcard:hover .ph img{transform:scale(1.045)}
+.dcard .ph .nolabel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font:600 19px/1.2 var(--serif);color:rgba(255,255,255,.92)}
+.dcard .visits{position:absolute;z-index:2;left:10px;top:10px;padding:3px 9px;
+  border-radius:999px;background:rgba(12,10,7,.55);color:#fff;font-size:11px}
+.dcard .body{padding:13px 15px 15px;display:flex;flex-direction:column;flex:1}
+.dcard h4{font:600 17px/1.3 var(--serif);cursor:pointer}
+.dcard h4:hover{color:var(--accent)}
+.dcard .where{color:var(--dim);font-size:11.5px;margin-top:3px;letter-spacing:.03em}
+.dcard .intro{font-size:13px;color:var(--dim);margin:9px 0 0;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.dcard .foot{display:flex;align-items:center;gap:10px;margin-top:auto;
+  padding-top:11px;border-top:1px solid var(--line);font-size:12.5px}
+.dcard .foot a{text-decoration:none;font-weight:600}
+.dcard .foot .src{margin-left:auto;color:var(--dim);font-size:10.5px}
+
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.tcard{text-align:left;border:1px solid var(--line);border-radius:12px;padding:15px 16px;
+  background:var(--panel);display:flex;flex-direction:column;gap:6px;transition:border-color .16s}
+.tcard:hover{border-color:var(--accent)}
+.tcard .when{font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums}
+.tcard b{font:600 15.5px/1.4 var(--serif)}
+.tcard .who{font-size:12.5px;color:var(--dim)}
+
+.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.offer{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--panel)}
+.offer .no{font:600 12px/1 var(--serif);color:var(--accent);letter-spacing:.14em}
+.offer h4{font:600 18px/1.35 var(--serif);margin:10px 0 7px}
+.offer p{margin:0;font-size:13.5px;color:var(--dim)}
+.offer .tags{margin-top:11px}
+
+.invite{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.invite h3{font:600 clamp(23px,3vw,33px)/1.25 var(--serif)}
+.invite p{color:var(--dim);font-size:14.5px;max-width:58ch;margin:12px 0 0}
+.invite .acts{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;align-items:center}
+.invite .hint{font-size:12.5px;color:var(--dim)}
+
+footer.site{padding:30px 24px 40px;max-width:1180px;margin:0 auto;color:var(--dim);font-size:12.5px}
+footer.site .row{display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;
+  border-top:1px solid var(--line);padding-top:18px}
+footer.site .row span{flex:1;min-width:220px}
+
+/* ── 앱 화면 ── */
 .bar{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
-.bar .seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.bar .seg button{padding:5px 12px;font-size:13px;color:var(--dim)}
+.bar .seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;
+  max-width:100%;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.bar .seg::-webkit-scrollbar{display:none}
+.bar .seg button{padding:5px 12px;font-size:13px;color:var(--dim);
+  white-space:nowrap;flex:none}
 .bar .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 #year{flex:1;min-width:140px;accent-color:var(--accent)}
 .yearlab{font-variant-numeric:tabular-nums;font-weight:600;min-width:84px}
@@ -91,26 +205,37 @@ svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line
 
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--panel)}
-.card b{display:block;font-size:26px;font-variant-numeric:tabular-nums;line-height:1.2}
+.card b{display:block;font:600 26px/1.2 var(--serif);font-variant-numeric:tabular-nums}
 .card small{color:var(--dim);font-size:12px}
 
-#panel{position:fixed;top:57px;right:0;bottom:0;width:340px;background:var(--panel);
+#panel{position:fixed;top:var(--head);right:0;bottom:0;width:360px;background:var(--panel);
   border-left:1px solid var(--line);box-shadow:var(--shadow);padding:18px;
-  overflow:auto;z-index:30;transform:translateX(100%);transition:transform .22s}
+  overflow:auto;z-index:45;transform:translateX(100%);transition:transform .22s}
 #panel.open{transform:none}
-#panel .close{position:absolute;top:12px;right:14px;font-size:19px;color:var(--dim)}
-#panel h2{font-size:18px;padding-right:28px}
+#panel .close{position:absolute;top:10px;right:12px;font-size:17px;line-height:1;z-index:3;
+  width:30px;height:30px;border-radius:50%;color:var(--ink);background:var(--panel);
+  box-shadow:0 1px 4px rgba(0,0,0,.25)}
+#panel h2{font:600 21px/1.3 var(--serif);padding-right:28px}
 #panel .meta{color:var(--dim);font-size:12.5px;margin:2px 0 14px}
 #panel section{border-top:1px solid var(--line);padding:12px 0}
 #panel section h4{margin:0 0 7px;font-size:11px;letter-spacing:.08em;
   color:var(--dim);text-transform:uppercase}
 #panel li{font-size:13px;margin:3px 0}
 #panel ul{margin:0;padding-left:16px}
+.phero{margin:-18px -18px 14px;position:relative;aspect-ratio:16/9;overflow:hidden;
+  background:linear-gradient(140deg,var(--ph1),var(--ph2))}
+.phero img{width:100%;height:100%;object-fit:cover}
+.phero .cap{position:absolute;left:0;right:0;bottom:0;padding:22px 16px 9px;color:#fff;
+  font-size:10.5px;background:linear-gradient(transparent,rgba(12,10,7,.72))}
+.phero .cap a{color:#fff}
+.pstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}
+.pstrip img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;
+  background:linear-gradient(140deg,var(--ph1),var(--ph2))}
 .rowlink{display:block;width:100%;text-align:left;font-size:13px;padding:4px 7px;
   border-radius:6px;color:var(--ink)}
 .rowlink:hover{background:var(--bg)}
 .rowlink em{color:var(--dim);font-style:normal;font-size:11.5px}
-.tag{display:inline-block;padding:1px 7px;border-radius:999px;font-size:11px;
+.tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;
   border:1px solid var(--line);color:var(--dim);margin:0 4px 4px 0}
 
 #drop{border:1.5px dashed var(--line);border-radius:10px;padding:14px;text-align:center;
@@ -122,37 +247,50 @@ svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line
 
 @media(max-width:820px){
   .wrap{grid-template-columns:1fr}
-  aside{position:fixed;inset:57px auto 0 0;width:240px;z-index:25;overflow:auto;
+  aside{position:fixed;inset:var(--head) auto 0 0;width:240px;z-index:35;overflow:auto;
     transform:translateX(-100%);transition:transform .2s;box-shadow:var(--shadow)}
   aside.open{transform:none}
   #menuBtn{display:block}
-  #search{width:120px}
-  header h1{font-size:15px}
-  header .sub{display:none}
-  #panel{top:auto;left:0;width:auto;max-height:76vh;border-left:0;
+  #search{width:104px;padding:7px 10px}
+  .brand span{display:none}
+  .tabs button{padding:6px 9px;font-size:12.5px}
+  header.site{padding:10px 12px;gap:8px}
+  header .cta-btn{display:none}
+  .sec{padding:32px 16px}
+  .hero .inner{padding:30px 16px 22px}
+  footer.site{padding:24px 16px 34px}
+  #panel{top:auto;left:0;width:auto;max-height:78vh;border-left:0;
     border-top:1px solid var(--line);border-radius:16px 16px 0 0;
     transform:translateY(100%);padding-bottom:calc(18px + env(safe-area-inset-bottom))}
   #panel.open{transform:none}
+  .phero{border-radius:16px 16px 0 0}
 }
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+.bar:empty{display:none}
 </style>
 </head>
 <body>
 
-<header>
+<header class="site">
   <button id="menuBtn" aria-label="메뉴">☰</button>
-  <h1>나의 여행 지도</h1>
-  <span class="sub" id="hdrSub"></span>
+  <button class="brand" data-view="home">
+    <b id="brandName">나의 여행 지도</b><span id="brandSub"></span>
+  </button>
   <input id="search" placeholder="도시·여정 검색" autocomplete="off">
   <nav class="tabs" id="tabs">
-    <button data-view="map" aria-selected="true">지도</button>
+    <button data-view="home" aria-selected="true">홈</button>
+    <button data-view="destinations" aria-selected="false">여행지</button>
+    <button data-view="map" aria-selected="false">지도</button>
     <button data-view="timeline" aria-selected="false">연표</button>
     <button data-view="region" aria-selected="false">지역</button>
     <button data-view="stats" aria-selected="false">통계</button>
     <button data-view="candidates" aria-selected="false" id="candTab" hidden>후보</button>
   </nav>
+  <button class="cta-btn" id="ctaTop">동행 문의</button>
 </header>
 
-<div class="wrap">
+<div class="wrap" id="wrap">
   <aside id="aside">
     <h3>시대</h3>
     <div id="eraList"></div>
@@ -161,7 +299,7 @@ svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line
     <h3>목적</h3>
     <div id="legend"></div>
   </aside>
-  <main>
+  <main id="mainCol">
     <div class="bar" id="bar"></div>
     <div id="view"></div>
   </main>
@@ -201,7 +339,7 @@ for (const p of PLACES) {
   p.firstYear = ts.length ? Math.min(...ts.map(year)) : null;
 }
 
-const state = {view:"map", scale:"world", era:null, scope:null, year:Y1, q:""};
+const state = {view:"home", scale:"world", era:null, scope:null, year:Y1, q:""};
 
 /* ── 투영 ── */
 const VIEWS = {
@@ -266,6 +404,7 @@ function chip(label, value, key, n, title){
 function renderBar(){
   const bar = document.getElementById("bar");
   bar.innerHTML = "";
+  if (state.view === "home" || state.view === "destinations") return;
   if (state.view === "map"){
     const seg = document.createElement("div");
     seg.className = "seg";
@@ -491,7 +630,7 @@ function openPlace(name){
   const p = byName.get(name); if (!p) return;
   const ts = (tripsOf.get(name) || []).sort((a,b)=>t2n(a).localeCompare(t2n(b)));
   const kids = PLACES.filter(k => k.parent === name);
-  panel(`<h2>${esc(p.name)}</h2>
+  panel(`${destHead(name)}<h2>${esc(p.name)}</h2>
     <div class="meta">${[p.country, p.region].filter(Boolean).join(" · ") || "&nbsp;"}</div>
     ${p.aliasesSeen?.length ? `<div>${p.aliasesSeen.map(a=>`<span class="tag">${esc(a)}</span>`).join("")}</div>`:""}
     ${p.note ? `<p style="font-size:12.5px;color:var(--dim)">${esc(p.note)}</p>`:""}
@@ -503,6 +642,7 @@ function openPlace(name){
     ${kids.length?`<section><h4>이 도시의 장소 ${kids.length}</h4>
       ${kids.map(k=>`<button class="rowlink" data-place="${esc(k.name)}">${esc(k.name)}
         ${k.kind?`<em> · ${esc(k.kind)}</em>`:""}</button>`).join("")}</section>`:""}
+    ${destSection(name)}
     <section><h4>출처</h4>${(p.sources||[]).map(s=>`<span class="tag">${SRC[s]||s}</span>`).join("")}</section>
     ${photoBox("place:"+name)}`);
 }
@@ -661,30 +801,264 @@ function runSearch(q){
   panel(`<h2>검색</h2><div class="meta">“${esc(q)}”에 맞는 도시나 여정이 없습니다.</div>`);
 }
 
+/* ── 여행지 사진 (trip.com 여행 가이드) ──
+   사진과 소개 글은 내려받지 않고 원본을 링크로 건다. 출처는 카드마다 밝힌다.
+   scripts/fetch_destinations.py 가 data/destinations.json 에 캐시해 둔 것을 쓴다. */
+const DESTS = DATA.destinations || [];
+const SITE = DATA.site || {};
+const destOf = new Map(DESTS.map(d => [d.place, d]));
+
+// trip.com CDN 은 파일명 끝의 _D_1180_558 로 크기를 정한다. 목록에는 작은 것을 쓴다.
+function sized(url, w, h){
+  if (!url) return "";
+  return url.replace(/_[A-Z]_\d+_\d+(_R\d+)?(?=\.\w+(\?|$))/, `_D_${w}_${h}`);
+}
+// 사진을 못 받으면(오프라인·차단) 그 자리는 흙빛 바탕만 남는다. 화면은 그대로 돈다.
+addEventListener("error", e => {
+  const t = e.target;
+  if (t && t.tagName === "IMG") t.style.visibility = "hidden";
+}, true);
+
+const shot = (url, alt) => url
+  ? `<img src="${esc(url)}" alt="${esc(alt)}" loading="lazy" decoding="async"
+      referrerpolicy="no-referrer">` : "";
+const guideLink = d => `<a href="${esc(d.url)}" target="_blank" rel="noopener nofollow"
+  title="trip.com 여행 가이드에서 보기">Trip.com 가이드 →</a>`;
+
+/** 사진이 있는 여행지를 방문 횟수 순으로. 홈은 앞쪽만 쓴다. */
+function featured(){
+  return DESTS.filter(d => d.cover).map(d => {
+    const p = byName.get(d.place);
+    return {...d, visits: p ? p.visits : 0, country: (p && p.country) || d.country};
+  }).sort((a,b) => b.visits - a.visits || a.name.localeCompare(b.name, "ko"));
+}
+
+function destCard(d){
+  return `<article class="dcard">
+    <div class="ph" data-place="${esc(d.place)}">
+      <div class="nolabel">${esc(d.name)}</div>
+      ${shot(sized(d.cover, 480, 300), d.name + " 사진")}
+      ${d.visits ? `<span class="visits">${d.visits}번 갔다</span>` : ""}
+    </div>
+    <div class="body">
+      <h4 data-place="${esc(d.place)}">${esc(d.name)}</h4>
+      <div class="where">${esc([d.country, d.enName].filter(Boolean).join(" · "))}</div>
+      <p class="intro">${esc(d.intro || "")}</p>
+      <div class="foot">${guideLink(d)}<span class="src">사진·소개 © Trip.com</span></div>
+    </div></article>`;
+}
+
+/* ── 홈 ── */
+function viewHome(){
+  const feat = featured();
+  const hero = destOf.get(SITE.heroPlace) || feat[0];
+  const counted = TRIPS.filter(t => !t.umbrella);
+  const cities = PLACES.filter(p => p.level !== "poi").length;
+  const countries = new Set(PLACES.map(p => p.country).filter(Boolean)).size;
+  const recent = [...counted].sort((a,b) => t2n(b).localeCompare(t2n(a))).slice(0, 8);
+  const offers = SITE.offers || [];
+
+  return `
+  <section class="hero">
+    ${hero ? shot(sized(hero.cover, 1180, 558), hero.name + " 사진") : ""}
+    <div class="inner">
+      <div class="kicker">${Y0} — ${Y1}</div>
+      <h2>${esc(SITE.tagline || "30년, 발로 그린 지도")}</h2>
+      <p>${esc(SITE.lead || "")}</p>
+      <div class="acts">
+        <button class="cta-btn" data-go="map">여정 지도 보기</button>
+        <button class="ghost" data-go="destinations">여행지 둘러보기</button>
+      </div>
+    </div>
+    ${hero ? `<div class="credit">표지 · ${esc(hero.name)}
+      <a href="${esc(hero.url)}" target="_blank" rel="noopener nofollow">© Trip.com</a></div>` : ""}
+  </section>
+
+  <div class="band">
+    <div><b>${cities}</b><small>도시</small></div>
+    <div><b>${countries}</b><small>나라</small></div>
+    <div><b>${counted.length}</b><small>여정</small></div>
+    <div><b>${Y1 - Y0 + 1}</b><small>해</small></div>
+    <div><b>${ERAS.length}</b><small>시대</small></div>
+  </div>
+
+  <section class="sec">
+    <div class="sechead">
+      <span class="eyebrow">Destinations</span>
+      <button class="more" data-go="destinations">여행지 전체 ${feat.length} →</button>
+      <h3>다시 가고 싶은 곳</h3>
+      <p>가장 여러 번 다녀온 도시들입니다. 사진과 소개 글은
+        <a href="https://kr.trip.com/travel-guide/destination/" target="_blank"
+           rel="noopener nofollow">Trip.com 여행 가이드</a>에서 가져왔고, 카드를 누르면
+        그 도시에서 있었던 제 여정이 열립니다.</p>
+    </div>
+    ${feat.length
+      ? `<div class="dgrid">${feat.slice(0, 8).map(destCard).join("")}</div>`
+      : `<div class="empty">아직 받아 둔 여행지 사진이 없습니다.
+          <br><small>python scripts/fetch_destinations.py 를 돌리세요.</small></div>`}
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="sechead">
+      <span class="eyebrow">Journeys</span>
+      <button class="more" data-go="timeline">연표로 보기 →</button>
+      <h3>최근의 여정</h3>
+    </div>
+    <div class="tgrid">${recent.map(t => `
+      <button class="tcard" data-trip="${esc(t.id)}">
+        <span class="when">${esc(t.start)}${t.end !== t.start ? ` – ${esc(t.end)}` : ""}</span>
+        <b>${esc(t.title)}</b>
+        <span class="who"><i class="dot" style="background:var(--${t.purpose});
+          display:inline-block;margin-right:5px"></i>${PURPOSE[t.purpose]} ·
+          ${t.scope === "domestic" ? "국내" : "해외"}</span>
+      </button>`).join("")}</div>
+  </section>
+
+  ${offers.length ? `<section class="sec" style="padding-top:0">
+    <div class="sechead">
+      <span class="eyebrow">Itineraries</span>
+      <h3>제가 안내할 수 있는 길</h3>
+      <p>30년 동안 직접 다닌 곳 중에서, 다시 안내할 수 있는 코스입니다.</p>
+    </div>
+    <div class="offers">${offers.map((o, i) => `
+      <div class="offer">
+        <div class="no">0${i + 1}</div>
+        <h4>${esc(o.title)}</h4>
+        <p>${esc(o.body)}</p>
+        <div class="tags">${(o.places || []).map(p =>
+          `<button class="tag" data-place="${esc(p)}">${esc(destOf.get(p)?.name || p)}</button>`
+        ).join("")}</div>
+      </div>`).join("")}</div>
+  </section>` : ""}
+
+  <section class="invite" id="invite">
+    <div class="sec">
+      <div class="sechead"><span class="eyebrow">Travel together</span>
+        <h3>${esc((SITE.invite || {}).title || "다음 길은 함께 걸으시겠습니까")}</h3></div>
+      <p>${esc((SITE.invite || {}).body || "")}</p>
+      <div class="acts">${inviteActions()}</div>
+    </div>
+  </section>
+
+  <footer class="site"><div class="row">
+    <span>${esc(SITE.brand || "나의 여행 지도")} · ${Y0}–${Y1} 개인 여행 아카이브${
+      DATA.public ? " · 공개본" : ""}</span>
+    <span>여행지 사진과 소개 글 ©
+      <a href="https://kr.trip.com/travel-guide/destination/" target="_blank"
+         rel="noopener nofollow">Trip.com</a> · 발췌만 싣고 원문으로 링크합니다.
+      지도는 외부 타일을 쓰지 않습니다.</span>
+  </div></footer>`;
+}
+
+/** 연락처는 data/site.json 에 적은 것만 내보낸다. 없으면 버튼 대신 안내가 나간다. */
+function inviteActions(){
+  const c = (SITE.invite || {}).contact || {};
+  const out = [];
+  if (c.email) out.push(`<a class="cta-btn" href="mailto:${esc(c.email)}"
+    style="text-decoration:none">메일로 문의</a>`);
+  if (c.kakao) out.push(`<a class="ghost" style="border-color:var(--line);color:var(--ink);
+    text-decoration:none;padding:9px 17px;border-radius:999px;border-style:solid;border-width:1px"
+    href="${esc(c.kakao)}" target="_blank" rel="noopener">카카오톡</a>`);
+  if (c.instagram) out.push(`<a class="ghost" style="border-color:var(--line);color:var(--ink);
+    text-decoration:none;padding:9px 17px;border-radius:999px;border-style:solid;border-width:1px"
+    href="${esc(c.instagram)}" target="_blank" rel="noopener">인스타그램</a>`);
+  if (!out.length) out.push(`<span class="hint">연락처는 아직 비어 있습니다 —
+    <code>data/site.json</code> 의 <code>invite.contact</code> 에 적으면 여기에 버튼이 생깁니다.</span>`);
+  return out.join("");
+}
+
+/* ── 여행지 ── */
+function viewDestinations(){
+  const feat = featured();
+  if (!feat.length) return `<div class="sec"><div class="empty">
+    아직 받아 둔 여행지 사진이 없습니다.<br>
+    <small>data/tripcom_places.json 에 도시를 적고
+      python scripts/fetch_destinations.py 를 돌리세요.</small></div></div>`;
+  const countries = [...new Set(feat.map(d => d.country).filter(Boolean))]
+    .sort((a,b) => feat.filter(d=>d.country===b).length - feat.filter(d=>d.country===a).length);
+  const pick = state.destCountry;
+  const list = pick ? feat.filter(d => d.country === pick) : feat;
+  return `<div class="sec">
+    <div class="sechead"><span class="eyebrow">Destinations</span>
+      <h3>다녀온 곳, 그리고 그곳의 얼굴</h3>
+      <p>사진과 소개 글은 <a href="https://kr.trip.com/travel-guide/destination/" target="_blank"
+        rel="noopener nofollow">Trip.com 여행 가이드</a>에서 가져와 발췌한 것입니다.
+        “Trip.com 가이드”를 누르면 원문으로, 도시 이름을 누르면 제 기록으로 갑니다.</p></div>
+    <div class="bar" style="margin-bottom:18px"><div class="seg">
+      <button data-dc="" aria-pressed="${!pick}">전체 ${feat.length}</button>
+      ${countries.map(c => `<button data-dc="${esc(c)}" aria-pressed="${pick === c}">
+        ${esc(c)} ${feat.filter(d=>d.country===c).length}</button>`).join("")}
+    </div></div>
+    <div class="dgrid">${list.map(destCard).join("")}</div>
+  </div>`;
+}
+
+/** 도시 패널 머리에 붙는 trip.com 사진과 소개. */
+function destHead(name){
+  const d = destOf.get(name);
+  if (!d || !d.cover) return "";
+  return `<div class="phero">${shot(sized(d.cover, 720, 405), d.name + " 사진")}
+    <div class="cap">사진 © Trip.com ·
+      <a href="${esc(d.url)}" target="_blank" rel="noopener nofollow">여행 가이드</a></div></div>`;
+}
+function destSection(name){
+  const d = destOf.get(name);
+  if (!d) return "";
+  const ph = (d.photos || []).filter(p => p.url).slice(0, 6);
+  return `<section><h4>Trip.com 여행 가이드</h4>
+    ${d.intro ? `<p style="font-size:13px;color:var(--dim);margin:0 0 8px">${esc(d.intro)}</p>` : ""}
+    ${ph.length ? `<div class="pstrip">${ph.map(p =>
+      `<img src="${esc(sized(p.url, 240, 240))}" alt="${esc(p.poi || d.name)}"
+        title="${esc(p.poi || d.name)}" loading="lazy" decoding="async"
+        referrerpolicy="no-referrer">`).join("")}</div>` : ""}
+    <p style="margin:9px 0 0;font-size:12.5px">${guideLink(d)}</p></section>`;
+}
+
 /* ── 렌더 ── */
 function render(keepBar){
+  const wide = ["home", "destinations", "candidates"].includes(state.view);
+  document.getElementById("wrap").classList.toggle("full", wide);
+  document.getElementById("mainCol").classList.toggle("home",
+    state.view === "home" || state.view === "destinations");
   if (!keepBar) renderBar();
-  const v = {map:viewMap, timeline:viewTimeline, region:viewRegion,
-    stats:viewStats, candidates:viewCandidates}[state.view];
+  const v = {home:viewHome, destinations:viewDestinations, map:viewMap,
+    timeline:viewTimeline, region:viewRegion, stats:viewStats,
+    candidates:viewCandidates}[state.view];
   document.getElementById("view").innerHTML = v();
-  document.getElementById("hdrSub").textContent =
-    `${PLACES.filter(p=>p.level!=="poi").length}개 도시 · ${TRIPS.length}개 여정 · ${Y0}–${Y1}`;
+  if (state.view === "home") scrollTo({top:0});
+  document.getElementById("brandSub").textContent =
+    `${PLACES.filter(p=>p.level!=="poi").length}개 도시 · ${Y0}–${Y1}`;
+  document.title = `${SITE.brand || "나의 여행 지도"}${
+    SITE.tagline ? " · " + SITE.tagline : ""}`;
+}
+/** 탭을 옮긴다. 홈 안의 버튼과 브랜드도 이걸 쓴다. */
+function go(view){
+  state.view = view;
+  [...document.getElementById("tabs").children].forEach(x =>
+    x.setAttribute("aria-selected", String(x.dataset.view === view)));
+  render();
 }
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function closeAside(){ document.getElementById("aside").classList.remove("open"); }
 
 document.getElementById("tabs").onclick = e => {
-  const b = e.target.closest("button[data-view]"); if (!b) return;
-  state.view = b.dataset.view;
-  [...e.currentTarget.children].forEach(x =>
-    x.setAttribute("aria-selected", String(x === b)));
-  render();
+  const b = e.target.closest("button[data-view]");
+  if (b) go(b.dataset.view);
+};
+document.querySelector(".brand").onclick = () => go("home");
+document.getElementById("ctaTop").onclick = () => {
+  go("home");
+  document.getElementById("invite")?.scrollIntoView({behavior:"smooth"});
 };
 document.body.addEventListener("click", e => {
+  const gv = e.target.closest("[data-go]");
+  if (gv) return go(gv.dataset.go);
+  const dc = e.target.closest("[data-dc]");
+  if (dc){ state.destCountry = dc.dataset.dc || null; return render(); }
   const cf = e.target.closest("[data-cf]");
   if (cf){ state.candFilter = cf.dataset.cf; return render(); }
-  const dc = e.target.closest("[data-dec]");
-  if (dc) return decide(dc.dataset.log, dc.dataset.dec);
+  const dd = e.target.closest("[data-dec]");
+  if (dd) return decide(dd.dataset.log, dd.dataset.dec);
   if (e.target.id === "exportBtn") return exportApproved();
   const pl = e.target.closest("[data-place]"); if (pl) return openPlace(pl.dataset.place);
   const tr = e.target.closest("[data-trip]");  if (tr) return openTrip(tr.dataset.trip);

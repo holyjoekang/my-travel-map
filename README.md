@@ -1,6 +1,7 @@
 # 나의 여행 지도
 
-1996년 입사 이후 30년간의 출장·주재·여행 기록을 **지도 한 장과 연표 한 줄**로 모으는 개인 아카이브.
+1996년 입사 이후 30년간의 출장·주재·여행 기록을 **지도 한 장과 연표 한 줄**로 모으는 개인 아카이브 —
+그리고 그 기록을 처음 보는 사람에게 보여 주는 **여행 홈페이지**.
 설계 문서는 [PRD_MyTravel.md](PRD_MyTravel.md).
 
 **공개본: https://holyjoekang.github.io/my-travel-map/**
@@ -15,6 +16,9 @@ python scripts/build_all.py
 `app/index.html` 이 만들어진다. 브라우저로 열면 끝이다 — **서버도, API 키도, 설치할 패키지도 없다.**
 파이썬 3.10 이상, 표준 라이브러리만 쓴다.
 
+여행지 사진만 trip.com 에서 받아 온다(아래 [여행지 사진](#여행지-사진-tripcom)).
+캐시가 이미 있으면 빌드는 밖을 부르지 않고, 사진이 안 떠도 나머지 화면은 그대로 돈다.
+
 ## 지금 들어 있는 것
 
 | | 수 |
@@ -22,6 +26,7 @@ python scripts/build_all.py
 | 여정 | 47 |
 | 장소 | 143 (도시급 78 · 장소 65) |
 | 블로그 여행 후보 | 112 (687편 중) |
+| 사진·소개가 붙은 여행지 | 75 |
 | 기간 | 1996 ~ 2026 |
 
 출처별로는 구글 지도 저장 목록 128개(2005년 지역전문가), 구글 시트 출장 이력 28건(2016~19),
@@ -31,6 +36,9 @@ python scripts/build_all.py
 
 ```
 data/
+  site.json               홈 화면 문구·표지·모집 코스 ← 사이트 얼굴은 여기서 고친다
+  tripcom_places.json     장소 이름 → trip.com 목적지 번호
+  destinations.json       ← 캐시 · trip.com 사진 주소와 소개 발췌
   gmaps_saved_2005.json   지도 저장 목록 「2005년 지역전문가」 128개 (수집 완료)
   trips.json              여정 원장 — 사람은 people 에만 두고 여정은 id로 참조
   place_coords.json       도시·장소 좌표 원장 [위도, 경도]
@@ -46,10 +54,12 @@ scripts/
   topojson.py             TopoJSON 디코더
   fetch_world_map.py      세계지도 내려받아 캐시 (빌드 때 1회)
   fetch_blog_bodies.py    블로그 본문 수집 (이어받기)
+  fetch_destinations.py   trip.com 여행지 사진·소개 수집 (캐시)
   classify_posts.py       글 → 여정 후보 판정 (규칙 + LLM)
   build_places.py         별칭 정규화 + 좌표 결합 → places.json
   build_app.py            데이터를 HTML에 주입 → app/index.html
   build_all.py            위 셋을 순서대로
+  release.py              빌드 → 테스트 → 커밋 → 푸시 (배포는 CI가 이어받는다)
 app/
   index.template.html     화면 (여기를 고친다)
   index.html              ← 빌드 산출물
@@ -61,6 +71,10 @@ tests/
 
 ## 화면
 
+- **홈** — 표지 사진 한 장과 숫자 띠, **다시 가고 싶은 곳** 8곳, 최근의 여정,
+  안내할 수 있는 코스, 동행 문의. 문구와 표지와 코스는 `data/site.json` 에서 고친다
+- **여행지** — 다녀온 도시를 사진 카드로. 나라별로 걸러 본다. 카드를 누르면 그 도시의 내 기록이,
+  “Trip.com 가이드”를 누르면 원문이 열린다
 - **지도** — 세계 / 아시아 / 중국 축척. 점 크기는 방문 횟수, 색은 목적. 연도 슬라이더를 끌면 시간순으로 켜진다
 - **연표** — 1996~2026을 연도별로. 각 해에 그때의 시대(E1~E7)와 직책이 함께 붙는다
 - **지역** — 나라별 도시 목록
@@ -71,6 +85,43 @@ tests/
 
 지도는 외부 타일을 받지 않는다. 국경 폴리곤을 미리 받아 SVG로 직접 그리므로
 오프라인에서도 뜨고, 아티팩트 CSP에도 걸리지 않는다.
+
+## 여행지 사진 (trip.com)
+
+도시 이름과 날짜만으로는 처음 보는 사람에게 그림이 안 그려진다.
+그래서 **다녀온 도시의 얼굴을 trip.com 여행 가이드에서 빌려 온다**(PRD §14).
+
+```bash
+python scripts/fetch_destinations.py              # 캐시에 없는 것만
+python scripts/fetch_destinations.py --refresh    # 전부 다시
+python scripts/fetch_destinations.py --only 베이징 상하이
+```
+
+- **빌드가 받고 화면은 안 받는다.** 표지 사진 주소·소개 발췌·명소 사진 주소를
+  `data/destinations.json` 에 캐시해 두고, 앱은 그 캐시만 읽는다
+- **사진은 복사하지 않고 링크로 건다.** 번들에는 주소만 들어간다. 소개 글도 260자 발췌만 싣고
+  카드마다 원문으로 링크한다. 출처는 카드·도시 패널·바닥글에 밝힌다
+- **없어도 돈다.** 사진을 못 받으면 그 자리는 흙빛 바탕에 도시 이름만 남는다.
+  밖에서 받는 것은 `ak-d.tripcdn.com` 의 사진뿐이고, 테스트가 그 한 곳만 허용한다
+
+**도시를 더 넣으려면** trip.com 에서 그 도시 가이드를 열고 주소 끝 숫자를
+`data/tripcom_places.json` 에 적은 뒤 다시 돌린다 — `.../destination/beijing-1/` 의 `1`.
+trip.com 에 가이드가 없는 곳(남해·부여·평택·실리콘밸리 등)은 비워 둔다.
+
+## 여행객 모집용 문구
+
+홈의 **안내할 수 있는 길**과 **동행 문의**는 `data/site.json` 에서 온다.
+
+```json
+{ "tagline": "30년, 발로 그린 아시아",
+  "heroPlace": "베이징",
+  "offers": [{ "title": "…", "body": "…", "places": ["시안 시", "둔황 시"] }],
+  "invite": { "title": "…", "body": "…",
+              "contact": { "email": "", "kakao": "", "instagram": "" } } }
+```
+
+`contact` 는 **적은 것만 버튼으로 나가고**, 비어 있으면 버튼 대신 안내 문구가 나간다.
+**공개 빌드에도 그대로 나가므로 공개해도 되는 연락처만 적는다.**
 
 ## 블로그에서 여정 뽑기 (Phase 2)
 
@@ -98,6 +149,16 @@ CI에는 `data/private.json` 이 없으므로 애초에 실명을 알 수 없다
 ```bash
 python scripts/build_app.py --public   # → app/index.public.html
 ```
+
+올리는 것은 스크립트 하나로 한다. **테스트가 떨어지면 커밋하지 않는다.**
+
+```bash
+python scripts/release.py -m "무엇을 고쳤는지"
+```
+
+`--dry-run` 은 무엇을 할지만 보여 주고, `--no-push` 는 커밋까지만 하고,
+`--watch` 는 푸시 뒤 CI 결과까지 지켜본다(`gh` 필요).
+푸시가 끝나면 Actions 가 공개 빌드를 다시 만들어 Pages 에 올린다.
 
 **실명은 저장소에 없다.** `data/private.json`(gitignore)에만 있고, 이 파일이 없으면
 공개 표기만으로 그대로 빌드된다. 그래서 CI와 남의 클론에서도 문제없이 돈다.
@@ -136,4 +197,6 @@ PRD §13 참조. 큰 것만 옮기면:
 - 1996~2004 첫 출장들의 연·월 특정 — 지금은 연도 범위만 있다
 - 후보 112건 승인 — 앱의 **후보** 탭에서 검토한 뒤 `trips.json` 에 넣는다
 - 후보 중 10건은 도시를 못 찾았다 (본문에 지명이 안 나오는 회고 글)
+- `data/site.json` 의 `contact` 가 비어 있다 — 모집을 시작하려면 먼저 채운다
+- trip.com 에 가이드가 없는 8곳(남해·부여·유명산·평택·뉴저지·실리콘밸리·펑라이 시·침사추이)은 사진이 없다
 - 블로그 '힐링 모먼트' 1,397편 접근 경로
