@@ -138,6 +138,42 @@ main.home{padding:0}
 .dcard .foot a{text-decoration:none;font-weight:600}
 .dcard .foot .src{margin-left:auto;color:var(--dim);font-size:10.5px}
 
+/* ── 홈: 3D 여행지 투어 (three.js) ──
+   격자와 같은 카드를 둥글게 세운 것이다. 투어가 뜨면 격자는 접고,
+   못 뜨면(WebGL 이 없거나 스크립트를 못 받으면) 격자가 그대로 남는다. */
+.sec.tourOn .dgrid{display:none}
+.tour{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;
+  background:radial-gradient(118% 96% at 50% 4%,var(--panel) 0%,var(--bg) 72%);
+  box-shadow:var(--shadow)}
+.tour .stage{height:clamp(320px,46vh,520px);touch-action:pan-y;cursor:grab;outline:0}
+.tour .stage:active{cursor:grabbing}
+.tour .stage:focus-visible{box-shadow:inset 0 0 0 2px var(--accent)}
+.tour canvas{display:block;width:100%;height:100%}
+.tour .arm{position:absolute;top:calc(clamp(320px,46vh,520px)/2 - 21px);width:42px;height:42px;
+  border-radius:999px;border:1px solid var(--line);background:var(--panel);color:var(--dim);
+  font:400 22px/1 var(--serif);box-shadow:var(--shadow);opacity:.82}
+.tour .arm:hover{color:var(--ink);opacity:1}
+.tour .arm.prev{left:14px}
+.tour .arm.next{right:14px}
+.tour .hint{position:absolute;left:0;right:0;top:12px;text-align:center;font-size:11.5px;
+  color:var(--dim);pointer-events:none;letter-spacing:.02em}
+.tour .cap{border-top:1px solid var(--line);background:var(--panel);padding:14px 18px 15px;
+  display:flex;flex-direction:column;gap:5px;min-height:118px}
+.tour .cap b{font:600 19px/1.3 var(--serif);cursor:pointer}
+.tour .cap b:hover{color:var(--accent)}
+.tour .cap .where{color:var(--dim);font-size:11.5px;letter-spacing:.03em}
+.tour .cap p{margin:2px 0 0;font-size:13px;color:var(--dim);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tour .cap .acts{display:flex;align-items:center;gap:12px;margin-top:auto;
+  padding-top:9px;font-size:12.5px;flex-wrap:wrap}
+.tour .cap .acts a{text-decoration:none;font-weight:600}
+.tour .cap .acts .open{color:var(--accent);font-weight:600}
+.tour .cap .acts .src{margin-left:auto;color:var(--dim);font-size:10.5px}
+@media (max-width:560px){
+  .tour .arm{display:none}
+  .tour .hint{font-size:10.5px;padding:0 14px}
+}
+
 .tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
 .tcard{text-align:left;border:1px solid var(--line);border-radius:12px;padding:15px 16px;
   background:var(--panel);display:flex;flex-direction:column;gap:6px;transition:border-color .16s}
@@ -365,7 +401,8 @@ for (const p of PLACES) {
   p.firstYear = ts.length ? Math.min(...ts.map(year)) : null;
 }
 
-const state = {view:"home", scale:"world", era:null, scope:null, year:Y1, q:"", gmap:false};
+const state = {view:"home", scale:"world", era:null, scope:null, year:Y1, q:"",
+  gmap:false, tour:true};   // tour — 홈의 여행지를 3D 투어로 본다 (안 되면 격자)
 
 /* 구글 지도는 곁들이다. 기본은 번들 안의 지도이고(PRD §8 — 밖을 안 탄다),
    키가 있을 때만 '구글 지도' 단추가 생기고, 눌렀을 때만 스크립트를 불러온다. */
@@ -997,6 +1034,300 @@ function destCard(d){
     </div></article>`;
 }
 
+/* ── 3D 여행지 투어 (three.js) ─────────────────────────────────────────
+   다시 가고 싶은 곳을 카드로 세워 둥글게 돌린다. 끌면 돌고, 앞의 카드를
+   누르면 그 도시의 여정이 열린다 — 격자에서 카드를 누르던 것과 같다.
+
+   스크립트는 홈에 들어올 때 한 번만 내려받는다. 구글 지도와 같은 규칙이다
+   (PRD §8): 곁들이일 뿐이라 못 받거나 WebGL 이 없으면 투어 자리를 접고
+   아래의 격자가 그대로 화면을 맡는다. 사진은 격자와 같은 trip.com 캐시를
+   쓰고, 출처는 투어 설명줄에 그대로 남는다. */
+const THREE_URL = "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
+let threeLoading = null;
+const loadThree = () => (threeLoading ||= import(THREE_URL));
+
+let tour = null;                       // 지금 도는 투어 (렌더할 때마다 접는다)
+function stopTour(){ if (tour){ tour.dispose(); tour = null; } }
+
+/** 투어에 세울 카드 — 사진이 있는 도시를 많이 간 순으로 열둘까지. */
+function tourItems(){ return featured().filter(d => d.cover).slice(0, 12); }
+
+/** 투어를 접고 격자로 되돌린다. 왜 접혔는지는 한 줄로 남긴다. */
+function tourFallback(why){
+  state.tour = false;
+  const box = document.getElementById("tour");
+  if (!box) return;
+  box.closest(".sec")?.classList.remove("tourOn");
+  box.outerHTML = why
+    ? `<div class="empty" style="margin-bottom:18px">${esc(why)}</div>` : "";
+}
+
+function mountTour(){
+  const stage = document.getElementById("tourStage");
+  if (!stage) return;
+  const items = tourItems();
+  if (!items.length) return tourFallback("");
+  loadThree()
+    .then(THREE => { if (stage.isConnected) tour = buildTour(THREE, stage, items); })
+    .catch(() => tourFallback("3D 투어를 불러오지 못했습니다 — 아래 격자로 보여 드립니다."));
+}
+
+/** 카드 한 장을 캔버스에 그린다. 사진이 없으면 격자와 같은 흙빛 바탕에 이름만. */
+function tourCard(d, img, cvar){
+  const W = 640, PH = 400, H = 560;    // 사진 640×400 은 trip.com 이 주는 크기다
+  const c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const g = c.getContext("2d");
+  if (g.roundRect){ g.beginPath(); g.roundRect(0, 0, W, H, 26); g.clip(); }
+  g.fillStyle = cvar("--panel", "#fffdf8"); g.fillRect(0, 0, W, H);
+
+  const grd = g.createLinearGradient(0, 0, W, PH);
+  grd.addColorStop(0, cvar("--ph1", "#cbb79c"));
+  grd.addColorStop(1, cvar("--ph2", "#9a8f7c"));
+  g.fillStyle = grd; g.fillRect(0, 0, W, PH);
+  if (img){                            // 사진은 잘라서 채운다 (object-fit:cover 와 같다)
+    const s = Math.max(W / img.width, PH / img.height);
+    g.drawImage(img, (W - img.width * s) / 2, (PH - img.height * s) / 2,
+                img.width * s, img.height * s);
+  } else {
+    g.fillStyle = "rgba(255,255,255,.92)";
+    g.font = `600 40px ${cvar("--serif", "serif")}`;
+    g.textAlign = "center"; g.fillText(d.name, W / 2, PH / 2 + 14); g.textAlign = "left";
+  }
+  if (d.visits){                       // 몇 번 갔는지 — 격자 카드의 그 딱지다
+    const label = `${d.visits}번 갔다`;
+    g.font = `500 22px ${cvar("--sans", "sans-serif")}`;
+    const w = g.measureText(label).width + 30;
+    g.fillStyle = "rgba(12,10,7,.55)";
+    if (g.roundRect){ g.beginPath(); g.roundRect(22, 22, w, 38, 19); g.fill(); }
+    else g.fillRect(22, 22, w, 38);
+    g.fillStyle = "#fff"; g.fillText(label, 37, 48);
+  }
+  g.fillStyle = cvar("--ink", "#1f1c17");
+  g.font = `600 44px ${cvar("--serif", "serif")}`;
+  g.fillText(d.name, 30, PH + 76);
+  g.fillStyle = cvar("--dim", "#7b7264");
+  g.font = `24px ${cvar("--sans", "sans-serif")}`;
+  g.fillText([d.country, d.enName].filter(Boolean).join(" · "), 30, PH + 118);
+  return c;
+}
+
+function buildTour(THREE, stage, items){
+  const css = getComputedStyle(document.documentElement);
+  const cvar = (n, fb) => css.getPropertyValue(n).trim() || fb;
+  const slow = matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:"low-power"});
+  } catch(e){
+    tourFallback("이 브라우저에서는 3D 투어를 켤 수 없습니다 — 아래 격자로 보여 드립니다.");
+    return null;
+  }
+  const size = () => [stage.clientWidth || 1, stage.clientHeight || 1];
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.setSize(...size());
+  stage.append(renderer.domElement);
+
+  const N = items.length, step = Math.PI * 2 / N;
+  const CW = 2.24, CH = 1.96;          // 카드 크기 (캔버스 640×560 과 같은 비율)
+  const R = Math.max(3.1, N * (CW + .75) / (Math.PI * 2));
+
+  const scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(new THREE.Color(cvar("--bg", "#f7f5f0")), R + 1.6, R * 2 + 5.5);
+  const camera = new THREE.PerspectiveCamera(42, 1, .1, 100);
+  const place = () => {                // 앞의 카드가 꼭 맞게 — 좁으면 그만큼 물러선다
+    const [w, h] = size();
+    camera.aspect = w / h;
+    const tv = Math.tan(camera.fov * Math.PI / 360);
+    camera.position.set(0, CH * .66,
+      R + .5 + Math.max(CH * .56 / tv, CW * .62 / (tv * camera.aspect)));
+    camera.lookAt(0, CH * .54, 0);
+    camera.updateProjectionMatrix();
+  };
+  place();
+
+  const ring = new THREE.Group(); scene.add(ring);
+  const geo = new THREE.PlaneGeometry(CW, CH);
+  const cards = [];
+
+  // 카드 아래의 그림자 — 바닥을 안 그려도 카드가 서 있어 보인다.
+  const shade = document.createElement("canvas");
+  shade.width = shade.height = 128;
+  {
+    const g = shade.getContext("2d");
+    const rg = g.createRadialGradient(64, 64, 2, 64, 64, 62);
+    rg.addColorStop(0, "rgba(12,10,7,.32)"); rg.addColorStop(1, "rgba(12,10,7,0)");
+    g.fillStyle = rg; g.fillRect(0, 0, 128, 128);
+  }
+  const shadeTex = new THREE.CanvasTexture(shade);
+  const shadeGeo = new THREE.PlaneGeometry(CW * 1.05, CW * .42);
+
+  items.forEach((d, i) => {
+    const canvas = tourCard(d, null, cvar);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    const mesh = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({
+      map: tex, transparent: true, toneMapped: false}));
+    mesh.userData.i = i;
+    mesh.position.y = CH / 2 + .06;
+
+    const sh = new THREE.Mesh(shadeGeo, new THREE.MeshBasicMaterial({
+      map: shadeTex, transparent: true, depthWrite: false, opacity: .5}));
+    sh.rotation.x = -Math.PI / 2;
+
+    const g = new THREE.Group();
+    const a = i * step;
+    g.position.set(Math.sin(a) * R, 0, Math.cos(a) * R);
+    g.rotation.y = a;
+    g.add(sh, mesh);
+    ring.add(g);
+    cards.push({d, g, mesh, tex, canvas, sh, a});
+
+    // 사진은 카드가 선 뒤에 온다. 못 받으면 흙빛 바탕이 그대로 남는다.
+    const img = new Image();
+    img.crossOrigin = "anonymous";     // 캔버스에 그리려면 CORS 허락이 있어야 한다
+    img.referrerPolicy = "no-referrer";
+    img.decoding = "async";
+    img.onload = () => {
+      canvas.getContext("2d").drawImage(tourCard(d, img, cvar), 0, 0);
+      tex.needsUpdate = true;
+    };
+    img.src = sized(d.cover, 640, 400);
+  });
+
+  /* ── 돌리기 ── */
+  let rot = 0, target = null, idleUntil = 0, front = -1, alive = true, seen = true;
+  const nearest = () => ((Math.round(-rot / step) % N) + N) % N;
+  const goTo = i => { target = -i * step; idleUntil = performance.now() + 5000; };
+  const spin = n => goTo(nearest() + n);
+
+  const cap = document.getElementById("tourCap");
+  function showCap(i){
+    if (!cap) return;
+    const d = items[i];
+    cap.innerHTML = `<b data-place="${esc(d.place)}">${esc(d.name)}</b>
+      <span class="where">${esc([d.country, d.enName].filter(Boolean).join(" · "))}${
+        d.visits ? ` · ${d.visits}번 갔다` : ""}</span>
+      ${d.intro ? `<p>${esc(d.intro)}</p>` : ""}
+      <span class="acts">
+        <button class="open" data-place="${esc(d.place)}">이 도시의 여정 열기 →</button>
+        ${d.url ? guideLink(d) : ""}
+        <span class="src">사진·소개 © Trip.com</span></span>`;
+  }
+
+  /* ── 손과 키 ── */
+  const el = renderer.domElement;
+  const ray = new THREE.Raycaster(), pt = new THREE.Vector2();
+  function pick(e){
+    const r = el.getBoundingClientRect();
+    pt.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height * 2 - 1));
+    ray.setFromCamera(pt, camera);
+    const hit = ray.intersectObjects(cards.map(c => c.mesh))[0];
+    return hit ? hit.object.userData.i : -1;
+  }
+  let drag = null;
+  const onDown = e => {
+    drag = {x: e.clientX, rot, moved: 0};
+    target = null; idleUntil = performance.now() + 5000;
+    el.setPointerCapture?.(e.pointerId);
+  };
+  const onMove = e => {
+    idleUntil = performance.now() + 5000;
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    drag.moved = Math.max(drag.moved, Math.abs(dx));
+    rot = drag.rot + dx * .005;
+  };
+  const onUp = e => {
+    if (!drag) return;
+    const tapped = drag.moved < 6 ? pick(e) : -1;
+    drag = null;
+    if (tapped < 0) return goTo(nearest());   // 끌었으면 가장 가까운 카드로 붙인다
+    if (tapped === nearest()) return openPlace(items[tapped].place);
+    goTo(tapped);                             // 옆의 카드는 한 번 눌러 앞으로 부른다
+  };
+  const onKey = e => {
+    if (e.key === "ArrowLeft"){ spin(-1); e.preventDefault(); }
+    else if (e.key === "ArrowRight"){ spin(1); e.preventDefault(); }
+    else if (e.key === "Enter"){ openPlace(items[nearest()].place); e.preventDefault(); }
+  };
+  const onEnter = () => { idleUntil = Infinity; };   // 얹고 있는 동안은 멈춘다
+  const onLeave = () => { idleUntil = performance.now() + 1200; };
+  const onLost = e => {
+    e.preventDefault();
+    tourFallback("3D 투어가 멈췄습니다 — 아래 격자로 보여 드립니다.");
+  };
+
+  el.addEventListener("pointerdown", onDown);
+  el.addEventListener("pointermove", onMove);
+  el.addEventListener("pointerup", onUp);
+  el.addEventListener("pointercancel", () => { drag = null; });
+  el.addEventListener("webglcontextlost", onLost);
+  stage.addEventListener("keydown", onKey);
+  stage.addEventListener("pointerenter", onEnter);
+  stage.addEventListener("pointerleave", onLeave);
+  const box = stage.closest(".tour");
+  const prev = box?.querySelector(".arm.prev"), next = box?.querySelector(".arm.next");
+  if (prev) prev.onclick = () => spin(-1);
+  if (next) next.onclick = () => spin(1);
+
+  const ro = new ResizeObserver(() => { renderer.setSize(...size()); place(); });
+  ro.observe(stage);
+  const io = new IntersectionObserver(es => { seen = es[0].isIntersecting; }, {threshold:.01});
+  io.observe(stage);
+
+  /* ── 그리기 ── */
+  let raf = 0, last = performance.now();
+  (function frame(now){
+    if (!alive) return;
+    raf = requestAnimationFrame(frame);
+    const dt = Math.min((now - last) / 1000, .05); last = now;
+    if (!seen || document.hidden) return;     // 안 보이면 쉰다
+
+    if (target !== null){
+      const d = target - rot;
+      if (slow || Math.abs(d) < .0015){ rot = target; target = null; }
+      else rot += d * Math.min(1, dt * 7);
+    } else if (!drag && !slow && now > idleUntil){
+      rot -= .12 * dt;                        // 가만히 두면 천천히 돈다
+    }
+    ring.rotation.y = rot;
+
+    for (const c of cards){                   // 앞의 카드는 크고 또렷하게
+      const near = Math.cos(c.a + rot);
+      const lit = Math.max(near, 0);
+      c.g.scale.setScalar(.84 + .16 * lit * lit);
+      c.g.position.y = .1 * lit;
+      c.mesh.material.opacity = .28 + .72 * Math.max((near + .35) / 1.35, 0);
+      c.mesh.material.color.setScalar(.62 + .38 * lit);
+      c.sh.material.opacity = .5 * lit;
+    }
+    const f = nearest();
+    if (f !== front){ front = f; showCap(f); }
+    renderer.render(scene, camera);
+  })(last);
+
+  showCap(0);
+  return {
+    dispose(){
+      alive = false; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect();
+      el.removeEventListener("pointerdown", onDown);
+      el.removeEventListener("pointermove", onMove);
+      el.removeEventListener("pointerup", onUp);
+      el.removeEventListener("webglcontextlost", onLost);
+      stage.removeEventListener("keydown", onKey);
+      stage.removeEventListener("pointerenter", onEnter);
+      stage.removeEventListener("pointerleave", onLeave);
+      cards.forEach(c => { c.tex.dispose(); c.mesh.material.dispose(); c.sh.material.dispose(); });
+      geo.dispose(); shadeGeo.dispose(); shadeTex.dispose();
+      renderer.dispose();
+      el.remove();
+    }
+  };
+}
+
 /* ── 홈 ── */
 function viewHome(){
   const feat = featured();
@@ -1031,16 +1362,27 @@ function viewHome(){
     <div><b>${ERAS.length}</b><small>시대</small></div>
   </div>
 
-  <section class="sec">
+  <section class="sec${state.tour && tourItems().length ? " tourOn" : ""}">
     <div class="sechead">
       <span class="eyebrow">Destinations</span>
-      <button class="more" data-go="destinations">여행지 전체 ${feat.length} →</button>
+      <button class="more" data-tour="${state.tour ? "off" : "on"}">${
+        state.tour ? "격자로 보기 →" : "3D 투어로 보기 →"}</button>
+      <button class="more" style="margin-left:0"
+        data-go="destinations">여행지 전체 ${feat.length} →</button>
       <h3>다시 가고 싶은 곳</h3>
       <p>가장 여러 번 다녀온 도시들입니다. 사진과 소개 글은
         <a href="https://kr.trip.com/travel-guide/destination/" target="_blank"
            rel="noopener nofollow">Trip.com 여행 가이드</a>에서 가져왔고, 카드를 누르면
         그 도시에서 있었던 제 여정이 열립니다.</p>
     </div>
+    ${state.tour && tourItems().length ? `<div class="tour" id="tour">
+      <div class="stage" id="tourStage" tabindex="0" role="application"
+        aria-label="여행지 3D 투어 — 끌거나 좌우 화살표로 돌리고, 앞의 카드를 누르면 그 도시의 여정이 열립니다"></div>
+      <div class="hint">끌어서 돌리고 · 앞의 카드를 누르면 그 도시의 여정이 열립니다</div>
+      <button class="arm prev" aria-label="이전 도시">‹</button>
+      <button class="arm next" aria-label="다음 도시">›</button>
+      <div class="cap" id="tourCap"></div>
+    </div>` : ""}
     ${feat.length
       ? `<div class="dgrid">${feat.slice(0, 8).map(destCard).join("")}</div>`
       : `<div class="empty">아직 받아 둔 여행지 사진이 없습니다.
@@ -1167,6 +1509,7 @@ function destSection(name){
 
 /* ── 렌더 ── */
 function render(keepBar){
+  stopTour();                 // 화면을 갈아엎기 전에 돌던 투어를 접는다 (WebGL 도 놓는다)
   const wide = ["home", "destinations", "candidates"].includes(state.view);
   document.getElementById("wrap").classList.toggle("full", wide);
   document.getElementById("mainCol").classList.toggle("home",
@@ -1177,6 +1520,7 @@ function render(keepBar){
     candidates:viewCandidates}[state.view];
   document.getElementById("view").innerHTML = v();
   if (state.view === "map" && state.gmap && MAPS_KEY) mountGoogleMap();
+  if (state.view === "home" && state.tour) mountTour();
   if (state.view === "home") scrollTo({top:0});
   document.getElementById("brandSub").textContent =
     `${PLACES.filter(p=>p.level!=="poi").length}개 도시 · ${Y0}–${Y1}`;
@@ -1205,6 +1549,14 @@ document.getElementById("ctaTop").onclick = () => {
 document.body.addEventListener("click", e => {
   const gv = e.target.closest("[data-go]");
   if (gv) return go(gv.dataset.go);
+  const tb = e.target.closest("[data-tour]");
+  if (tb){                       // 보던 자리는 그대로 두고 투어 ↔ 격자만 바꾼다
+    const y = scrollY;
+    state.tour = tb.dataset.tour === "on";
+    render();
+    scrollTo({top:y});
+    return;
+  }
   const dc = e.target.closest("[data-dc]");
   if (dc){ state.destCountry = dc.dataset.dc || null; return render(); }
   const cf = e.target.closest("[data-cf]");

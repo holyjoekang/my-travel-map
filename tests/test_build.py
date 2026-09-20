@@ -431,8 +431,9 @@ class Bundle(unittest.TestCase):
     def test_no_external_code(self):
         """스크립트·스타일은 전부 파일 안에 있다. 파일 하나로 돌아야 한다 (PRD §8).
 
-        구글 지도만 예외다 — 그것도 자리표시자 한 곳뿐이고, 사람이 단추를 눌러야
-        불러온다. 첫 화면은 여전히 번들 안의 지도로 그린다.
+        구글 지도와 3D 투어만 예외다 — 둘 다 자리표시자 한 곳뿐이고, 태그가 아니라
+        코드로 부른다. 지도는 사람이 단추를 눌러야, 투어는 홈에 들어와야 부르고,
+        못 불러오면 각각 번들 지도와 격자가 화면을 그대로 맡는다.
         """
         html = (ROOT / "app/index.html").read_text(encoding="utf-8")
         for bad in ["<script src=", "<link rel=\"stylesheet\""]:
@@ -440,6 +441,25 @@ class Bundle(unittest.TestCase):
         self.assertEqual(html.count("maps.googleapis.com"), 1, "구글 지도 로더는 한 곳뿐")
         self.assertIn('"gmap":false', html.replace(" ", "").replace("gmap:false",
                                                                     '"gmap":false'))
+
+    def test_tour_falls_back_to_the_grid(self):
+        """3D 투어는 곁들이다 — 로더는 한 곳이고, 격자는 언제나 그 아래에 남는다.
+
+        three.js 를 못 받거나 WebGL 이 없는 기계에서도 '다시 가고 싶은 곳'은
+        보여야 한다. 투어가 격자를 지우고 그 자리에 들어앉으면 그 길이 끊긴다.
+        """
+        html = (ROOT / "app/index.html").read_text(encoding="utf-8")
+        self.assertEqual(html.count("cdn.jsdelivr.net/npm/three@"), 1,
+                         "three.js 로더는 한 곳뿐")
+        self.assertIn("tourFallback", html, "투어가 접혔을 때 되돌아갈 길이 없다")
+
+        tpl = (ROOT / "app/index.template.html").read_text(encoding="utf-8")
+        home = tpl[tpl.index("function viewHome()"):]
+        sec = home[:home.index("Journeys")]          # 홈의 '다시 가고 싶은 곳' 한 토막
+        self.assertIn('id="tourStage"', sec)
+        self.assertIn('class="dgrid"', sec, "투어가 격자를 밀어냈다 — 되돌아갈 곳이 없다")
+        self.assertIn(".sec.tourOn .dgrid{display:none}", tpl,
+                      "투어가 떠도 격자가 함께 보인다")
 
     def test_maps_key_never_goes_public(self):
         """구글 지도 키는 공개 빌드에 넣지 않는다 — CI 환경변수로만 넣을 수 있다."""
