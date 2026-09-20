@@ -216,8 +216,9 @@ class Itineraries(unittest.TestCase):
                             m["source"])
 
     def test_dates_read_from_the_page(self):
+        """날짜를 모르는 옛 여행은 달까지만(2015-10) 적힌다."""
         for m in self.items:
-            self.assertRegex(m["start"], r"^\d{4}-\d{2}-\d{2}$", m["source"])
+            self.assertRegex(m["start"], r"^\d{4}-\d{2}(-\d{2})?$", m["source"])
             self.assertLessEqual(m["start"], m["end"], m["source"])
             self.assertGreaterEqual(m["days"], 1, m["source"])
 

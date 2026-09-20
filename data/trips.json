@@ -770,19 +770,23 @@
     },
     {
       "id": "t-2024-11-15",
-      "title": "북경 자유여행",
+      "title": "북경 자유여행 — 아침 러닝과 명승지",
       "start": "2024-11-15",
       "end": "2024-11-17",
       "era": "E7",
-      "purpose": "couple",
+      "purpose": "solo",
       "scope": "overseas",
       "cities": [
         "북경"
       ],
       "sources": [
-        "gdoc"
+        "gdoc",
+        "itinerary"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "summary": "혼자 베이징의 지인들을 만나러. 아침에는 달리고 낮에는 걸으며 요즘의 베이징을 보았다.",
+      "summaryPublic": "혼자 베이징으로. 아침에는 달리고 낮에는 걸으며 요즘의 베이징을 보았다.",
+      "itinerary": "2024-11-15_북경.html"
     },
     {
       "id": "t-2024-12-14",
@@ -977,6 +981,51 @@
       "itinerary": "china_west_chongqing_chengdu_2026_v5.html",
       "planned": true,
       "summaryPublic": "마오타이진을 과감히 제외하고 충칭 2박과 청두 2박으로 재구성했습니다. 충칭에서는 불맛과 입체도시의 매력을 충분히 즐기고, 청두에서는 수정방(水井坊) 양조문화와 중국 백주의 역사, 삼국지 문화를 깊이 경험합니다."
+    },
+    {
+      "id": "t-2015-10",
+      "title": "미국 서부 혼자 여행 — LA·라스베이거스·요세미티·샌프란시스코",
+      "start": "2015-10",
+      "end": "2015-10",
+      "era": "E5",
+      "purpose": "solo",
+      "scope": "overseas",
+      "cities": [
+        "로스앤젤레스",
+        "라스베이거스",
+        "요세미티 국립공원",
+        "샌프란시스코",
+        "산호세"
+      ],
+      "summary": "베이징 주재를 매듭지으며 혼자 떠난 열흘. LA에서 선배를, 샌프란시스코에서 건설업을 하시는 분을 만났고, 요세미티에서 하룻밤을 잤다.",
+      "sources": [
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "날짜와 하루 단위 동선은 기록이 남지 않아 개략적으로 재구성한 것이다.",
+      "itinerary": "2015-10_미국서부.html"
+    },
+    {
+      "id": "t-2025-05-22",
+      "title": "싱가포르 홈커밍 — 결혼 27주년",
+      "start": "2025-05-22",
+      "end": "2025-05-26",
+      "era": "E7",
+      "purpose": "couple",
+      "scope": "overseas",
+      "cities": [
+        "싱가포르"
+      ],
+      "companions": [
+        "wife"
+      ],
+      "summary": "아내와 그 시절을 그리기. 1996년 첫 해외 출장지였던 도시로 스물아홉 해 만에 돌아갔다.",
+      "summaryPublic": "아내와 그 시절을 그리기. 1996년 첫 해외 출장지였던 도시로 스물아홉 해 만에 돌아갔다.",
+      "sources": [
+        "itinerary"
+      ],
+      "confidence": "high",
+      "itinerary": "2025-05-22_싱가포르.html"
     }
   ]
 }

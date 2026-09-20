@@ -216,6 +216,90 @@
    "needsReview": false
   },
   {
+   "name": "라스베이거스",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 36.17,
+   "lng": -115.14,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-2015-10"
+   ],
+   "eras": [
+    "E5"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "로스앤젤레스",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 34.05,
+   "lng": -118.24,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-2015-10"
+   ],
+   "eras": [
+    "E5"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "산호세",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 37.34,
+   "lng": -121.89,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-2015-10"
+   ],
+   "eras": [
+    "E5"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "샌프란시스코",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 37.77,
+   "lng": -122.42,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-2015-10"
+   ],
+   "eras": [
+    "E5"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
    "name": "실리콘밸리",
    "level": "city",
    "country": "미국",
@@ -236,6 +320,27 @@
    "aliasesSeen": [
     "미국 필드트립"
    ],
+   "needsReview": false
+  },
+  {
+   "name": "요세미티 국립공원",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 37.87,
+   "lng": -119.54,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-2015-10"
+   ],
+   "eras": [
+    "E5"
+   ],
+   "aliasesSeen": [],
    "needsReview": false
   },
   {
@@ -296,16 +401,19 @@
    "lng": 103.82,
    "sources": [
     "memory",
-    "gsheet"
+    "gsheet",
+    "itinerary"
    ],
    "tripIds": [
     "t-e1-sgmy",
     "t-2019-05-07",
-    "t-2019-10-07"
+    "t-2019-10-07",
+    "t-2025-05-22"
    ],
    "eras": [
     "E1",
-    "E6"
+    "E6",
+    "E7"
    ],
    "aliasesSeen": [],
    "needsReview": false
@@ -1671,7 +1779,8 @@
     "memory",
     "blog",
     "gsheet",
-    "gdoc"
+    "gdoc",
+    "itinerary"
    ],
    "tripIds": [
     "t-e5-beijing",

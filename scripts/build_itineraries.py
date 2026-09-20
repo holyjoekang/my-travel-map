@@ -111,13 +111,24 @@ def parse_range(title: str, body: str, stem: str) -> tuple[str, str]:
             y, mo, d = m.groups()
             one = f"{y}-{int(mo):02d}-{int(d):02d}"
             return one, one
+        # 날짜를 모르는 옛 여행은 달까지만 적는다 — 2015.10 · 2015년 10월
+        m = re.search(r"(\d{4})[.\-/](\d{1,2})(?![.\-/]?\d)|(\d{4})년\s*(\d{1,2})월", s)
+        if m:
+            y, mo = (m.group(1), m.group(2)) if m.group(1) else (m.group(3), m.group(4))
+            one = f"{y}-{int(mo):02d}"
+            return one, one
     m = re.search(r"(\d{4})-(\d{2})-(\d{2})", stem)
     return (m.group(0), m.group(0)) if m else ("", "")
 
 
+def pad(d: str) -> str:
+    """달까지만 아는 날짜를 그 달 1일로 친다. 비교와 날짜 셈에만 쓴다."""
+    return d if len(d) >= 10 else (d + "-01" if len(d) == 7 else d + "-01-01")
+
+
 def days_between(start: str, end: str) -> int:
     try:
-        a, b = date.fromisoformat(start), date.fromisoformat(end)
+        a, b = date.fromisoformat(pad(start)), date.fromisoformat(pad(end))
     except ValueError:
         return 1
     return abs((b - a).days) + 1
@@ -126,8 +137,8 @@ def days_between(start: str, end: str) -> int:
 def gap_days(a: str, b: str) -> int:
     """두 기간이 겹치면 0, 아니면 떨어진 날 수."""
     try:
-        s1, e1 = date.fromisoformat(a[0]), date.fromisoformat(a[1])
-        s2, e2 = date.fromisoformat(b[0][:10]), date.fromisoformat(b[1][:10])
+        s1, e1 = date.fromisoformat(pad(a[0])), date.fromisoformat(pad(a[1]))
+        s2, e2 = date.fromisoformat(pad(b[0])), date.fromisoformat(pad(b[1]))
     except ValueError:
         return 10**6
     if s1 <= e2 and s2 <= e1:
@@ -145,6 +156,8 @@ AMBIGUOUS = {"부여", "남해", "지난", "다리", "대리", "상주", "영주
              "의성", "고성", "남원", "포산", "광주",
              "위해", "소주", "인도", "무한", "상해", "장사", "성도",
              "대동", "보정", "정주", "대만", "영국", "불산", "주해"}
+
+
 def needles(aliases: dict) -> list[tuple[str, str]]:
     """찾을 표기 → 정식 도시명. 긴 표기부터 본다(청두 시 < 청두 순서가 되지 않게)."""
     pairs: dict[str, str] = {}
@@ -163,6 +176,16 @@ def needles(aliases: dict) -> list[tuple[str, str]]:
         if target in names and len(raw) >= 2:
             pairs.setdefault(raw, target)
     return sorted(pairs.items(), key=lambda kv: -len(kv[0]))
+
+
+def declared(html: str, table: list[tuple[str, str]]) -> list[str]:
+    """일정표가 스스로 밝힌 도시(<meta name="cities">). 없으면 빈 목록."""
+    m = re.search(r'<meta\s+name="cities"\s+content="([^"]*)"', html, re.I)
+    if not m:
+        return []
+    canon = dict(table)
+    return [canon.get(c.strip(), c.strip())
+            for c in htmllib.unescape(m.group(1)).split(",") if c.strip()]
 
 
 def parse_cities(title: str, head: str, body: str, table: list[tuple[str, str]]) -> list[str]:
@@ -230,8 +253,13 @@ def read_itinerary(path: Path, public: bool, table: list[tuple[str, str]]) -> di
         "lead": lead,
         "start": start,
         "end": end,
-        "days": days_between(start, end) if start else 1,
-        "cities": parse_cities(doc_title + " " + h1, head, body, table),
+        # 기간이 하루하루 적혀 있지 않으면 제목의 '열흘'·'3일'을 믿는다.
+        "days": (int(m.group(1)) if (m := re.search(r"(\d{1,2})\s*일(?!\s*차)", doc_title))
+                 else days_between(start, end) if start else 1),
+        # 만든 쪽이 도시를 적어 두었으면 그것을 믿는다. 글 속의 '베이징 주재를 마치고'
+        # 같은 대목이 목적지로 잡히지 않는다.
+        "cities": (declared(raw, table)
+                   or parse_cities(doc_title + " " + h1, head, body, table)),
         "purpose": next((p for p, keys in PURPOSE_HINTS
                          if any(k in body for k in keys)), "friends"),
         "scope": "domestic" if "인천" not in body and "공항" not in body else "overseas",

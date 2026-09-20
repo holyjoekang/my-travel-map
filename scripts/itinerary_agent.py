@@ -204,7 +204,10 @@ def spec_to_text(spec: dict) -> str:
     """검증까지 마친 스펙을 다시 원고로 적는다. 이 파일만 고쳐 다시 돌릴 수 있다."""
     i = spec["info"]
     head = {"제목": i["title"], "부제": i["subtitle"],
-            "기간": f"{i['start']} ~ {i['end']}", "도시": ", ".join(i["cities"]),
+            "기간": f"{i['start']} ~ {i['end']}",
+            # 달까지만 아는 여행은 길이를 따로 적어야 다시 돌려도 살아남는다
+            "일수": str(i["days"]) if len(i["start"]) < 10 else "",
+            "도시": ", ".join(i["cities"]),
             "목적": i["purpose"], "여정": (spec["trip"] or {}).get("id", ""),
             "표지": i["cover"], "공개": "아니오" if i["private"] else "예",
             "소개": i["intro"]}
@@ -366,7 +369,8 @@ def enrich(spec: dict, args: dict) -> dict:
         "subtitle": meta.get("부제", ""),
         "intro": meta.get("소개") or (trip or {}).get("summary", ""),
         "start": start, "end": end,
-        "days": bi.days_between(start, end),
+        # 달까지만 아는 옛 여행은 '일수: 10' 으로 길이를 적어 준다.
+        "days": int(meta.get("일수") or 0) or bi.days_between(start, end),
         "cities": cities, "unknown": unknown,
         "purpose": meta.get("목적", ""),
         "cover": meta.get("표지") or (dest or {}).get("cover", ""),
@@ -384,6 +388,7 @@ PAGE = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title} | {subtitle} | {period_dot}</title>
 <meta name="description" content="{intro_short}">
+<meta name="cities" content="{cities_meta}">
 <style>
 :root{{
   --bg:#f7f5f0; --panel:#fffdf8; --line:#e2dcd0; --ink:#1f1c17; --dim:#7b7264;
@@ -486,6 +491,9 @@ def render(spec: dict) -> str:
     dot = (info["start"].replace("-", ".") + "–" +
            info["end"][5:].replace("-", ".")) if info["start"] != info["end"] \
         else info["start"].replace("-", ".")
+    # 달까지만 아는 여행은 길이를 제목에 적어 둔다 — 다시 읽는 쪽이 이것으로 일수를 안다.
+    if len(info["start"]) < 10:
+        dot += f" · {info['days']}일"
 
     badges = [f"{info['days']}일", *info["cities"]]
     if info["purpose"]:
@@ -555,6 +563,7 @@ def render(spec: dict) -> str:
         period_dot=dot,
         kicker=esc(" · ".join(filter(None, [period, *info["cities"]]))),
         intro_short=esc(info["intro"][:150]),
+        cities_meta=esc(", ".join(info["cities"])),
         intro_html=f'<p class="lead">{esc(info["intro"])}</p>' if info["intro"] else "",
         cover=cover, credit=credit, badges=badge_html,
         sections="".join(blocks),
@@ -667,7 +676,10 @@ def main() -> None:
     # 4. 렌더
     out_dir = bi.PRIVATE_DIR if info["private"] else bi.SRC_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
-    name = f"{info['start']}_{info['cities'][0] if info['cities'] else 'trip'}.html"
+    # 원고 파일로 돌렸으면 그 이름을 그대로 쓴다 — 고쳐서 다시 돌려도 파일이 늘지 않는다.
+    stem = (Path(files[0]).stem if files else
+            f"{info['start']}_{info['cities'][0] if info['cities'] else 'trip'}")
+    name = stem + ".html"
     out = out_dir / name
     stale = (bi.SRC_DIR if info["private"] else bi.PRIVATE_DIR) / name
     if stale.exists():  # 공개↔개인을 바꿔 다시 만들면 옛 자리의 것은 지운다
