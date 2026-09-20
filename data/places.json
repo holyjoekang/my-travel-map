@@ -39,6 +39,237 @@
    "needsReview": true
   },
   {
+   "name": "네덜란드 국립박물관",
+   "level": "poi",
+   "country": "네덜란드",
+   "region": "North Holland, Amsterdam",
+   "parent": "암스테르담",
+   "kind": "박물관",
+   "lat": 52.36,
+   "lng": 4.88,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "마우리츠하위스 미술관",
+   "level": "poi",
+   "country": "네덜란드",
+   "region": "South Holland, The Hague",
+   "parent": "헤이그",
+   "kind": "미술관",
+   "lat": 52.08,
+   "lng": 4.31,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "베이스트 교회",
+   "level": "poi",
+   "country": "네덜란드",
+   "region": "Gelderland, Beesd",
+   "parent": null,
+   "kind": "교회",
+   "lat": 51.888,
+   "lng": 5.187,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "아브라함 카이퍼가 목회한 베이스트(Beesd)의 교회. 헬데를란트 시골이라 상위 도시를 두지 않았다."
+  },
+  {
+   "name": "스히폴 공항",
+   "level": "poi",
+   "country": "네덜란드",
+   "region": "North Holland, Haarlemmermeer",
+   "parent": "암스테르담",
+   "kind": "공항",
+   "lat": 52.309,
+   "lng": 4.764,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "암스테르담",
+   "level": "city",
+   "country": "네덜란드",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 52.37,
+   "lng": 4.9,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "암스테르담 자유대학교",
+   "level": "poi",
+   "country": "네덜란드",
+   "region": "North Holland, Amsterdam",
+   "parent": "암스테르담",
+   "kind": "대학교",
+   "lat": 52.334,
+   "lng": 4.866,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "아브라함 카이퍼가 세운 학교(Vrije Universiteit)."
+  },
+  {
+   "name": "이준 열사 기념관",
+   "level": "poi",
+   "country": "네덜란드",
+   "region": "South Holland, The Hague",
+   "parent": "헤이그",
+   "kind": "기념관",
+   "lat": 52.081,
+   "lng": 4.313,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "1907년 만국평화회의에 왔던 이준 열사가 묵은 드용 호텔 자리."
+  },
+  {
+   "name": "잔세스칸스",
+   "level": "poi",
+   "country": "네덜란드",
+   "region": "North Holland, Zaanstad",
+   "parent": "암스테르담",
+   "kind": "민속마을",
+   "lat": 52.474,
+   "lng": 4.817,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "잔스타트의 풍차 마을. 도시가 아니라 암스테르담 근교의 장소로 뒀다."
+  },
+  {
+   "name": "쾰른",
+   "level": "city",
+   "country": "네덜란드",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 50.94,
+   "lng": 6.96,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "헤이그",
+   "level": "city",
+   "country": "네덜란드",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 52.08,
+   "lng": 4.31,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
    "name": "타이베이",
    "level": "city",
    "country": "대만",
@@ -145,6 +376,281 @@
    ],
    "tripIds": [
     "t-2025-namhae"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "군주의 행렬",
+   "level": "poi",
+   "country": "독일",
+   "region": "Saxony, Dresden",
+   "parent": "드레스덴",
+   "kind": "벽화",
+   "lat": 51.053,
+   "lng": 13.74,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "루터의 집",
+   "level": "poi",
+   "country": "독일",
+   "region": "Saxony-Anhalt, Wittenberg",
+   "parent": "비텐베르크",
+   "kind": "박물관",
+   "lat": 51.866,
+   "lng": 12.651,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "바르트부르크 성",
+   "level": "poi",
+   "country": "독일",
+   "region": "Thuringia, Eisenach",
+   "parent": "아이제나흐",
+   "kind": "성",
+   "lat": 50.966,
+   "lng": 10.307,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "루터가 열 달을 숨어 지내며 신약성경을 독일어로 옮긴 곳."
+  },
+  {
+   "name": "비텐베르크",
+   "level": "city",
+   "country": "독일",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 51.87,
+   "lng": 12.65,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "비텐베르크 성교회",
+   "level": "poi",
+   "country": "독일",
+   "region": "Saxony-Anhalt, Wittenberg",
+   "parent": "비텐베르크",
+   "kind": "교회",
+   "lat": 51.866,
+   "lng": 12.638,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "1517년 루터가 95개조 반박문을 내건 자리. 루터와 멜랑히톤의 무덤이 있다."
+  },
+  {
+   "name": "아이제나흐",
+   "level": "city",
+   "country": "독일",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 50.98,
+   "lng": 10.32,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "에르푸르트",
+   "level": "city",
+   "country": "독일",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 50.98,
+   "lng": 11.03,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "에르푸르트 아우구스티너 수도원",
+   "level": "poi",
+   "country": "독일",
+   "region": "Thuringia, Erfurt",
+   "parent": "에르푸르트",
+   "kind": "수도원",
+   "lat": 50.981,
+   "lng": 11.031,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "루터가 수도사가 된 곳."
+  },
+  {
+   "name": "쾰른 대성당",
+   "level": "poi",
+   "country": "독일",
+   "region": "North Rhine-Westphalia, Cologne",
+   "parent": "쾰른",
+   "kind": "대성당",
+   "lat": 50.941,
+   "lng": 6.958,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "프라우엔 교회",
+   "level": "poi",
+   "country": "독일",
+   "region": "Saxony, Dresden",
+   "parent": "드레스덴",
+   "kind": "교회",
+   "lat": 51.052,
+   "lng": 13.742,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "하이델베르크",
+   "level": "city",
+   "country": "독일",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 49.4,
+   "lng": 8.69,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "하이델베르크 성",
+   "level": "poi",
+   "country": "독일",
+   "region": "Baden-Württemberg, Heidelberg",
+   "parent": "하이델베르크",
+   "kind": "성",
+   "lat": 49.41,
+   "lng": 8.71,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
    ],
    "eras": [
     "E7"
@@ -3564,6 +4070,235 @@
    ],
    "eras": [
     "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "드레스덴",
+   "level": "city",
+   "country": "체코",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 51.05,
+   "lng": 13.74,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "바츨라프 광장",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "광장",
+   "lat": 50.081,
+   "lng": 14.427,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "베들레헴 채플",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "예배당",
+   "lat": 50.083,
+   "lng": 14.417,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "얀 후스가 체코어로 설교한 곳. 이번 여행의 출발점이다."
+  },
+  {
+   "name": "성 비투스 대성당",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "대성당",
+   "lat": 50.091,
+   "lng": 14.401,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "카를교",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "다리",
+   "lat": 50.086,
+   "lng": 14.411,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "틴 성당",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "성당",
+   "lat": 50.088,
+   "lng": 14.422,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "프라하",
+   "level": "city",
+   "country": "체코",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 50.09,
+   "lng": 14.42,
+   "sources": [
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "프라하 구시가 광장",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "광장",
+   "lat": 50.087,
+   "lng": 14.421,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "프라하 성",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "성",
+   "lat": 50.091,
+   "lng": 14.4,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "프라하 천문시계",
+   "level": "poi",
+   "country": "체코",
+   "region": "Prague",
+   "parent": "프라하",
+   "kind": "시계탑",
+   "lat": 50.087,
+   "lng": 14.42,
+   "sources": [
+    "fix",
+    "itinerary",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2023-08-11"
+   ],
+   "eras": [
+    "E7"
    ],
    "aliasesSeen": [],
    "needsReview": false

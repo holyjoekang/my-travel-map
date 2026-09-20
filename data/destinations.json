@@ -2,7 +2,7 @@
  "_": "빌드 산출물이 아니라 캐시다. scripts/fetch_destinations.py 가 채운다.",
  "source": "https://kr.trip.com/travel-guide/destination/",
  "credit": "사진·소개 글 © Trip.com. 발췌만 싣고 원문으로 링크한다.",
- "fetched": "2026-09-20",
+ "fetched": "2026-09-21",
  "destinations": [
   {
    "place": "베이징",
@@ -2253,6 +2253,276 @@
    ],
    "lat": 40.81697,
    "lng": 111.66893
+  },
+  {
+   "place": "프라하",
+   "id": 822,
+   "name": "프라하",
+   "enName": "Prague",
+   "country": "체코",
+   "url": "https://kr.trip.com/travel-guide/destination/prague-822/",
+   "cover": "https://ak-d.tripcdn.com/images/10090y000000lytqrA599_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100n0i0000009lramC4EA_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "프라하 성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10040m000000de6t4F9F7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "카를교"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10031f000001gs1oh8DF0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "구시가 광장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101z120008fjcmlwF51B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "구 시청"
+    }
+   ],
+   "lat": 50.07554,
+   "lng": 14.4378
+  },
+  {
+   "place": "드레스덴",
+   "id": 1467,
+   "name": "드레스덴",
+   "enName": "Dresden",
+   "country": "작센",
+   "url": "https://kr.trip.com/travel-guide/destination/dresden-1467/",
+   "cover": "https://ak-d.tripcdn.com/images/0103o120009bxz2xdAF0B_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102g120008i7dz8t1715_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "드레스덴 성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106x120008i7df141279_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "드레스덴 프라우엔 교회"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104z12000o2e20ws4D95_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "츠빙거"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101f12000ldnga501734_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "브륄의 테라스"
+    }
+   ],
+   "lat": 51.050407,
+   "lng": 13.737262
+  },
+  {
+   "place": "비텐베르크",
+   "id": 131530,
+   "name": "루터슈타트비텐베르크",
+   "enName": "Lutherstadt Wittenberg",
+   "country": "작센 안할트",
+   "url": "https://kr.trip.com/travel-guide/destination/lutherstadt-wittenberg-131530/",
+   "cover": "https://ak-d.tripcdn.com/images/0ww4612000cjczdz696C1_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0ww0d12000cjczeawA253_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "The Market Square"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ2912000h0d9ci651C9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "성(城) 교회"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ2w12000h09y4l9CA27_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Luther 1517 - Wittenberg 360 °"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100l1f000001gqhda6E65_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "루터의 집"
+    }
+   ],
+   "lat": 51.87398,
+   "lng": 12.627966
+  },
+  {
+   "place": "에르푸르트",
+   "id": 27554,
+   "name": "에르푸르트",
+   "enName": "Erfurt",
+   "country": "튀 링겐",
+   "url": "https://kr.trip.com/travel-guide/destination/erfurt-27554/",
+   "cover": "https://ak-d.tripcdn.com/images/0HJ1612000pjmw8y1B1EC_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0ww36120009c4hg9x2355_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Domplatz"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103512000f6ro1ey5B37_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Thuringian Zoo Park, Erfurt"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ6u12000pjmrygx8C27_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Egapark"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ4l12000plj03zb2FF8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Messe Erfurt GmbH"
+    }
+   ],
+   "lat": 50.984768,
+   "lng": 11.02988
+  },
+  {
+   "place": "아이제나흐",
+   "id": 27673,
+   "name": "아이제나흐",
+   "enName": "Eisenach",
+   "country": "튀 링겐",
+   "url": "https://kr.trip.com/travel-guide/destination/eisenach-27673/",
+   "cover": "https://ak-d.tripcdn.com/images/0100z120008x18wpo7BDF_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100m12000f6qky1w08B8_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "바르트부르크 성"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100i1f000001gp4h67AE9_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Automobile Welt Eisenach"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ3r12000h02xzo2C83E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Bach House"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ4m12000hazyru85BA1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Burschenschaftsdenkmal"
+    }
+   ],
+   "lat": 50.980255,
+   "lng": 10.315619
+  },
+  {
+   "place": "하이델베르크",
+   "id": 790,
+   "name": "하이델베르크",
+   "enName": "Heidelberg",
+   "country": "바덴 뷔르템베르크",
+   "url": "https://kr.trip.com/travel-guide/destination/heidelberg-790/",
+   "cover": "https://ak-d.tripcdn.com/images/100p0z000000mpgbaAA3A_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100k12000nz31cfxF97F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하이델베르크 알트슈타트"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104i12000o209lfz6888_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하이델베르크 대학교"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100n1c000001dsnw64DC1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "철학자의 길"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ4k12000h0e5sylCAF0_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하이델베르크 동물원"
+    }
+   ],
+   "lat": 49.398754,
+   "lng": 8.672434
+  },
+  {
+   "place": "쾰른",
+   "id": 388,
+   "name": "쾰른",
+   "enName": "Cologne",
+   "country": "노르트 라인 베스트팔렌",
+   "url": "https://kr.trip.com/travel-guide/destination/cologne-388/",
+   "cover": "https://ak-d.tripcdn.com/images/0100912000jnf9ph1BE62_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100e0y000000lz68hDB93_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "쾰른 대성당"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104812000a9a6by519C3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "라이나우 하버 지구"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2412000g4klat58403_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "향수박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100e1f000001gt2p10AAD_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "호엔촐레른 다리"
+    }
+   ],
+   "lat": 50.93753,
+   "lng": 6.9602785
+  },
+  {
+   "place": "암스테르담",
+   "id": 299,
+   "name": "암스테르담",
+   "enName": "Amsterdam",
+   "country": "노르트 홀란트",
+   "url": "https://kr.trip.com/travel-guide/destination/amsterdam-299/",
+   "cover": "https://ak-d.tripcdn.com/images/100o0u000000j7xs93C78_D_1180_558.jpg",
+   "intro": "수많은 운하와 물길이 흐르는 아름다운 도시, 암스테르담으로 떠나보세요. \"북쪽의 베니스\"이자 \"박물관의 왕국\"인 이곳에는 유럽의 예술 작품이 차고 넘칩니다. 그리고 거부할 수 없는 유혹이 더없이 달콤한 자유와 함께 완벽하게 공존하는 생기발랄한 도시죠. 암스테르담은 개방적 문화로 전 세계적으로 유명합니다. 이상하고 당황스러운데 참신한 어떤 것이 있다면, 예술이든 그 어떤 것이든 바로 이곳에 존재할 것입니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0101512000ipv0zp03236_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "반 고흐 미술관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ4212000nsuzlchEC8E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "암스테르담 국립미술관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100e050000000lofd00C2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "네덜란드 왕궁"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100z12000k1t19ta9E65_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "안네 프랑크의 집"
+    }
+   ],
+   "lat": 52.370216,
+   "lng": 4.895168
+  },
+  {
+   "place": "헤이그",
+   "id": 385,
+   "name": "헤이그",
+   "enName": "Hague",
+   "country": "자위트홀란트",
+   "url": "https://kr.trip.com/travel-guide/destination/hague-385/",
+   "cover": "https://ak-d.tripcdn.com/images/0103112000a6r9chaFCFE_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100b0z000000nzke8A9C2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "마우리츠하위스 미술관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100u1f000001gq8bq8953_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "평화궁"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0106f12000lb01qw90B0D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "에셔 인 헷 팔레이스 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0l12000h0off68E779_D_1180_558.png?proc=source%2ftrip",
+     "poi": "마두로담"
+    }
+   ],
+   "lat": 52.0705,
+   "lng": 4.3006997
   }
  ]
 }
