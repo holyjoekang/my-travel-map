@@ -960,12 +960,25 @@ const shot = (url, alt) => url
 const guideLink = d => `<a href="${esc(d.url)}" target="_blank" rel="noopener nofollow"
   title="trip.com 여행 가이드에서 보기">Trip.com 가이드 →</a>`;
 
-/** 사진이 있는 여행지를 방문 횟수 순으로. 홈은 앞쪽만 쓴다. */
+/** 사진이 있는 여행지를 방문 횟수 순으로. 홈의 표지와 머리 사진이 이걸 쓴다. */
 function featured(){
   return DESTS.filter(d => d.cover).map(d => {
     const p = byName.get(d.place);
     return {...d, visits: p ? p.visits : 0, country: (p && p.country) || d.country};
   }).sort((a,b) => b.visits - a.visits || a.name.localeCompare(b.name, "ko"));
+}
+
+/** 여행지 목록은 **다녀온 도시**가 기준이다. trip.com 사진은 있으면 얹는다.
+   사진 캐시를 기준으로 세면 가이드가 없는 도시가 통째로 빠져 나라 수와 도시 수가
+   통계 탭과 어긋난다 (미국 8곳 중 뉴욕 하나만 세지는 식으로). */
+function gallery(){
+  return PLACES.filter(p => p.level !== "poi").map(p => {
+    const d = destOf.get(p.name) || {};
+    return {...d, place: p.name, name: d.name || p.name,
+            country: p.country || d.country, visits: p.visits};
+  }).sort((a,b) => b.visits - a.visits ||
+                   (!!b.cover) - (!!a.cover) ||
+                   a.name.localeCompare(b.name, "ko"));
 }
 
 function destCard(d){
@@ -979,7 +992,8 @@ function destCard(d){
       <h4 data-place="${esc(d.place)}">${esc(d.name)}</h4>
       <div class="where">${esc([d.country, d.enName].filter(Boolean).join(" · "))}</div>
       <p class="intro">${esc(d.intro || "")}</p>
-      <div class="foot">${guideLink(d)}<span class="src">사진·소개 © Trip.com</span></div>
+      <div class="foot">${d.url ? `${guideLink(d)}<span class="src">사진·소개 © Trip.com</span>`
+        : `<span class="src" style="margin-left:0">Trip.com 가이드가 없는 곳</span>`}</div>
     </div></article>`;
 }
 
@@ -1106,11 +1120,10 @@ function inviteActions(){
 
 /* ── 여행지 ── */
 function viewDestinations(){
-  const feat = featured();
+  const feat = gallery();
   if (!feat.length) return `<div class="sec"><div class="empty">
-    아직 받아 둔 여행지 사진이 없습니다.<br>
-    <small>data/tripcom_places.json 에 도시를 적고
-      python scripts/fetch_destinations.py 를 돌리세요.</small></div></div>`;
+    아직 다녀온 곳이 없습니다.</div></div>`;
+  const shots = feat.filter(d => d.cover).length;
   const countries = [...new Set(feat.map(d => d.country).filter(Boolean))]
     .sort((a,b) => feat.filter(d=>d.country===b).length - feat.filter(d=>d.country===a).length);
   const pick = state.destCountry;
@@ -1120,7 +1133,8 @@ function viewDestinations(){
       <h3>다녀온 곳, 그리고 그곳의 얼굴</h3>
       <p>사진과 소개 글은 <a href="https://kr.trip.com/travel-guide/destination/" target="_blank"
         rel="noopener nofollow">Trip.com 여행 가이드</a>에서 가져와 발췌한 것입니다.
-        “Trip.com 가이드”를 누르면 원문으로, 도시 이름을 누르면 제 기록으로 갑니다.</p></div>
+        “Trip.com 가이드”를 누르면 원문으로, 도시 이름을 누르면 제 기록으로 갑니다.
+        ${shots < feat.length ? `가이드가 없는 ${feat.length - shots}곳은 이름만 놓았습니다.` : ""}</p></div>
     <div class="bar" style="margin-bottom:18px"><div class="seg">
       <button data-dc="" aria-pressed="${!pick}">전체 ${feat.length}</button>
       ${countries.map(c => `<button data-dc="${esc(c)}" aria-pressed="${pick === c}">
