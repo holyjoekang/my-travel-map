@@ -238,6 +238,19 @@ svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line
 .tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;
   border:1px solid var(--line);color:var(--dim);margin:0 4px 4px 0}
 
+/* 일정표 — 여행 전에 만들어 둔 하루하루 계획. 여정을 누르면 여기로 이어진다. */
+.itin{display:block;border:1px solid var(--accent);border-radius:12px;padding:13px 14px;
+  background:var(--bg);color:var(--ink);text-decoration:none;box-shadow:var(--shadow)}
+.itin:hover{box-shadow:var(--lift)}
+.itin b{display:block;font:600 15px/1.35 var(--serif)}
+.itin .sub{font-size:12px;color:var(--dim);margin-top:3px}
+.itin p{margin:7px 0 0;font-size:12.5px;color:var(--dim)}
+.itin .open{display:inline-block;margin-top:9px;font-size:12px;font-weight:600;
+  color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:4px 11px}
+.pin{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.02em;
+  padding:1px 6px;border-radius:999px;background:var(--accent);color:var(--accent-ink)}
+.tcard .pin{align-self:flex-start;margin-top:6px}
+
 #drop{border:1.5px dashed var(--line);border-radius:10px;padding:14px;text-align:center;
   color:var(--dim);font-size:12.5px;cursor:pointer}
 #drop.hot{border-color:var(--accent);color:var(--accent)}
@@ -317,7 +330,12 @@ const PURPOSE = {
   friends:"친구여행", pilgrimage:"성지순례", solo:"혼자"
 };
 const SRC = {blog:"블로그", gdoc:"구글 문서", gsheet:"구글 시트", gmaps_saved:"지도 저장목록",
-  calendar:"캘린더", memory:"기억", photo:"사진"};
+  calendar:"캘린더", memory:"기억", photo:"사진", itinerary:"일정표"};
+
+/* 여정 → 일정표 한 장. data/trip_html 의 파일을 app/itinerary/ 로 옮겨 둔 것이다. */
+const ITINS = DATA.itineraries || [];
+const itinOf = new Map(ITINS.map(i => [i.tripId, i]));
+const itinHref = i => "itinerary/" + i.file;
 
 const byName = new Map(PLACES.map(p => [p.name, p]));
 const year = t => +String(t.start).slice(0,4);
@@ -483,7 +501,8 @@ function viewTimeline(){
 function badge(t){
   return `<button class="tbadge" data-trip="${esc(t.id)}">
     <i class="dot" style="background:var(--${t.purpose})"></i>
-    <span>${esc(t.title)}</span></button>`;
+    <span>${esc(t.title)}</span>
+    ${itinOf.has(t.id) ? `<span class="pin">일정표</span>` : ""}</button>`;
 }
 
 /* ── 지역 ── */
@@ -637,7 +656,8 @@ function openPlace(name){
     ${p.needsReview ? `<span class="tag">확인 필요</span>`:""}
     <section><h4>여정 ${ts.length}</h4>
       ${ts.map(t=>`<button class="rowlink" data-trip="${esc(t.id)}">
-        ${esc(t.title)}<em> · ${t.start}${t.umbrella?" (포괄)":""}</em></button>`).join("") ||
+        ${esc(t.title)}<em> · ${t.start}${t.umbrella?" (포괄)":""}</em>
+        ${itinOf.has(t.id)?`<span class="pin">일정표</span>`:""}</button>`).join("") ||
         "<small style='color:var(--dim)'>연결된 여정이 없습니다.</small>"}</section>
     ${kids.length?`<section><h4>이 도시의 장소 ${kids.length}</h4>
       ${kids.map(k=>`<button class="rowlink" data-place="${esc(k.name)}">${esc(k.name)}
@@ -649,9 +669,10 @@ function openPlace(name){
 function openTrip(id){
   const t = TRIPS.find(x => x.id === id); if (!t) return;
   const era = ERAS.find(e => e.id === t.era);
-  panel(`<h2>${esc(t.title)}</h2>
+  panel(`<h2>${esc(t.title)}${t.planned?` <span class="pin">예정</span>`:""}</h2>
     <div class="meta">${t.start}${t.end!==t.start?` ~ ${t.end}`:""} ·
       ${PURPOSE[t.purpose]} · ${t.scope==="domestic"?"국내":"해외"}</div>
+    ${itinSection(t)}
     ${t.summary?`<p style="font-size:13.5px">${esc(t.summary)}</p>`:""}
     ${t.note?`<p style="font-size:12.5px;color:var(--dim)">${esc(t.note)}</p>`:""}
     <section><h4>도시 ${t.cities.length}</h4>
@@ -665,6 +686,20 @@ function openTrip(id){
       <li>기록 신뢰도 · ${({high:"확정",medium:"보통",low:"기억"})[t.confidence]}</li></ul></section>
     <section><h4>출처</h4>${t.sources.map(s=>`<span class="tag">${SRC[s]||s}</span>`).join("")}</section>
     ${photoBox("trip:"+t.id)}`);
+}
+/* 일정표가 붙은 여정이면 상세 패널 맨 위에 한 장 띄운다. 누르면 그 일정표가 열린다. */
+function itinSection(t){
+  const i = itinOf.get(t.id); if (!i) return "";
+  const when = i.start === i.end ? i.start : `${i.start} ~ ${i.end}`;
+  return `<section style="border-top:0;padding-top:0">
+    <h4>일정표</h4>
+    <a class="itin" href="${esc(itinHref(i))}" target="_blank" rel="noopener">
+      <b>${esc(i.title)}</b>
+      <span class="sub">${when} · ${i.days}일 · ${
+        esc(i.subtitle) || i.cities.map(esc).join(" · ")}</span>
+      ${i.lead ? `<p>${esc(i.lead)}</p>` : ""}
+      <span class="open">일정표 열기 →</span>
+    </a></section>`;
 }
 function panel(html){
   document.getElementById("panelBody").innerHTML = html;
@@ -911,6 +946,8 @@ function viewHome(){
         <span class="who"><i class="dot" style="background:var(--${t.purpose});
           display:inline-block;margin-right:5px"></i>${PURPOSE[t.purpose]} ·
           ${t.scope === "domestic" ? "국내" : "해외"}</span>
+        ${itinOf.has(t.id) ? `<span class="pin">일정표</span>`
+          : t.planned ? `<span class="pin">예정</span>` : ""}
       </button>`).join("")}</div>
   </section>
 

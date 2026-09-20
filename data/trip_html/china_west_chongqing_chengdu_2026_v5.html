@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>중국 서부 미식·백주·문화 탐방 | 충칭 2박 · 청두 2박 | 2026.11.18–11.22</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+:root{
+  --bg:#f5f8fa; --panel:#ffffff; --panel2:#f7fafb; --text:#20303c; --muted:#687985;
+  --gold:#b7791f; --gold2:#946516; --red:#a52a2a; --line:#dbe5e9; --green:#3f8f68;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.65}
+a{color:inherit}
+.hero{min-height:88vh;display:flex;align-items:flex-end;padding:64px max(6vw,28px);position:relative;background:
+linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.78)),
+url("https://www.chinadiscovery.com/assets/images/travel-guide/chongqing/hongya-cave/hongya-cave-head-798.jpg") center/cover no-repeat}
+.hero .box{max-width:1050px}
+.kicker{letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);font-size:.86rem;font-weight:700}
+h1{font-size:clamp(2.3rem,6vw,5.4rem);line-height:1.05;margin:.4rem 0 1rem;letter-spacing:-.045em}
+.hero h1,.hero .badge{color:#fff}
+.hero p{font-size:clamp(1rem,2vw,1.25rem);max-width:800px;color:#e7eaee}
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.badge{padding:9px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(13,17,23,.45);backdrop-filter:blur(10px);font-size:.9rem}
+.wrap{width:min(1160px,92vw);margin:0 auto}
+.section{padding:72px 0}
+.section h2{font-size:clamp(1.8rem,3vw,3rem);margin:0 0 12px;letter-spacing:-.03em}
+.lead{color:var(--muted);font-size:1.06rem;max-width:850px;margin-bottom:28px}
+.route{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.route .stop{background:#fff8e8;border:1px solid #eadfca;padding:20px;border-radius:18px;position:relative}
+.stop strong{display:block;font-size:1.05rem}.stop small{color:var(--muted)}
+.stop:after{content:"→";position:absolute;right:-13px;top:44%;color:var(--gold);font-weight:900}
+.stop:last-child:after{display:none}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 32px rgba(39,66,82,.08)}
+.day{margin:30px 0 54px}
+.day-head{display:grid;grid-template-columns:1.05fr .95fr;gap:0;min-height:360px}
+.day-head .photo{min-height:360px;background-position:center;background-size:cover}
+.day-head .intro{padding:34px}
+.date{color:var(--gold2);font-weight:800;letter-spacing:.08em}
+.city{font-size:2.1rem;margin:5px 0 6px}.theme{color:var(--muted)}
+.timeline{padding:10px 28px 28px}
+.row{display:grid;grid-template-columns:125px 1fr;gap:24px;padding:19px 0;border-top:1px solid var(--line)}
+.time{color:var(--gold2);font-weight:800}.row h4{margin:0 0 4px;font-size:1.08rem}.row p{margin:0;color:var(--muted)}
+.transport{display:inline-block;padding:3px 9px;border-radius:999px;background:#e9f6f8;color:#1f6079;font-size:.78rem;margin-left:8px}
+.highlight{border-left:4px solid var(--gold);padding:18px 20px;background:#fff8e8;border-radius:0 14px 14px 0;margin:18px 0;color:#3f372c}
+.gallery{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:14px;margin-top:20px}
+.g{min-height:240px;border-radius:18px;overflow:hidden;position:relative;background:#222 center/cover no-repeat}
+.g.big{min-height:494px;grid-row:span 2}
+.g span{position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,.62);padding:7px 10px;border-radius:10px;font-size:.85rem}
+.food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.food{overflow:hidden}.food img{width:100%;height:240px;object-fit:cover;display:block;background:#edf2f4}.food .txt{padding:20px}.food h3{margin:0 0 5px}.food p{color:var(--muted);margin:0}
+.summary{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.summary .card{padding:24px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border-radius:18px;overflow:hidden}
+th,td{padding:15px 14px;border-bottom:1px solid var(--line);text-align:left}
+th{color:#15364f;background:#f2f7f9;font-size:.88rem}td{color:var(--text)}tr:last-child td{border-bottom:none}
+.note{font-size:.9rem;color:var(--muted);margin-top:14px}
+footer{padding:38px 0 60px;color:#687985;text-align:center}
+.map-heading{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin-top:30px}
+.map-heading h3{margin:0;color:#15364f;font-size:1.25rem}
+.map-heading small{color:var(--muted)}
+.trip-map{height:480px;margin-top:14px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#eaf2f5;box-shadow:0 8px 28px rgba(39,66,82,.06)}
+.day-map-block{padding:0 28px 28px}
+.day-photos{padding:2px 28px 26px}
+.photo-heading{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:6px 0 12px}
+.photo-heading h3{margin:0;color:#15364f;font-size:1.2rem}
+.day-map{height:390px;margin-top:14px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#eaf2f5}
+.map-legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;color:var(--muted);font-size:.84rem}
+.legend-item{display:inline-flex;align-items:center;gap:7px}
+.legend-item::before{width:24px;height:4px;border-radius:4px;background:var(--legend-color);content:""}
+.map-pin{display:grid;width:32px;height:32px;place-items:center;color:#fff;border:3px solid #fff;border-radius:50%;background:#247ba0;box-shadow:0 2px 8px rgba(0,0,0,.28);font-size:12px;font-weight:800}
+.map-pin.transfer{background:#b7791f}
+.map-pin.airport{background:#7256a8}
+.leaflet-popup-content{margin:12px 14px;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;line-height:1.5}
+.leaflet-control-attribution{font-size:10px}
+@media(max-width:850px){
+  .route,.food-grid,.summary{grid-template-columns:1fr}
+  .stop:after{display:none}
+  .day-head{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}.g.big{grid-row:auto;grid-column:1/-1;min-height:320px}
+  .row{grid-template-columns:92px 1fr;gap:14px}
+  .trip-map{height:380px}
+  .day-map{height:340px}
+  .day-map-block{padding:0 18px 22px}
+  .day-photos{padding:0 18px 20px}
+  .map-heading{display:block}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="box">
+    <div class="kicker">SNU EMBA · Four Friends Journey</div>
+    <h1>중국 서부 미식·백주·문화 탐방<br>충칭 2박 · 청두 2박</h1>
+    <p>마오타이진을 과감히 제외하고 충칭 2박과 청두 2박으로 재구성했습니다. 충칭에서는 불맛과 입체도시의 매력을 충분히 즐기고, 청두에서는 수정방(水井坊) 양조문화와 중국 백주의 역사, 삼국지 문화를 깊이 경험합니다. 도시 간 이동은 고속철로 단순하게 유지하는 대신, 청두 체류 하루의 오후를 비워 청청산 뒷자락의 시골 물동네 제쯔구전(街子古镇)으로 다녀옵니다. 장거리 육로 이동은 없애고 네 명이 함께 먹고 이야기하는 시간을 늘린, 더 여유롭고 품격 있는 4박 5일입니다.</p>
+    <div class="badges">
+      <span class="badge">2026.11.18 수 – 11.22 일</span>
+      <span class="badge">서울 → 충칭 2박 → 청두 2박 → 서울</span>
+      <span class="badge">4박 5일</span>
+      <span class="badge">미식 · 白酒 · 역사 · 시골정취 · 야경</span>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="wrap">
+    <h2>왜 이번에는 2박 + 2박인가?</h2>
+    <p class="lead">이번 변경의 핵심은 마오타이진을 단순히 다른 도시로 대체하는 것이 아닙니다. 마오타이진에서 얻으려 했던 ‘백주·역사·문화·미식’의 감동은 청두의 수정방 양조문화 체험으로 이어가고, 마오타이진 가는 길에 기대했던 ‘시골 소도시의 정취’는 청두 체류 하루의 오후를 제쯔구전(街子古镇) 반나절 여행으로 채웁니다. 고속철 이동은 그대로 두고, 충칭과 청두에 각각 2박을 배정해 이동 피로를 줄이고 체류의 깊이를 높입니다.</p>
+    <div class="route">
+      <div class="stop"><strong>인천 ICN</strong><small>11/18 14:00</small></div>
+      <div class="stop"><strong>충칭 重庆</strong><small>2박 · 훠궈·야경·도시문화</small></div>
+      <div class="stop"><strong>청두 成都</strong><small>2박 · 수정방·역사·제쯔구전</small></div>
+      <div class="stop"><strong>인천 ICN</strong><small>11/22 12:55</small></div>
+    </div>
+    <div class="summary" style="margin-top:22px;grid-template-columns:1fr 1fr 1fr">
+      <div class="card"><h3>마오타이진을 빼는 이유</h3><p>기존 일정은 충칭→공항→마오타이공항→마오타이진, 그리고 마오타이진→쭌이→청두로 이어져 이동 자체가 여행의 상당 부분을 차지합니다. 이번 안에서는 이 두 번의 긴 이동을 없앱니다.</p></div>
+      <div class="card"><h3>감동은 오히려 더 깊게</h3><p>마오타이진의 핵심 가치였던 백주 역사·양조문화·시음·만찬을 청두 수정방박물관의 실제 양조 유적·전통 양조기술 체험과 수정방 만찬으로 재구성하고, 삼국지 역사까지 더해 청두 체류의 콘텐츠를 강화합니다.</p></div>
+      <div class="card"><h3>시골 정취는 청두 안에서</h3><p>이동편은 고속철로 단순하게 유지하고, 대신 청두 DAY 4 오후를 비워 제쯔구전(街子古镇)이라는 실제 시골 물동네로 다녀옵니다. 진리·태고리보다 한적한, 마오타이진에서 기대했던 소도시의 정취를 여기서 채웁니다.</p></div>
+    </div>
+
+    <div class="map-heading">
+      <h3>4박 5일 전체 이동 지도</h3>
+      <small>번호는 일정 순서입니다</small>
+    </div>
+    <div id="trip-map" class="trip-map" role="img" aria-label="인천에서 충칭, 마오타이진, 쭌이, 청두를 거쳐 인천으로 돌아오는 전체 여행 동선 지도"></div>
+    <div class="map-legend" aria-label="지도 범례">
+      <span class="legend-item" style="--legend-color:#7256a8">항공</span>
+      <span class="legend-item" style="--legend-color:#b7791f">현지 육로</span>
+      <span class="legend-item" style="--legend-color:#247ba0">고속철</span>
+    </div>
+
+    <div class="gallery">
+      <div class="g big" style='background-image:url("https://pic5.40017.cn/04/001/bf/14/rBTJUl0twcCAYF_mAAOUdouxqIE253.jpg")'><span>청두 수정방박물관 외관 · 水井坊博物馆</span></div>
+      <div class="g" style='background-image:url("https://static-web.stcn.com/upload/2025/1031/09/1761874088556564.jpg")'><span>600년 양조 유적 · 고대 양조장</span></div>
+      <div class="g" style='background-image:url("https://static-web.stcn.com/upload/2025/1031/09/1761874100624529.jpg")'><span>전통 양조기술 전시 · 技艺厅</span></div>
+      <div class="g" style='background-image:url("https://arquitecturaviva.com/assets/uploads/obras/57679/av_imagen.webp")'><span>수정방박물관 발효·고(窖) 체험 공간</span></div>
+      <div class="g" style='background-image:url("https://www.chinadiscovery.com/assets/images/chengdu/taikoo-li/taikooli-1.jpg")'><span>청두 태고리 · 현대 청두</span></div>
+      <div class="g" style='background-image:url("https://www.chinadiscovery.com/assets/images/travel-guide/chongqing/hongya-cave/hongya-cave-head-798.jpg")'><span>충칭 홍야동 · DAY 1–2</span></div>
+    </div>
+
+<section class="section">
+<div class="wrap">
+
+  <article class="day card">
+    <div class="day-head">
+      <div class="photo" style='background-image:url("https://www.chinadiscovery.com/assets/images/travel-guide/chongqing/hongya-cave/hongya-cave-head-798.jpg")'></div>
+      <div class="intro">
+        <div class="date">DAY 1 · 11/18 WED</div>
+        <div class="city">서울 → 충칭 重庆</div>
+        <div class="theme">첫날부터 강렬하게: 훠궈와 홍야동 야경</div>
+        <div class="highlight">여행의 첫 장면은 충칭의 ‘불(火)’. 해방비·홍야동 권역에 숙박하고 저녁 동선을 짧게 가져가 첫날의 피로를 최소화합니다.</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="row"><div class="time">11:00</div><div><h4>인천공항 T1 집결</h4><p>출국 수속 및 간단한 점심.</p></div></div>
+      <div class="row"><div class="time">14:00–16:55</div><div><h4>CA440 인천 → 충칭 <span class="transport">AIR CHINA</span></h4><p>ICN T1 출발, CKG T3 도착. 한국과 중국은 1시간 시차.</p></div></div>
+      <div class="row"><div class="time">18:00경</div><div><h4>호텔 체크인</h4><p>해방비·홍야동 권역 호텔로 이동. 교통 상황에 따라 약 40–60분.</p></div></div>
+      <div class="row"><div class="time">19:30</div><div><h4>충칭 훠궈 만찬</h4><p>마라와 우지우거(九宫格) 스타일을 경험. 4명 취향에 맞춰 맵기를 조절합니다.</p></div></div>
+      <div class="row"><div class="time">21:00–22:30</div><div><h4>홍야동 洪崖洞 · 천사문대교 야경</h4><p>강변과 입체적 도시 구조를 한눈에 감상. 첫날은 이동을 최소화합니다.</p></div></div>
+    </div>
+    <div class="day-map-block">
+      <div class="map-heading"><h3>DAY 1 이동 지도</h3><small>인천 → 충칭 · 야경 동선</small></div>
+      <div id="map-day1" class="day-map" role="img" aria-label="충칭공항에서 해방비, 홍야동과 천사문대교로 이동하는 첫째 날 현지 지도"></div>
+    </div>
+    <div class="day-photos">
+      <div class="photo-heading"><h3>DAY 1 이렇게 보입니다</h3></div>
+      <div class="food-grid">
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/travel-guide/chongqing/hongya-cave/hongya-cave-at-present.jpg" alt="충칭 홍야동 조각루 전경">
+          <div class="txt"><h3>① 홍야동 조각루 전경</h3><p>절벽에 매달린 11층 목조 건축 홍야동. 첫날 저녁 훠궈를 먹고 나서 걸어서 향하는 충칭의 대표 야경 명소입니다.</p></div>
+        </div>
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/travel-guide/chongqing/hongya-cave/Panorama-View-of-hongya-cave.jpg" alt="천사문대교에서 본 홍야동 야경">
+          <div class="txt"><h3>② 천사문대교에서 본 홍야동 야경</h3><p>밤 9시, 절벽에 매달린 조각루 전체에 불이 들어옵니다. 첫날 동선을 호텔 근처로 묶은 이유가 바로 이 장면입니다.</p></div>
+        </div>
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/travel-guide/chongqing/hongya-cave/Stilted-House.jpg" alt="홍야동 절벽 위 목조 건축 세부">
+          <div class="txt"><h3>③ 절벽 위 조각루 건축</h3><p>산세를 그대로 살려 절벽 위에 지은 바위(巴渝) 전통 목조 건축. 도보로 이어지는 짧은 야경 산책 구간입니다.</p></div>
+        </div>
+      </div>
+      <p class="note">사진 출처: China Discovery(홍야동 여행 가이드) · 실제 현장 분위기 참고용입니다.</p>
+    </div>
+  </article>
+
+  <article class="day card">
+    <div class="day-head">
+      <div class="photo" style='background-image:url("https://www.chinadiscovery.com/assets/images/chongqing/itinerary/liziba-metro-house-crossing-512.jpg")'></div>
+      <div class="intro">
+        <div class="date">DAY 2 · 11/19 THU</div>
+        <div class="city">충칭 重庆 · FULL DAY</div>
+        <div class="theme">이동하지 않는 하루: 입체도시와 옛 충칭을 깊게 즐기기</div>
+        <div class="highlight">기존에는 오후 공항 이동 때문에 관광을 일찍 마쳐야 했습니다. 이제는 충칭에서 두 번째 밤을 보내므로 시간 압박 없이 리즈바·십팔제·강변·야경을 즐깁니다. ‘이동하는 여행’에서 ‘머무는 여행’으로 바뀌는 날입니다.</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="row"><div class="time">09:00–10:00</div><div><h4>호텔 조식 & 여유로운 출발</h4><p>체크아웃 없이 가볍게 출발합니다.</p></div></div>
+      <div class="row"><div class="time">10:00–11:30</div><div><h4>리즈바 李子坝</h4><p>건물을 관통하는 충칭 궤도교통 2호선의 상징적 풍경. 산악도시와 현대 교통의 결합을 체험합니다.</p></div></div>
+      <div class="row"><div class="time">11:40–13:00</div><div><h4>십팔제 十八梯</h4><p>계단과 골목을 따라 옛 충칭의 생활문화와 도시의 변화를 느낍니다.</p></div></div>
+      <div class="row"><div class="time">13:00–14:00</div><div><h4>충칭 소면 & 향토요리 점심</h4><p>전날 훠궈와 다른 결의 충칭 음식으로 즐깁니다.</p></div></div>
+      <div class="row"><div class="time">14:30–16:30</div><div><h4>장강·가릉강 전망 & 도심 산책</h4><p>장거리 이동 대신 강과 도시의 풍경을 천천히 즐기고 카페에서 대화 시간을 갖습니다.</p></div></div>
+      <div class="row"><div class="time">17:00–18:30</div><div><h4>호텔 휴식</h4><p>저녁 전 객실에서 충분히 쉬며 다음 날 청두 이동을 준비합니다.</p></div></div>
+      <div class="row"><div class="time">19:00–21:00</div><div><h4>두 번째 충칭 만찬</h4><p>훠궈와 다른 충칭 강호채·생선요리 등을 중심으로 구성합니다.</p></div></div>
+      <div class="row"><div class="time">21:00–22:30</div><div><h4>홍야동·강변 야경</h4><p>첫날의 인상에서 한 단계 더 나아가 충칭의 야간 풍경을 여유롭게 즐깁니다.</p></div></div>
+    </div>
+    <div class="day-map-block">
+      <div class="map-heading"><h3>DAY 2 이동 지도</h3><small>리즈바 → 십팔제 → 강변 → 홍야동</small></div>
+      <div id="map-day2" class="day-map" role="img" aria-label="충칭 시내의 리즈바, 십팔제, 강변과 홍야동을 둘러보는 둘째 날 지도"></div>
+    </div>
+    <div class="day-photos">
+      <div class="photo-heading"><h3>DAY 2 이렇게 보입니다</h3></div>
+      <div class="food-grid">
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/chongqing/itinerary/liziba-metro-house-crossing-512.jpg" alt="리즈바역 건물을 관통하는 충칭 궤도교통 2호선">
+          <div class="txt"><h3>① 리즈바 李子坝</h3><p>아파트 6~8층을 그대로 관통해 지나가는 모노레일. 산악도시 충칭이 공간을 어떻게 쓰는지 한 장면으로 보여줍니다.</p></div>
+        </div>
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/chongqing/transportation/liziba/liziba-banner.jpg" alt="리즈바역 전경">
+          <div class="txt"><h3>② 리즈바 옛 골목과 계단</h3><p>리즈바 주변의 산비탈 골목과 계단길. 조각루와 골목 카페가 섞여 있어 천천히 걸으며 옛 충칭의 생활을 봅니다.</p></div>
+        </div>
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/chongqing/transportation/chaotianmen-dock/chongqing-nightview.jpg" alt="충칭 차오톈먼 장강·가릉강 전망">
+          <div class="txt"><h3>③ 장강·가릉강 전망</h3><p>두 강이 만나는 차오톈먼 일대. 오후에는 강바람을 맞으며 걷고, 카페에 앉아 네 사람이 이야기하는 시간으로 씁니다.</p></div>
+        </div>
+      </div>
+      <p class="note">사진 출처: China Discovery(리즈바·차오톈먼 여행 가이드) · 실제 현장 분위기 참고용입니다.</p>
+    </div>
+  </article>
+
+  <article class="day card">
+    <div class="day-head">
+      <div class="photo" style='background-image:url("https://pic5.40017.cn/04/001/bf/14/rBTJUl0twcCAYF_mAAOUdouxqIE253.jpg")'></div>
+      <div class="intro">
+        <div class="date">DAY 3 · 11/20 FRI</div>
+        <div class="city">충칭 → 청두 成都</div>
+        <div class="theme">酒 · 마오타이진의 아쉬움을 ‘수정방 양조문화’로 전환</div>
+        <div class="highlight">이번 변경안의 핵심입니다. 마오타이진을 단순히 다른 술로 대체하지 않습니다. 기존 일정의 핵심이었던 ‘중국 백주의 역사·양조문화·시음·만찬’을 청두의 수정방(水井坊) 양조문화 체험으로 재구성하고 청두의 도시·음식·문화를 연결합니다.</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="row"><div class="time">08:30–09:30</div><div><h4>호텔 조식 & 체크아웃</h4><p>짐을 정리하고 여유롭게 청두 이동을 준비합니다.</p></div></div>
+      <div class="row"><div class="time">10:00경</div><div><h4>충칭 → 청두 고속철 <span class="transport">HIGH-SPEED RAIL</span></h4><p>이번 여행의 사실상 유일한 도시 간 장거리 이동. 기존의 충칭→마오타이공항→마오타이진 이동을 없앱니다.</p></div></div>
+      <div class="row"><div class="time">12:00경</div><div><h4>청두 도착 & 호텔 이동</h4><p>춘시루·태고리 권역 호텔에 짐을 맡기고 점심으로 이동합니다.</p></div></div>
+      <div class="row"><div class="time">12:30–14:00</div><div><h4>정통 사천요리 점심</h4><p>마파두부·궁보계정·회과육 등 청두의 맛으로 여행의 두 번째 장을 시작합니다.</p></div></div>
+      <div class="row"><div class="time">14:30–17:00</div><div><h4>수정방 水井坊 양조문화·박물관 체험</h4><p>중국 백주의 역사와 전통 양조문화, 수정방의 문화적 배경을 중심으로 탐방하고 가능 시 시음 체험을 결합합니다. ※ 투어·시음은 실제 방문일 운영 및 예약 가능 여부를 출발 전 확인.</p></div></div>
+      <div class="row"><div class="time">17:00–18:00</div><div><h4>호텔 휴식</h4><p>술과 문화 체험 후 충분히 쉬는 시간을 둡니다.</p></div></div>
+      <div class="row"><div class="time">19:00–21:30</div><div><h4>수정방 × 사천요리 酒食 페어링 만찬</h4><p>이번 여행의 하이라이트. 음식과 백주를 함께 경험하며 네 사람이 중국 백주 문화를 이야기하는 시간으로 구성합니다.</p></div></div>
+    </div>
+    <div class="day-map-block">
+      <div class="map-heading"><h3>DAY 3 이동 지도</h3><small>충칭 → 청두 → 수정방 문화 체험 → 만찬</small></div>
+      <div id="map-day3" class="day-map" role="img" aria-label="충칭에서 청두로 고속철 이동 후 수정방 양조문화 체험과 만찬을 진행하는 셋째 날 지도"></div>
+    </div>
+
+  <div class="museum-focus card" style="margin:18px 0 26px; padding:24px;">
+    <h3 style="margin-top:0;">🥃 이번 여행의 핵심 — 청두 수정방박물관</h3>
+    <p style="color:var(--muted);margin-bottom:16px;">
+      마오타이진의 아쉬움을 단순한 ‘백주 시음’으로 대체하지 않고, 청두의 실제 양조 유적과 전통 양조기술을 보는 문화 체험으로 바꿉니다.
+      수정방박물관은 600년 역사의 수井街酒坊 유적을 원형에 가깝게 보존하고 실제 생산 장면을 통해 전통 양조기술을 보여주는 ‘살아 있는 박물관’으로 소개됩니다.
+    </p>
+    <div class="food-grid">
+      <div class="food card">
+        <img loading="lazy" referrerpolicy="no-referrer" src="https://pic5.40017.cn/04/001/bf/14/rBTJUl0twcCAYF_mAAOUdouxqIE253.jpg" alt="청두 수정방박물관 외관">
+        <div class="txt"><h3>① 박물관 외관</h3><p>청두 금강구 수井街에 위치한 수정방박물관. 전통 양조문화 체험의 시작점입니다.</p></div>
+      </div>
+      <div class="food card">
+        <img loading="lazy" referrerpolicy="no-referrer" src="https://static-web.stcn.com/upload/2025/1031/09/1761874088556564.jpg" alt="수정방박물관 고대 양조 유적">
+        <div class="txt"><h3>② 600년 양조 유적</h3><p>고대 양조장과 발굴 유적을 직접 보며 중국 백주의 역사적 깊이를 체감합니다.</p></div>
+      </div>
+      <div class="food card">
+        <img loading="lazy" referrerpolicy="no-referrer" src="https://static-web.stcn.com/upload/2025/1031/09/1761874100624529.jpg" alt="수정방박물관 전통 양조기술 전시">
+        <div class="txt"><h3>③ 전통 양조기술</h3><p>전통 양조 과정과 기술 전승을 눈앞에서 확인한 뒤 수정방과 사천요리 만찬으로 연결합니다.</p></div>
+      </div>
+    </div>
+    <p class="note" style="margin-bottom:0;">
+      사진은 수정방박물관 및 관련 문화자료에서 확인되는 실제 박물관·양조 유적 이미지입니다. 방문 시 운영시간·예약·시음 가능 여부는 출발 전 공식 안내를 다시 확인합니다.
+    </p>
+  </div>
+
+  </article>
+
+  <article class="day card">
+    <div class="day-head">
+      <div class="photo" style='background-image:url("https://www.chinadiscovery.com/assets/images/chengdu/taikoo-li/taikooli-1.jpg")'></div>
+      <div class="intro">
+        <div class="date">DAY 4 · 11/21 SAT</div>
+        <div class="city">청두 成都 · FULL DAY</div>
+        <div class="theme">역사 · 시골 물동네 · 사천요리 · 태고리 — 여행을 천천히 완성</div>
+        <div class="highlight">마오타이진에서 청두로 이동하던 기존 DAY 4를 없애고 청두를 온전히 하루 사용합니다. 오후에는 진리·찻집 대신 청청산 뒷자락의 시골 물동네 <strong>街子古镇(제쯔구전)</strong>으로 반나절 다녀옵니다. 마오타이진에 가려 했던 이유 중 하나였던 ‘시골 소도시의 정취’를, 충칭↔청두 고속철 이동은 그대로 둔 채 청두 체류 안에서 자연스럽게 채웁니다.</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="row"><div class="time">09:00–10:00</div><div><h4>호텔 조식</h4><p>전날 백주 체험 후 여유롭게 하루를 시작합니다.</p></div></div>
+      <div class="row"><div class="time">10:00–12:00</div><div><h4>무후사 武侯祠</h4><p>유비·제갈량과 촉한의 역사를 통해 청두의 역사적 배경을 이해합니다.</p></div></div>
+      <div class="row"><div class="time">12:00–13:00</div><div><h4>청두 전통 점심</h4><p>현지식 면요리와 대표 사천요리를 가볍게 즐깁니다.</p></div></div>
+      <div class="row"><div class="time">13:15–14:30</div><div><h4>청두 → 제쯔구전 街子古镇 <span class="transport">PRIVATE CAR</span></h4><p>약 1시간~1시간 15분. 청두 시내를 벗어나 청청산(靑城山) 뒷자락, 논밭과 야산이 보이는 촨시 시골길로 들어갑니다.</p></div></div>
+      <div class="row"><div class="time">14:30–16:30</div><div><h4>제쯔구전 街子古镇 산책 & 강변 찻집</h4><p>웨이장허(味江河)가 마을을 휘감아 흐르는 ‘촨시 물의 마을’. 청대 옛 거리를 걷고 강변 찻집에서 개완차를 마시며 네 사람이 대화하는 시간을 갖습니다. 진리·태고리보다 훨씬 조용하고 소박한, 실제 시골 소도시의 정취.</p></div></div>
+      <div class="row"><div class="time">16:30–17:45</div><div><h4>제쯔구전 → 청두 <span class="transport">PRIVATE CAR</span></h4><p>약 1시간~1시간 15분. 해 질 무렵 다시 청두 시내로 돌아옵니다.</p></div></div>
+      <div class="row"><div class="time">17:45–18:30</div><div><h4>호텔 휴식</h4><p>귀국 전날인 만큼 일정에 여백을 둡니다.</p></div></div>
+      <div class="row"><div class="time">19:00–21:00</div><div><h4>청두 마지막 만찬</h4><p>마파두부·궁보계정·회과육·수자어·단단면 등 정통 사천요리를 여러 접시로 나눠 즐깁니다.</p></div></div>
+      <div class="row"><div class="time">21:00–22:00</div><div><h4>태고리 太古里 · 춘시루 · IFS 야경</h4><p>시골 물동네에서 현대 청두로 돌아와, 낮과는 완전히 다른 얼굴의 청두로 마지막 밤을 마무리합니다.</p></div></div>
+    </div>
+    <div class="day-map-block">
+      <div class="map-heading"><h3>DAY 4 이동 지도</h3><small>무후사 → 제쯔구전(왕복) → 태고리</small></div>
+      <div id="map-day4" class="day-map" role="img" aria-label="청두 무후사를 본 뒤 제쯔구전(街子古镇)을 다녀오고 태고리에서 마무리하는 넷째 날 지도"></div>
+    </div>
+    <div class="day-photos">
+      <div class="photo-heading"><h3>DAY 4 이렇게 보입니다</h3></div>
+      <div class="food-grid">
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/chengdu/wuhou-temple/wuhoutemple-redwall-768.jpg" alt="청두 무후사 붉은 담장">
+          <div class="txt"><h3>① 무후사 武侯祠</h3><p>유비와 제갈량을 함께 모신 중국 유일의 군신 합사 사당. 붉은 담장과 대나무 길에서 촉한의 이야기를 듣습니다.</p></div>
+        </div>
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/travel-guide/chengdu/jiezi-ancient-town/jiezi-ancient-town-old-street-768.jpg" alt="제쯔구전 청대 옛 거리">
+          <div class="txt"><h3>② 제쯔구전 街子古镇</h3><p>웨이장허가 마을을 휘감아 흐르는 ‘촨시 물의 마을’. 청대 건물이 늘어선 옛 거리를 천천히 걷습니다. 진리보다 한적하고 소박한, 실제 사람이 사는 시골 소도시입니다.</p></div>
+        </div>
+        <div class="food card">
+          <img loading="lazy" referrerpolicy="no-referrer" src="https://www.chinadiscovery.com/assets/images/travel-guide/chengdu/jiezi-ancient-town/jiezi-ancient-town-street-768.jpg" alt="제쯔구전 강변 거리 풍경">
+          <div class="txt"><h3>③ 강변 찻집 · 시골의 정취</h3><p>강을 낀 찻집에 앉아 개완차를 마시는 오후. 관광지 개수보다 이 두 시간이 이번 여행의 성격을 결정합니다.</p></div>
+        </div>
+      </div>
+      <p class="note">사진 출처: 무후사 사진은 Wikimedia Commons(자유 이용 라이선스), 제쯔구전 사진은 China Discovery 여행 가이드 · 실제 현장 분위기 참고용입니다.</p>
+    </div>
+  </article>
+
+  <article class="day card">
+    <div class="day-head">
+      <div class="photo" style='background:linear-gradient(160deg,#2b3a4a,#4a6076)'></div>
+      <div class="intro">
+        <div class="date">DAY 5 · 11/22 SUN</div>
+        <div class="city">청두 → 인천</div>
+        <div class="theme">충분히 쉬고 깔끔하게 귀국</div>
+        <div class="highlight">청두 톈푸공항(TFU)은 시내에서 멀기 때문에 전날 충분히 쉬는 것이 좋습니다. 청두 2박을 확보한 덕분에 귀국 전날까지 무리하게 이동하지 않고 여행을 정리할 수 있습니다.</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="row"><div class="time">04:50</div><div><h4>기상</h4><p>체크아웃 준비.</p></div></div>
+      <div class="row"><div class="time">05:15</div><div><h4>호텔 출발 → TFU T1</h4><p>4명이라면 전용차 이동을 권장합니다.</p></div></div>
+      <div class="row"><div class="time">06:10–06:30</div><div><h4>톈푸공항 도착 목표</h4><p>국제선 수속 및 출국.</p></div></div>
+      <div class="row"><div class="time">08:30–12:55</div><div><h4>CA401 청두 → 인천 <span class="transport">AIR CHINA</span></h4><p>TFU T1 출발 → ICN T1 도착.</p></div></div>
+    </div>
+    <div class="day-map-block">
+      <div class="map-heading"><h3>DAY 5 이동 지도</h3><small>청두 → 인천</small></div>
+      <div id="map-day5" class="day-map" role="img" aria-label="청두 시내에서 톈푸공항으로 이동하는 다섯째 날 지도"></div>
+    </div>
+  </article>
+
+</div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>이번 여행에서 꼭 먹을 것</h2>
+    <p class="lead">마오타이진을 빼는 대신 술과 음식의 연결을 더 강화합니다. 충칭에서는 강렬한 훠궈와 향토요리를, 청두에서는 수정방과 사천요리의 페어링을 중심으로 ‘맛의 여행’을 완성합니다.</p>
+    <div class="food-grid">
+      <div class="food card">
+        <img loading="lazy" referrerpolicy="no-referrer" src="https://chinawondersguide.com/uploads/26/2/8019a2f6bd28f199bef016858489aae3ea75d.jpeg" alt="충칭 훠궈">
+        <div class="txt"><h3>충칭 훠궈 重庆火锅</h3><p>우지우거(九宫格) 스타일의 붉은 육수와 소고기·마오두·채소를 함께 즐기는 충칭의 상징.</p></div>
+      </div>
+      <div class="food card">
+        <img loading="lazy" referrerpolicy="no-referrer" src="https://pic5.40017.cn/04/001/bf/14/rBTJUl0twcCAYF_mAAOUdouxqIE253.jpg" alt="중국 백주">
+        <div class="txt"><h3>수정방 水井坊 · 白酒</h3><p>마오타이진의 양조문화 경험을 청두의 수정방 문화체험으로 전환하고 음식과 술의 관계까지 함께 경험.</p></div>
+      </div>
+      <div class="food card">
+        <img loading="lazy" referrerpolicy="no-referrer" src="https://media.triple.guide/triple-cms/c_limit%2Cf_auto%2Ch_1024%2Cw_1024/6e2a99fb-fdf2-4d8c-ad91-3adb3b81d35c.jpeg" alt="사천요리">
+        <div class="txt"><h3>정통 사천요리 川菜</h3><p>마파두부·궁보계정·회과육·수자어·단단면 등 여러 접시를 나누며 수정방과 함께 즐기는 마지막 만찬.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>핵심 이동편</h2>
+    <table>
+      <thead><tr><th>구간</th><th>편명 / 교통</th><th>시간</th><th>메모</th></tr></thead>
+      <tbody>
+        <tr><td>인천 → 충칭</td><td>CA440</td><td>11/18 14:00 → 16:55</td><td>ICN T1 → CKG T3</td></tr>
+        <tr><td>충칭 시내 → 청두</td><td>고속철</td><td>11/20 오전 출발안</td><td>도시 간 장거리 이동을 한 번으로 단순화</td></tr>
+        <tr><td>청두 시내 ↔ 제쯔구전</td><td>전용차(4인승 이상)</td><td>11/21 13:15–17:45 (왕복)</td><td>편도 약 1시간~1시간 15분, 호텔에서 반나절 전세차로 예약</td></tr>
+        <tr><td>청두 시내</td><td>전용차 / 택시</td><td>11/20–11/21</td><td>춘시루·태고리 권역 중심으로 동선 최소화</td></tr>
+        <tr><td>청두 → 인천</td><td>CA401</td><td>11/22 08:30 → 12:55</td><td>TFU T1 → ICN T1</td></tr>
+      </tbody>
+    </table>
+    <p class="note">※ 원본 일정의 국제선 정보는 유지하고, 중국 국내 고속철 시간은 실제 발권 시점에 최종 확정합니다. 수정방 투어·시음 역시 실제 방문일 운영 및 예약 가능 여부를 출발 전 확인합니다.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2>왜 이 일정이 더 좋은가?</h2>
+    <p class="lead">마오타이진을 빼면서 생길 수 있는 아쉬움을 관광지 숫자로 채우지 않습니다. 여행의 핵심 감동은 유지하고, 이동 피로와 시간 압박을 줄이는 방향으로 재설계합니다.</p>
+    <div class="summary">
+      <div class="card"><h3>🔥 火 · 충칭 2박</h3><p>첫날 훠궈와 홍야동, 둘째 날 리즈바·십팔제·강변을 충분히 즐깁니다. 하루 만에 서둘러 떠나지 않아 충칭이라는 도시의 매력을 온전히 느낄 수 있습니다.</p></div>
+      <div class="card"><h3>🥃 酒 · 수정방</h3><p>마오타이진의 핵심이었던 중국 백주의 역사·양조문화·시음·만찬을 청두의 수정방 문화체험으로 연결합니다. ‘마오타이를 못 갔다’가 아니라 ‘중국 백주를 더 넓게 이해했다’는 경험으로 전환합니다.</p></div>
+      <div class="card"><h3>🌾 田 · 제쯔구전</h3><p>무후사·수정방·태고리 사이, 청두 DAY 4 오후 한나절을 시골 물동네 제쯔구전으로 비워둡니다. 이동은 고속철 그대로, 마오타이진에서 기대했던 소도시의 정취만 옮겨왔습니다.</p></div>
+      <div class="card"><h3>👨‍👨‍👨‍👨 4 Friends · 1 Journey</h3><p>관광지 개수보다 좋은 식사와 대화, 도시의 배경을 이해하는 시간을 우선합니다. 장거리 이동을 줄인 만큼 네 사람이 함께하는 시간이 늘어납니다.</p></div>
+    </div>
+    <div class="highlight" style="margin-top:24px">
+      <strong>결론 — ‘마오타이진을 포기한 여행’이 아니라 ‘여행의 완성도를 높인 여행’</strong><br>
+      마오타이진에서 기대했던 감동의 본질은 특정 지역에 도착하는 것 자체가 아니라 <strong>중국 백주의 역사와 양조문화, 시음, 음식, 시골 소도시의 정취, 사람들과의 대화</strong>였습니다. 이번 안은 백주 쪽 핵심은 청두의 수정방 문화체험으로, 시골 정취 쪽 핵심은 청두 DAY 4 오후의 제쯔구전 반나절로 옮기고, 충칭↔청두 이동은 고속철로 단순하게 유지합니다. 결과적으로 이동은 단순해지고, 체류는 깊어지며, 여행의 이야기는 오히려 풍부해집니다.
+    </div>
+    <div class="summary" style="margin-top:18px">
+      <div class="card"><h3>기존안의 아쉬움</h3><p>충칭→마오타이공항→마오타이진, 그리고 마오타이진→쭌이→청두. 이동 준비와 차량·공항·환승이 여행 리듬을 끊습니다.</p></div>
+      <div class="card"><h3>변경안의 장점</h3><p>충칭 2박 + 청두 2박. 도시 간 이동은 충칭→청두 고속철 한 번으로 단순화하고, 각 도시에서 ‘하루 더 머무는 여유’를 확보합니다.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="wrap">
+    <h2>수정방박물관 사진 참고 출처</h2>
+    <p class="note">
+      박물관 기본 정보 및 전시 구성은 수정방박물관 공식 사이트를 기준으로 반영했으며,
+      외관·유적·양조기술 사진은 박물관 관련 공개 자료를 참고했습니다.
+      실제 방문 전에는 공식 사이트의 개관시간·예약·휴관 공지를 최종 확인합니다.
+    </p>
+    <p class="note">
+      공식 박물관: https://www.sjfmuseum.com/ &nbsp;|&nbsp;
+      박물관 소개: https://www.sjfmuseum.com/onlypage/id/2
+    </p>
+  </div>
+</section>
+</main>
+
+<footer>
+  중국 서부 & 마오타이진 미식·문화·역사 탐방 · 2026.11.18–11.22<br>
+  이미지: 여행지 및 음식 참고용 외부 이미지 · 홍야동·리즈바·차오톈먼·무후사·태고리·제쯔구전 사진은 China Discovery 여행 가이드에서 실제 접속 확인 후 가져왔습니다. 수정방·백주·사천요리 음식 사진은 원본 자료 그대로이며 개별 재확인은 하지 않았습니다. 인터넷 연결 상태에서 표시됩니다.
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const tripPlaces = [
+    { name: "인천국제공항", sub: "여행 출발 · 귀국", lat: 37.4602, lon: 126.4407, kind: "airport" },
+    { name: "충칭 重庆", sub: "DAY 1–2 · 2박 · 훠궈·입체도시·야경", lat: 29.5569, lon: 106.5771, kind: "" },
+    { name: "청두 成都", sub: "DAY 3–4 · 2박 · 수정방·역사·사천요리", lat: 30.6570, lon: 104.0660, kind: "" },
+    { name: "청두 톈푸공항", sub: "DAY 5 · 인천행", lat: 30.3125, lon: 104.4411, kind: "airport" }
+  ];
+
+  const tripMap = L.map("trip-map", { scrollWheelZoom: false, tap: true });
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(tripMap);
+
+  tripPlaces.forEach((place, index) => {
+    const icon = L.divIcon({
+      className: "",
+      html: `<span class="map-pin ${place.kind}">${index + 1}</span>`,
+      iconSize: [32, 32], iconAnchor: [16, 16], popupAnchor: [0, -18]
+    });
+    L.marker([place.lat, place.lon], { icon }).addTo(tripMap)
+      .bindPopup(`<strong>${index + 1}. ${place.name}</strong><br>${place.sub}`);
+  });
+
+  const line = (indexes, color, options = {}) => L.polyline(
+    indexes.map(index => [tripPlaces[index].lat, tripPlaces[index].lon]),
+    { color, weight: 4, opacity: .82, ...options }
+  ).addTo(tripMap);
+
+  line([0, 1], "#7256a8", { dashArray: "9 8" });
+  line([1, 2], "#247ba0");
+  line([2, 3], "#b7791f");
+  line([3, 0], "#7256a8", { dashArray: "9 8" });
+  tripMap.fitBounds(L.latLngBounds(tripPlaces.map(place => [place.lat, place.lon])), { padding: [32, 32] });
+
+  const dailyRoutes = {
+    "map-day1": {
+      places: [
+        { name: "충칭 장베이공항 T3", sub: "16:55 도착", lat: 29.7192, lon: 106.6417, kind: "airport" },
+        { name: "해방비 解放碑", sub: "호텔·훠궈 권역", lat: 29.5571, lon: 106.5771, kind: "" },
+        { name: "홍야동 洪崖洞", sub: "야경 산책", lat: 29.5648, lon: 106.5791, kind: "" },
+        { name: "천사문대교 千厮门大桥", sub: "야경 감상", lat: 29.5685, lon: 106.5769, kind: "" }
+      ],
+      segments: [{ indexes: [0, 1, 2, 3], color: "#b7791f" }]
+    },
+    "map-day2": {
+      places: [
+        { name: "해방비 권역", sub: "호텔 출발", lat: 29.5571, lon: 106.5771, kind: "" },
+        { name: "리즈바 李子坝", sub: "궤도교통 전망대", lat: 29.5526, lon: 106.4962, kind: "" },
+        { name: "십팔제 十八梯", sub: "옛 충칭 골목", lat: 29.5524, lon: 106.5721, kind: "" },
+        { name: "장강·가릉강 전망", sub: "도시 산책·카페", lat: 29.5620, lon: 106.5750, kind: "" },
+        { name: "홍야동 洪崖洞", sub: "저녁 야경", lat: 29.5648, lon: 106.5791, kind: "" }
+      ],
+      segments: [{ indexes: [0, 1, 2, 3, 4], color: "#b7791f" }]
+    },
+    "map-day3": {
+      places: [
+        { name: "충칭", sub: "오전 출발", lat: 29.5569, lon: 106.5771, kind: "" },
+        { name: "청두", sub: "고속철 도착", lat: 30.6570, lon: 104.0660, kind: "transfer" },
+        { name: "수정방 水井坊", sub: "양조문화·박물관 체험", lat: 30.6420, lon: 104.0810, kind: "" },
+        { name: "청두 도심", sub: "수정방 × 사천요리 만찬", lat: 30.6534, lon: 104.0818, kind: "" }
+      ],
+      segments: [
+        { indexes: [0, 1], color: "#247ba0" },
+        { indexes: [1, 2, 3], color: "#b7791f" }
+      ]
+    },
+    "map-day4": {
+      places: [
+        { name: "무후사 武侯祠", sub: "촉한 역사 탐방", lat: 30.6497, lon: 104.0558, kind: "" },
+        { name: "제쯔구전 街子古镇", sub: "시골 물동네 · 왕복 약 2.5시간", lat: 30.7800, lon: 103.5800, kind: "transfer" },
+        { name: "태고리 太古里", sub: "마지막 밤", lat: 30.6534, lon: 104.0818, kind: "" },
+        { name: "춘시루·IFS", sub: "야경·쇼핑", lat: 30.6554, lon: 104.0805, kind: "" }
+      ],
+      segments: [{ indexes: [0, 1, 2, 3], color: "#b7791f" }]
+    },
+    "map-day5": {
+      places: [
+        { name: "태고리·춘시루 호텔 권역", sub: "05:15 출발", lat: 30.6534, lon: 104.0818, kind: "" },
+        { name: "청두 톈푸공항 T1", sub: "CA401 · 08:30 출발", lat: 30.3125, lon: 104.4411, kind: "airport" }
+      ],
+      segments: [{ indexes: [0, 1], color: "#b7791f" }]
+    }
+  };
+
+  function makeDailyMap(id, route) {
+    const map = L.map(id, { scrollWheelZoom: false, tap: true });
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    route.places.forEach((place, index) => {
+      const icon = L.divIcon({
+        className: "",
+        html: `<span class="map-pin ${place.kind}">${index + 1}</span>`,
+        iconSize: [32, 32],
+        iconAnchor: [16, 16],
+        popupAnchor: [0, -18]
+      });
+      L.marker([place.lat, place.lon], { icon })
+        .addTo(map)
+        .bindPopup(`<strong>${index + 1}. ${place.name}</strong><br>${place.sub}`);
+    });
+
+    route.segments.forEach(segment => {
+      L.polyline(
+        segment.indexes.map(index => [route.places[index].lat, route.places[index].lon]),
+        { color: segment.color, weight: 4, opacity: .82, dashArray: segment.dashArray }
+      ).addTo(map);
+    });
+    map.fitBounds(L.latLngBounds(route.places.map(place => [place.lat, place.lon])), { padding: [34, 34] });
+  }
+
+  Object.entries(dailyRoutes).forEach(([id, route]) => makeDailyMap(id, route));
+</script>
+</body>
+</html>

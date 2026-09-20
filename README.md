@@ -41,6 +41,9 @@ data/
   destinations.json       ← 캐시 · trip.com 사진 주소와 소개 발췌
   gmaps_saved_2005.json   지도 저장 목록 「2005년 지역전문가」 128개 (수집 완료)
   trips.json              여정 원장 — 사람은 people 에만 두고 여정은 id로 참조
+  trip_html/              여행 전에 만들어 둔 일정표 HTML ← 여기에 넣으면 여정에 붙는다
+  trip_html/private/      개인 일정표 (gitignore — 개인 빌드에만 들어간다)
+  itineraries.json        ← 빌드 산출물 · 여정 ↔ 일정표 대응표
   place_coords.json       도시·장소 좌표 원장 [위도, 경도]
   place_aliases.json      표기 → 정식 도시명 (하문=샤먼 시, 온주=원저우 시 …)
   blog_cat*.json          네이버 블로그 카테고리별 글 목록 687편
@@ -56,13 +59,15 @@ scripts/
   fetch_blog_bodies.py    블로그 본문 수집 (이어받기)
   fetch_destinations.py   trip.com 여행지 사진·소개 수집 (캐시)
   classify_posts.py       글 → 여정 후보 판정 (규칙 + LLM)
+  build_itineraries.py    trip_html 일정표를 여정에 붙인다 (규칙만 쓴다 · LLM 없음)
   build_places.py         별칭 정규화 + 좌표 결합 → places.json
   build_app.py            데이터를 HTML에 주입 → app/index.html
-  build_all.py            위 셋을 순서대로
+  build_all.py            위 넷을 순서대로
   release.py              빌드 → 테스트 → 커밋 → 푸시 (배포는 CI가 이어받는다)
 app/
   index.template.html     화면 (여기를 고친다)
   index.html              ← 빌드 산출물
+  itinerary/              ← 빌드 산출물 · 일정표 사본 (여정에서 열린다)
 tests/
   test_build.py           python -m unittest discover -s tests
 ```
@@ -82,9 +87,32 @@ tests/
 - **도시 페이지** — 그 도시의 모든 방문 이력과 그 안의 장소들 (베이징은 여정 14 · 장소 23)
 - **사진** — 끌어놓으면 EXIF 촬영일시를 읽어 맞는 여정을 찾아준다. 썸네일은 브라우저에만 저장된다
 - **후보** — 블로그에서 뽑은 여정 후보를 승인/버림으로 검토하고, 승인한 것만 `trips.json` 형식으로 내보낸다
+- **일정표** — 일정표가 붙은 여정은 카드에 `일정표` 표가 뜨고, 눌러서 연 패널 맨 위의
+  카드로 그 날 하루하루의 계획이 열린다 (아래 [일정표](#일정표-trip_html))
 
 지도는 외부 타일을 받지 않는다. 국경 폴리곤을 미리 받아 SVG로 직접 그리므로
 오프라인에서도 뜨고, 아티팩트 CSP에도 걸리지 않는다.
+
+## 일정표 (trip_html)
+
+여행 전에 따로 만들어 둔 **일정표 한 장**(HTML)을 여정에 붙인다.
+`data/trip_html/` 에 파일을 넣고 빌드하면 끝이다 — 손으로 이어 줄 것이 없다.
+
+```bash
+python scripts/build_itineraries.py --check   # 무엇에 붙을지만 본다
+python scripts/build_all.py                   # 붙이고 앱까지 다시 만든다
+```
+
+붙이는 방법은 규칙뿐이고 **LLM을 쓰지 않는다.** 파일에서 제목·기간·도시를 읽어
+(제목 → 본문 → 파일 이름 순으로 찾는다) 도시가 겹치고 날짜가 30일 안에 있는 여정을 고른다.
+**짝이 없으면 그 여행을 여정으로 새로 적는다**(`planned: true`) — 아직 다녀오지 않은 여행도
+연표와 홈에 `예정` 으로 선다. 손으로 짝을 정하려면 `data/trips.json` 의 그 여정에
+`"itinerary": "파일이름.html"` 을 적으면 그것이 이긴다.
+
+**공개와 개인.** `data/trip_html/` 에 둔 것은 저장소에 올라가고 공개본에도 실린다.
+실명·연락처·집주소가 들어 있는 일정표는 `data/trip_html/private/` 에 둔다 —
+gitignore 라 저장소에 올라가지 않고 개인 빌드에만 들어간다(PRD §11).
+공개 폴더에 그런 것이 보이면 **빌드가 멈춘다**(이름+직책·전화·이메일·집 호수 형태로 잡는다).
 
 ## 여행지 사진 (trip.com)
 

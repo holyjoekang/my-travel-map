@@ -5,3 +5,6 @@ app/index.html
 app/index.public.html
 data/private.json
 data/llm_queue.json
+app/itinerary/
+data/itineraries.json
+data/trip_html/private/

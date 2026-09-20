@@ -17,6 +17,8 @@ import re
 import sys
 from pathlib import Path
 
+import build_itineraries
+
 DATA = Path("data")
 APP = Path("app")
 TEMPLATE = APP / "index.template.html"
@@ -115,6 +117,7 @@ def build_payload(public: bool) -> dict:
                 "confidence": t.get("confidence", "medium"),
                 "umbrella": bool(t.get("umbrella")),
                 "note": t.get("note"),
+                "planned": bool(t.get("planned")),
             }
         )
 
@@ -143,9 +146,16 @@ def build_payload(public: bool) -> dict:
     # 방문한 적 없는 도시의 사진은 실을 이유가 없다.
     dests = [d for d in dests if d["place"] in places]
 
+    # 일정표. 개인 일정표(data/trip_html/private/)는 공개 빌드에 넣지 않는다(PRD §11).
+    itineraries = [i for i in build_itineraries.load_manifest()
+                   if not (public and i["private"])]
+    if public and any(i["private"] for i in itineraries):
+        sys.exit("공개 빌드에 개인 일정표가 섞였다")
+
     return {
         "site": site,
         "destinations": dests,
+        "itineraries": itineraries,
         "eras": trips_doc["eras"],
         "trips": sorted(trips, key=lambda t: t["start"]),
         "places": list(places.values()),

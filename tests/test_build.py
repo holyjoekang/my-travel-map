@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_app  # noqa: E402
+import build_itineraries  # noqa: E402
 import fetch_destinations  # noqa: E402
 import build_places  # noqa: E402
 import topojson  # noqa: E402
@@ -196,6 +197,58 @@ class PublicBuild(unittest.TestCase):
         for t in payload["trips"]:
             if t["purpose"] == "business":
                 self.assertIsNone(t["summary"], t["id"])
+
+
+class Itineraries(unittest.TestCase):
+    """일정표 (PRD §15) — data/trip_html 의 HTML 한 장이 여정에 붙는다."""
+
+    def setUp(self):
+        self.out = build_itineraries.build(check=True)
+        self.items = self.out["itineraries"]
+
+    def test_every_itinerary_lands_on_a_trip(self):
+        """일정표는 반드시 어떤 여정에 붙는다 — 짝이 없으면 여정을 새로 만든다."""
+        self.assertTrue(self.items, "data/trip_html 에 일정표가 하나도 없다")
+        ids = {t["id"] for t in load("data/trips.json")["trips"]}
+        for m in self.items:
+            self.assertTrue(m["tripId"] in ids or m["tripId"] in self.out["added"],
+                            m["source"])
+
+    def test_dates_read_from_the_page(self):
+        for m in self.items:
+            self.assertRegex(m["start"], r"^\d{4}-\d{2}-\d{2}$", m["source"])
+            self.assertLessEqual(m["start"], m["end"], m["source"])
+            self.assertGreaterEqual(m["days"], 1, m["source"])
+
+    def test_cities_resolve_to_the_place_master(self):
+        places = {p["name"] for p in load("data/places.json")["places"]}
+        for m in self.items:
+            self.assertTrue(m["cities"], m["source"])
+            for city in m["cities"]:
+                self.assertIn(city, places, f"{m['source']} 의 '{city}'")
+
+    def test_one_file_per_itinerary(self):
+        names = [m["file"] for m in self.items]
+        self.assertEqual(len(names), len(set(names)))
+        for m in self.items:
+            self.assertTrue((ROOT / "app/itinerary" / m["file"]).exists(), m["file"])
+
+    def test_public_folder_is_clean(self):
+        """공개 폴더의 일정표에 실명·연락처·집주소가 있으면 안 된다 (PRD §11)."""
+        for path in sorted(build_itineraries.SRC_DIR.glob("*.html")):
+            self.assertEqual(build_itineraries.scan_private(path), [], path.name)
+
+    def test_private_itinerary_never_goes_public(self):
+        public = build_app.build_payload(public=True)["itineraries"]
+        self.assertFalse([i for i in public if i["private"]])
+        private_files = {m["file"] for m in self.items if m["private"]}
+        blob = json.dumps(public, ensure_ascii=False)
+        for name in private_files:
+            self.assertNotIn(name, blob)
+
+    def test_private_build_keeps_them_all(self):
+        mine = build_app.build_payload(public=False)["itineraries"]
+        self.assertEqual(len(mine), len(build_itineraries.load_manifest()))
 
 
 class Destinations(unittest.TestCase):

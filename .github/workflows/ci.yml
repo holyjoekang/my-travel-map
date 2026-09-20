@@ -32,10 +32,13 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       # GitHub Pages 는 공개다. 실명이 빠진 공개 빌드만 올린다(PRD §11).
+      # 일정표는 저장소의 data/trip_html/ 에 있는 공개본뿐이다.
+      # 개인 일정표(data/trip_html/private/)는 .gitignore 라 CI에 아예 없다(PRD §11).
       - name: Pages 자료 준비
         run: |
           mkdir -p _site
           cp app/index.public.html _site/index.html
+          if [ -d app/itinerary ]; then cp -r app/itinerary _site/itinerary; fi
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

@@ -951,7 +951,29 @@
       "sources": [
         "blog"
       ],
-      "confidence": "medium"
+      "confidence": "medium",
+      "itinerary": "웨이하이_출장여행_일정_2026-09-04.html"
+    },
+    {
+      "id": "t-2026-11-18",
+      "title": "중국 서부 미식·백주·문화 탐방",
+      "start": "2026-11-18",
+      "end": "2026-11-22",
+      "era": "E7",
+      "purpose": "friends",
+      "scope": "overseas",
+      "cities": [
+        "충칭",
+        "청두 시"
+      ],
+      "summary": "마오타이진을 과감히 제외하고 충칭 2박과 청두 2박으로 재구성했습니다. 충칭에서는 불맛과 입체도시의 매력을 충분히 즐기고, 청두에서는 수정방(水井坊) 양조문화와 중국 백주의 역사, 삼국지 문화를 깊이 경험합니다.",
+      "sources": [
+        "itinerary"
+      ],
+      "confidence": "high",
+      "itinerary": "china_west_chongqing_chengdu_2026_v5.html",
+      "planned": true,
+      "summaryPublic": "마오타이진을 과감히 제외하고 충칭 2박과 청두 2박으로 재구성했습니다. 충칭에서는 불맛과 입체도시의 매력을 충분히 즐기고, 청두에서는 수정방(水井坊) 양조문화와 중국 백주의 역사, 삼국지 문화를 깊이 경험합니다."
     }
   ]
 }
