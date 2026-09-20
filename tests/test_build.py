@@ -234,6 +234,16 @@ class Itineraries(unittest.TestCase):
         for m in self.items:
             self.assertTrue((ROOT / "app/itinerary" / m["file"]).exists(), m["file"])
 
+    def test_common_words_are_not_cities(self):
+        """'~를 위해'가 웨이하이로, '소주 한 잔'이 쑤저우로 잡히면 안 된다."""
+        table = build_itineraries.needles(
+            build_itineraries.strip_notes(load("data/place_aliases.json")))
+        body = ("가족을 위해 떠난 여행이다. 저녁에는 소주 한 잔을 했고 "
+                "무한한 풍경을 보았다. 의미를 부여하고 싶은 하루.")
+        self.assertEqual(
+            build_itineraries.parse_cities("리장 여행", body, body, table),
+            ["리장 시"])
+
     def test_public_folder_is_clean(self):
         """공개 폴더의 일정표에 실명·연락처·집주소가 있으면 안 된다 (PRD §11)."""
         for path in sorted(build_itineraries.SRC_DIR.glob("*.html")):

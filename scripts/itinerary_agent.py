@@ -174,17 +174,26 @@ def clean_title(title: str) -> str:
 
 
 def spec_from_sources(sources: list[dict], meta: dict) -> str:
-    """글 조각들을 원고 스펙으로 옮긴다. 제목에 'n일차'가 있으면 하루씩 나눈다."""
-    days = [(day_num(m), s) for s in sources
-            if (m := DAY_RE.search(s["title"]))]
+    """글 조각들을 원고 스펙으로 옮긴다.
+
+    제목에 'n일차'가 있는 것은 하루씩 날짜 순으로 세우고, 없는 것(총평·맛집·명소 같은
+    곁가지 글)은 뒤에 꼭지로 붙인다. 둘이 섞여 들어와도 된다.
+
+    날 번호는 글쓴이가 매긴 것을 그대로 쓴다. 0일차부터 시작한 글만 한 칸 밀어
+    0일차를 첫날로 본다 — '2일차'는 언제나 여행 이틀째다.
+    """
+    numbered, plain = [], []
+    for s in sources:
+        m = DAY_RE.search(s["title"])
+        (numbered if m else plain).append((day_num(m), s) if m else (0, s))
+    shift = 1 if numbered and min(n for n, _ in numbered) == 0 else 0
     lines = [f"{k}: {v}" for k, v in meta.items() if v]
-    by_day = len(days) == len(sources) and len(days) > 1
-    ordered = sorted(days, key=lambda d: d[0]) if by_day \
-        else [(0, s) for s in sources]
-    first = min((n for n, _ in ordered), default=0)
-    for n, s in ordered:
+
+    ordered = [(n + shift, s, True) for n, s in sorted(numbered, key=lambda d: d[0])]
+    ordered += [(0, s, False) for _, s in plain]
+    for n, s, is_day in ordered:
         head = clean_title(s["title"])
-        lines.append(f"\n## DAY {n - first + 1} — {head}" if by_day else f"\n## {head}")
+        lines.append(f"\n## DAY {n} — {head}" if is_day else f"\n## {head}")
         lines += paragraphs(s["text"])
         if s["url"]:
             lines.append(f"링크: {head[:28]} | {s['url']}")
