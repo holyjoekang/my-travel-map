@@ -111,6 +111,32 @@ class Places(unittest.TestCase):
                 self.assertIn(build_places.canonical(raw, aliases), self.places,
                               f"{t['id']} 의 '{raw}' 가 장소 마스터에 없다")
 
+    def test_trip_places_resolve_and_are_poi(self):
+        """여정의 places 는 장소 마스터에 이미 있는 장소(poi)여야 한다.
+
+        도시를 places 에 적으면 도시와 장소를 나눠 둔 뜻이 없어진다(§5).
+        """
+        self.assertEqual(self.out["unknownPlaces"], [])
+        aliases = build_places.strip_notes(load("data/place_aliases.json"))
+        for t in load("data/trips.json")["trips"]:
+            for raw in t.get("places", []):
+                p = self.places[build_places.canonical(raw, aliases)]
+                self.assertEqual(p["level"], "poi", f"{t['id']} 의 '{raw}' 는 도시다")
+
+    def test_trip_places_not_repeated_in_cities(self):
+        for t in load("data/trips.json")["trips"]:
+            overlap = set(t.get("places", [])) & set(t.get("cities", []))
+            self.assertFalse(overlap, f"{t['id']} 에서 겹친다: {overlap}")
+
+    def test_fixes_target_real_places(self):
+        """보정 파일이 없는 이름을 가리키면 조용히 무시되지 않게 한다."""
+        doc = load("data/place_fixes.json")
+        for fix in doc["places"]:
+            self.assertIn(fix["name"], self.places, fix["name"])
+            if not fix.get("add"):
+                self.assertIn("gmaps_saved", self.places[fix["name"]]["sources"],
+                              f"{fix['name']} 은 저장 목록에 없다 — add 를 붙여야 한다")
+
 
 class Trips(unittest.TestCase):
     def setUp(self):
@@ -141,6 +167,15 @@ class Trips(unittest.TestCase):
     def test_ids_unique(self):
         ids = [t["id"] for t in self.doc["trips"]]
         self.assertEqual(len(ids), len(set(ids)))
+
+    def test_e3_dated_trips_stay_inside_era(self):
+        """지역전문가 시절 날짜는 기억으로 배치한 것이라 시대 밖으로 나가기 쉽다."""
+        era = next(e for e in self.doc["eras"] if e["id"] == "E3")
+        for t in self.doc["trips"]:
+            if t["era"] != "E3" or len(str(t["start"])) < 7:
+                continue
+            self.assertGreaterEqual(str(t["start"])[:7], era["start"][:7], t["id"])
+            self.assertLessEqual(str(t["end"])[:7], era["end"][:7], t["id"])
 
     def test_umbrella_pulls_its_source(self):
         """citiesFrom 을 쓰는 포괄 여정은 빌드 후 도시가 실제로 붙어야 한다.

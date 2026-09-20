@@ -127,6 +127,8 @@ def build_payload(public: bool) -> dict:
                 "purpose": t["purpose"],
                 "scope": t["scope"],
                 "cities": cities,
+                # 장소는 도시와 따로 관리한다 — 도시 목록에 섞지 않는다(PRD §5).
+                "places": [aliases.get(x.strip(), x.strip()) for x in t.get("places", [])],
                 "companions": [labels.get(c, c) for c in t.get("companions", [])],
                 "role": t.get("role"),
                 "summary": summary,
@@ -138,12 +140,12 @@ def build_payload(public: bool) -> dict:
             }
         )
 
-    # 도시별 방문 집계
+    # 도시·장소별 방문 집계
     counts: dict[str, int] = {}
     for t in trips:
         if t["umbrella"]:
             continue
-        for c in t["cities"]:
+        for c in t["cities"] + t["places"]:
             counts[c] = counts.get(c, 0) + 1
     for name, p in places.items():
         p["visits"] = counts.get(name, 0)

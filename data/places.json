@@ -174,6 +174,54 @@
    "needsReview": false
   },
   {
+   "name": "5번가",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "거리",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "9·11 메모리얼",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "기념관",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
    "name": "뉴욕",
    "level": "city",
    "country": "미국",
@@ -183,16 +231,43 @@
    "lat": 40.71,
    "lng": -74.01,
    "sources": [
-    "memory"
+    "memory",
+    "gsheet"
    ],
    "tripIds": [
-    "t-e1-ny"
+    "t-e1-ny",
+    "t-2017-07-08"
    ],
    "eras": [
-    "E1"
+    "E1",
+    "E6"
    ],
    "aliasesSeen": [],
    "needsReview": false
+  },
+  {
+   "name": "뉴욕 현대미술관",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "미술관",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
   },
   {
    "name": "뉴저지",
@@ -211,6 +286,28 @@
    ],
    "eras": [
     "E1"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "뉴헤이븐",
+   "level": "city",
+   "country": "미국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 41.31,
+   "lng": -72.93,
+   "sources": [
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
    ],
    "aliasesSeen": [],
    "needsReview": false
@@ -258,6 +355,78 @@
    "needsReview": false
   },
   {
+   "name": "록펠러 센터",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "전망대",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "브로드웨이",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "거리",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "브루클린 브리지",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "다리",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
    "name": "산호세",
    "level": "city",
    "country": "미국",
@@ -300,16 +469,18 @@
    "needsReview": false
   },
   {
-   "name": "실리콘밸리",
-   "level": "city",
+   "name": "센트럴파크",
+   "level": "poi",
    "country": "미국",
-   "region": null,
-   "parent": null,
-   "kind": null,
-   "lat": 37.34,
-   "lng": -121.89,
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "공원",
+   "lat": 40.71,
+   "lng": -74.01,
    "sources": [
-    "gsheet"
+    "fix",
+    "gsheet",
+    "memory"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -317,10 +488,82 @@
    "eras": [
     "E6"
    ],
-   "aliasesSeen": [
-    "미국 필드트립"
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "소호",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "거리",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
    ],
-   "needsReview": false
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "엠파이어 스테이트 빌딩",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "전망대",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "예일대학교",
+   "level": "poi",
+   "country": "미국",
+   "region": "Connecticut, New Haven",
+   "parent": "뉴헤이븐",
+   "kind": "대학교",
+   "lat": 41.31,
+   "lng": -72.93,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "2017년 7월 연수로 이틀 묵었다.",
+   "coordFrom": "parent"
   },
   {
    "name": "요세미티 국립공원",
@@ -342,6 +585,102 @@
    ],
    "aliasesSeen": [],
    "needsReview": false
+  },
+  {
+   "name": "월스트리트",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "거리",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "자유의 여신상",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "기념물",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "첼시",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "거리",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
+  },
+  {
+   "name": "타임스스퀘어",
+   "level": "poi",
+   "country": "미국",
+   "region": "New York",
+   "parent": "뉴욕",
+   "kind": "광장",
+   "lat": 40.71,
+   "lng": -74.01,
+   "sources": [
+    "fix",
+    "gsheet",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2017-07-08"
+   ],
+   "eras": [
+    "E6"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "coordFrom": "parent"
   },
   {
    "name": "하노이",
@@ -511,14 +850,18 @@
    "lat": 42.07,
    "lng": 127.6,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-07-changbai"
+   ],
    "eras": [
     "E3"
    ],
    "aliasesSeen": [],
-   "needsReview": true
+   "needsReview": false,
+   "note": "백두산(창바이산) 가는 길목. 2005년 7월 천지 여정에 붙였다."
   },
   {
    "name": "Dong Huang Hotel Beijing",
@@ -530,9 +873,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -584,21 +930,24 @@
    "name": "Huangguoshu Waterfall",
    "level": "poi",
    "country": "중국",
-   "region": null,
+   "region": "Guizhou, Anshun",
    "parent": "안순 시",
    "kind": "관광 명소",
    "lat": 25.99,
    "lng": 105.68,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-11-guizhou"
+   ],
    "eras": [
     "E3"
    ],
    "aliasesSeen": [],
-   "needsReview": true,
-   "note": "구이저우. 안순은 이 목록에 도시로는 없다"
+   "needsReview": false,
+   "note": "구이저우 안순. 저장 목록에 안순은 도시로 들어 있지 않다."
   },
   {
    "name": "Huaqingjiayuan 12 Building",
@@ -618,7 +967,7 @@
    ],
    "aliasesSeen": [],
    "needsReview": true,
-   "note": "华清嘉园 — 칭화대 인근 아파트. 지역전문가 시절 거주지로 추정",
+   "note": "华清嘉园 — 칭화대 인근 아파트. 지역전문가 시절 거주지로 추정. 이름이 시안의 화청궁과 닮아 시안으로 보기도 했으나 어느 쪽도 확정하지 못했다.",
    "coordFrom": "parent"
   },
   {
@@ -631,9 +980,12 @@
    "lat": 34.48,
    "lng": 110.08,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-10-xian"
+   ],
    "eras": [
     "E3"
    ],
@@ -651,9 +1003,12 @@
    "lat": 31.32,
    "lng": 120.63,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-jiangnan"
+   ],
    "eras": [
     "E3"
    ],
@@ -671,14 +1026,17 @@
    "lat": 40.84,
    "lng": 111.75,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-08-huhhot"
+   ],
    "eras": [
     "E3"
    ],
    "aliasesSeen": [],
-   "needsReview": true,
+   "needsReview": false,
    "coordFrom": "parent"
   },
   {
@@ -691,9 +1049,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -751,9 +1112,12 @@
    "lat": 48.72,
    "lng": 87.02,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-08-kanas"
+   ],
    "eras": [
     "E3"
    ],
@@ -771,9 +1135,12 @@
    "lat": 37.5,
    "lng": 122.18,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-04-shandong"
+   ],
    "eras": [
     "E3"
    ],
@@ -809,9 +1176,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -829,9 +1199,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -849,9 +1222,12 @@
    "lat": 37.82,
    "lng": 120.76,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-04-shandong"
+   ],
    "eras": [
     "E3"
    ],
@@ -868,9 +1244,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -907,9 +1286,12 @@
    "lat": 34.51,
    "lng": 112.94,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-09-henan"
+   ],
    "eras": [
     "E3"
    ],
@@ -947,14 +1329,18 @@
    "lat": 39.13,
    "lng": 117.2,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2006-01-tianjin"
+   ],
    "eras": [
     "E3"
    ],
    "aliasesSeen": [],
-   "needsReview": false
+   "needsReview": true,
+   "note": "2013년 개관. 2006년 1월 방문과 시기가 어긋나 확인이 필요하다."
   },
   {
    "name": "Tunxi Old Street",
@@ -966,9 +1352,12 @@
    "lat": 29.71,
    "lng": 118.31,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-12-huangshan"
+   ],
    "eras": [
     "E3"
    ],
@@ -986,9 +1375,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -1006,9 +1398,12 @@
    "lat": 22.01,
    "lng": 100.8,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-06-banna"
+   ],
    "eras": [
     "E3"
    ],
@@ -1026,9 +1421,12 @@
    "lat": 22.01,
    "lng": 100.8,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-06-banna"
+   ],
    "eras": [
     "E3"
    ],
@@ -1046,9 +1444,12 @@
    "lat": 24.78,
    "lng": 110.5,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-11-yangshuo"
+   ],
    "eras": [
     "E3"
    ],
@@ -1066,9 +1467,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -1106,9 +1510,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -1126,9 +1533,12 @@
    "lat": 39.12,
    "lng": 117.2,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2006-01-tianjin"
+   ],
    "eras": [
     "E3"
    ],
@@ -1141,18 +1551,22 @@
    "country": "중국",
    "region": null,
    "parent": "시솽반나 다이족 자치주",
-   "kind": null,
+   "kind": "명승지",
    "lat": 22.01,
    "lng": 100.8,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-06-banna"
+   ],
    "eras": [
     "E3"
    ],
    "aliasesSeen": [],
-   "needsReview": false,
+   "needsReview": true,
+   "note": "2010년대에 조성된 거리다. 2005~2006년 방문과 시기가 어긋나 확인이 필요하다.",
    "coordFrom": "parent"
   },
   {
@@ -1165,9 +1579,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -1185,9 +1602,12 @@
    "lat": 31.3,
    "lng": 120.59,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-jiangnan"
+   ],
    "eras": [
     "E3"
    ],
@@ -1205,9 +1625,12 @@
    "lat": 39.93,
    "lng": 116.39,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-04-beijing"
+   ],
    "eras": [
     "E3"
    ],
@@ -1224,9 +1647,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -1257,20 +1683,24 @@
    "name": "烟雨楼",
    "level": "poi",
    "country": "중국",
-   "region": null,
-   "parent": "청더 시",
+   "region": "Zhejiang, Jiaxing",
+   "parent": "자싱 시",
    "kind": "명소",
-   "lat": 40.95,
-   "lng": 117.94,
+   "lat": 30.75,
+   "lng": 120.76,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-jiangnan"
+   ],
    "eras": [
     "E3"
    ],
    "aliasesSeen": [],
-   "needsReview": true,
+   "needsReview": false,
+   "note": "저장 자싱 난후(南湖)의 연우루로 봤다. 청더 피서산장에도 같은 이름의 누각이 있어 저장 목록만으로는 갈리지 않았다.",
    "coordFrom": "parent"
   },
   {
@@ -1283,9 +1713,12 @@
    "lat": 39.14,
    "lng": 117.19,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2006-01-tianjin"
+   ],
    "eras": [
     "E3"
    ],
@@ -1302,9 +1735,12 @@
    "lat": 40.22,
    "lng": 124.62,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-07-changbai"
+   ],
    "eras": [
     "E3"
    ],
@@ -1360,9 +1796,12 @@
    "lat": 25.28,
    "lng": 110.29,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-11-yangshuo"
+   ],
    "eras": [
     "E3"
    ],
@@ -1517,9 +1956,12 @@
    "lat": 40.13,
    "lng": 124.39,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-07-changbai"
+   ],
    "eras": [
     "E3"
    ],
@@ -1615,9 +2057,12 @@
    "lat": 34.56,
    "lng": 112.47,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-09-henan"
+   ],
    "eras": [
     "E3"
    ],
@@ -1634,9 +2079,12 @@
    "lat": 34.62,
    "lng": 112.45,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-09-henan"
+   ],
    "eras": [
     "E3"
    ],
@@ -1677,9 +2125,12 @@
    "lat": 22.2,
    "lng": 113.54,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-hkmacau"
+   ],
    "eras": [
     "E3"
    ],
@@ -1783,6 +2234,8 @@
     "itinerary"
    ],
    "tripIds": [
+    "t-e3-2005-04-beijing",
+    "t-e3-beijing-life",
     "t-e5-beijing",
     "t-2017-02-08",
     "t-2017-06-14",
@@ -1856,9 +2309,12 @@
    "lat": 34.38,
    "lng": 109.28,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-10-xian"
+   ],
    "eras": [
     "E3"
    ],
@@ -1875,9 +2331,12 @@
    "lat": 22.27,
    "lng": 114.15,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-hkmacau"
+   ],
    "eras": [
     "E3"
    ],
@@ -2037,9 +2496,12 @@
    "lat": 30.24,
    "lng": 120.15,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-jiangnan"
+   ],
    "eras": [
     "E3"
    ],
@@ -2057,9 +2519,12 @@
    "lat": 22.01,
    "lng": 100.8,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-06-banna"
+   ],
    "eras": [
     "E3"
    ],
@@ -2077,9 +2542,11 @@
    "lng": 108.94,
    "sources": [
     "gmaps_saved",
+    "memory",
     "gsheet"
    ],
    "tripIds": [
+    "t-e3-2005-10-xian",
     "t-2017-09-18"
    ],
    "eras": [
@@ -2101,9 +2568,12 @@
    "lat": 31.3,
    "lng": 120.59,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-jiangnan"
+   ],
    "eras": [
     "E3"
    ],
@@ -2120,9 +2590,33 @@
    "lat": 47.85,
    "lng": 88.14,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-08-kanas"
+   ],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "안순 시",
+   "level": "city",
+   "country": "중국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 26.25,
+   "lng": 105.93,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-e3-2005-11-guizhou"
+   ],
    "eras": [
     "E3"
    ],
@@ -2139,9 +2633,12 @@
    "lat": 24.78,
    "lng": 110.5,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-11-yangshuo"
+   ],
    "eras": [
     "E3"
    ],
@@ -2158,9 +2655,12 @@
    "lat": 42.91,
    "lng": 129.48,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-07-changbai"
+   ],
    "eras": [
     "E3"
    ],
@@ -2296,9 +2796,11 @@
    "lng": 122.12,
    "sources": [
     "gmaps_saved",
+    "memory",
     "blog"
    ],
    "tripIds": [
+    "t-e3-2005-04-shandong",
     "t-2026-09-07"
    ],
    "eras": [
@@ -2318,9 +2820,33 @@
    "lat": 39.92,
    "lng": 116.39,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-04-beijing"
+   ],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "자싱 시",
+   "level": "city",
+   "country": "중국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 30.75,
+   "lng": 120.76,
+   "sources": [
+    "memory"
+   ],
+   "tripIds": [
+    "t-e3-2005-05-jiangnan"
+   ],
    "eras": [
     "E3"
    ],
@@ -2337,9 +2863,12 @@
    "lat": 34.75,
    "lng": 113.62,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-09-henan"
+   ],
    "eras": [
     "E3"
    ],
@@ -2414,9 +2943,12 @@
    "lat": 39.88,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-04-beijing"
+   ],
    "eras": [
     "E3"
    ],
@@ -2433,9 +2965,12 @@
    "lat": 42.01,
    "lng": 128.06,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-07-changbai"
+   ],
    "eras": [
     "E3"
    ],
@@ -2622,9 +3157,12 @@
    "lat": 39.9,
    "lng": 116.41,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-beijing-life"
+   ],
    "eras": [
     "E3"
    ],
@@ -2718,9 +3256,12 @@
    "lat": 39.13,
    "lng": 117.2,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2006-01-tianjin"
+   ],
    "eras": [
     "E3"
    ],
@@ -2756,9 +3297,12 @@
    "lat": 29.72,
    "lng": 118.3,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-12-huangshan"
+   ],
    "eras": [
     "E3"
    ],
@@ -2775,9 +3319,12 @@
    "lat": 37.81,
    "lng": 120.76,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-04-shandong"
+   ],
    "eras": [
     "E3"
    ],
@@ -2870,9 +3417,12 @@
    "lat": 30.27,
    "lng": 120.16,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-05-jiangnan"
+   ],
    "eras": [
     "E3"
    ],
@@ -2909,9 +3459,11 @@
    "lng": 114.17,
    "sources": [
     "gmaps_saved",
+    "memory",
     "gsheet"
    ],
    "tripIds": [
+    "t-e3-2005-05-hkmacau",
     "t-2017-08-23",
     "t-2019-02-18",
     "t-2019-11-04"
@@ -2924,6 +3476,30 @@
    "needsReview": false
   },
   {
+   "name": "화청궁",
+   "level": "poi",
+   "country": "중국",
+   "region": "Shaanxi, Xi'an",
+   "parent": "시안 시",
+   "kind": "역사 유적지",
+   "lat": 34.34,
+   "lng": 108.94,
+   "sources": [
+    "fix",
+    "memory"
+   ],
+   "tripIds": [
+    "t-e3-2005-10-xian"
+   ],
+   "eras": [
+    "E3"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "华清宫 — 저장 목록에는 없다. 2005년 10월 시안 여정으로 보탰다.",
+   "coordFrom": "parent"
+  },
+  {
    "name": "황산 시",
    "level": "poi",
    "country": "중국",
@@ -2933,9 +3509,12 @@
    "lat": 29.71,
    "lng": 118.31,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-12-huangshan"
+   ],
    "eras": [
     "E3"
    ],
@@ -2977,9 +3556,12 @@
    "lat": 40.84,
    "lng": 111.75,
    "sources": [
-    "gmaps_saved"
+    "gmaps_saved",
+    "memory"
    ],
-   "tripIds": [],
+   "tripIds": [
+    "t-e3-2005-08-huhhot"
+   ],
    "eras": [
     "E3"
    ],
@@ -3031,5 +3613,6 @@
  "missingCoords": [
   "Chunguang Shopping Plaza",
   "Dongshan Hotel"
- ]
+ ],
+ "unknownPlaces": []
 }

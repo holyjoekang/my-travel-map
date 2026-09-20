@@ -178,7 +178,7 @@
       "scope": "overseas",
       "cities": [],
       "citiesFrom": "gmaps_saved_2005",
-      "summary": "삼성그룹 중국지역전문가로 베이징에 머물며 중국 전역을 다녔다. 도시별 날짜는 남아 있지 않다.",
+      "summary": "삼성그룹 중국지역전문가로 베이징에 머물며 중국 전역을 다녔다. 날짜를 기억해 낸 곳은 따로 여정으로 세웠고, 아직 때를 못 박지 못한 곳이 여기 남는다.",
       "sources": [
         "gmaps_saved",
         "memory"
@@ -238,6 +238,356 @@
         "gmaps_saved"
       ],
       "confidence": "medium"
+    },
+    {
+      "id": "t-e3-2005-04-shandong",
+      "title": "산둥 반도 — 류궁다오와 펑라이각",
+      "start": "2005-04",
+      "end": "2005-04",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "웨이하이 시",
+        "펑라이 시"
+      ],
+      "places": [
+        "Liugong Island National Forest Park",
+        "Penglai Pavilion"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "medium",
+      "note": "장소는 지도 저장 목록에서, 달은 기억에서 왔다(확실도 B)."
+    },
+    {
+      "id": "t-e3-2005-04-beijing",
+      "title": "베이징 명승지 — 자금성·천단·경산",
+      "start": "2005-04",
+      "end": "2006-03",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "베이징"
+      ],
+      "places": [
+        "자금성",
+        "천단",
+        "景山"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "medium",
+      "note": "한 번의 길이 아니라 주재 기간에 여러 차례 걸음한 곳들이다. 2005년 4월 이후라는 것만 분명하다(확실도 B)."
+    },
+    {
+      "id": "t-e3-2005-05-jiangnan",
+      "title": "강남 — 쑤저우·항저우·자싱",
+      "start": "2005-05",
+      "end": "2005-05",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "쑤저우 시",
+        "항저우 시",
+        "자싱 시"
+      ],
+      "places": [
+        "Humble Administrator's Garden",
+        "山塘街",
+        "시 호",
+        "烟雨楼"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C — 달은 기억에 기댄 추정이다. 연우루는 저장 자싱 난후의 것으로 봤다(청더 피서산장에도 같은 이름이 있다)."
+    },
+    {
+      "id": "t-e3-2005-05-hkmacau",
+      "title": "홍콩·마카오",
+      "start": "2005-05",
+      "end": "2005-06",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "홍콩",
+        "마카오"
+      ],
+      "places": [
+        "빅토리아 피크"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 저장 목록의 침사추이·사이쿵 해산물 거리는 다른 시기 방문일 수 있어 이 여정에 넣지 않았다(PRD §3-6)."
+    },
+    {
+      "id": "t-e3-2005-06-banna",
+      "title": "시솽반나",
+      "start": "2005-06",
+      "end": "2005-06",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "시솽반나 다이족 자치주"
+      ],
+      "places": [
+        "Xishuangbanna Primitive Forest Park (West Gate)",
+        "Xishuangbanna Tropical Flowers Garden (Southwest Gate)",
+        "告庄西双景"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 告庄西双景은 2010년대에 조성된 거리라 이 시기와 어긋난다 — 저장 목록에 뒤늦게 담겼을 수 있어 확인이 필요하다."
+    },
+    {
+      "id": "t-e3-2005-07-changbai",
+      "title": "백두산과 단둥 — 천지·호산장성",
+      "start": "2005-07",
+      "end": "2005-07",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "옌볜 조선족 자치주",
+        "단둥 시"
+      ],
+      "places": [
+        "천지",
+        "Changbaishan Airport",
+        "虎山长城"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "medium",
+      "note": "천지는 확실도 A, 백두산 공항과 호산장성은 B. 같은 달의 내몽고 후룬베이얼 여정과는 별개의 길이다."
+    },
+    {
+      "id": "t-e3-2005-08-kanas",
+      "title": "신장 카나스 호수",
+      "start": "2005-08",
+      "end": "2005-08",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "아러타이 지구"
+      ],
+      "places": [
+        "Ka Nasi Lake"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "high",
+      "note": "확실도 A. 저장 목록의 우루무치·투루판·카스를 같은 길로 묶을 근거는 없어 포괄 여정에 남겨 두었다."
+    },
+    {
+      "id": "t-e3-2005-08-huhhot",
+      "title": "후허하오터",
+      "start": "2005-08",
+      "end": "2005-09",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "후허하오터 시"
+      ],
+      "places": [
+        "Inner Mongolia Buddhist Culture Museum"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 여름에서 가을로 넘어가는 어름이라는 것만 남았다."
+    },
+    {
+      "id": "t-e3-2005-09-henan",
+      "title": "허난 — 소림사와 룽먼 석굴",
+      "start": "2005-09",
+      "end": "2005-10",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "정저우 시",
+        "뤄양 시"
+      ],
+      "places": [
+        "Shaolin Temple",
+        "룽먼 석굴"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 소림사는 정저우 아래 덩펑에 있다."
+    },
+    {
+      "id": "t-e3-2005-10-xian",
+      "title": "시안 — 병마용·화청궁·화산",
+      "start": "2005-10",
+      "end": "2005-10",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "시안 시"
+      ],
+      "places": [
+        "병마용",
+        "화청궁",
+        "Huashan Mountain"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 화청궁은 저장 목록에 없어 이번에 장소 원장으로 보탰다(data/place_fixes.json)."
+    },
+    {
+      "id": "t-e3-2005-11-guizhou",
+      "title": "구이저우 황궈수 폭포",
+      "start": "2005-11",
+      "end": "2005-11",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "안순 시"
+      ],
+      "places": [
+        "Huangguoshu Waterfall"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 황궈수는 안순 아래 있다 — 저장 목록에 안순은 도시로 들어 있지 않았다."
+    },
+    {
+      "id": "t-e3-2005-11-yangshuo",
+      "title": "구이린·양숴 — 인상유삼저",
+      "start": "2005-11",
+      "end": "2005-12",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "구이린 시",
+        "양숴 현"
+      ],
+      "places": [
+        "Yangshuo Tourist Port Impression Liusanjie Ticket Office"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 저장 목록은 양숴 관광항과 인상유삼저 매표소를 한 항목으로 담고 있다."
+    },
+    {
+      "id": "t-e3-2005-12-huangshan",
+      "title": "황산 — 툰시 옛거리",
+      "start": "2005-12",
+      "end": "2006-01",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "황산 시",
+        "툰시 구"
+      ],
+      "places": [
+        "Tunxi Old Street"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 해를 넘겼는지까지는 분명하지 않다."
+    },
+    {
+      "id": "t-e3-2006-01-tianjin",
+      "title": "톈진 — 우다다오와 거우부리",
+      "start": "2006-01",
+      "end": "2006-01",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "톈진"
+      ],
+      "places": [
+        "五大道",
+        "狗不理",
+        "The Ritz-Carlton, Tianjin"
+      ],
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "note": "확실도 C. 거우부리는 베이징에도 지점이 있어 톈진 본점이 맞는지 확인이 필요하고, 리츠칼튼은 2013년 개관이라 이 달과 어긋난다(확실도 D)."
+    },
+    {
+      "id": "t-e3-beijing-life",
+      "title": "베이징 생활 — 살던 동네와 단골",
+      "start": "2004-12",
+      "end": "2006-04",
+      "era": "E3",
+      "purpose": "expat",
+      "scope": "overseas",
+      "cities": [
+        "베이징"
+      ],
+      "places": [
+        "东来顺",
+        "Meizhou Dongpo Restaurant",
+        "Peter's Tex-Mex Grill",
+        "Yixuan Dumplings",
+        "Jindingxuan Ditan Branch",
+        "Dong Huang Hotel Beijing",
+        "크라운 플라자 베이징 리도",
+        "Upper East Side Fitness Chamber",
+        "New World Department Store",
+        "朝阳公园",
+        "地坛公园"
+      ],
+      "summary": "여행이 아니라 그때 거기서 살았다는 기록이다. 식당·호텔·공원·헬스장이 섞여 있고 날짜는 남지 않았다.",
+      "sources": [
+        "gmaps_saved",
+        "memory"
+      ],
+      "confidence": "low",
+      "umbrella": true,
+      "note": "확실도 D. 한 번의 여정이 아니라 생활권이라 여정 수에는 넣지 않는다."
     },
     {
       "id": "t-e5-beijing",
@@ -365,20 +715,41 @@
     },
     {
       "id": "t-2017-07-08",
-      "start": "2017-07-08",
-      "end": "2017-07-16",
+      "title": "뉴욕·뉴헤이븐 — 미국 출장과 예일대 연수",
+      "start": "2017-07-11",
+      "end": "2017-07-18",
       "era": "E6",
       "purpose": "business",
       "scope": "overseas",
       "cities": [
-        "미국 필드트립"
+        "뉴욕",
+        "뉴헤이븐"
       ],
+      "places": [
+        "엠파이어 스테이트 빌딩",
+        "타임스스퀘어",
+        "브로드웨이",
+        "뉴욕 현대미술관",
+        "센트럴파크",
+        "5번가",
+        "록펠러 센터",
+        "예일대학교",
+        "자유의 여신상",
+        "월스트리트",
+        "9·11 메모리얼",
+        "브루클린 브리지",
+        "소호",
+        "첼시"
+      ],
+      "summary": "맨해튼에서 엿새, 뉴헤이븐 예일대에서 이틀. 출장과 연수가 한 길에 붙어 있었다.",
       "role": "중국파트장",
       "sources": [
-        "gsheet"
+        "gsheet",
+        "memory"
       ],
       "confidence": "medium",
-      "note": "도시 미상 — '미국 필드트립'으로만 기록됨"
+      "itinerary": "2017-07-11_뉴욕.html",
+      "note": "구글 시트 출장 이력에는 7.8~7.16 '미국 필드트립'으로만 적혀 있었다. 하루 단위 일정을 받아 기간을 7.11~7.18로, 도시를 뉴욕·뉴헤이븐으로 고쳤다 — 시트와 사흘이 어긋난다. 시트만 보고 실리콘밸리로 추정했던 것도 여기서 걷어냈다."
     },
     {
       "id": "t-2017-08-23",
