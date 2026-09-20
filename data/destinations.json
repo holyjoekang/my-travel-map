@@ -2523,6 +2523,242 @@
    ],
    "lat": 52.0705,
    "lng": 4.3006997
+  },
+  {
+   "place": "로스앤젤레스",
+   "id": 120518,
+   "name": "로스엔젤레스",
+   "enName": "Los Angeles",
+   "country": "캘리포니아",
+   "url": "https://kr.trip.com/travel-guide/destination/los-angeles-120518/",
+   "cover": "https://ak-d.tripcdn.com/images/0103n120004ei8ahiC0D7_D_1180_558.jpg",
+   "intro": "로스앤젤레스 카운티는 미국에서 가장 유명한 카운티로 화려하고 매혹적인 측면과 가난과 범죄의 온상이라는 측면이 대조를 이루며 공존하는 특이한 지역입니다. LA에는 상업적인 성공 그 이상이 있습니다. 이곳에서는 보톡스를 맞은 영화배우와 성공을 거머쥔 사람들이 여유 만만한 서퍼들이 함께 해안을 즐기며, 노동자 계급의 로스앤젤레스 토박이와 활기찬 이민자 사회도 있습니다. 산타 모니카와 베니스 비치 같은 해안 지역에서는 서퍼들의 느긋한 삶의 방식이 느껴집니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo6d12000d0tn6fmC844_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "유니버설스튜디오할리우드"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ4012000h0gimi5CB9E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "워너브라더스 스튜디오 투어 할리우드"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104l12000nvy9jkm8DB4_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "엑스포지션 공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100v0z000000mtlve765A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "크립토닷컴 아레나"
+    }
+   ],
+   "lat": 34.052235,
+   "lng": -118.24368
+  },
+  {
+   "place": "라스베이거스",
+   "id": 252,
+   "name": "라스베이거스",
+   "enName": "Las Vegas",
+   "country": "클라크 군",
+   "url": "https://kr.trip.com/travel-guide/destination/las-vegas-252/",
+   "cover": "https://ak-d.tripcdn.com/images/100a0z000000ndoln9448_D_1180_558.jpg",
+   "intro": "라스베이거스는 네바다주에서 가장 유명한 휴가지입니다. 고급 리조트에서 제공하는 최고의 서비스를 이용해보거나 세계 정상급 공연을 관람해보세요. 세계 각국의 맛있는 음식이 풍성하며 호텔과 리조트에서 제공하는 호화로운 뷔페 가운데 하나를 선택해 맛볼 수 있습니다. 밤이 되면 도시가 더 생생해집니다. 화려한 네온사인이 불야성을 이루는 펍, 클럽, 바를 찾아가 밤새도록 파티를 즐겨보세요. 라스베이거스 주변에는 넋을 잃게 하는 국립공원도 많습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3u12000sxjrthn488F_D_1180_558.png?proc=source%2ftrip",
+     "poi": "스피어"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100y12000k19eg2z8B84_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "하이 롤러"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104u12000bi7dsppFD53_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "태양의 서커스 KA쇼"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10070z000000nv37s3159_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "라스베이거스 스트립"
+    }
+   ],
+   "lat": 36.16994,
+   "lng": -115.13983
+  },
+  {
+   "place": "샌프란시스코",
+   "id": 249,
+   "name": "샌프란시스코",
+   "enName": "San Francisco",
+   "country": "캘리포니아",
+   "url": "https://kr.trip.com/travel-guide/destination/san-francisco-249/",
+   "cover": "https://ak-d.tripcdn.com/images/10050f0000007ete6E312_D_1180_558.jpg",
+   "intro": "샌프란시스코는 캘리포니아 북쪽, 미국 서부 해안에 자리한 유명한 도시입니다. 샌프란시스코의 중국식 이름은 \"오래된 금광산\"으로, 19세기 골드 러시의 영향을 받았습니다. 당시 전 세계 사람들이 금을 캐보려는 희망으로 캘리포니아로 몰려왔죠. 샌프란시스코는 개방적이고 아방가르드한 도시이며 자유로운 분위기가 가득합니다. 문화, 신념, 음식의 모든 측면에서 다양성을 뽐내며 문화의 \"융합로”라는 미국의 특성을 보여줍니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100112000jhp854mAA7F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "피셔맨스 와프"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1A041d000001ejcbq03E2_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "샌프란시스코 현대미술관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100l1f000001gqfc6993B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "골든 게이트 공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100f12000nz41jhq9DAF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "팰리스 오브 파인아트"
+    }
+   ],
+   "lat": 37.77493,
+   "lng": -122.41942
+  },
+  {
+   "place": "산호세",
+   "id": 20184,
+   "name": "산호세",
+   "enName": "San Jose",
+   "country": "코스타리카",
+   "url": "https://kr.trip.com/travel-guide/destination/san-jose-20184/",
+   "cover": "https://ak-d.tripcdn.com/images/0HJ3d12000h9q0l7jB31C_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ6r12000h02w35z6889_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "코스타리카 국립 박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0ww0b12000ddy4s71489F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "코스타리카 국립극장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10011f000001h38x5FDDA_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "이라수 화산"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102w12000l516h8gB48F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "센트럴 에비뉴"
+    }
+   ],
+   "lat": 9.912972,
+   "lng": -84.07683
+  },
+  {
+   "place": "요세미티 국립공원",
+   "id": 35159,
+   "name": "요세미티 국립공원",
+   "enName": "Yosemite National Park",
+   "country": "캘리포니아",
+   "url": "https://kr.trip.com/travel-guide/destination/yosemite-national-park-35159/",
+   "cover": "https://ak-d.tripcdn.com/images/100g1f000001gqxzo3744_D_1180_558.jpg",
+   "intro": "",
+   "photos": [],
+   "lat": 37.8651,
+   "lng": -119.53833
+  },
+  {
+   "place": "침사추이",
+   "id": 2031811,
+   "name": "침사추이",
+   "enName": "Tsim Sha Tsui",
+   "country": "홍콩",
+   "url": "https://kr.trip.com/travel-guide/destination/tsim-sha-tsui-2031811/",
+   "cover": "https://ak-d.tripcdn.com/images/0100512000kqrpxub90D8_D_1180_558.jpg",
+   "intro": "",
+   "photos": [],
+   "lat": 22.2943,
+   "lng": 114.173676
+  },
+  {
+   "place": "펑라이 시",
+   "id": 2044517,
+   "name": "Penglai District",
+   "enName": "Penglai District",
+   "country": "옌타이",
+   "url": "https://kr.trip.com/travel-guide/destination/penglai-district-2044517/",
+   "cover": "https://ak-d.tripcdn.com/images/0HJ2o12000rdky79dD766_D_1180_558.png",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3n12000hsp1j133EAE_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "펑라이거(봉래각)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100h12000lojgcliEE44_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "봉래 팔선과해 국제관광휴양지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100312000jhz74r9AC90_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "창다오(장도)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102g12000moxzovh1021_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "장도 관광지구"
+    }
+   ],
+   "lat": 37.79564,
+   "lng": 120.82913
+  },
+  {
+   "place": "자싱 시",
+   "id": 272,
+   "name": "자싱",
+   "enName": "Jiaxing",
+   "country": "저장",
+   "url": "https://kr.trip.com/travel-guide/destination/jiaxing-272/",
+   "cover": "https://ak-d.tripcdn.com/images/fd/tg/g2/M0B/86/B8/CghzgVWwqViABngKAAWyk6WDfQY852_D_1180_558.jpg",
+   "intro": "중국 공산당의 탄생지 자싱은 남호(South Lake)로 유명합니다. 이곳은 경치가 단아하고 아름다워 오랜 시간 동안 유명인들이 찾고 있답니다. 역사와 문화로 유명한 이곳은 양쯔강 남쪽 지역 특유의 수로가 곳곳에 놓여 있습니다. 예로부터 자싱은 영웅을 많이 배출했습니다. 심균유(Shen Junru), 왕국유(Wang Guowei), 마오둔(Mao Dun), 서지마(Xu Zhimo)를 비롯해 문화계를 빛낸 수많은 인물이 중국 역사의 한 페이지를 장식했습니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4k12000hs4mjbwDBEB_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "우전"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100a0g00000087bj10080_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "서당고진"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo2b12000tui7kec685B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "복원 패션 고진"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo0s12000hs4za9bA09E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "남호 관광지"
+    }
+   ],
+   "lat": 30.746128,
+   "lng": 120.755486
+  },
+  {
+   "place": "안순 시",
+   "id": 518,
+   "name": "안순",
+   "enName": "Anshun",
+   "country": "구이저우",
+   "url": "https://kr.trip.com/travel-guide/destination/anshun-518/",
+   "cover": "https://ak-d.tripcdn.com/images/01069120008357z5t2554_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/100913000000tgynfD431_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "황과수(황궈수)폭포"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100b12000j0dzah7EDDE_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "용궁 풍경구"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo5d12000px3nphj2F86_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "황과수댐 링허교"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/01074120008wyhv325C76_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "쯔윈 거투허 관광지"
+    }
+   ],
+   "lat": 26.253073,
+   "lng": 105.94759
   }
  ]
 }
