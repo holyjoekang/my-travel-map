@@ -239,6 +239,7 @@ svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line
   border:1px solid var(--line);color:var(--dim);margin:0 4px 4px 0}
 
 /* 일정표 — 여행 전에 만들어 둔 하루하루 계획. 여정을 누르면 여기로 이어진다. */
+.itins{display:grid;gap:9px}
 .itin{display:block;border:1px solid var(--accent);border-radius:12px;padding:13px 14px;
   background:var(--bg);color:var(--ink);text-decoration:none;box-shadow:var(--shadow)}
 .itin:hover{box-shadow:var(--lift)}
@@ -332,9 +333,11 @@ const PURPOSE = {
 const SRC = {blog:"블로그", gdoc:"구글 문서", gsheet:"구글 시트", gmaps_saved:"지도 저장목록",
   calendar:"캘린더", memory:"기억", photo:"사진", itinerary:"일정표"};
 
-/* 여정 → 일정표 한 장. data/trip_html 의 파일을 app/itinerary/ 로 옮겨 둔 것이다. */
+/* 여정 → 일정표. data/trip_html 의 파일을 app/itinerary/ 로 옮겨 둔 것이다.
+   한 여정에 여러 장이 붙을 수 있다 — 떠나기 전의 계획과 다녀와서 쓴 기록처럼. */
 const ITINS = DATA.itineraries || [];
-const itinOf = new Map(ITINS.map(i => [i.tripId, i]));
+const itinOf = new Map();
+for (const i of ITINS) itinOf.set(i.tripId, [...(itinOf.get(i.tripId) || []), i]);
 const itinHref = i => "itinerary/" + i.file;
 
 const byName = new Map(PLACES.map(p => [p.name, p]));
@@ -689,17 +692,19 @@ function openTrip(id){
 }
 /* 일정표가 붙은 여정이면 상세 패널 맨 위에 한 장 띄운다. 누르면 그 일정표가 열린다. */
 function itinSection(t){
-  const i = itinOf.get(t.id); if (!i) return "";
-  const when = i.start === i.end ? i.start : `${i.start} ~ ${i.end}`;
-  return `<section style="border-top:0;padding-top:0">
-    <h4>일정표</h4>
-    <a class="itin" href="${esc(itinHref(i))}" target="_blank" rel="noopener">
+  const list = itinOf.get(t.id); if (!list) return "";
+  const card = i => {
+    const when = i.start === i.end ? i.start : `${i.start} ~ ${i.end}`;
+    return `<a class="itin" href="${esc(itinHref(i))}" target="_blank" rel="noopener">
       <b>${esc(i.title)}</b>
       <span class="sub">${when} · ${i.days}일 · ${
         esc(i.subtitle) || i.cities.map(esc).join(" · ")}</span>
       ${i.lead ? `<p>${esc(i.lead)}</p>` : ""}
-      <span class="open">일정표 열기 →</span>
-    </a></section>`;
+      <span class="open">일정표 열기 →</span></a>`;
+  };
+  return `<section style="border-top:0;padding-top:0">
+    <h4>일정표 ${list.length > 1 ? list.length : ""}</h4>
+    <div class="itins">${list.map(card).join("")}</div></section>`;
 }
 function panel(html){
   document.getElementById("panelBody").innerHTML = html;

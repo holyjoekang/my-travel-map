@@ -27,6 +27,7 @@
     --trip t-2026-06-03   기존 여정에 붙인다 (기간·도시·제목을 그 여정에서 가져온다)
     --title/--subtitle/--dates/--cities/--purpose/--cover   원고 값을 덮어쓴다
     --private             개인 일정표로 둔다 (저장소에 올라가지 않는다)
+    --public              개인정보 검사에 걸려도 공개로 민다 (보고 나서 쓴다)
     --api                 줄글을 Claude가 하루 단위로 정리한다 (ANTHROPIC_API_KEY)
     --full                블로그 본문을 캐시 대신 전문으로 다시 받는다
     --no-build            HTML만 만들고 빌드는 하지 않는다
@@ -77,10 +78,16 @@ BLOG_URL = "https://blog.naver.com/joekang/{}"
 PURPOSES = {"출장": "business", "주재": "expat", "가족여행": "family",
             "부부여행": "couple", "친구여행": "friends", "성지순례": "pilgrimage",
             "혼자": "solo"}
-DAY_RE = re.compile(r"(?:DAY\s*|제?\s*)(\d+)\s*일?차?", re.I)
+# 'DAY 3' 이나 '3일차' 만 날짜 표시로 본다. 맨 숫자를 먹으면 '2박 3일'이 '박 3일'이 된다.
+DAY_RE = re.compile(r"DAY\s*(\d+)|제?\s*(\d+)\s*일\s*차", re.I)
 TIME_RE = re.compile(r"^(\d{1,2}:\d{2}(?:\s*[-–~]\s*\d{1,2}:\d{2})?|\d{1,2}시(?:\s*\d{1,2}분)?)"
                      r"\s*[|·]\s*(.+)$")
 SENT_RE = re.compile(r"(?<=[.!?다요])\s+")
+
+
+def day_num(m: re.Match) -> int:
+    """DAY_RE 가 잡은 날 번호. 두 갈래 중 잡힌 쪽을 쓴다."""
+    return int(next(g for g in m.groups() if g))
 
 
 def say(step: int, what: str) -> None:
@@ -168,7 +175,7 @@ def clean_title(title: str) -> str:
 
 def spec_from_sources(sources: list[dict], meta: dict) -> str:
     """글 조각들을 원고 스펙으로 옮긴다. 제목에 'n일차'가 있으면 하루씩 나눈다."""
-    days = [(int(m.group(1)), s) for s in sources
+    days = [(day_num(m), s) for s in sources
             if (m := DAY_RE.search(s["title"]))]
     lines = [f"{k}: {v}" for k, v in meta.items() if v]
     by_day = len(days) == len(sources) and len(days) > 1
@@ -253,7 +260,7 @@ def parse_spec(text: str) -> dict:
         if head:
             title = head.group(1).strip()
             m = DAY_RE.match(title)
-            section = {"day": int(m.group(1)) if m else None,
+            section = {"day": day_num(m) if m else None,
                        "title": title, "items": []}
             spec["sections"].append(section)
             key = None
@@ -334,7 +341,8 @@ def enrich(spec: dict, args: dict) -> dict:
 
     dests = {d["place"]: d for d in load(DATA / "destinations.json")["destinations"]} \
         if (DATA / "destinations.json").exists() else {}
-    dest = next((dests[c] for c in cities if c in dests), None)
+    matched = [dests[c] for c in cities if c in dests]
+    dest = matched[0] if matched else None
 
     # DAY 꼭지에는 그날의 실제 날짜를 붙인다 — 글을 올린 날이 아니라 여행한 날이다.
     for s in spec["sections"]:
@@ -353,7 +361,7 @@ def enrich(spec: dict, args: dict) -> dict:
         "cities": cities, "unknown": unknown,
         "purpose": meta.get("목적", ""),
         "cover": meta.get("표지") or (dest or {}).get("cover", ""),
-        "dest": dest,
+        "dest": dest, "dests": matched,
         "private": args.get("private") or meta.get("공개", "").startswith("아니"),
     }
     return spec
@@ -411,7 +419,14 @@ section{{background:var(--panel);border:1px solid var(--line);border-radius:16px
 section h2{{font:600 19px/1.35 var(--serif);margin:0 0 4px}}
 section .when{{font-size:12px;color:var(--dim);letter-spacing:.04em;
   text-transform:uppercase;font-weight:700}}
+.shots{{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}}
+.shots figure{{margin:0}}
+.shots img{{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;
+  background:var(--line)}}
+.shots figcaption{{font-size:11.5px;color:var(--dim);margin-top:5px;text-align:center}}
+@media(max-width:560px){{.shots{{grid-template-columns:1fr 1fr}}}}
 .para{{margin:12px 0 0;font-size:14.5px}}
+.para.dim{{color:var(--dim);font-size:13px}}
 .para+.para{{margin-top:10px}}
 .rows{{margin-top:14px;display:grid;gap:2px}}
 .row{{display:grid;grid-template-columns:78px 1fr;gap:14px;padding:9px 0;
@@ -446,6 +461,7 @@ footer a{{color:var(--dim)}}
 <main>
   {intro_html}
   {sections}
+  {shots}
   {links_html}
   <footer>{footer}</footer>
 </main>
@@ -495,9 +511,6 @@ def render(spec: dict) -> str:
     links = "".join(f'<a href="{esc(l["url"])}" target="_blank" rel="noopener">'
                     f'{esc(l["label"])} →</a>' for l in spec["links"] if l["url"])
     dest = info.get("dest")
-    if dest:
-        links += (f'<a href="{esc(dest["url"])}" target="_blank" rel="noopener nofollow">'
-                  f'Trip.com {esc(dest["name"])} 가이드 →</a>')
 
     cover = (f'<img src="{esc(info["cover"])}" alt="{esc(info["cities"][0] if info["cities"] else "")} 사진">'
              if info["cover"] else "")
@@ -505,7 +518,27 @@ def render(spec: dict) -> str:
               f' rel="noopener nofollow">© Trip.com</a></div>'
               if dest and info["cover"] == dest.get("cover") else "")
 
+    # 그 도시의 trip.com 명소 사진 몇 장. 사진은 복사하지 않고 주소만 건다(PRD §14).
+    shots = ""
+    for d in info.get("dests", []):
+        cards = "".join(
+            f'<figure><img src="{esc(p["url"])}" alt="{esc(p.get("poi") or d["name"])}"'
+            f' loading="lazy"><figcaption>{esc(p.get("poi") or d["name"])}</figcaption>'
+            f'</figure>' for p in d.get("photos", [])[:3] if p.get("url"))
+        if not cards:  # 사진이 없으면 가이드 링크만 바닥에 건다
+            links += (f'<a href="{esc(d["url"])}" target="_blank" rel="noopener nofollow">'
+                      f'Trip.com {esc(d["name"])} 가이드 →</a>')
+            continue
+        shots += (f'<section><div class="when">{esc(d["name"])} · Trip.com</div>'
+                  f'<h2>사진으로 보는 {esc(d["name"])}</h2>'
+                  f'<div class="shots">{cards}</div>'
+                  f'<p class="para dim">{esc((d.get("intro") or "")[:180])}</p>'
+                  f'<div class="links"><a href="{esc(d["url"])}" target="_blank"'
+                  f' rel="noopener nofollow">Trip.com {esc(d["name"])} 가이드 →</a></div>'
+                  f'</section>')
+
     return PAGE.format(
+        shots=shots,
         title=esc(info["title"]),
         subtitle=esc(info["subtitle"] or " · ".join(info["cities"])),
         subtitle_html=f'<p class="sub">{esc(info["subtitle"])}</p>'
@@ -608,8 +641,13 @@ def main() -> None:
     html_text = render(spec)
     found = bi.scan_text(bi.text_of(html_text))
     if found and not info["private"]:
-        info["private"] = True
-        print(f"    ! 개인정보로 보이는 것({', '.join(found)})이 있어 개인 일정표로 둔다")
+        if flag("--public"):  # 사람이 보고 괜찮다고 한 것만 공개로 민다
+            print(f"    ! 개인정보로 보이는 것({', '.join(found)})이 있지만 "
+                  "--public 이라 공개로 둔다")
+        else:
+            info["private"] = True
+            print(f"    ! 개인정보로 보이는 것({', '.join(found)})이 있어 "
+                  "개인 일정표로 둔다 (괜찮으면 --public 을 붙여 다시 돌려라)")
     if info["unknown"]:
         print(f"    ! 장소 마스터에 없는 도시: {', '.join(info['unknown'])} "
               f"— data/place_coords.json 에 좌표를 넣어라")

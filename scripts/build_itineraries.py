@@ -46,9 +46,13 @@ MATCH_DAYS = 30
 SUMMARY_MAX = 160
 
 # 공개 폴더에 있으면 안 되는 것들. 이름을 추측하지 않고 형태로만 걸러낸다.
+TITLES = (r"거점장|법인장|지사장|본부장|팀장|실장|부장|차장|과장|대리|주임|"
+          r"소장|점장|상무|전무|이사|사장|회장")
 PRIVATE_PATTERNS = [
-    (re.compile(r"[가-힣]{2,4}\s*(거점장|법인장|지사장|팀장|본부장|부장|차장|과장|대리|사원|"
-                r"소장|점장|상무|전무|이사|사장|회장|님)\b"), "이름+직책"),
+    # 강성현 거점장 — 이름 석 자에 직책이 붙은 것
+    (re.compile(rf"[가-힣]{{3,4}}\s*({TITLES})\b"), "이름+직책"),
+    # 서 사장님 · 박 전무님 — 성 한 자에 직책이 붙은 것
+    (re.compile(rf"[가-힣]\s+({TITLES})님?\b"), "성+직책"),
     (re.compile(r"\b01[016-9][-.\s]?\d{3,4}[-.\s]?\d{4}\b"), "휴대전화 번호"),
     (re.compile(r"\b1[3-9]\d{9}\b"), "중국 휴대전화 번호"),
     (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]{2,}"), "이메일"),
@@ -132,6 +136,10 @@ def gap_days(a: str, b: str) -> int:
 
 
 # ── 도시 ──────────────────────────────────────────────────────────────────
+# 흔한 우리말과 겹치는 지명. 제목 밖에서는 지명으로 보지 않는다.
+#   부여 ↔ "의미를 부여", 지난(济南) ↔ "지난 주", 다리(大理) ↔ "다리를 건너"
+AMBIGUOUS = {"부여", "남해", "지난", "다리", "대리", "상주", "영주",
+             "의성", "고성", "남원", "포산", "광주"}
 def needles(aliases: dict) -> list[tuple[str, str]]:
     """찾을 표기 → 정식 도시명. 긴 표기부터 본다(청두 시 < 청두 순서가 되지 않게)."""
     pairs: dict[str, str] = {}
@@ -153,11 +161,17 @@ def needles(aliases: dict) -> list[tuple[str, str]]:
 
 
 def parse_cities(title: str, head: str, body: str, table: list[tuple[str, str]]) -> list[str]:
-    """제목과 머리글에 나온 도시를 먼저 쓰고, 없으면 본문에서 두 번 이상 나온 도시를 쓴다."""
-    def hits(src: str) -> list[str]:
+    """제목과 머리글에 나온 도시를 먼저 쓰고, 없으면 본문에서 두 번 이상 나온 도시를 쓴다.
+
+    흔한 우리말과 겹치는 지명(부여·남해·지난…)은 제목에 있을 때만 지명으로 본다.
+    '의미를 부여', '지난 주' 가 도시로 잡히면 안 된다(classify_posts 와 같은 규칙).
+    """
+    def hits(src: str, strict: bool = False) -> list[str]:
         found: dict[str, int] = {}
         taken = ""
         for needle, city in table:
+            if strict and needle in AMBIGUOUS:
+                continue
             at = src.find(needle)
             # 이미 잡은 더 긴 표기에 묻힌 것이면 건너뛴다 (청두 시 → 청두)
             if at < 0 or city in found or needle in taken:
@@ -166,10 +180,12 @@ def parse_cities(title: str, head: str, body: str, table: list[tuple[str, str]])
             taken += needle + "|"
         return sorted(found, key=found.get)  # 글에 나온 차례대로
 
-    cities = hits(f"{title} {head}")
+    cities = hits(title)
+    cities += [c for c in hits(head, strict=True) if c not in cities]
     if cities:
         return cities
-    counts = {c: body.count(n) for n, c in table if body.count(n) >= 2}
+    counts = {c: body.count(n) for n, c in table
+              if n not in AMBIGUOUS and body.count(n) >= 2}
     return [c for c, _ in sorted(counts.items(), key=lambda kv: -kv[1])][:4]
 
 
