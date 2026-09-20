@@ -453,6 +453,25 @@ class Bundle(unittest.TestCase):
         self.assertIn('"mapsKey":""', html)
         self.assertIn("svg class=\"map\"", html.replace("<svg", "svg").replace("`", ""))
 
+    def test_destination_list_counts_cities_not_photos(self):
+        """여행지 목록은 사진 캐시가 아니라 도시 원장에서 온다 (PRD §14-4).
+
+        사진이 있는 곳만 세면 가이드가 없는 도시가 통째로 빠져 나라 수·도시 수가
+        통계 탭과 어긋난다 — 미국 8곳이 뉴욕 하나로 세지던 적이 있다.
+        """
+        tpl = (ROOT / "app/index.template.html").read_text(encoding="utf-8")
+        self.assertIn("const feat = gallery();", tpl,
+                      "여행지 탭이 사진 캐시(featured)를 세고 있다")
+        gallery = tpl[tpl.index("function gallery()"):]
+        self.assertIn("PLACES.filter", gallery[:400], "gallery 가 도시 원장을 안 본다")
+
+        payload = build_app.build_payload(public=False)
+        cities = {p["name"] for p in payload["places"] if p["level"] != "poi"}
+        shots = {d["place"] for d in payload["destinations"]}
+        self.assertTrue(shots <= cities, "장소 원장에 없는 여행지 사진이 있다")
+        self.assertLess(len(shots), len(cities),
+                        "사진이 모든 도시에 붙었다 — 이 시험의 전제를 다시 봐라")
+
     def test_images_only_from_tripcom(self):
         """사진만 밖에서 받는다. 그것도 trip.com 한 곳에서만 (PRD §14)."""
         html = (ROOT / "app/index.html").read_text(encoding="utf-8")
