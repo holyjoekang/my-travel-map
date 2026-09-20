@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -21,6 +22,7 @@ import build_itineraries
 
 DATA = Path("data")
 APP = Path("app")
+MAPS = DATA / "maps.json"         # .gitignore — 구글 지도 브라우저 키
 TEMPLATE = APP / "index.template.html"
 PRIVATE = DATA / "private.json"   # .gitignore — 실명과 업무 요약
 SITE = DATA / "site.json"         # 홈 화면 문구 — 없어도 기본값으로 돈다
@@ -68,6 +70,21 @@ def site_and_destinations() -> tuple[dict, list]:
     if "invite" in site:
         site["invite"] = strip_notes(site["invite"])
     return site, dests
+
+
+def maps_key(public: bool) -> str:
+    """구글 지도 키. 없으면 빈 문자열이고, 화면은 번들 지도만 쓴다(PRD §8).
+
+    개인 빌드는 `data/maps.json`(gitignore)에서 읽는다. **공개 빌드는 그 파일을 보지
+    않는다** — 공개본에 키를 넣으려면 CI에서 환경변수 GOOGLE_MAPS_KEY 로 넣어야 하고,
+    그 키에는 반드시 HTTP 리퍼러 제한을 걸어 둔다.
+    """
+    env = os.environ.get("GOOGLE_MAPS_KEY", "").strip()
+    if env:
+        return env
+    if public or not MAPS.exists():
+        return ""
+    return str(load(MAPS).get("googleMapsKey", "")).strip()
 
 
 def build_payload(public: bool) -> dict:
@@ -154,6 +171,7 @@ def build_payload(public: bool) -> dict:
 
     return {
         "site": site,
+        "mapsKey": maps_key(public),
         "destinations": dests,
         "itineraries": itineraries,
         "eras": trips_doc["eras"],

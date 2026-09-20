@@ -175,6 +175,9 @@ footer.site .row span{flex:1;min-width:220px}
 #year{flex:1;min-width:140px;accent-color:var(--accent)}
 .yearlab{font-variant-numeric:tabular-nums;font-weight:600;min-width:84px}
 
+.gmap{width:100%;aspect-ratio:16/10;min-height:320px;border:1px solid var(--line);
+  border-radius:12px;background:var(--sea);overflow:hidden}
+@media(max-width:700px){.gmap{aspect-ratio:4/5}}
 svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line);
   border-radius:12px;display:block;touch-action:none}
 .land{fill:var(--land);stroke:var(--landline);stroke-width:.5;vector-effect:non-scaling-stroke}
@@ -360,7 +363,11 @@ for (const p of PLACES) {
   p.firstYear = ts.length ? Math.min(...ts.map(year)) : null;
 }
 
-const state = {view:"home", scale:"world", era:null, scope:null, year:Y1, q:""};
+const state = {view:"home", scale:"world", era:null, scope:null, year:Y1, q:"", gmap:false};
+
+/* 구글 지도는 곁들이다. 기본은 번들 안의 지도이고(PRD §8 — 밖을 안 탄다),
+   키가 있을 때만 '구글 지도' 단추가 생기고, 눌렀을 때만 스크립트를 불러온다. */
+const MAPS_KEY = DATA.mapsKey || "";
 
 /* ── 투영 ── */
 const VIEWS = {
@@ -432,11 +439,22 @@ function renderBar(){
     [["world","세계"],["asia","아시아"],["china","중국"]].forEach(([k,label])=>{
       const b = document.createElement("button");
       b.textContent = label;
-      b.setAttribute("aria-pressed", String(state.scale===k));
-      b.onclick = ()=>{ state.scale=k; render(); };
+      b.setAttribute("aria-pressed", String(!state.gmap && state.scale===k));
+      b.onclick = ()=>{ state.gmap=false; state.scale=k; render(); };
       seg.append(b);
     });
     bar.append(seg);
+    if (MAPS_KEY){   // 키가 있을 때만 — 없으면 번들 지도만 쓴다
+      const g = document.createElement("div");
+      g.className = "seg";
+      const b = document.createElement("button");
+      b.textContent = "구글 지도";
+      b.title = "확대·축소하며 둘러봅니다";
+      b.setAttribute("aria-pressed", String(state.gmap));
+      b.onclick = ()=>{ state.gmap = !state.gmap; render(); };
+      g.append(b);
+      bar.append(g);
+    }
   }
   if (state.view === "candidates") return;
   if (state.view === "map" || state.view === "timeline"){
@@ -451,7 +469,77 @@ function renderBar(){
 }
 
 /* ── 지도 ── */
+/* ── 구글 지도 (곁들이) ─────────────────────────────────────────────────
+   스크립트는 처음 누를 때 한 번만 불러온다. 못 불러오면 번들 지도로 되돌린다. */
+let gmapsLoading = null;
+function loadGoogleMaps(){
+  if (window.google?.maps) return Promise.resolve();
+  if (gmapsLoading) return gmapsLoading;
+  gmapsLoading = new Promise((ok, fail) => {
+    // loading=async 를 쓸 때는 onload 가 아니라 callback 으로 준비를 알린다.
+    // onload 시점에는 google.maps 가 아직 없어 Map 생성이 터진다.
+    window.__gmapsReady = () => ok();
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://maps.googleapis.com/maps/api/js?loading=async&language=ko" +
+      "&callback=__gmapsReady&key=" + encodeURIComponent(MAPS_KEY);
+    s.onerror = () => fail(new Error("script"));
+    document.head.append(s);
+  });
+  return gmapsLoading;
+}
+function mountGoogleMap(){
+  const box = document.getElementById("gmap"); if (!box) return;
+  const pts = visiblePlaces().filter(p => p.lat != null);
+  loadGoogleMaps().then(() => {
+    const dark = matchMedia("(prefers-color-scheme:dark)").matches &&
+      document.documentElement.dataset.theme !== "light";
+    const map = new google.maps.Map(box, {
+      center: {lat: 30, lng: 110}, zoom: 3, mapTypeControl: false,
+      streetViewControl: false, fullscreenControl: true,
+      backgroundColor: dark ? "#16150f" : "#e8eef3",
+      styles: dark ? [
+        {elementType:"geometry", stylers:[{color:"#22201a"}]},
+        {elementType:"labels.text.fill", stylers:[{color:"#9a9184"}]},
+        {elementType:"labels.text.stroke", stylers:[{color:"#16150f"}]},
+        {featureType:"water", elementType:"geometry", stylers:[{color:"#12171c"}]},
+        {featureType:"poi", stylers:[{visibility:"off"}]},
+      ] : [{featureType:"poi", stylers:[{visibility:"off"}]}],
+    });
+    const css = getComputedStyle(document.documentElement);
+    const bounds = new google.maps.LatLngBounds();
+    for (const p of pts){
+      const pos = {lat: p.lat, lng: p.lng};
+      bounds.extend(pos);
+      const m = new google.maps.Marker({   // AdvancedMarker 는 mapId 가 있어야 한다
+        position: pos, map, title: p.name + (p.visits ? ` · ${p.visits}회` : ""),
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: p.level === "poi" ? 3.5 : 5 + Math.min(Math.sqrt(p.visits) * 2, 8),
+          fillColor: css.getPropertyValue("--" + p.purpose).trim() || "#9a6a3a",
+          fillOpacity: p.level === "poi" ? .6 : .88,
+          strokeColor: "#fff", strokeWeight: 1,
+        },
+      });
+      m.addListener("click", () => openPlace(p.name));
+    }
+    if (pts.length) map.fitBounds(bounds, 40);
+  }).catch(() => {
+    state.gmap = false;
+    box.outerHTML = `<div class="empty">구글 지도를 불러오지 못했습니다.
+      <br><small>키 제한이나 네트워크를 확인하세요. 아래는 번들 지도입니다.</small></div>`;
+    render();
+  });
+}
+
 function viewMap(){
+  if (state.gmap && MAPS_KEY){
+    const n = visiblePlaces().filter(p => p.lat != null).length;
+    return `<div id="gmap" class="gmap"></div>
+      <p style="color:var(--dim);font-size:12px;margin:8px 2px">
+        점 ${n}개 · 끌어서 옮기고 굴려서 확대합니다. 점을 누르면 상세가 열립니다.
+        지도는 Google 제공.</p>`;
+  }
   const f = frame();
   const pts = visiblePlaces();
   const paths = WORLD.map(c => c.rings.map(r =>
@@ -1068,6 +1156,7 @@ function render(keepBar){
     timeline:viewTimeline, region:viewRegion, stats:viewStats,
     candidates:viewCandidates}[state.view];
   document.getElementById("view").innerHTML = v();
+  if (state.view === "map" && state.gmap && MAPS_KEY) mountGoogleMap();
   if (state.view === "home") scrollTo({top:0});
   document.getElementById("brandSub").textContent =
     `${PLACES.filter(p=>p.level!=="poi").length}개 도시 · ${Y0}–${Y1}`;

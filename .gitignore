@@ -9,3 +9,4 @@ app/itinerary/
 data/itineraries.json
 data/trip_html/private/
 data/trip_source/
+data/maps.json

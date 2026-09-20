@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import unittest
@@ -393,10 +394,29 @@ class Bundle(unittest.TestCase):
         self.assertIn("나의 여행 지도", html)
 
     def test_no_external_code(self):
-        """스크립트·스타일은 전부 파일 안에 있다. 파일 하나로 돌아야 한다 (PRD §8)."""
+        """스크립트·스타일은 전부 파일 안에 있다. 파일 하나로 돌아야 한다 (PRD §8).
+
+        구글 지도만 예외다 — 그것도 자리표시자 한 곳뿐이고, 사람이 단추를 눌러야
+        불러온다. 첫 화면은 여전히 번들 안의 지도로 그린다.
+        """
         html = (ROOT / "app/index.html").read_text(encoding="utf-8")
-        for bad in ["<script src=", "<link rel=\"stylesheet\"", "https://maps.googleapis"]:
+        for bad in ["<script src=", "<link rel=\"stylesheet\""]:
             self.assertNotIn(bad, html)
+        self.assertEqual(html.count("maps.googleapis.com"), 1, "구글 지도 로더는 한 곳뿐")
+        self.assertIn('"gmap":false', html.replace(" ", "").replace("gmap:false",
+                                                                    '"gmap":false'))
+
+    def test_maps_key_never_goes_public(self):
+        """구글 지도 키는 공개 빌드에 넣지 않는다 — CI 환경변수로만 넣을 수 있다."""
+        if os.environ.get("GOOGLE_MAPS_KEY"):
+            self.skipTest("CI가 환경변수로 키를 넣는 중")
+        self.assertEqual(build_app.build_payload(public=True)["mapsKey"], "")
+
+    def test_map_works_without_the_key(self):
+        """키가 없어도 지도는 그대로 뜬다 — 구글 지도는 곁들이다."""
+        html = (ROOT / "app/index.public.html").read_text(encoding="utf-8")
+        self.assertIn('"mapsKey":""', html)
+        self.assertIn("svg class=\"map\"", html.replace("<svg", "svg").replace("`", ""))
 
     def test_images_only_from_tripcom(self):
         """사진만 밖에서 받는다. 그것도 trip.com 한 곳에서만 (PRD §14)."""
