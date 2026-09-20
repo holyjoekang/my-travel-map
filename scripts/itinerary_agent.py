@@ -622,6 +622,10 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     name = f"{info['start']}_{info['cities'][0] if info['cities'] else 'trip'}.html"
     out = out_dir / name
+    stale = (bi.SRC_DIR if info["private"] else bi.PRIVATE_DIR) / name
+    if stale.exists():  # 공개↔개인을 바꿔 다시 만들면 옛 자리의 것은 지운다
+        stale.unlink()
+        print(f"    · 옛 {stale} 를 지웠다")
     out.write_text(html_text, encoding="utf-8")
     SOURCE_DIR.mkdir(parents=True, exist_ok=True)
     (SOURCE_DIR / (out.stem + ".txt")).write_text(spec_to_text(spec), encoding="utf-8")
