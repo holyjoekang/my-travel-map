@@ -1,0 +1,181 @@
+{
+  "_note": "사람이 손으로 손보는 장소 원장. 지도 저장 목록(data/gmaps_saved_2005.json)은 받아 적은 캡처라 고치지 않고, 바로잡을 것과 목록에 없던 장소를 여기 적으면 build_places.py 가 그 위에 덮어쓴다(PRD §3-6). 여정의 places 는 여기나 저장 목록에 있는 이름만 쓸 수 있다.",
+  "_fields": "name 은 장소 마스터의 표기 그대로. 적은 키만 덮어쓴다. add 가 true 면 저장 목록에 없던 장소다.",
+  "places": [
+    {
+      "name": "烟雨楼",
+      "parent": "자싱 시",
+      "region": "Zhejiang, Jiaxing",
+      "needsReview": false,
+      "note": "저장 자싱 난후(南湖)의 연우루로 봤다. 청더 피서산장에도 같은 이름의 누각이 있어 저장 목록만으로는 갈리지 않았다."
+    },
+    {
+      "name": "Changbaishan Airport",
+      "needsReview": false,
+      "note": "백두산(창바이산) 가는 길목. 2005년 7월 천지 여정에 붙였다."
+    },
+    {
+      "name": "Huangguoshu Waterfall",
+      "region": "Guizhou, Anshun",
+      "needsReview": false,
+      "note": "구이저우 안순. 저장 목록에 안순은 도시로 들어 있지 않다."
+    },
+    {
+      "name": "Inner Mongolia Buddhist Culture Museum",
+      "needsReview": false
+    },
+    {
+      "name": "告庄西双景",
+      "kind": "명승지",
+      "needsReview": true,
+      "note": "2010년대에 조성된 거리다. 2005~2006년 방문과 시기가 어긋나 확인이 필요하다."
+    },
+    {
+      "name": "The Ritz-Carlton, Tianjin",
+      "needsReview": true,
+      "note": "2013년 개관. 2006년 1월 방문과 시기가 어긋나 확인이 필요하다."
+    },
+    {
+      "name": "Huaqingjiayuan 12 Building",
+      "needsReview": true,
+      "note": "华清嘉园 — 칭화대 인근 아파트. 지역전문가 시절 거주지로 추정. 이름이 시안의 화청궁과 닮아 시안으로 보기도 했으나 어느 쪽도 확정하지 못했다."
+    },
+    {
+      "name": "화청궁",
+      "add": true,
+      "level": "poi",
+      "kind": "역사 유적지",
+      "country": "중국",
+      "region": "Shaanxi, Xi'an",
+      "parent": "시안 시",
+      "note": "华清宫 — 저장 목록에는 없다. 2005년 10월 시안 여정으로 보탰다."
+    },
+    {
+      "name": "엠파이어 스테이트 빌딩",
+      "add": true,
+      "level": "poi",
+      "kind": "전망대",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "타임스스퀘어",
+      "add": true,
+      "level": "poi",
+      "kind": "광장",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "브로드웨이",
+      "add": true,
+      "level": "poi",
+      "kind": "거리",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "뉴욕 현대미술관",
+      "add": true,
+      "level": "poi",
+      "kind": "미술관",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "센트럴파크",
+      "add": true,
+      "level": "poi",
+      "kind": "공원",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "5번가",
+      "add": true,
+      "level": "poi",
+      "kind": "거리",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "록펠러 센터",
+      "add": true,
+      "level": "poi",
+      "kind": "전망대",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "자유의 여신상",
+      "add": true,
+      "level": "poi",
+      "kind": "기념물",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "월스트리트",
+      "add": true,
+      "level": "poi",
+      "kind": "거리",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "9·11 메모리얼",
+      "add": true,
+      "level": "poi",
+      "kind": "기념관",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "브루클린 브리지",
+      "add": true,
+      "level": "poi",
+      "kind": "다리",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "소호",
+      "add": true,
+      "level": "poi",
+      "kind": "거리",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "첼시",
+      "add": true,
+      "level": "poi",
+      "kind": "거리",
+      "country": "미국",
+      "region": "New York",
+      "parent": "뉴욕"
+    },
+    {
+      "name": "예일대학교",
+      "add": true,
+      "level": "poi",
+      "kind": "대학교",
+      "country": "미국",
+      "region": "Connecticut, New Haven",
+      "parent": "뉴헤이븐",
+      "note": "2017년 7월 연수로 이틀 묵었다."
+    }
+  ]
+}

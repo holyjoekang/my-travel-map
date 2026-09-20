@@ -5,6 +5,7 @@
   data/trips.json             — 여정 원장 (cities는 원문 표기 그대로)
   data/place_aliases.json     — 표기 → 정식 도시명
   data/place_coords.json      — 정식 도시명 → [위도, 경도]
+  data/place_fixes.json       — 저장 목록 보정과 목록에 없던 장소 (없어도 된다)
 
 출력
   data/places.json            — 정규화된 장소 + 좌표 + 방문 집계
@@ -43,8 +44,11 @@ def build() -> dict:
     trips = load("trips.json")
     aliases = strip_notes(load("place_aliases.json"))
     coords = strip_notes(load("place_coords.json"))
+    fixes = load("place_fixes.json")["places"] if (DATA / "place_fixes.json").exists() else []
 
     places: dict[str, dict] = {}
+    unknown: list[str] = []   # 장소 마스터에 없는 이름 — 오타이거나 보정 파일에 빠진 것
+    from_saved: set[str] = set()   # 저장 목록에 실제로 있던 이름
 
     def touch(name: str, **fields) -> dict:
         key = canonical(name, aliases)
@@ -83,6 +87,7 @@ def build() -> dict:
             parent=row.get("parentCity") or row.get("parentPrefecture"),
             kind=row.get("kind"),
         )
+        from_saved.add(p["name"])
         if "gmaps_saved" not in p["sources"]:
             p["sources"].append("gmaps_saved")
         if "E3" not in p["eras"]:
@@ -92,17 +97,43 @@ def build() -> dict:
         if row.get("note"):
             p["note"] = row["note"]
 
-    # 2) 여정에 등장한 도시
+    # 1-2) 사람이 확인한 보정. 캡처 원본은 고치지 않고 여기서 덮어쓴다(PRD §3-6).
+    for fix in fixes:
+        key = canonical(fix["name"], aliases)
+        p = places.get(key)
+        if p is None:
+            if not fix.get("add"):
+                unknown.append(f"place_fixes: {fix['name']}")
+                continue
+            p = touch(fix["name"], level="poi")
+            p["sources"].append("fix")
+        for k, v in fix.items():
+            if k not in ("name", "add"):
+                p[k] = v
+
+    # 2) 여정에 등장한 도시와, 도시와 따로 관리하는 장소
+    def attribute(p: dict, trip: dict) -> None:
+        for src in trip.get("sources", []):
+            # 저장 목록에 없던 곳에 저장 목록을 출처로 달지 않는다.
+            if src == "gmaps_saved" and p["name"] not in from_saved:
+                continue
+            if src not in p["sources"]:
+                p["sources"].append(src)
+        if trip["id"] not in p["tripIds"]:
+            p["tripIds"].append(trip["id"])
+        if trip["era"] not in p["eras"]:
+            p["eras"].append(trip["era"])
+
     for trip in trips["trips"]:
         for raw in trip.get("cities", []):
-            p = touch(raw)
-            for s in trip.get("sources", []):
-                if s not in p["sources"]:
-                    p["sources"].append(s)
-            if trip["id"] not in p["tripIds"]:
-                p["tripIds"].append(trip["id"])
-            if trip["era"] not in p["eras"]:
-                p["eras"].append(trip["era"])
+            attribute(touch(raw), trip)
+        # 장소는 여기서 새로 만들지 않는다 — 저장 목록이나 보정 파일에 이미 있어야 한다.
+        for raw in trip.get("places", []):
+            p = places.get(canonical(raw, aliases))
+            if p is None:
+                unknown.append(f"{trip['id']}: {raw}")
+                continue
+            attribute(p, trip)
 
     # 3) 좌표 결합. 없으면 상위 도시 좌표를 빌린다.
     for p in places.values():
@@ -124,7 +155,7 @@ def build() -> dict:
 
     ordered = sorted(places.values(), key=lambda p: (p["country"] or "", p["name"]))
     missing = [p["name"] for p in ordered if p["lat"] is None]
-    return {"places": ordered, "missingCoords": missing}
+    return {"places": ordered, "missingCoords": missing, "unknownPlaces": unknown}
 
 
 KR_CITIES = {"서울", "제주", "부여", "양평", "평택", "남해", "유명산"}
@@ -165,8 +196,10 @@ def main() -> None:
     print(f"data/places.json: 장소 {total} · 도시급 {cities} · 좌표없음 {len(out['missingCoords'])}")
     if out["missingCoords"]:
         print("  좌표 없음:", ", ".join(out["missingCoords"]))
-        if "--strict" in sys.argv:
-            sys.exit(1)
+    if out["unknownPlaces"]:
+        print("  장소 마스터에 없는 이름:", ", ".join(out["unknownPlaces"]))
+    if (out["missingCoords"] or out["unknownPlaces"]) and "--strict" in sys.argv:
+        sys.exit(1)
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
  "_": "우리 장소 이름 → trip.com 여행 가이드 목적지 번호.",
  "_url": "번호는 목적지 주소 끝에 있다 — https://kr.trip.com/travel-guide/destination/beijing-1/ 의 1.",
  "_add": "새 도시를 넣으려면 trip.com 에서 그 도시 가이드를 열고 주소 끝 숫자를 여기 적은 뒤 python scripts/fetch_destinations.py 를 돌린다.",
- "_skip": "trip.com 에 가이드가 없는 곳(남해·부여·유명산·평택·뉴저지·실리콘밸리)은 비워 둔다. 사진 없이도 화면은 그대로 돈다.",
+ "_skip": "trip.com 에 가이드가 없는 곳(남해·부여·유명산·평택·뉴저지)은 비워 둔다. 사진 없이도 화면은 그대로 돈다.",
  "베이징": 1,
  "상하이": 2,
  "타이베이": 360,
