@@ -217,10 +217,14 @@ def read_itinerary(path: Path, public: bool, table: list[tuple[str, str]]) -> di
     }
 
 
+def scan_text(body: str) -> list[str]:
+    """평문에 개인정보로 보이는 것이 있는지 본다. 이름을 추측하지 않고 형태로만 본다."""
+    return sorted({label for pat, label in PRIVATE_PATTERNS if pat.search(body)})
+
+
 def scan_private(path: Path) -> list[str]:
     """공개 폴더에 개인정보로 보이는 것이 있는지 본다."""
-    body = text_of(path.read_text(encoding="utf-8"))
-    return sorted({label for pat, label in PRIVATE_PATTERNS if pat.search(body)})
+    return scan_text(text_of(path.read_text(encoding="utf-8")))
 
 
 # ── 여정에 붙이기 ─────────────────────────────────────────────────────────

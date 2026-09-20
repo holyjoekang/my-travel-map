@@ -16,6 +16,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import build_app  # noqa: E402
 import build_itineraries  # noqa: E402
+import itinerary_agent  # noqa: E402
 import fetch_destinations  # noqa: E402
 import build_places  # noqa: E402
 import topojson  # noqa: E402
@@ -249,6 +250,90 @@ class Itineraries(unittest.TestCase):
     def test_private_build_keeps_them_all(self):
         mine = build_app.build_payload(public=False)["itineraries"]
         self.assertEqual(len(mine), len(build_itineraries.load_manifest()))
+
+
+SPEC = """제목: 시험 여행
+부제: 이틀짜리
+기간: 2026-05-01 ~ 2026-05-02
+도시: 칭다오
+목적: 부부여행
+공개: 예
+소개: 원고에서 온 소개 문장이다. 서른 자가 넘어야 일정표의 첫 문단으로 잡힌다.
+
+## DAY 1 · 5/1 — 도착
+14:00 | 인천공항 출발 | 3번 게이트
+- 저녁 해안 산책
+줄글 문단은 이렇게 그대로 들어간다.
+
+## 메모
+- 수영복
+
+링크: 원문 | https://example.com/post
+"""
+
+
+class Agent(unittest.TestCase):
+    """일정표 에이전트 (PRD §15) — 원고 → HTML → 다시 여정으로."""
+
+    def setUp(self):
+        self.spec = itinerary_agent.enrich(itinerary_agent.parse_spec(SPEC), {})
+        self.html = itinerary_agent.render(self.spec)
+
+    def test_spec_parsed_into_days_and_items(self):
+        secs = self.spec["sections"]
+        self.assertEqual(len(secs), 2)
+        self.assertEqual(secs[0]["day"], 1)
+        self.assertIsNone(secs[1]["day"])
+        first = secs[0]["items"][0]
+        self.assertEqual((first["time"], first["what"], first["note"]),
+                         ("14:00", "인천공항 출발", "3번 게이트"))
+        self.assertEqual(secs[0]["items"][1]["what"], "저녁 해안 산책")
+        self.assertEqual(secs[0]["items"][2]["what"], "")  # 줄글은 문단으로 간다
+        self.assertEqual(self.spec["links"][0]["url"], "https://example.com/post")
+
+    def test_city_normalised_and_dates_read(self):
+        info = self.spec["info"]
+        self.assertEqual(info["cities"], ["칭다오 시"])  # 별칭을 정식 도시명으로
+        self.assertEqual((info["start"], info["end"], info["days"]),
+                         ("2026-05-01", "2026-05-02", 2))
+        self.assertFalse(info["unknown"])
+
+    def test_rendered_page_reads_back_the_same(self):
+        """일정표를 다시 읽는 쪽(build_itineraries)이 같은 값을 얻어야 한다."""
+        title = build_itineraries.tag_text(self.html, "title")
+        body = build_itineraries.text_of(self.html)
+        self.assertEqual(build_itineraries.parse_range(title, body, ""),
+                         ("2026-05-01", "2026-05-02"))
+        table = build_itineraries.needles(
+            build_itineraries.strip_notes(load("data/place_aliases.json")))
+        self.assertIn("칭다오 시",
+                      build_itineraries.parse_cities(title, body[:600], body, table))
+        self.assertTrue(build_itineraries.first_paragraph(self.html)
+                        .startswith("원고에서 온 소개"))
+
+    def test_page_is_one_file(self):
+        """일정표도 파일 하나로 돈다 — 밖에서 받는 것은 trip.com 사진뿐이다(PRD §8·§14)."""
+        self.assertNotIn("<script", self.html)
+        self.assertNotIn("<link rel=\"stylesheet\"", self.html)
+        for url in re.findall(r'src="(https?://[^"]+)"', self.html):
+            self.assertTrue(url.startswith("https://ak-d.tripcdn.com/"), url)
+        self.assertIn('href="../index.html"', self.html)  # 아카이브로 돌아간다
+
+    def test_generated_page_is_clean(self):
+        self.assertEqual(build_itineraries.scan_text(
+            build_itineraries.text_of(self.html)), [])
+
+    def test_spec_round_trips(self):
+        """검증을 마친 원고를 다시 읽으면 같은 꼭지가 나온다 — 고쳐서 다시 돌릴 수 있다."""
+        again = itinerary_agent.parse_spec(itinerary_agent.spec_to_text(self.spec))
+        self.assertEqual([s["title"] for s in again["sections"]],
+                         [s["title"] for s in self.spec["sections"]])
+        self.assertEqual(again["meta"]["도시"], "칭다오 시")
+
+    def test_blog_title_cleaned(self):
+        self.assertEqual(
+            itinerary_agent.clean_title("[충칭 여행기] 0일차: 첫걸음 #중국여행"),
+            "첫걸음")
 
 
 class Destinations(unittest.TestCase):

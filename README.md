@@ -43,6 +43,7 @@ data/
   trips.json              여정 원장 — 사람은 people 에만 두고 여정은 id로 참조
   trip_html/              여행 전에 만들어 둔 일정표 HTML ← 여기에 넣으면 여정에 붙는다
   trip_html/private/      개인 일정표 (gitignore — 개인 빌드에만 들어간다)
+  trip_source/            일정표 원고 (gitignore — 내 컴퓨터에만 둔다)
   itineraries.json        ← 빌드 산출물 · 여정 ↔ 일정표 대응표
   place_coords.json       도시·장소 좌표 원장 [위도, 경도]
   place_aliases.json      표기 → 정식 도시명 (하문=샤먼 시, 온주=원저우 시 …)
@@ -59,6 +60,7 @@ scripts/
   fetch_blog_bodies.py    블로그 본문 수집 (이어받기)
   fetch_destinations.py   trip.com 여행지 사진·소개 수집 (캐시)
   classify_posts.py       글 → 여정 후보 판정 (규칙 + LLM)
+  itinerary_agent.py      내용 → 일정표 HTML → 홈페이지 → 푸시까지 (에이전트)
   build_itineraries.py    trip_html 일정표를 여정에 붙인다 (규칙만 쓴다 · LLM 없음)
   build_places.py         별칭 정규화 + 좌표 결합 → places.json
   build_app.py            데이터를 HTML에 주입 → app/index.html
@@ -108,6 +110,63 @@ python scripts/build_all.py                   # 붙이고 앱까지 다시 만�
 **짝이 없으면 그 여행을 여정으로 새로 적는다**(`planned: true`) — 아직 다녀오지 않은 여행도
 연표와 홈에 `예정` 으로 선다. 손으로 짝을 정하려면 `data/trips.json` 의 그 여정에
 `"itinerary": "파일이름.html"` 을 적으면 그것이 이긴다.
+
+### 일정표를 자동으로 만들기 — 에이전트
+
+일정표 HTML을 손으로 짤 필요는 없다. **내용만 주면 에이전트가 만든다.**
+
+```bash
+# 1. 내가 쓴 원고로
+python scripts/itinerary_agent.py data/trip_source/대련.txt
+
+# 2. 내 블로그 글로 (제목의 'n일차'를 읽어 하루씩 나눈다)
+python scripts/itinerary_agent.py --blog 224309929105 224309946570 --trip t-2026-06-03
+
+# 3. 구글 문서로 (웹에 게시한 문서 주소, 또는 내려받은 .txt/.html)
+python scripts/itinerary_agent.py --gdoc https://docs.google.com/document/d/…/edit
+
+# 만들고 바로 올리기
+python scripts/itinerary_agent.py data/trip_source/대련.txt --push -m "대련 일정표"
+```
+
+여섯 걸음으로 돈다 — **수집 → 구조화 → 검증 → 렌더 → 연동 → 배포.**
+걸음마다 무엇을 했는지 찍는다.
+
+```
+[1/6] 수집 · 5조각
+[2/6] 구조화 · 꼭지 5 · 규칙 · 출처 https://blog.naver.com/joekang/224309929105
+[3/6] 검증 · 2026-06-03~2026-06-08 · 6일 · 충칭 · 공개
+[4/6] 렌더 · data/trip_html/2026-06-03_충칭.html · 26KB
+[5/6] 연동 · t-2026-06-03 에 붙었다
+[6/6] 배포 · 올렸다. 잠시 뒤 공개본에 반영된다
+```
+
+**기본은 규칙이고 LLM은 선택이다.** 제목의 `n일차`, `시각 | 무엇 | 메모` 같은 형태를
+규칙으로 읽는다. 줄글뿐이라 하루로 못 나누겠으면 `--api` 를 붙여 Claude에게 정리를
+맡긴다(`ANTHROPIC_API_KEY`). **--api 를 써도 HTML은 파이썬이 만든다** — 생김새가 매번
+달라지지 않고, 빠르다.
+
+**원고는 남는다.** 에이전트는 자기가 읽은 것을 `data/trip_source/<이름>.txt` 에
+원고 형식으로 다시 적어 둔다. 그 파일을 고쳐 같은 명령을 다시 돌리면 그대로 반영된다.
+원고 형식은 `python scripts/itinerary_agent.py` 를 인자 없이 돌리면 나온다.
+
+```
+제목: 충칭 여행 — 아들과 함께한 4박 5일
+기간: 2026-06-03 ~ 2026-06-08
+도시: 충칭
+여정: t-2026-06-03          ← 적으면 기간·도시·제목을 그 여정에서 가져온다
+소개: 한 문단.
+
+## DAY 1 · 6/3 — 도착
+14:00 | 인천공항 출발 | 메모는 세 번째 칸에
+- 시각이 없는 항목은 이렇게
+문단은 그냥 줄로 적는다.
+
+링크: 블로그 원문 | https://blog.naver.com/joekang/224309929105
+```
+
+표지 사진은 그 도시의 trip.com 사진을 자동으로 쓰고 출처를 밝힌다(§14).
+**개인정보로 보이는 것이 나오면 묻지 않고 개인 일정표로 돌린다** — 아래를 보라.
 
 **공개와 개인.** `data/trip_html/` 에 둔 것은 저장소에 올라가고 공개본에도 실린다.
 실명·연락처·집주소가 들어 있는 일정표는 `data/trip_html/private/` 에 둔다 —
