@@ -25,6 +25,11 @@
   --hero-ink:#003261; --hero-sub:#4c5d6e; --hero-btn-ink:#fbf6ee;
   --hero-ghost:rgba(255,255,255,.55); --hero-ghost-on:rgba(255,255,255,.88);
   --art-op:1; --art-filter:none;
+  /* 홈 표지의 지구본. 바다는 표지 글자의 남색, 땅은 종이색 — 콜라주와 같은 두 색이다. */
+  --globe-sea:#002a52; --globe-sea-hi:#0d4a80; --globe-land:#f4ecdc; --globe-coast:#c9b99a;
+  --globe-grid:rgba(251,246,238,.09); --globe-pt:#e2861a; --globe-pt-ring:#6b3000;
+  --globe-halo:#f59e0b; --globe-atm:#8fc0ea; --globe-home:#003261; --globe-arc:#c2410c;
+  --glass:rgba(251,246,238,.94);
   /* 홈 장식 그림(--art-*)은 scripts/build_app.py 가 여기에 박는다. */
   /*__ART__*/
 }
@@ -34,6 +39,10 @@
   --hero-ink:#e9eff6; --hero-sub:#9eb0c1; --hero-btn-ink:#10161c;
   --hero-ghost:rgba(233,239,246,.07); --hero-ghost-on:rgba(233,239,246,.16);
   --art-op:.52; --art-filter:saturate(.75) brightness(.82);
+  --globe-sea:#07121d; --globe-sea-hi:#15304a; --globe-land:#2b3a49; --globe-coast:#3c5064;
+  --globe-grid:rgba(233,239,246,.05); --globe-pt:#f7c46a; --globe-pt-ring:#07121d;
+  --globe-halo:#ffcf7a; --globe-atm:#4f86b8; --globe-home:#e9eff6; --globe-arc:#fb923c;
+  --glass:rgba(22,21,15,.88);
   --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
   --accent:#d8b478; --accent-ink:#1b1810; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
   --ph1:#3a3529; --ph2:#22201a;
@@ -46,6 +55,10 @@
   --hero-ink:#e9eff6; --hero-sub:#9eb0c1; --hero-btn-ink:#10161c;
   --hero-ghost:rgba(233,239,246,.07); --hero-ghost-on:rgba(233,239,246,.16);
   --art-op:.52; --art-filter:saturate(.75) brightness(.82);
+  --globe-sea:#07121d; --globe-sea-hi:#15304a; --globe-land:#2b3a49; --globe-coast:#3c5064;
+  --globe-grid:rgba(233,239,246,.05); --globe-pt:#f7c46a; --globe-pt-ring:#07121d;
+  --globe-halo:#ffcf7a; --globe-atm:#4f86b8; --globe-home:#e9eff6; --globe-arc:#fb923c;
+  --glass:rgba(22,21,15,.88);
   --bg:#16150f; --panel:#201e17; --line:#38342a; --ink:#ece7dc; --dim:#9a9184;
   --accent:#d8b478; --accent-ink:#1b1810; --sea:#12171c; --land:#2f2c24; --landline:#45402f;
   --ph1:#3a3529; --ph2:#22201a;
@@ -140,6 +153,78 @@ main.home{padding:0}
   .hero::before,.hero::after{display:none}
   .hero .inner{padding:40px 18px 34px}
   .torn{display:none}
+}
+
+/* ── 홈 표지: 지구본 ──
+   다녀온 도시를 지구본에 점으로 켠다. 먼저 번들의 국경선으로 그린 정지 지구본(SVG)이
+   서고, three.js 를 받으면 그 위에 돌아가는 지구본이 겹쳐 뜬다. 못 받으면 정지 그림이
+   그대로 표지를 맡는다 — 3D 투어와 같은 규칙이다(PRD §18·§19).
+   넓은 화면: 글은 왼쪽, 지구본은 오른쪽 아래로 크게 걸쳐 잘린다.
+   좁은 화면: 지구본이 위, 글이 아래. */
+.hero.globe{--hh:clamp(560px,calc(100svh - var(--head) - 150px),800px);height:var(--hh)}
+.hero.globe::before,.hero.globe::after{display:none}
+.hero.globe .inner{position:relative;z-index:2;margin:0;max-width:700px;text-align:left;
+  padding:clamp(28px,9vh,112px) 24px 44px clamp(24px,6.5vw,96px);pointer-events:none}
+.hero.globe .inner>*{pointer-events:auto}
+.hero.globe h2{font-size:clamp(32px,4vw,58px);max-width:11em}
+.hero.globe p{margin-left:0}
+.hero.globe .acts{justify-content:flex-start}
+.gbox{position:absolute;z-index:1;top:-5%;width:calc(var(--hh)*1.4);height:calc(var(--hh)*1.4);
+  left:calc(max(78%, 640px + var(--hh)*.625) - var(--hh)*.7)}
+.gstage{position:relative;width:100%;height:100%;touch-action:pan-y;cursor:grab;outline:0}
+.gstage:active{cursor:grabbing}
+.gstage:focus-visible{outline:2px solid var(--accent);outline-offset:-40px;border-radius:50%}
+.gstage svg,.gstage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.gstage canvas{opacity:0;transition:opacity .6s}
+.hero.glOn .gstage canvas{opacity:1}
+.hero.glOn .gsvg{opacity:0;pointer-events:none;transition:opacity .4s .5s}
+.gsvg .sea{fill:url(#gSea)}
+.gsvg .grid{fill:none;stroke:var(--globe-grid);stroke-width:1}
+.gsvg .land{fill:var(--globe-land);stroke:var(--globe-coast);stroke-width:.7;stroke-linejoin:round}
+.gsvg .gpt{fill:var(--globe-pt);stroke:var(--globe-pt-ring);stroke-opacity:.75;stroke-width:1.1;cursor:pointer}
+.gsvg .home{fill:none;stroke:var(--globe-home);stroke-width:2.6}
+.gsvg .garc{fill:none;stroke:var(--globe-arc);stroke-width:3;stroke-dasharray:8 6;stroke-linecap:round}
+.gsvg .off{display:none}
+.gtip{position:absolute;z-index:3;width:214px;box-sizing:border-box;padding:12px 15px;border-radius:14px;
+  background:var(--panel);border:1px solid var(--line);box-shadow:var(--lift);color:var(--ink);
+  pointer-events:none;transform:translate(20px,-50%)}
+.gtip.flip{transform:translate(calc(-100% - 20px),-50%)}
+.gtip b{display:block;font:700 19px/1.3 var(--serif)}
+.gtip span{display:block;font-size:12.5px;color:var(--dim)}
+.gtip i{display:block;margin-top:6px;font-style:normal;font-size:12.5px;font-weight:700;color:var(--accent)}
+.gnote{position:absolute;z-index:2;right:clamp(16px,3vw,40px);bottom:24px;display:flex;gap:10px;
+  align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.gchip,.glegend{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border-radius:12px;
+  background:var(--glass);border:1px solid var(--line);font-size:12.5px;color:var(--ink);text-align:left}
+.gchip{box-shadow:var(--shadow);line-height:1.35}
+.gchip:hover{border-color:var(--globe-arc)}
+.gchip small{display:block;font-size:10.5px;letter-spacing:.14em;font-weight:700;color:var(--globe-arc)}
+.gchip b{font-size:13.5px}
+.gchip .dash,.glegend .dash{width:30px;height:0;border-top:3px dashed var(--globe-arc);flex:none}
+.glegend{border-radius:999px;gap:16px}
+.glegend span{display:inline-flex;align-items:center;gap:6px}
+.glegend .pt{width:7px;height:7px;border-radius:50%;background:var(--globe-pt)}
+.glegend .pt.b{width:12px;height:12px}
+.glegend .ring{width:12px;height:12px;border-radius:50%;border:2px solid var(--globe-home);box-sizing:border-box}
+.gscrub{display:flex;align-items:center;gap:12px;margin-top:28px;max-width:470px}
+.gscrub .replay{width:44px;height:44px;flex:none;border-radius:999px;display:grid;place-items:center;
+  border:1.5px solid var(--hero-ink);color:var(--hero-ink);background:var(--hero-ghost)}
+.gscrub .replay:hover{background:var(--hero-ghost-on)}
+.gscrub label{flex:1;min-width:0;display:flex}
+.gscrub input{width:100%;height:44px;margin:0;accent-color:var(--globe-pt);cursor:pointer}
+.gscrub output{font:600 15px/1 var(--serif);color:var(--hero-ink);white-space:nowrap;
+  font-variant-numeric:tabular-nums;min-width:8.5em}
+.hero.globe .gcap{margin:6px 0 0;font-size:12.5px;max-width:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){
+  .hero.globe{--gw:min(100vw,560px);height:auto}
+  .hero.globe .inner{max-width:none;padding:calc(var(--gw)*1.02) 18px 30px;
+    background:linear-gradient(180deg,transparent calc(var(--gw)*.72),var(--paper) calc(var(--gw)*1.0))}
+  .gbox{top:calc(var(--gw)*-.2);left:50%;width:calc(var(--gw)*1.6);height:calc(var(--gw)*1.6);
+    transform:translateX(-50%)}
+  .gnote{top:12px;left:16px;right:auto;bottom:auto}
+  .glegend{display:none}
+  .gscrub{max-width:none}
 }
 
 /* ── 홈: 숫자 띠 (오른쪽에 수채 지도) ── */
@@ -1114,6 +1199,7 @@ const ICON = {
   compass: I(`<circle cx="12" cy="12" r="9"/><path d="m15.4 8.6-2 4.8-4.8 2 2-4.8Z"/>`),
   pin: I(`<path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z"/>
           <circle cx="12" cy="10" r="2.6"/>`),
+  replay: I(`<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/>`),
 };
 
 /** 사진이 있는 여행지를 방문 횟수 순으로. 홈의 표지와 머리 사진이 이걸 쓴다. */
@@ -1467,6 +1553,433 @@ function buildTour(THREE, stage, items){
   };
 }
 
+/* ── 홈 표지: 지구본 ──────────────────────────────────────────────────
+   다녀온 도시(도시급, 장소 제외)를 지구본에 점으로 켠다. 점 크기는 다녀온 횟수 —
+   지도 탭과 같은 문법이다. 점은 처음 간 해의 순서대로 켜지고, 연도 막대로 되감는다.
+
+   두 겹이다. 먼저 번들의 국경선(WORLD)으로 그린 정지 지구본(SVG)이 서고, three.js 를
+   받으면 같은 방향·같은 크기의 돌아가는 지구본이 그 위에 겹쳐 뜬다. three.js 는 3D
+   투어와 같은 로더로 한 번만 받는다 — 지구본 라이브러리를 따로 들이지 않는다
+   (three-globe 는 three 를 한 벌 더 끌고 온다). 못 받거나 WebGL 이 없거나 컨텍스트를
+   잃으면 정지 그림이 그대로 표지를 맡는다. 텍스처 사진도 받지 않는다. */
+const RAD = Math.PI / 180;
+const G_LAT0 = 30, G_LNG0 = 108;       // 처음 앞을 보는 곳 — 중국과 한반도가 가운데 온다
+const G_FIT = 500 / 560;               // 지구본 반지름 ÷ 상자 반폭 (정지 그림과 3D 가 같은 크기로 선다)
+const eraYear = id => +String(ERAS.find(e => e.id === id)?.start || Y0).slice(0, 4);
+const GPTS = PLACES
+  .filter(p => p.level !== "poi" && p.lat != null)
+  .map(p => ({p, y: p.firstYear ?? Math.min(...(p.eras || []).map(eraYear), Y1),
+              r: 2.4 + 1.5 * Math.sqrt(Math.max(p.visits || 0, 1))}))   // 반지름 500 기준
+  .sort((a, b) => a.r - b.r);                                           // 큰 점이 위에
+const shortName = n => n.replace(/ (시|현|구|지구)$/, "");
+
+/** 다음 여정 — 아직 다녀오지 않은 예정 여정 가운데 가장 가까운 것. */
+function nextTrip(){
+  const today = new Date().toISOString().slice(0, 10);
+  return TRIPS.filter(t => t.planned && String(t.end || t.start) >= today)
+    .sort((a, b) => t2n(a).localeCompare(t2n(b)))[0] || null;
+}
+/** 서울에서 떠나 그 여정의 도시를 차례로 잇는 길 [[위도, 경도] …]. */
+function routeOf(t){
+  const r = [];
+  for (const n of ["서울", ...t.cities]){
+    const p = byName.get(n);
+    if (p?.lat == null) continue;
+    const last = r[r.length - 1];
+    if (!last || last[0] !== p.lat || last[1] !== p.lng) r.push([p.lat, p.lng]);
+  }
+  return r.length > 1 ? r : [];
+}
+/** 대권 위의 점들 [위도, 경도, 높이] — 가운데가 살짝 떠오른 호가 된다. */
+function greatArc([la1, lo1], [la2, lo2]){
+  const v = (la, lo) => [Math.cos(la*RAD)*Math.cos(lo*RAD), Math.cos(la*RAD)*Math.sin(lo*RAD), Math.sin(la*RAD)];
+  const a = v(la1, lo1), b = v(la2, lo2);
+  const d = Math.acos(Math.min(1, a[0]*b[0] + a[1]*b[1] + a[2]*b[2]));
+  if (d < 1e-6) return [];
+  const n = Math.max(6, Math.round(d / .02)), lift = Math.min(.1, d * .3), out = [];
+  for (let k = 0; k <= n; k++){
+    const t = k / n, s1 = Math.sin((1 - t) * d) / Math.sin(d), s2 = Math.sin(t * d) / Math.sin(d);
+    const q = a.map((x, i) => s1 * x + s2 * b[i]);
+    out.push([Math.asin(q[2]) / RAD, Math.atan2(q[1], q[0]) / RAD, 1 + lift * Math.sin(Math.PI * t)]);
+  }
+  return out;
+}
+
+/** 정지 지구본 — 정사영(G_LAT0, G_LNG0 이 가운데). 3D 를 못 띄울 때도 이것만으로 표지가 선다. */
+function globeSVG(){
+  const R = 500, sf0 = Math.sin(G_LAT0*RAD), cf0 = Math.cos(G_LAT0*RAD);
+  const P = (lng, lat, h = 1) => {
+    const l = (lng - G_LNG0) * RAD, f = lat * RAD, cf = Math.cos(f);
+    return [R*h*cf*Math.sin(l), -R*h*(cf0*Math.sin(f) - sf0*cf*Math.cos(l)),
+            sf0*Math.sin(f) + cf0*cf*Math.cos(l) > 0];
+  };
+  const n = x => x.toFixed(1);
+  // 땅: 뒤로 넘어간 꼭짓점은 가장자리에 붙인다 — 고리가 가장자리를 따라 닫힌다
+  const land = WORLD.map(c => c.rings.map(r => {
+    let vis = false;
+    const pts = r.map(([lo, la]) => {
+      let [x, y, v] = P(lo, la);
+      if (v) vis = true; else { const d = Math.hypot(x, y) || 1; x = x / d * R; y = y / d * R; }
+      return n(x) + "," + n(y);
+    });
+    return vis ? "M" + pts.join("L") + "Z" : "";
+  }).join("")).join("");
+  const line = pts => {                 // 앞면에 있는 토막만 잇는다
+    let d = "", pen = false;
+    for (const [lo, la] of pts){
+      const [x, y, v] = P(lo, la);
+      if (v){ d += (pen ? "L" : "M") + n(x) + "," + n(y); pen = true; } else pen = false;
+    }
+    return d;
+  };
+  const range = (a, b, s) => Array.from({length: Math.floor((b - a) / s) + 1}, (_, i) => a + i * s);
+  const grid = range(-180, 150, 30).map(lo => line(range(-85, 85, 5).map(la => [lo, la]))).join("")
+             + range(-60, 60, 30).map(la => line(range(-180, 180, 5).map(lo => [lo, la]))).join("");
+  const dots = GPTS.map(d => {
+    const [x, y, v] = P(d.p.lng, d.p.lat);
+    return v ? `<circle class="gpt" cx="${n(x)}" cy="${n(y)}" r="${n(d.r)}" data-y="${d.y}"
+      data-place="${esc(d.p.name)}"><title>${esc(d.p.name)}${d.p.visits ? ` · ${d.p.visits}회` : ""}</title></circle>` : "";
+  }).join("");
+  const nt = nextTrip(), route = nt ? routeOf(nt) : [];
+  const arc = route.slice(1).map((b, i) => greatArc(route[i], b)
+    .map(([la, lo, h], k) => { const [x, y] = P(lo, la, h); return (k ? "L" : "M") + n(x) + "," + n(y); })
+    .join("")).join("");
+  const home = byName.get("서울");
+  const [hx, hy, hv] = home?.lat != null ? P(home.lng, home.lat) : [0, 0, false];
+  return `<svg class="gsvg" viewBox="-560 -560 1120 1120" aria-hidden="true">
+    <defs>
+      <radialGradient id="gSea" cx="38%" cy="32%" r="75%">
+        <stop offset="0" style="stop-color:var(--globe-sea-hi)"/><stop offset="1" style="stop-color:var(--globe-sea)"/></radialGradient>
+      <radialGradient id="gAtm" r="50%">
+        <stop offset=".86" style="stop-color:var(--globe-atm);stop-opacity:0"/>
+        <stop offset=".893" style="stop-color:var(--globe-atm);stop-opacity:.55"/>
+        <stop offset="1" style="stop-color:var(--globe-atm);stop-opacity:0"/></radialGradient>
+      <radialGradient id="gShade" cx="30%" cy="25%" r="80%">
+        <stop offset="0" stop-color="#fff" stop-opacity=".10"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/>
+        <stop offset="1" stop-color="#000" stop-opacity=".28"/></radialGradient>
+    </defs>
+    <circle r="560" fill="url(#gAtm)"/>
+    <circle class="sea" r="${R}"/>
+    <path class="grid" d="${grid}"/>
+    <path class="land" d="${land}"/>
+    <circle r="${R}" fill="url(#gShade)" pointer-events="none"/>
+    ${arc ? `<path class="garc" d="${arc}"/>` : ""}
+    ${hv ? `<circle class="home" cx="${n(hx)}" cy="${n(hy)}" r="10"/>` : ""}
+    ${dots}
+  </svg>`;
+}
+
+/* 연도: 정지 그림과 3D 가 같은 해를 본다. 들어올 때 한 번 Y0 → Y1 로 켠다. */
+let globe = null, gIntro = 0, gPlayed = false;
+function setGlobeYear(y){
+  const shown = GPTS.filter(d => d.y <= y).length;
+  document.querySelectorAll(".gsvg .gpt").forEach(c => c.classList.toggle("off", +c.dataset.y > y));
+  document.querySelector(".gsvg .garc")?.classList.toggle("off", y < Y1);
+  globe?.setYear(y);
+  const inp = document.getElementById("gYear");
+  if (inp) inp.value = y;
+  const out = document.getElementById("gYearOut");
+  if (out) out.textContent = `${y} · 도시 ${shown}`;
+  const nc = document.getElementById("nCities");
+  if (nc) nc.textContent = y >= Y1 ? PLACES.filter(p => p.level !== "poi").length : shown;
+}
+function runIntro(){
+  cancelAnimationFrame(gIntro); gIntro = 0;
+  if (matchMedia("(prefers-reduced-motion:reduce)").matches) return setGlobeYear(Y1);
+  gPlayed = true;
+  const t0 = performance.now() + 250, span = 2400;
+  setGlobeYear(Y0);
+  const step = now => {
+    const k = Math.min(Math.max((now - t0) / span, 0), 1);
+    setGlobeYear(Math.round(Y0 + (Y1 - Y0) * k));
+    gIntro = k < 1 ? requestAnimationFrame(step) : 0;
+  };
+  gIntro = requestAnimationFrame(step);
+}
+function stopGlobe(){
+  if (globe){ globe.dispose(); globe = null; }
+  // 켜지던 연출을 끊으면 끝 해로 건너뛴다 — 정지 그림이 반쯤 빈 채로 남지 않게
+  if (gIntro){ cancelAnimationFrame(gIntro); gIntro = 0; setGlobeYear(Y1); }
+}
+function mountGlobe(){
+  const stage = document.getElementById("globeStage");
+  if (!stage) return;
+  if (gPlayed) setGlobeYear(Y1); else runIntro();   // 켜지는 연출은 처음 들어왔을 때 한 번만
+  loadThree()
+    .then(THREE => { if (stage.isConnected && !globe) globe = buildGlobe(THREE, stage); })
+    .catch(() => {});                  // 못 받으면 정지 지구본이 그대로 자리를 맡는다
+}
+
+function buildGlobe(THREE, stage){
+  const css = getComputedStyle(document.documentElement);
+  const cvar = (n, fb) => css.getPropertyValue(n).trim() || fb;
+  const slow = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const hero = stage.closest(".hero");
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:"low-power"});
+  } catch { return null; }             // WebGL 이 없다 — 정지 그림으로 남는다
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.5));
+  const el = renderer.domElement;
+  stage.appendChild(el);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(30, 1, .1, 50);
+  scene.add(camera);
+  scene.add(new THREE.AmbientLight(0xffffff, .62 * Math.PI));
+  const sun = new THREE.DirectionalLight(0xffffff, .55 * Math.PI);
+  sun.position.set(-3, 2.2, 4);
+  camera.add(sun);                     // 빛은 카메라를 따라간다 — 돌려도 왼쪽 위가 밝다
+
+  /* 땅과 바다 — 번들 국경선을 등장방형 캔버스에 칠해 구에 입힌다. */
+  const TW = renderer.capabilities.maxTextureSize >= 4096 && stage.clientWidth > 700 ? 4096 : 2048;
+  const TH = TW / 2, k = TW / 2048;
+  const cv = document.createElement("canvas");
+  cv.width = TW; cv.height = TH;
+  const g = cv.getContext("2d");
+  const X = lo => (lo + 180) / 360 * TW, Y = la => (90 - la) / 180 * TH;
+  g.fillStyle = cvar("--globe-sea-hi", "#0d4a80"); g.fillRect(0, 0, TW, TH);
+  g.strokeStyle = cvar("--globe-grid", "rgba(251,246,238,.09)"); g.lineWidth = k;
+  g.beginPath();
+  for (let lo = -180; lo <= 180; lo += 30){ g.moveTo(X(lo), 0); g.lineTo(X(lo), TH); }
+  for (let la = -60; la <= 60; la += 30){ g.moveTo(0, Y(la)); g.lineTo(TW, Y(la)); }
+  g.stroke();
+  g.fillStyle = cvar("--globe-land", "#f4ecdc");
+  g.strokeStyle = cvar("--globe-coast", "#c9b99a");
+  g.lineWidth = 1.1 * k; g.lineJoin = "round";
+  for (const c of WORLD) for (const r of c.rings){
+    // 날짜변경선을 넘는 고리는 이어 붙이고, 극을 두르는 고리(남극)는 극까지 닫는다
+    let prev = r[0][0], off = 0;
+    const pts = r.map(([lo, la]) => {
+      if (lo - prev > 180) off -= 360; else if (prev - lo > 180) off += 360;
+      prev = lo; return [lo + off, la];
+    });
+    const span = pts[pts.length - 1][0] - pts[0][0];
+    if (Math.abs(span) > 180){
+      const pole = pts.reduce((s, p) => s + p[1], 0) < 0 ? -90 : 90;
+      pts.push([pts[pts.length - 1][0], pole], [pts[0][0], pole]);
+    }
+    for (const s of [-360, 0, 360]){  // 가장자리를 넘친 조각은 반대편에 다시 칠한다
+      g.beginPath();
+      pts.forEach(([lo, la], i) => i ? g.lineTo(X(lo + s), Y(la)) : g.moveTo(X(lo + s), Y(la)));
+      g.closePath(); g.fill(); g.stroke();
+    }
+  }
+  const tex = new THREE.CanvasTexture(cv);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+
+  const spin = new THREE.Group();      // 끌면 도는 몸 — 점과 호가 여기에 붙는다
+  scene.add(spin);
+  const earthGeo = new THREE.SphereGeometry(1, 96, 64);
+  const earthMat = new THREE.MeshLambertMaterial({map: tex});
+  const earth = new THREE.Mesh(earthGeo, earthMat);
+  earth.rotation.y = -Math.PI / 2;     // 구의 UV 는 경도 -90° 에서 시작한다 — 등장방형(-180°)에 맞춘다
+  spin.add(earth);
+
+  // 대기 — 가장자리에 번지는 빛. 가운데는 지구가 가린다.
+  const ac = document.createElement("canvas");
+  ac.width = ac.height = 256;
+  const ag = ac.getContext("2d"), grd = ag.createRadialGradient(128, 128, 0, 128, 128, 128);
+  const atm = new THREE.Color(cvar("--globe-atm", "#8fc0ea"));
+  const rgba = a => `rgba(${atm.r * 255 | 0},${atm.g * 255 | 0},${atm.b * 255 | 0},${a})`;
+  grd.addColorStop(0, rgba(0)); grd.addColorStop(.76, rgba(0));
+  grd.addColorStop(.82, rgba(.55)); grd.addColorStop(1, rgba(0));
+  ag.fillStyle = grd; ag.fillRect(0, 0, 256, 256);
+  const atmTex = new THREE.CanvasTexture(ac);
+  const atmMat = new THREE.SpriteMaterial({map: atmTex, transparent: true, depthWrite: false});
+  const halo = new THREE.Sprite(atmMat);
+  halo.scale.setScalar(2.5);
+  scene.add(halo);
+
+  const at = (lat, lng, h = 1) => new THREE.Vector3(
+    Math.cos(lat*RAD) * Math.sin(lng*RAD), Math.sin(lat*RAD), Math.cos(lat*RAD) * Math.cos(lng*RAD)
+  ).multiplyScalar(h);
+
+  // 점 — 겉에 붙인 원판 셋(번짐·테두리·점). 크기는 정지 그림과 같다(반지름 500 기준).
+  const disc = new THREE.CircleGeometry(1, 20);
+  const mats = [
+    new THREE.MeshBasicMaterial({color: cvar("--globe-halo", "#f59e0b"), transparent: true, opacity: .16, depthWrite: false}),
+    new THREE.MeshBasicMaterial({color: cvar("--globe-pt-ring", "#6b3000")}),
+    new THREE.MeshBasicMaterial({color: cvar("--globe-pt", "#e2861a")}),
+  ];
+  const dots = GPTS.map(d => {
+    const grp = new THREE.Group(), s = d.r / 500;
+    grp.position.copy(at(d.p.lat, d.p.lng, 1.001));
+    grp.lookAt(grp.position.clone().multiplyScalar(2));
+    [[2.3, 0], [1.22, .0004], [1, .0008]].forEach(([m, z], i) => {
+      const mesh = new THREE.Mesh(disc, mats[i]);
+      mesh.scale.setScalar(s * m); mesh.position.z = z;
+      grp.add(mesh);
+    });
+    spin.add(grp);
+    return {...d, grp};
+  });
+  // 출발점 서울 — 고리
+  const ringGeo = new THREE.RingGeometry(.8, 1, 40);
+  const ringMat = new THREE.MeshBasicMaterial({color: cvar("--globe-home", "#003261")});
+  const home = byName.get("서울");
+  if (home?.lat != null){
+    const r = new THREE.Mesh(ringGeo, ringMat);
+    r.position.copy(at(home.lat, home.lng, 1.0015));
+    r.lookAt(r.position.clone().multiplyScalar(2));
+    r.scale.setScalar(11.3 / 500);
+    spin.add(r);
+  }
+  // 다음 여정 — 점을 찍어 이은 호 (예정이라 끊어 그린다)
+  const beadGeo = new THREE.SphereGeometry(.0052, 8, 6);
+  const beadMat = new THREE.MeshBasicMaterial({color: cvar("--globe-arc", "#c2410c")});
+  const arc = new THREE.Group();
+  const nt = nextTrip(), route = nt ? routeOf(nt) : [];
+  route.slice(1).forEach((b, i) => greatArc(route[i], b).forEach(([la, lo, h], j) => {
+    if (j % 2) return;
+    const m = new THREE.Mesh(beadGeo, beadMat);
+    m.position.copy(at(la, lo, h + .002));
+    arc.add(m);
+  }));
+  spin.add(arc);
+
+  let yaw = -G_LNG0 * RAD, pitch = G_LAT0 * RAD;
+  function fit(){
+    const w = stage.clientWidth || 1, h = stage.clientHeight || 1;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    const t = G_FIT * Math.tan(15 * RAD) * Math.min(1, w / h);   // 정지 그림과 같은 크기가 되는 거리
+    camera.position.set(0, 0, 1 / Math.sin(Math.atan(t)));
+    camera.updateProjectionMatrix();
+  }
+  fit();
+
+  function setYear(y){
+    for (const d of dots) d.grp.visible = d.y <= y;
+    arc.visible = y >= Y1;
+  }
+  setYear(+(document.getElementById("gYear")?.value || Y1));
+
+  /* ── 손 ── */
+  const tip = document.getElementById("gtip");
+  const v = new THREE.Vector3();
+  function pick(cx, cy){                // 화면에서 가장 가까운 앞면의 점 (16px 안)
+    const r = el.getBoundingClientRect();
+    let best = null, bd = 16 * 16;
+    for (const d of dots){
+      if (!d.grp.visible) continue;
+      d.grp.getWorldPosition(v);
+      if (v.dot(camera.position) < 1.02) continue;          // 뒤로 넘어간 점
+      v.project(camera);
+      const dx = (v.x + 1) / 2 * r.width + r.left - cx, dy = (1 - v.y) / 2 * r.height + r.top - cy;
+      if (dx * dx + dy * dy < bd){ bd = dx * dx + dy * dy; best = d; }
+    }
+    return best;
+  }
+  let hover = null;
+  function showTip(d){
+    if (hover && hover !== d) hover.grp.scale.setScalar(1);
+    hover = d;
+    el.style.cursor = d ? "pointer" : "";
+    if (!tip) return;
+    if (!d){ tip.hidden = true; return; }
+    d.grp.scale.setScalar(1.35);
+    d.grp.getWorldPosition(v); v.project(camera);
+    const r = el.getBoundingClientRect(), hr = hero.getBoundingClientRect();
+    const x = (v.x + 1) / 2 * r.width + r.left - hr.left, y = (1 - v.y) / 2 * r.height + r.top - hr.top;
+    const p = d.p;
+    tip.innerHTML = `<b>${esc(p.name)}</b>
+      <span>${p.visits ? `${p.visits}번 다녀옴 · ` : ""}처음 ${d.y}년</span>
+      ${p.country ? `<span>${esc(p.country)}</span>` : ""}
+      <i>눌러서 도시 기록 열기 →</i>`;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+    tip.classList.toggle("flip", x + 260 > hr.width);
+    tip.hidden = false;
+  }
+
+  let drag = null, vx = 0, idleUntil = performance.now() + 2800;
+  const onDown = e => {
+    drag = {x: e.clientX, y: e.clientY, yaw, pitch, moved: 0, touch: e.pointerType === "touch"};
+    vx = 0;
+    if (!drag.touch) el.setPointerCapture?.(e.pointerId);
+  };
+  const onMove = e => {
+    idleUntil = performance.now() + 4000;
+    if (!drag){ if (e.pointerType !== "touch") showTip(pick(e.clientX, e.clientY)); return; }
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    drag.moved = Math.max(drag.moved, Math.hypot(dx, dy));
+    if (drag.touch) return;             // 휴대폰에서는 끌어 돌리지 않는다 — 세로 스크롤은 페이지의 것
+    const ny = drag.yaw + dx * .005;
+    vx = ny - yaw; yaw = ny;
+    pitch = Math.max(-.35, Math.min(1.1, drag.pitch + dy * .004));
+    if (hover) showTip(null);
+  };
+  const onUp = e => {
+    if (!drag) return;
+    const tapped = drag.moved < 6 ? pick(e.clientX, e.clientY) : null;
+    drag = null;
+    if (tapped){ vx = 0; showTip(null); openPlace(tapped.p.name); }
+  };
+  const onKey = e => {
+    const step = {ArrowLeft: [-.12, 0], ArrowRight: [.12, 0], ArrowUp: [0, -.08], ArrowDown: [0, .08]}[e.key];
+    if (!step) return;
+    yaw += step[0]; pitch = Math.max(-.35, Math.min(1.1, pitch + step[1]));
+    idleUntil = performance.now() + 6000; e.preventDefault();
+  };
+  const onEnter = e => { if (e.pointerType !== "touch") idleUntil = Infinity; };
+  const onLeave = () => { idleUntil = performance.now() + 1200; showTip(null); };
+  let alive = true;
+  const onLost = e => { e.preventDefault(); stopGlobe(); };   // 정지 그림으로 돌아간다
+
+  el.addEventListener("pointerdown", onDown);
+  el.addEventListener("pointermove", onMove);
+  el.addEventListener("pointerup", onUp);
+  el.addEventListener("pointercancel", () => { drag = null; });
+  el.addEventListener("webglcontextlost", onLost);
+  stage.addEventListener("keydown", onKey);
+  stage.addEventListener("pointerenter", onEnter);
+  stage.addEventListener("pointerleave", onLeave);
+  const ro = new ResizeObserver(fit);
+  ro.observe(stage);
+  let seen = true;
+  const io = new IntersectionObserver(es => { seen = es[0].isIntersecting; }, {threshold: .01});
+  io.observe(stage);
+
+  /* ── 그리기 ── */
+  let raf = 0, last = performance.now();
+  (function frame(now){
+    if (!alive) return;
+    raf = requestAnimationFrame(frame);
+    const dt = Math.min((now - last) / 1000, .05); last = now;
+    if (!seen || document.hidden) return;     // 안 보이면 쉰다 — 아래 3D 투어와 번갈아 돈다
+    if (!drag){
+      if (Math.abs(vx) > 1e-4){ yaw += vx; vx *= Math.pow(.02, dt); }        // 놓으면 조금 더 돈다
+      else if (!slow && now > idleUntil) yaw += .025 * dt;                   // 가만히 두면 천천히 돈다 (한 바퀴 4분)
+    }
+    spin.rotation.set(pitch, yaw, 0);
+    renderer.render(scene, camera);
+  })(last);
+  requestAnimationFrame(() => hero?.classList.add("glOn"));
+
+  return {
+    setYear,
+    dispose(){
+      alive = false; cancelAnimationFrame(raf); ro.disconnect(); io.disconnect();
+      hero?.classList.remove("glOn");
+      if (tip) tip.hidden = true;
+      el.removeEventListener("pointerdown", onDown);
+      el.removeEventListener("pointermove", onMove);
+      el.removeEventListener("pointerup", onUp);
+      el.removeEventListener("webglcontextlost", onLost);
+      stage.removeEventListener("keydown", onKey);
+      stage.removeEventListener("pointerenter", onEnter);
+      stage.removeEventListener("pointerleave", onLeave);
+      [earthGeo, disc, ringGeo, beadGeo].forEach(x => x.dispose());
+      [earthMat, atmMat, ringMat, beadMat, ...mats].forEach(x => x.dispose());
+      tex.dispose(); atmTex.dispose();
+      renderer.dispose();
+      el.remove();
+    }
+  };
+}
+
 /* ── 홈 ── */
 function viewHome(){
   const feat = featured();
@@ -1476,9 +1989,14 @@ function viewHome(){
   const countries = new Set(PLACES.map(p => p.country).filter(Boolean)).size;
   const recent = [...counted].sort((a,b) => t2n(b).localeCompare(t2n(a))).slice(0, 8);
   const offers = SITE.offers || [];
+  const next = nextTrip();
 
   return `
-  <section class="hero">
+  <section class="hero globe">
+    <div class="gbox">
+      <div class="gstage" id="globeStage" tabindex="0" role="application"
+        aria-label="다녀온 도시 ${GPTS.length}곳을 점으로 찍은 지구본 — 끌거나 화살표 키로 돌리고, 점을 누르면 그 도시의 기록이 열립니다">${globeSVG()}</div>
+    </div>
     <div class="inner">
       <div class="kicker">${Y0} — ${Y1}+</div>
       <h2>${esc(SITE.tagline || "30년, 나의 여행 발자취, 그리고 미래")}</h2>
@@ -1487,6 +2005,23 @@ function viewHome(){
         <button class="solid" data-go="map">${ICON.map}여정 지도 보기</button>
         <button class="ghost" data-go="destinations">${ICON.photo}여행지 둘러보기</button>
       </div>
+      <div class="gscrub">
+        <button class="replay" data-greplay aria-label="처음부터 다시 켜기">${ICON.replay}</button>
+        <label><span class="sr">연도</span><input type="range" id="gYear" min="${Y0}" max="${Y1}"
+          step="1" value="${Y1}" aria-describedby="gYearOut"></label>
+        <output id="gYearOut" for="gYear">${Y1} · 도시 ${GPTS.length}</output>
+      </div>
+      <p class="gcap">처음 간 해의 순서대로 점이 켜집니다 · 막대를 끌면 그해의 지구본으로</p>
+    </div>
+    <div class="gtip" id="gtip" hidden></div>
+    <div class="gnote">
+      ${next ? `<button class="gchip" data-trip="${esc(next.id)}"><span class="dash"></span>
+        <span><small>다음 여정 · 예정</small><b>${esc(next.start.slice(0, 7).replace("-", "."))}
+        ${esc(next.cities.map(shortName).join(" · "))}</b></span></button>` : ""}
+      <span class="glegend">
+        <span><i class="pt"></i><i class="pt b"></i>크기 = 다녀온 횟수</span>
+        <span><i class="ring"></i>서울 · 출발점</span>
+      </span>
     </div>
   </section>
   <div class="torn" aria-hidden="true"></div>
@@ -1494,7 +2029,7 @@ function viewHome(){
   <div class="band">
     <div class="eyebrow">My Travel Story</div>
     <div class="nums">
-      <div>${ICON.city}<b>${cities}</b><small>도시</small></div>
+      <div>${ICON.city}<b id="nCities">${cities}</b><small>도시</small></div>
       <div>${ICON.globe}<b>${countries}</b><small>나라</small></div>
       <div>${ICON.bag}<b>${counted.length}</b><small>여정</small></div>
       <div>${ICON.cal}<b>${Y1 - Y0 + 1}</b><small>해</small></div>
@@ -1652,6 +2187,7 @@ function destSection(name){
 /* ── 렌더 ── */
 function render(keepBar){
   stopTour();                 // 화면을 갈아엎기 전에 돌던 투어를 접는다 (WebGL 도 놓는다)
+  stopGlobe();
   const wide = ["home", "destinations", "candidates"].includes(state.view);
   document.getElementById("wrap").classList.toggle("full", wide);
   document.getElementById("mainCol").classList.toggle("home",
@@ -1662,6 +2198,7 @@ function render(keepBar){
     candidates:viewCandidates}[state.view];
   document.getElementById("view").innerHTML = v();
   if (state.view === "map" && state.gmap && MAPS_KEY) mountGoogleMap();
+  if (state.view === "home") mountGlobe();
   if (state.view === "home" && state.tour) mountTour();
   if (state.view === "home") scrollTo({top:0});
   document.getElementById("brandSub").textContent =
@@ -1699,6 +2236,7 @@ document.body.addEventListener("click", e => {
     scrollTo({top:y});
     return;
   }
+  if (e.target.closest("[data-greplay]")) return runIntro();
   const dc = e.target.closest("[data-dc]");
   if (dc){ state.destCountry = dc.dataset.dc || null; return render(); }
   const cf = e.target.closest("[data-cf]");
@@ -1708,6 +2246,16 @@ document.body.addEventListener("click", e => {
   if (e.target.id === "exportBtn") return exportApproved();
   const pl = e.target.closest("[data-place]"); if (pl) return openPlace(pl.dataset.place);
   const tr = e.target.closest("[data-trip]");  if (tr) return openTrip(tr.dataset.trip);
+});
+document.body.addEventListener("input", e => {
+  if (e.target.id !== "gYear") return;
+  cancelAnimationFrame(gIntro); gIntro = 0;      // 손으로 끌면 켜지던 연출은 그만둔다
+  setGlobeYear(+e.target.value);
+});
+/* 밝은/어두운 테마가 바뀌면 홈을 다시 그린다 — 지구본과 투어는 그릴 때 색을 읽는다. */
+matchMedia("(prefers-color-scheme:dark)").addEventListener("change", () => {
+  if (state.view !== "home") return;
+  const y = scrollY; render(); scrollTo({top:y});
 });
 document.querySelector("#panel .close").onclick = () =>
   document.getElementById("panel").classList.remove("open");

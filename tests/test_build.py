@@ -461,6 +461,24 @@ class Bundle(unittest.TestCase):
         self.assertIn(".sec.tourOn .dgrid{display:none}", tpl,
                       "투어가 떠도 격자가 함께 보인다")
 
+    def test_globe_cover_stands_without_three(self):
+        """홈 표지의 지구본도 곁들이다 — 정지 그림이 먼저 서고, 3D 는 그 위에 겹친다.
+
+        three.js 는 투어와 같은 로더로 한 번만 받는다. 지구본 라이브러리(globe.gl,
+        three-globe)나 텍스처 사진을 따로 들이면 three 가 두 벌이 되고 밖을 더 탄다.
+        """
+        html = (ROOT / "app/index.html").read_text(encoding="utf-8")
+        for bad in ["npm/globe.gl", "npm/three-globe", "unpkg.com", "earth-blue-marble"]:
+            self.assertNotIn(bad, html, f"번들이 {bad} 를 부른다")
+
+        tpl = (ROOT / "app/index.template.html").read_text(encoding="utf-8")
+        home = tpl[tpl.index("function viewHome()"):]
+        cover = home[:home.index('class="band"')]    # 홈의 표지 한 토막
+        self.assertIn('id="globeStage"', cover)
+        self.assertIn("${globeSVG()}", cover, "3D 를 못 띄우면 표지가 빈다 — 정지 지구본이 먼저 서야 한다")
+        glob = tpl[tpl.index("function mountGlobe()"):tpl.index("function buildGlobe(")]
+        self.assertIn("loadThree()", glob, "지구본이 three.js 를 따로 받는다")
+
     def test_maps_key_never_goes_public(self):
         """구글 지도 키는 공개 빌드에 넣지 않는다 — CI 환경변수로만 넣을 수 있다."""
         if os.environ.get("GOOGLE_MAPS_KEY"):
