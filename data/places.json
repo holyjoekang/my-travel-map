@@ -39,6 +39,49 @@
    "needsReview": true
   },
   {
+   "name": "모스크바",
+   "level": "city",
+   "country": null,
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 55.76,
+   "lng": 37.62,
+   "sources": [
+    "immigration"
+   ],
+   "tripIds": [
+    "t-2004-10-31",
+    "t-2004-04-10"
+   ],
+   "eras": [
+    "E2"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
+   "name": "빈탄",
+   "level": "city",
+   "country": null,
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 1.08,
+   "lng": 104.48,
+   "sources": [
+    "immigration"
+   ],
+   "tripIds": [
+    "t-2002-06-11"
+   ],
+   "eras": [
+    "E2"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
    "name": "네덜란드 국립박물관",
    "level": "poi",
    "country": "네덜란드",
@@ -50,7 +93,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -73,7 +117,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -96,7 +141,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -120,7 +166,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -142,7 +189,8 @@
    "lng": 4.9,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -165,7 +213,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -189,7 +238,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -213,7 +263,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -236,7 +287,8 @@
    "lng": 6.96,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -258,7 +310,8 @@
    "lng": 4.31,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -280,6 +333,7 @@
    "lng": 121.57,
    "sources": [
     "gsheet",
+    "immigration",
     "gdoc"
    ],
    "tripIds": [
@@ -288,7 +342,7 @@
     "t-2019-02-18",
     "t-2019-08-01",
     "t-2019-11-04",
-    "t-2024-12-14"
+    "t-2024-11-15"
    ],
    "eras": [
     "E6",
@@ -395,7 +449,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -418,7 +473,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -441,7 +497,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -464,7 +521,8 @@
    "lng": 12.65,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -487,7 +545,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -510,7 +569,8 @@
    "lng": 10.32,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -532,7 +592,8 @@
    "lng": 11.03,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -555,7 +616,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -579,7 +641,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -602,7 +665,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -624,7 +688,8 @@
    "lng": 8.69,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -647,7 +712,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -668,7 +734,8 @@
    "lat": 3.14,
    "lng": 101.69,
    "sources": [
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-e1-sgmy"
@@ -691,7 +758,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -715,7 +783,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -738,6 +807,7 @@
    "lng": -74.01,
    "sources": [
     "memory",
+    "immigration",
     "gsheet"
    ],
    "tripIds": [
@@ -763,7 +833,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -785,7 +856,8 @@
    "lat": 40.74,
    "lng": -74.17,
    "sources": [
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-e1-ny"
@@ -807,7 +879,8 @@
    "lng": -72.93,
    "sources": [
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -872,7 +945,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -896,7 +970,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -920,7 +995,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -986,7 +1062,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1010,7 +1087,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1034,7 +1112,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1058,7 +1137,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1104,7 +1184,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1128,7 +1209,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1152,7 +1234,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1176,7 +1259,8 @@
    "sources": [
     "fix",
     "gsheet",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2017-07-08"
@@ -1198,7 +1282,8 @@
    "lat": 21.03,
    "lng": 105.85,
    "sources": [
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-2019-03-13",
@@ -1223,7 +1308,8 @@
    "lat": 10.82,
    "lng": 106.63,
    "sources": [
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-2019-03-13",
@@ -1246,6 +1332,7 @@
    "lng": 103.82,
    "sources": [
     "memory",
+    "immigration",
     "gsheet",
     "itinerary"
    ],
@@ -1253,12 +1340,14 @@
     "t-e1-sgmy",
     "t-2019-05-07",
     "t-2019-10-07",
-    "t-2025-05-22"
+    "t-2025-05-22",
+    "t-2002-06-11"
    ],
    "eras": [
     "E1",
     "E6",
-    "E7"
+    "E7",
+    "E2"
    ],
    "aliasesSeen": [],
    "needsReview": false
@@ -1273,7 +1362,8 @@
    "lat": 51.51,
    "lng": -0.13,
    "sources": [
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-e1-london"
@@ -1294,7 +1384,8 @@
    "lat": 28.61,
    "lng": 77.21,
    "sources": [
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-2019-02-11"
@@ -1315,7 +1406,8 @@
    "lat": 34.69,
    "lng": 135.5,
    "sources": [
-    "gdoc"
+    "gdoc",
+    "immigration"
    ],
    "tripIds": [
     "t-2024-05-10"
@@ -2402,7 +2494,8 @@
    "sources": [
     "gmaps_saved",
     "gdoc",
-    "blog"
+    "blog",
+    "immigration"
    ],
    "tripIds": [
     "t-2026-07-17"
@@ -2609,7 +2702,8 @@
    "sources": [
     "gmaps_saved",
     "gdoc",
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-2026-04-15"
@@ -2736,6 +2830,7 @@
     "memory",
     "blog",
     "gsheet",
+    "immigration",
     "gdoc",
     "itinerary"
    ],
@@ -2754,13 +2849,15 @@
     "t-2019-01-18",
     "t-2019-03-07",
     "t-2019-06-27",
-    "t-2024-11-15"
+    "t-2024-12-14",
+    "t-2003-09-07"
    ],
    "eras": [
     "E3",
     "E5",
     "E6",
-    "E7"
+    "E7",
+    "E2"
    ],
    "aliasesSeen": [
     "북경"
@@ -2861,6 +2958,7 @@
    "sources": [
     "gmaps_saved",
     "gsheet",
+    "immigration",
     "gdoc"
    ],
    "tripIds": [
@@ -2872,7 +2970,8 @@
     "t-2018-07-18",
     "t-2019-01-18",
     "t-2025-05-12",
-    "t-2025-11"
+    "t-2025-11",
+    "t-2023-07-24"
    ],
    "eras": [
     "E3",
@@ -2896,14 +2995,16 @@
    "lng": 118.09,
    "sources": [
     "gmaps_saved",
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-2016-08-02",
     "t-2017-03-05",
     "t-2017-08-23",
     "t-2017-10-30",
-    "t-2019-08-01"
+    "t-2019-08-01",
+    "t-2017-05-23"
    ],
    "eras": [
     "E3",
@@ -3049,7 +3150,8 @@
    "sources": [
     "gmaps_saved",
     "memory",
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-e3-2005-10-xian",
@@ -3558,6 +3660,7 @@
     "gmaps_saved",
     "gdoc",
     "blog",
+    "immigration",
     "itinerary"
    ],
    "tripIds": [
@@ -3641,7 +3744,8 @@
    "sources": [
     "gmaps_saved",
     "gdoc",
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-2026-04-15"
@@ -3966,7 +4070,8 @@
    "sources": [
     "gmaps_saved",
     "memory",
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-e3-2005-05-hkmacau",
@@ -4085,7 +4190,8 @@
    "lng": 13.74,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4108,7 +4214,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4131,7 +4238,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4155,7 +4263,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4178,7 +4287,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4201,7 +4311,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4223,7 +4334,8 @@
    "lng": 14.42,
    "sources": [
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4246,7 +4358,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4269,7 +4382,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4292,7 +4406,8 @@
    "sources": [
     "fix",
     "itinerary",
-    "memory"
+    "memory",
+    "immigration"
    ],
    "tripIds": [
     "t-2023-08-11"
@@ -4313,7 +4428,8 @@
    "lat": 13.76,
    "lng": 100.5,
    "sources": [
-    "gsheet"
+    "gsheet",
+    "immigration"
    ],
    "tripIds": [
     "t-2019-02-11",
