@@ -118,8 +118,8 @@
     {
       "id": "t-e1-sgmy",
       "title": "첫 해외 출장 — 싱가포르·말레이시아",
-      "start": "1997-03-05",
-      "end": "1997-03-13",
+      "start": "1996-08-28",
+      "end": "1996-09-01",
       "era": "E1",
       "purpose": "business",
       "scope": "overseas",
@@ -132,13 +132,13 @@
         "immigration"
       ],
       "confidence": "medium",
-      "note": "날짜는 출입국 기록 #2에서 채웠다. 원문: 말레이시아, 싱가포르"
+      "note": "날짜는 출입국 기록 #1에서 채웠다. 원문: 말레이시아, 싱가포르"
     },
     {
       "id": "t-e1-london",
       "title": "런던 출장",
-      "start": "1997-05-28",
-      "end": "1997-06-01",
+      "start": "1997-03-05",
+      "end": "1997-03-13",
       "era": "E1",
       "purpose": "business",
       "scope": "overseas",
@@ -150,13 +150,13 @@
         "immigration"
       ],
       "confidence": "medium",
-      "note": "날짜는 출입국 기록 #3에서 채웠다. 원문: 런던, 미국, 뉴저지, 뉴욕"
+      "note": "날짜는 출입국 기록 #2에서 채웠다. 원문: 런던, 미국, 뉴저지, 뉴욕"
     },
     {
       "id": "t-e1-ny",
       "title": "뉴욕·뉴저지 출장",
-      "start": "1997-05-28",
-      "end": "1997-06-01",
+      "start": "1997-03-05",
+      "end": "1997-03-13",
       "era": "E1",
       "purpose": "business",
       "scope": "overseas",
@@ -169,7 +169,7 @@
         "immigration"
       ],
       "confidence": "medium",
-      "note": "날짜는 출입국 기록 #3에서 채웠다. 원문: 런던, 미국, 뉴저지, 뉴욕"
+      "note": "날짜는 출입국 기록 #2에서 채웠다. 원문: 런던, 미국, 뉴저지, 뉴욕"
     },
     {
       "id": "t-e3-all",
@@ -1494,11 +1494,11 @@
       "note": "유럽비전트립 · 종교개혁 역사 탐방. 잔세스칸스와 베이스트는 도시가 아니라 장소로 뒀다."
     },
     {
-      "id": "t-2002-06-11",
+      "id": "t-1998-05-24",
       "title": "신혼여행 — 싱가포르·빈탄",
-      "start": "2002-06-11",
-      "end": "2002-06-15",
-      "era": "E2",
+      "start": "1998-05-24",
+      "end": "1998-05-28",
+      "era": "E1",
       "purpose": "couple",
       "scope": "overseas",
       "cities": [
@@ -1514,10 +1514,10 @@
       ]
     },
     {
-      "id": "t-2003-09-07",
+      "id": "t-2002-06-11",
       "title": "베이징 — 오라클월드 컨퍼런스",
-      "start": "2003-09-07",
-      "end": "2003-09-09",
+      "start": "2002-06-11",
+      "end": "2002-06-15",
       "era": "E2",
       "purpose": "business",
       "scope": "overseas",
@@ -1543,7 +1543,8 @@
       "sources": [
         "immigration"
       ],
-      "confidence": "high"
+      "confidence": "high",
+      "note": "출입국 기록 원문: 모스크바, 물산과 출장, 교통카드."
     },
     {
       "id": "t-2017-05-23",
@@ -1577,10 +1578,10 @@
       "confidence": "high"
     },
     {
-      "id": "t-2004-04-10",
-      "title": "모스크바 — 물산과 출장",
-      "start": "2004-04-10",
-      "end": "2004-10-09",
+      "id": "t-2004-09-12",
+      "title": "모스크바 출장 — 물산과",
+      "start": "2004-09-12",
+      "end": "2004-09-18",
       "era": "E2",
       "purpose": "business",
       "scope": "overseas",
@@ -1590,8 +1591,7 @@
       "sources": [
         "immigration"
       ],
-      "confidence": "high",
-      "note": "출입국 기록 원문: 모스크바, 물산과 출장, 교통카드."
+      "confidence": "high"
     }
   ]
 }
