@@ -146,9 +146,10 @@ main.home{padding:0}
   background:var(--hero-ghost)}
 .hero .ghost:hover{background:var(--hero-ghost-on)}
 .hero svg{width:17px;height:17px;flex:none}
-.torn{height:22px;margin-top:-22px;position:relative;z-index:2;
-  background:var(--art-torn) center bottom/100% 100% no-repeat;
-  opacity:var(--art-op);filter:var(--art-filter)}
+/* 표지와 숫자 띠 사이의 찢어진 종이 가장자리 — 그림 조각 대신 종이 색으로 그린다. */
+.torn{height:14px;margin-top:-14px;position:relative;z-index:2;background:var(--paper);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M0 8 L6 5 L11 9 L17 4 L23 8 L28 6 L34 10 L40 5 L46 8 L51 3 L57 7 L63 5 L69 9 L74 4 L80 8 L86 6 L91 10 L97 5 L103 8 L108 4 L114 7 L120 5 V14 H0Z'/%3E%3C/svg%3E") 0 0/240px 100% repeat-x;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M0 8 L6 5 L11 9 L17 4 L23 8 L28 6 L34 10 L40 5 L46 8 L51 3 L57 7 L63 5 L69 9 L74 4 L80 8 L86 6 L91 10 L97 5 L103 8 L108 4 L114 7 L120 5 V14 H0Z'/%3E%3C/svg%3E") 0 0/240px 100% repeat-x}
 @media (max-width:900px){
   .hero::before,.hero::after{display:none}
   .hero .inner{padding:40px 18px 34px}
@@ -235,10 +236,13 @@ main.home{padding:0}
   opacity:var(--art-op);filter:var(--art-filter);
   -webkit-mask-image:linear-gradient(270deg,#000 52%,transparent);
   mask-image:linear-gradient(270deg,#000 52%,transparent)}
-.band .eyebrow{position:relative;z-index:1;padding:15px 24px 0;font-size:11px;
+/* 아래 섹션(.sec, 1180px 가운데)과 같은 세로줄에 맞춘다. 넓은 화면에서 왼쪽 끝에 붙지 않게. */
+.band{--bandx:max(24px,calc((100% - 1180px)/2 + 24px))}
+.band .eyebrow{position:relative;z-index:1;padding:15px 24px 0 var(--bandx);font-size:11px;
   letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700}
 .band .nums{position:relative;z-index:1;display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));max-width:620px;padding:10px 24px 18px}
+  grid-template-columns:repeat(5,minmax(0,1fr));max-width:620px;padding:10px 24px 18px;
+  margin-left:calc(var(--bandx) - 24px)}
 .band .nums div{text-align:center;border-right:1px solid var(--line);padding:4px 6px}
 .band .nums div:last-child{border-right:0}
 .band .nums svg{width:19px;height:19px;color:var(--navy);opacity:.85;margin-bottom:3px}
@@ -246,7 +250,7 @@ main.home{padding:0}
 .band small{color:var(--dim);font-size:11.5px;letter-spacing:.04em}
 @media (max-width:760px){
   .band::after{display:none}
-  .band .nums{max-width:none;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:4px}
+  .band .nums{max-width:none;margin-left:0;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:4px}
 }
 
 /* ── 홈: 섹션 ── */
@@ -361,7 +365,7 @@ main.home{padding:0}
 .invite{position:relative;overflow:hidden;border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);background:var(--hero-bg)}
 .invite::before{content:"";position:absolute;left:0;top:0;bottom:0;width:min(28%,310px);
-  background:var(--art-invite) left bottom/cover no-repeat;
+  background:var(--art-invite) center bottom/cover no-repeat;
   opacity:var(--art-op);filter:var(--art-filter);
   -webkit-mask-image:linear-gradient(90deg,#000 62%,transparent);
   mask-image:linear-gradient(90deg,#000 62%,transparent)}

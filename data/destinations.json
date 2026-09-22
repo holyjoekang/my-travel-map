@@ -2,7 +2,7 @@
  "_": "빌드 산출물이 아니라 캐시다. scripts/fetch_destinations.py 가 채운다.",
  "source": "https://kr.trip.com/travel-guide/destination/",
  "credit": "사진·소개 글 © Trip.com. 발췌만 싣고 원문으로 링크한다.",
- "fetched": "2026-09-21",
+ "fetched": "2026-09-22",
  "destinations": [
   {
    "place": "베이징",
@@ -2759,6 +2759,216 @@
    ],
    "lat": 26.253073,
    "lng": 105.94759
+  },
+  {
+   "place": "모스크바",
+   "id": 358,
+   "name": "모스크바",
+   "enName": "Moscow",
+   "country": "모스크바",
+   "url": "https://kr.trip.com/travel-guide/destination/moscow-358/",
+   "cover": "https://ak-d.tripcdn.com/images/0102f12000g19s3ba79C1_D_1180_558.jpg",
+   "intro": "러시아의 수도 모스크바는 800년의 역사를 간직한 대도시입니다. 이 도시의 역사의 한 페이지를 장식한 수많은 사건 하나하나가 웅장한 건축물과 공원 및 궁전이라는 형태로 도시 경관에 뚜렷한 족적을 남겼습니다. 도시 심장부에 자리한 붉은 광장과 크렘린은 러시아의 상징입니다. 한편 모스크바는 문화와 예술에 강한 도시이기도 합니다. 수없이 많은 아트 갤러리가 예술을 사랑하는 사람들의 심장을 뛰게 합니다.",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0107312000f7j6vac474C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "모스크바 크렘린"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100g0h0000008oohc4BB5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "붉은 광장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100k12000000sav7qBD38_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "볼쇼이 서커스 극장"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104412000f7is5n28028_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "굼"
+    }
+   ],
+   "lat": 55.755825,
+   "lng": 37.6173
+  },
+  {
+   "place": "빈탄",
+   "id": 651,
+   "name": "빈탄",
+   "enName": "Bintan",
+   "country": "리아우 제도",
+   "url": "https://kr.trip.com/travel-guide/destination/bintan-651/",
+   "cover": "https://ak-d.tripcdn.com/images/100q0n000000eis5eB7B9_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103a12000o28x5fl2CA6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "빈탄"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo4212000o9sbpco11F3_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "SpaLab Bintan"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ5m12000j5nqc48F253_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Balai Adat Melayu Pulau Penyengat"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ3i12000inrh41c11D6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "에어 망커 타만 코타 콜람 키장"
+    }
+   ],
+   "lat": 1.0619173,
+   "lng": 104.51892
+  },
+  {
+   "place": "뉴저지",
+   "id": 1427,
+   "name": "뉴저지",
+   "enName": "New Jersey",
+   "country": "미국",
+   "url": "https://kr.trip.com/travel-guide/destination/new-jersey-1427/",
+   "cover": "https://ak-d.tripcdn.com/images/01006120008x0yg5u41D7_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo3112000jp60g4v2C58_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "아메리칸 드림"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0ww5912000cme17uyF4C1_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "메트라이프 스타디움"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100l13000000v75jn0F50_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "식스 플래그스 그레이트 어드벤처"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0104m12000o56ae6a67C5_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "리버티 주립공원"
+    }
+   ],
+   "lat": 40.058323,
+   "lng": -74.40566
+  },
+  {
+   "place": "뉴헤이븐",
+   "id": 36624,
+   "name": "뉴 헤이븐",
+   "enName": "New Haven",
+   "country": "뉴헤이븐 카운티",
+   "url": "https://kr.trip.com/travel-guide/destination/new-haven-36624/",
+   "cover": "https://ak-d.tripcdn.com/images/01004120008x0y4ph19A0_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0ww2b12000cjsyh6aB960_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "예일 대학교 아트갤러리"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/100b1f000001gsoeo6F4F_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Harkness Tower"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ5d12000h9yeo2iFF1D_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "뉴헤이븐 그린"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/10061f000001gqun8ABA6_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "라이트하우스 포인트 공원"
+    }
+   ],
+   "lat": 41.308273,
+   "lng": -72.92789
+  },
+  {
+   "place": "남해",
+   "id": 14780,
+   "name": "남해",
+   "enName": "Namhae",
+   "country": "경상남도",
+   "url": "https://kr.trip.com/travel-guide/destination/namhae-14780/",
+   "cover": "https://ak-d.tripcdn.com/images/0102w12000f6q2ujx5F1C_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0ww6h1200090o2c13B1EE_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "대한불교조계종 보리암"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0102w12000f6q2ujx5F1C_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "다랭이마을"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/1me52224x93490beo3B63_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "남해독일마을"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ4m12000itltqq9FF6E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "남해보물섬전망대&클리프워크"
+    }
+   ],
+   "lat": 34.837673,
+   "lng": 127.892426
+  },
+  {
+   "place": "부여",
+   "id": 14761,
+   "name": "부여군",
+   "enName": "Buyeo-gun",
+   "country": "충청남도",
+   "url": "https://kr.trip.com/travel-guide/destination/buyeo-gun-14761/",
+   "cover": "https://ak-d.tripcdn.com/images/01038120008x0ydy2D818_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100112000f6smdpp853B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "국립부여박물관"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0ww14120009c421b9E058_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "백제문화단지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/ww051e000001fmijsC919_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "부여 가림성(성흥산성)"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0103q12000c90vxpn11B7_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "구드래조각공원"
+    }
+   ],
+   "lat": 36.27544,
+   "lng": 126.91018
+  },
+  {
+   "place": "평택",
+   "id": 14739,
+   "name": "평택",
+   "enName": "Pyeongtaek-si",
+   "country": "경기도",
+   "url": "https://kr.trip.com/travel-guide/destination/pyeongtaek-si-14739/",
+   "cover": "https://ak-d.tripcdn.com/images/0104v120008x0ytw62E7E_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ2e12000ivro6fsEA7A_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "진위천 유원지"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ5r12000i48m5lo6D37_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "내리문화공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ6512000i2pt09vD051_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "서평택골프클럽"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ0b12000ic4hdwl6D4B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "평택공원"
+    }
+   ],
+   "lat": 36.992107,
+   "lng": 127.112946
   }
  ]
 }
