@@ -299,6 +299,46 @@ class Itineraries(unittest.TestCase):
         self.assertEqual(len(mine), len(build_itineraries.load_manifest()))
 
 
+class Albums(unittest.TestCase):
+    """앨범 링크 — 공개는 trips.json, 개인은 private.json(gitignore)에서만 온다."""
+
+    def test_normalizes_string_dict_and_list(self):
+        one = build_app.album_links("https://photos.app.goo.gl/a", private=False)
+        self.assertEqual(one, [{"url": "https://photos.app.goo.gl/a",
+                                "label": "앨범", "private": False}])
+        many = build_app.album_links(
+            [{"url": "https://drive.google.com/x", "label": "폰 사진"},
+             "https://photos.app.goo.gl/b"], private=True)
+        self.assertEqual([a["label"] for a in many], ["폰 사진", "앨범"])
+        self.assertTrue(all(a["private"] for a in many))
+        self.assertEqual(build_app.album_links(None, private=False), [])
+
+    def test_rejects_non_http_links(self):
+        for bad in ("javascript:alert(1)", "photos.app.goo.gl/a"):
+            with self.assertRaises(SystemExit):
+                build_app.album_links(bad, private=False)
+
+    def test_private_album_never_goes_public(self):
+        secret = "https://photos.app.goo.gl/SECRET-ALBUM"
+        real = build_app.PRIVATE
+        tmp = ROOT / "data" / "_private_albums_test.json"
+        try:
+            base = json.loads(real.read_text(encoding="utf-8")) if real.exists() else {}
+            trip_id = load("data/trips.json")["trips"][0]["id"]
+            base.setdefault("albums", {})[trip_id] = secret
+            tmp.write_text(json.dumps(base, ensure_ascii=False), encoding="utf-8")
+            build_app.PRIVATE = tmp
+            mine = build_app.build_payload(public=False)["trips"]
+            pub = build_app.build_payload(public=True)["trips"]
+        finally:
+            build_app.PRIVATE = real
+            tmp.unlink(missing_ok=True)
+        self.assertIn(secret, json.dumps(mine, ensure_ascii=False))
+        self.assertNotIn(secret, json.dumps(pub, ensure_ascii=False))
+        self.assertTrue(any(a["private"] for t in mine for a in t["albums"]))
+        self.assertFalse(any(a["private"] for t in pub for a in t["albums"]))
+
+
 SPEC = """제목: 시험 여행
 부제: 이틀짜리
 기간: 2026-05-01 ~ 2026-05-02

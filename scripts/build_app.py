@@ -62,6 +62,25 @@ def person_label(pid: str, person: dict, public: bool, seq: dict) -> str:
     return f"{NEUTRAL.get(rel, '동행')} {chr(ord('A') + seq[rel] - 1)}"
 
 
+def album_links(raw, private: bool) -> list[dict]:
+    """여정에 붙은 앨범 링크(구글 포토·드라이브 공유 주소 등)를 정리한다.
+
+    raw 는 주소 문자열, {"url", "label"}, 또는 그 목록. 주소는 http(s) 만 받는다 —
+    `javascript:` 같은 것이 링크로 나가면 안 된다.
+    """
+    if not raw:
+        return []
+    items = raw if isinstance(raw, list) else [raw]
+    out = []
+    for it in items:
+        url, label = (it.get("url"), it.get("label")) if isinstance(it, dict) else (it, None)
+        url = str(url or "").strip()
+        if not re.match(r"https?://\S+$", url):
+            sys.exit(f"앨범 주소가 http(s) 링크가 아니다: {url!r}")
+        out.append({"url": url, "label": label or "앨범", "private": private})
+    return out
+
+
 def site_and_destinations() -> tuple[dict, list]:
     """홈 화면 문구와 trip.com 여행지 캐시. 둘 다 없어도 앱은 그대로 돈다.
 
@@ -119,6 +138,7 @@ def build_payload(public: bool) -> dict:
     for pid, extra in strip_notes(priv.get("people", {})).items():
         people.setdefault(pid, {}).update(extra)
     priv_summaries = strip_notes(priv.get("summaries", {}))
+    priv_albums = strip_notes(priv.get("albums", {}))
     seq: dict[str, int] = {}
     labels = {pid: person_label(pid, pr, public, seq) for pid, pr in people.items()}
 
@@ -154,6 +174,10 @@ def build_payload(public: bool) -> dict:
                 "umbrella": bool(t.get("umbrella")),
                 "note": t.get("note"),
                 "planned": bool(t.get("planned")),
+                # 앨범: trips.json 의 album 은 공개, private.json 의 albums 는 개인 빌드에만.
+                # 개인 앨범 주소는 gitignore 된 파일에만 두므로 저장소·공개본에 새지 않는다.
+                "albums": album_links(t.get("album"), private=False)
+                + ([] if public else album_links(priv_albums.get(t["id"]), private=True)),
             }
         )
 
@@ -203,7 +227,7 @@ def build_payload(public: bool) -> dict:
 
 
 def check_public(html: str, trips_doc: dict) -> list[str]:
-    """공개 빌드에 실명이 새어 나갔는지 본다."""
+    """공개 빌드에 실명이나 개인 앨범 주소가 새어 나갔는지 본다."""
     people = strip_notes(trips_doc["people"])
     if PRIVATE.exists():
         for pid, extra in strip_notes(load(PRIVATE).get("people", {})).items():
@@ -215,6 +239,11 @@ def check_public(html: str, trips_doc: dict) -> list[str]:
             continue  # 스스로 공개 표기인 경우(아내/아들 등)는 제외
         if name in html:
             leaked.append(name)
+    if PRIVATE.exists():
+        for raw in strip_notes(load(PRIVATE).get("albums", {})).values():
+            for a in album_links(raw, private=True):
+                if a["url"] in html:
+                    leaked.append(a["url"])
     return leaked
 
 
@@ -234,7 +263,7 @@ def main() -> None:
     if public:
         leaked = check_public(html, load(DATA / "trips.json"))
         if leaked:
-            sys.exit(f"공개 빌드에 실명이 남아 있다: {', '.join(leaked)}")
+            sys.exit(f"공개 빌드에 실명·개인 앨범이 남아 있다: {', '.join(leaked)}")
 
     out = OUT.with_name("index.public.html") if public else OUT
     out.write_text(html, encoding="utf-8")
