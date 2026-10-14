@@ -1592,6 +1592,30 @@
         "immigration"
       ],
       "confidence": "high"
+    },
+    {
+      "id": "t-2026-10-06",
+      "title": "쿠알라룸푸르·페낭 — 친구 부부와 걸은 7일",
+      "start": "2026-10-06",
+      "end": "2026-10-13",
+      "era": "E7",
+      "purpose": "couple",
+      "scope": "overseas",
+      "cities": [
+        "쿠알라룸푸르",
+        "페낭"
+      ],
+      "companions": [
+        "wife"
+      ],
+      "summary": "친구 부부와 함께. KL 메르데카 광장·바투 동굴·이슬람 예술 박물관, 페낭 조지타운 먹방과 극락사, 드론 쇼. 스무 끼의 기록.",
+      "summaryPublic": "친구 부부와 함께. KL 메르데카 광장·바투 동굴·이슬람 예술 박물관, 페낭 조지타운 먹방과 극락사, 드론 쇼. 스무 끼의 기록.",
+      "sources": [
+        "itinerary",
+        "blog"
+      ],
+      "confidence": "high",
+      "itinerary": "2026-10-06_쿠알라룸푸르.html"
     }
   ]
 }

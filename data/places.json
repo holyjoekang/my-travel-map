@@ -82,6 +82,28 @@
    "needsReview": false
   },
   {
+   "name": "페낭",
+   "level": "city",
+   "country": null,
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 5.41,
+   "lng": 100.33,
+   "sources": [
+    "itinerary",
+    "blog"
+   ],
+   "tripIds": [
+    "t-2026-10-06"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
    "name": "네덜란드 국립박물관",
    "level": "poi",
    "country": "네덜란드",
@@ -735,13 +757,17 @@
    "lng": 101.69,
    "sources": [
     "memory",
-    "immigration"
+    "immigration",
+    "itinerary",
+    "blog"
    ],
    "tripIds": [
-    "t-e1-sgmy"
+    "t-e1-sgmy",
+    "t-2026-10-06"
    ],
    "eras": [
-    "E1"
+    "E1",
+    "E7"
    ],
    "aliasesSeen": [],
    "needsReview": false

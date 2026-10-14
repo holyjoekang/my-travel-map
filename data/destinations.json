@@ -2,7 +2,7 @@
  "_": "빌드 산출물이 아니라 캐시다. scripts/fetch_destinations.py 가 채운다.",
  "source": "https://kr.trip.com/travel-guide/destination/",
  "credit": "사진·소개 글 © Trip.com. 발췌만 싣고 원문으로 링크한다.",
- "fetched": "2026-09-22",
+ "fetched": "2026-10-14",
  "destinations": [
   {
    "place": "베이징",
@@ -663,6 +663,36 @@
    ],
    "lat": 3.1579416,
    "lng": 101.71163
+  },
+  {
+   "place": "페낭",
+   "id": 44,
+   "name": "페낭",
+   "enName": "Penang",
+   "country": "말레이시아",
+   "url": "https://kr.trip.com/travel-guide/destination/penang-44/",
+   "cover": "https://ak-d.tripcdn.com/images/0105712000br51n7t6E8C_D_1180_558.jpg",
+   "intro": "",
+   "photos": [
+    {
+     "url": "https://ak-d.tripcdn.com/images/1lo5y12000popunr03E7B_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Penang Forest Island and Sunset Cruise"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0105y120008x0ia08580F_D_1180_558.png?proc=source%2ftrip",
+     "poi": "페낭 새 공원"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0HJ6b12000ilind642AAF_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "Juru Auto City"
+    },
+    {
+     "url": "https://ak-d.tripcdn.com/images/0100g12000o19snnyDD9E_D_1180_558.jpg?proc=source%2ftrip",
+     "poi": "피낭 섬"
+    }
+   ],
+   "lat": 5.4141674,
+   "lng": 100.32876
   },
   {
    "place": "쿤밍 시",
