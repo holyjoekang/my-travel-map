@@ -333,6 +333,10 @@ BACK_LINK = """
   padding:8px 14px;border-radius:999px;background:rgba(17,24,31,.82);color:#fff;
   font:600 13px/1 system-ui,-apple-system,'Malgun Gothic',sans-serif;text-decoration:none;
   backdrop-filter:blur(6px);box-shadow:0 4px 14px rgba(0,0,0,.25)">← 나의 여행 지도</a>
+<a href="https://holyjoekang.github.io/joyhouse/" style="position:fixed;right:14px;top:14px;z-index:9999;
+  padding:8px 14px;border-radius:999px;background:rgba(20,33,61,.88);color:#f4ead6;
+  font:600 13px/1 system-ui,-apple-system,'Malgun Gothic',sans-serif;text-decoration:none;
+  backdrop-filter:blur(6px);box-shadow:0 4px 14px rgba(0,0,0,.25)">⌂ Joyhouse</a>
 """
 
 
