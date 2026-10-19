@@ -333,6 +333,9 @@ BACK_LINK = """
   padding:8px 14px;border-radius:999px;background:rgba(17,24,31,.82);color:#fff;
   font:600 13px/1 system-ui,-apple-system,'Malgun Gothic',sans-serif;text-decoration:none;
   backdrop-filter:blur(6px);box-shadow:0 4px 14px rgba(0,0,0,.25)">← 나의 여행 지도</a>
+"""
+
+JOYHOUSE_LINK = """
 <a href="https://holyjoekang.github.io/joyhouse/" style="position:fixed;right:14px;top:14px;z-index:9999;
   padding:8px 14px;border-radius:999px;background:rgba(20,33,61,.88);color:#f4ead6;
   font:600 13px/1 system-ui,-apple-system,'Malgun Gothic',sans-serif;text-decoration:none;
@@ -347,10 +350,15 @@ def emit(path: Path, out: Path, trip_id: str = "") -> None:
     `index.html?trip=…` 로 보내고, 앱이 그 여정을 다시 펴 준다.
     """
     raw = path.read_text(encoding="utf-8")
+    links = ""
     if "나의 여행 지도</a>" not in raw:
+        links += BACK_LINK
+    if "Joyhouse</a>" not in raw:      # 원본에 돌아가기 링크가 이미 있어도 Joyhouse 단추는 따로 넣는다
+        links += JOYHOUSE_LINK
+    if links:
         low = raw.lower()
         i = low.rfind("</body>")
-        raw = raw[:i] + BACK_LINK + raw[i:] if i > 0 else raw + BACK_LINK
+        raw = raw[:i] + links + raw[i:] if i > 0 else raw + links
     if trip_id:
         raw = raw.replace('href="../index.html"',
                           f'href="../index.html?trip={trip_id}"')
