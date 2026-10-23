@@ -12,7 +12,7 @@
 
 from __future__ import annotations
 
-import base64
+import hashlib
 import json
 import os
 import re
@@ -30,6 +30,8 @@ SITE = DATA / "site.json"         # 홈 화면 문구 — 없어도 기본값으
 DESTS = DATA / "destinations.json"  # trip.com 여행지 캐시 — 없어도 사진 없이 돈다
 ART = DATA / "design_pics" / "crops"  # 홈 화면 장식 그림 (한 장에서 잘라 낸 조각들)
 OUT = APP / "index.html"
+OUT_DATA = APP / "data"   # ← 빌드 산출물 · 화면이 읽는 JSON (개인본은 .gitignore)
+OUT_ART = APP / "art"     # ← 빌드 산출물 · 홈 장식 그림
 
 NEUTRAL = {
     "colleague": "동료",
@@ -94,17 +96,18 @@ def site_and_destinations() -> tuple[dict, list]:
 
 
 def art_css() -> str:
-    """홈 장식 그림을 CSS 변수로 박는다.
+    """홈 장식 그림을 app/art/ 에 두고 CSS 변수로 그 주소를 건다.
 
-    번들은 파일 하나로 돈다(PRD §8). 그래서 그림도 바깥에서 부르지 않고
-    data URI 로 넣는다. 조각이 없으면 변수도 없고, 화면은 그림 없이 그대로 돈다.
+    조각이 없으면 변수도 없고, 화면은 그림 없이 그대로 돈다.
     """
     if not ART.exists():
         return ""
     lines = []
+    OUT_ART.mkdir(parents=True, exist_ok=True)
     for f in sorted(ART.glob("*.webp")):
-        b64 = base64.b64encode(f.read_bytes()).decode("ascii")
-        lines.append(f'  --art-{f.stem}:url("data:image/webp;base64,{b64}");')
+        raw = f.read_bytes()
+        (OUT_ART / f.name).write_bytes(raw)
+        lines.append(f'  --art-{f.stem}:url("art/{f.name}?v={hashlib.md5(raw).hexdigest()[:8]}");')
     return "\n".join(lines)
 
 
@@ -253,24 +256,25 @@ def main() -> None:
     payload = build_payload(public)
 
     html = TEMPLATE.read_text(encoding="utf-8")
-    if "/*__DATA__*/" not in html:
-        sys.exit("템플릿에 /*__DATA__*/ 자리표시자가 없다")
-    html = html.replace(
-        "/*__DATA__*/", json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
-    )
+    if "__DATA_URL__" not in html:
+        sys.exit("템플릿에 __DATA_URL__ 자리표시자가 없다")
+    body = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    name = "app.public.json" if public else "app.json"
+    html = html.replace("__DATA_URL__", f"data/{name}?v={hashlib.md5(body.encode()).hexdigest()[:10]}")
     html = html.replace("/*__ART__*/", art_css())
 
     if public:
-        leaked = check_public(html, load(DATA / "trips.json"))
+        leaked = check_public(html + body, load(DATA / "trips.json"))
         if leaked:
             sys.exit(f"공개 빌드에 실명·개인 앨범이 남아 있다: {', '.join(leaked)}")
 
+    OUT_DATA.mkdir(parents=True, exist_ok=True)
+    (OUT_DATA / name).write_text(body, encoding="utf-8")
     out = OUT.with_name("index.public.html") if public else OUT
     out.write_text(html, encoding="utf-8")
-    kb = out.stat().st_size / 1024
     print(
-        f"{out}: 여정 {len(payload['trips'])} · 장소 {len(payload['places'])} · "
-        f"{kb:,.0f}KB · {'공개' if public else '개인'} 빌드"
+        f"{out} ({out.stat().st_size / 1024:,.0f}KB) + {OUT_DATA / name} ({len(body.encode()) / 1024:,.0f}KB): "
+        f"여정 {len(payload['trips'])} · 장소 {len(payload['places'])} · {'공개' if public else '개인'} 빌드"
     )
 
 

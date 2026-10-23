@@ -465,11 +465,13 @@ class Bundle(unittest.TestCase):
 
     def test_placeholder_replaced(self):
         html = (ROOT / "app/index.html").read_text(encoding="utf-8")
-        self.assertNotIn("/*__DATA__*/", html)
+        self.assertNotIn("__DATA_URL__", html)
+        self.assertIn("data/app.json?v=", html)          # 화면은 빌드가 쓴 JSON 을 받는다
+        self.assertTrue((ROOT / "app/data/app.json").exists())
         self.assertIn("나의 여행 지도", html)
 
     def test_no_external_code(self):
-        """스크립트·스타일은 전부 파일 안에 있다. 파일 하나로 돌아야 한다 (PRD §8).
+        """스크립트·스타일은 전부 파일 안에 있다. 데이터·그림만 같은 곳의 파일로 받는다 (동적 전환).
 
         구글 지도와 3D 투어만 예외다 — 둘 다 자리표시자 한 곳뿐이고, 태그가 아니라
         코드로 부른다. 지도는 사람이 단추를 눌러야, 투어는 홈에 들어와야 부르고,
@@ -528,7 +530,7 @@ class Bundle(unittest.TestCase):
     def test_map_works_without_the_key(self):
         """키가 없어도 지도는 그대로 뜬다 — 구글 지도는 곁들이다."""
         html = (ROOT / "app/index.public.html").read_text(encoding="utf-8")
-        self.assertIn('"mapsKey":""', html)
+        self.assertIn('"mapsKey":""', (ROOT / "app/data/app.public.json").read_text(encoding="utf-8"))
         self.assertIn("svg class=\"map\"", html.replace("<svg", "svg").replace("`", ""))
 
     def test_destination_list_counts_cities_not_photos(self):
@@ -552,7 +554,8 @@ class Bundle(unittest.TestCase):
 
     def test_images_only_from_tripcom(self):
         """사진만 밖에서 받는다. 그것도 trip.com 한 곳에서만 (PRD §14)."""
-        html = (ROOT / "app/index.html").read_text(encoding="utf-8")
+        html = ((ROOT / "app/index.html").read_text(encoding="utf-8")
+                + (ROOT / "app/data/app.json").read_text(encoding="utf-8"))
         found = re.findall(r'https?://[^\s"<>]+?\.(?:jpg|jpeg|png|webp|gif)', html)
         self.assertTrue(found, "여행지 사진이 하나도 없다")
         for url in set(found):

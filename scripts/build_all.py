@@ -41,7 +41,7 @@ def main() -> None:
     run(["scripts/build_app.py"])
     if "--public" in sys.argv:
         run(["scripts/build_app.py", "--public"])
-    print("완료 · app/index.html 을 브라우저로 열면 된다")
+    print("완료 · python -m http.server 8000 --directory app 후 http://localhost:8000 을 연다")
 
 
 if __name__ == "__main__":

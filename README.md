@@ -13,7 +13,12 @@
 python scripts/build_all.py
 ```
 
-`app/index.html` 이 만들어진다. 브라우저로 열면 끝이다 — **서버도, API 키도, 설치할 패키지도 없다.**
+`app/index.html` 과 그 화면이 읽는 `app/data/app.json`·`app/art/` 가 만들어진다.
+화면은 시작할 때 데이터를 받아 오므로(동적 사이트) 파일을 직접 열지 말고 서버로 연다 — **API 키도, 설치할 패키지도 없다.**
+
+```bash
+python -m http.server 8000 --directory app   # http://localhost:8000
+```
 파이썬 3.10 이상, 표준 라이브러리만 쓴다.
 
 여행지 사진만 trip.com 에서 받아 온다(아래 [여행지 사진](#여행지-사진-tripcom)).
@@ -69,12 +74,14 @@ scripts/
   itinerary_agent.py      내용 → 일정표 HTML → 홈페이지 → 푸시까지 (에이전트)
   build_itineraries.py    trip_html 일정표를 여정에 붙인다 (규칙만 쓴다 · LLM 없음)
   build_places.py         별칭 정규화 + 좌표 결합 → places.json
-  build_app.py            데이터를 HTML에 주입 → app/index.html
+  build_app.py            데이터 → app/data/app(.public).json · 그림 → app/art/ · 화면 → app/index(.public).html
   build_all.py            위 넷을 순서대로
   release.py              빌드 → 테스트 → 커밋 → 푸시 (배포는 CI가 이어받는다)
 app/
   index.template.html     화면 (여기를 고친다) — 홈의 3D 투어도 여기 안에 있다
-  index.html              ← 빌드 산출물
+  index.html              ← 빌드 산출물 · 시작할 때 data/app.json 을 받는다
+  data/                   ← 빌드 산출물 · app.json(개인) · app.public.json(공개)
+  art/                    ← 빌드 산출물 · 홈 장식 그림
   itinerary/              ← 빌드 산출물 · 일정표 사본 (여정에서 열린다)
 tests/
   test_build.py           python -m unittest discover -s tests

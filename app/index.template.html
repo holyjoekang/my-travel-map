@@ -572,7 +572,17 @@ svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line
 <div id="panel"><button class="close" aria-label="닫기">✕</button><div id="panelBody"></div></div>
 
 <script>
-const DATA = /*__DATA__*/;
+/* 데이터는 빌드가 만든 JSON(data/app.json · 공개본은 data/app.public.json)에서 받는다.
+   받은 뒤에 아래 앱 스크립트를 실행한다 — 앱 코드는 예전처럼 전역 스크립트로 돈다. */
+fetch("__DATA_URL__").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); }).then(d => {
+  window.__DATA__ = d;
+  const s = document.createElement("script");
+  s.textContent = document.getElementById("app").textContent;
+  document.body.appendChild(s);
+}).catch(e => { document.getElementById("view").textContent = "여행 데이터를 불러오지 못했습니다 (" + e.message + "). 서버로 열어 주세요: python -m http.server --directory app"; });
+</script>
+<script type="text/plain" id="app">
+const DATA = window.__DATA__;
 const {eras:ERAS, trips:TRIPS, places:PLACES, world:WORLD} = DATA;
 const CANDS = DATA.candidates || [];
 

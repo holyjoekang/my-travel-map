@@ -38,6 +38,8 @@ jobs:
         run: |
           mkdir -p _site
           cp app/index.public.html _site/index.html
+          mkdir -p _site/data && cp app/data/app.public.json _site/data/
+          if [ -d app/art ]; then cp -r app/art _site/art; fi
           if [ -d app/itinerary ]; then cp -r app/itinerary _site/itinerary; fi
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -46,7 +48,10 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: app
-          path: app/index*.html
+          path: |
+            app/index.public.html
+            app/data/app.public.json
+            app/art
 
   deploy:
     needs: build

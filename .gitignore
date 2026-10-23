@@ -3,6 +3,8 @@ __pycache__/
 data/_cache/
 app/index.html
 app/index.public.html
+app/data/
+app/art/
 data/private.json
 data/llm_queue.json
 app/itinerary/
