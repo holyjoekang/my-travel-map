@@ -45,6 +45,9 @@ jobs:
           mkdir -p _site
           cp app/index.public.html _site/index.html
           mkdir -p _site/data && cp app/data/app.public.json _site/data/
+          # 형제 사이트(joyhouse 맵룸)가 같은 키로 구글 지도를 띄우도록 키만 따로 내놓는다.
+          # 키는 리퍼러 제한(holyjoekang.github.io)이 걸린 브라우저 키라 공개본에 이미 들어 있는 것이다.
+          python -c "import json; k=json.load(open('app/data/app.public.json',encoding='utf-8')).get('mapsKey',''); json.dump({'googleMapsKey':k},open('_site/maps.json','w'))"
           if [ -d app/art ]; then cp -r app/art _site/art; fi
           if [ -d app/itinerary ]; then cp -r app/itinerary _site/itinerary; fi
       - uses: actions/upload-pages-artifact@v3
