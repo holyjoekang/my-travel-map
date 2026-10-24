@@ -34,6 +34,8 @@ jobs:
 
       - name: 테스트
         run: python -m unittest discover -s tests -v
+        env:   # 키를 넣은 빌드에서는 '공개본에 키 없음' 시험을 건너뛴다
+          GOOGLE_MAPS_KEY: ${{ secrets.GOOGLE_MAPS_KEY }}
 
       # GitHub Pages 는 공개다. 실명이 빠진 공개 빌드만 올린다(PRD §11).
       # 일정표는 저장소의 data/trip_html/ 에 있는 공개본뿐이다.
