@@ -622,12 +622,19 @@ for (const p of PLACES) {
   p.firstYear = ts.length ? Math.min(...ts.map(year)) : null;
 }
 
-const state = {view:"home", scale:"world", era:null, scope:null, year:Y1, q:"",
-  gmap:false, tour:true};   // tour — 홈의 여행지를 3D 투어로 본다 (안 되면 격자)
-
-/* 구글 지도는 곁들이다. 기본은 번들 안의 지도이고(PRD §8 — 밖을 안 탄다),
-   키가 있을 때만 '구글 지도' 단추가 생기고, 눌렀을 때만 스크립트를 불러온다. */
+/* 키가 있으면 지도 화면은 구글 지도로 연다 — 베이징에서 시작한다.
+   키가 없거나 못 불러오면 번들 안의 지도가 그대로 맡는다(PRD §8 — 오프라인에서도 뜬다). */
 const MAPS_KEY = DATA.mapsKey || "";
+const GCAM = {   // 구글 지도 시점 — start 는 처음 열 때, 나머지는 세계·아시아·중국 단추
+  start:{lat:39.9042, lng:116.4074, zoom:5},
+  world:{lat:30, lng:60,  zoom:2},
+  asia: {lat:28, lng:112, zoom:3},
+  china:{lat:35, lng:105, zoom:4},
+};
+
+const state = {view:"home", scale:"world", era:null, scope:null, year:Y1, q:"",
+  gmap:!!MAPS_KEY, gcam:{...GCAM.start}, gcamKey:null,   // gcam — 다시 그려도 보던 자리를 지킨다
+  tour:true};   // tour — 홈의 여행지를 3D 투어로 본다 (안 되면 격자)
 
 /* ── 투영 ── */
 const VIEWS = {
@@ -699,8 +706,12 @@ function renderBar(){
     [["world","세계"],["asia","아시아"],["china","중국"]].forEach(([k,label])=>{
       const b = document.createElement("button");
       b.textContent = label;
-      b.setAttribute("aria-pressed", String(!state.gmap && state.scale===k));
-      b.onclick = ()=>{ state.gmap=false; state.scale=k; render(); };
+      b.setAttribute("aria-pressed", String(state.gmap ? state.gcamKey===k : state.scale===k));
+      b.onclick = ()=>{
+        state.scale = k;
+        if (state.gmap){ state.gcamKey = k; state.gcam = {...GCAM[k]}; }
+        render();
+      };
       seg.append(b);
     });
     bar.append(seg);
@@ -755,7 +766,8 @@ function mountGoogleMap(){
     const dark = matchMedia("(prefers-color-scheme:dark)").matches &&
       document.documentElement.dataset.theme !== "light";
     const map = new google.maps.Map(box, {
-      center: {lat: 30, lng: 110}, zoom: 3, mapTypeControl: false,
+      center: {lat: state.gcam.lat, lng: state.gcam.lng}, zoom: state.gcam.zoom,
+      mapTypeControl: false,
       streetViewControl: false, fullscreenControl: true,
       backgroundColor: dark ? "#16150f" : "#e8eef3",
       styles: dark ? [
@@ -767,10 +779,8 @@ function mountGoogleMap(){
       ] : [{featureType:"poi", stylers:[{visibility:"off"}]}],
     });
     const css = getComputedStyle(document.documentElement);
-    const bounds = new google.maps.LatLngBounds();
     for (const p of pts){
       const pos = {lat: p.lat, lng: p.lng};
-      bounds.extend(pos);
       const m = new google.maps.Marker({   // AdvancedMarker 는 mapId 가 있어야 한다
         position: pos, map, title: p.name + (p.visits ? ` · ${p.visits}회` : ""),
         icon: {
@@ -783,7 +793,10 @@ function mountGoogleMap(){
       });
       m.addListener("click", () => openPlace(p.name));
     }
-    if (pts.length) map.fitBounds(bounds, 40);
+    map.addListener("idle", () => {   // 연도 막대를 움직여 다시 그려도 시점이 튀지 않게
+      const c = map.getCenter();
+      state.gcam = {lat: c.lat(), lng: c.lng(), zoom: map.getZoom()};
+    });
   }).catch(() => {
     state.gmap = false;
     box.outerHTML = `<div class="empty">구글 지도를 불러오지 못했습니다.

@@ -474,15 +474,14 @@ class Bundle(unittest.TestCase):
         """스크립트·스타일은 전부 파일 안에 있다. 데이터·그림만 같은 곳의 파일로 받는다 (동적 전환).
 
         구글 지도와 3D 투어만 예외다 — 둘 다 자리표시자 한 곳뿐이고, 태그가 아니라
-        코드로 부른다. 지도는 사람이 단추를 눌러야, 투어는 홈에 들어와야 부르고,
+        코드로 부른다. 지도는 키가 있을 때 지도 화면에서, 투어는 홈에 들어와야 부르고,
         못 불러오면 각각 번들 지도와 격자가 화면을 그대로 맡는다.
         """
         html = (ROOT / "app/index.html").read_text(encoding="utf-8")
         for bad in ["<script src=", "<link rel=\"stylesheet\""]:
             self.assertNotIn(bad, html)
         self.assertEqual(html.count("maps.googleapis.com"), 1, "구글 지도 로더는 한 곳뿐")
-        self.assertIn('"gmap":false', html.replace(" ", "").replace("gmap:false",
-                                                                    '"gmap":false'))
+        self.assertIn("state.gmap = false", html, "구글 지도가 접혔을 때 번들 지도로 돌아갈 길이 없다")
 
     def test_tour_falls_back_to_the_grid(self):
         """3D 투어는 곁들이다 — 로더는 한 곳이고, 격자는 언제나 그 아래에 남는다.
@@ -528,7 +527,9 @@ class Bundle(unittest.TestCase):
         self.assertEqual(build_app.build_payload(public=True)["mapsKey"], "")
 
     def test_map_works_without_the_key(self):
-        """키가 없어도 지도는 그대로 뜬다 — 구글 지도는 곁들이다."""
+        """키가 없어도 지도는 그대로 뜬다 — 번들 지도가 늘 밑에 있다."""
+        if os.environ.get("GOOGLE_MAPS_KEY"):
+            self.skipTest("CI가 환경변수로 키를 넣는 중")
         html = (ROOT / "app/index.public.html").read_text(encoding="utf-8")
         self.assertIn('"mapsKey":""', (ROOT / "app/data/app.public.json").read_text(encoding="utf-8"))
         self.assertIn("svg class=\"map\"", html.replace("<svg", "svg").replace("`", ""))
