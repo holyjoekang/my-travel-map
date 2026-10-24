@@ -432,6 +432,55 @@ svg.map{width:100%;height:auto;background:var(--sea);border:1px solid var(--line
 .card b{display:block;font:600 26px/1.2 var(--serif);font-variant-numeric:tabular-nums}
 .card small{color:var(--dim);font-size:12px}
 
+/* 통계 — 막대는 HTML 로 그린다. 화면이 좁아져도 글자가 줄지 않는다. */
+.viz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.viz .wide{grid-column:1/-1}
+@media(max-width:860px){.viz{grid-template-columns:minmax(0,1fr)}}
+.vcard{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--panel);min-width:0}
+.vcard h4{font:600 14px/1.3 var(--sans);margin:0}
+.vcard .sub{color:var(--dim);font-size:12px;margin:3px 0 12px}
+.vkey{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--dim);margin:0 0 14px}
+.vkey i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.plot{position:relative;height:190px;margin:14px 0 24px 28px}
+.plot .grid{position:absolute;left:0;right:0;border-top:1px solid var(--line)}
+.plot .grid span{position:absolute;right:calc(100% + 6px);top:-7px;font-size:10.5px;color:var(--dim);
+  font-variant-numeric:tabular-nums}
+.plot .eraline{position:absolute;top:-14px;bottom:0;border-left:1px dashed var(--line)}
+.plot .eraline b{position:absolute;top:0;left:3px;font:600 10.5px var(--sans);color:var(--dim)}
+.cols{position:absolute;inset:0;display:flex;align-items:flex-end;gap:2px}
+.col{flex:1;min-width:0;height:100%;display:flex;flex-direction:column-reverse;gap:2px;position:relative}
+.col .seg{min-height:2px}
+.col .seg:nth-last-child(1 of .seg){border-radius:4px 4px 0 0}
+.col:hover .seg,.col:focus-visible .seg{filter:brightness(1.15)}
+.col:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.col .x{position:absolute;top:calc(100% + 5px);left:50%;transform:translateX(-50%);
+  font-size:10.5px;color:var(--dim);white-space:nowrap;font-variant-numeric:tabular-nums}
+.hb{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 10px;align-items:center;font-size:12.5px}
+.hb .lab{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:130px}
+.hb .track{display:flex;align-items:center;gap:6px;min-width:0;padding:2px 0;border-radius:4px}
+.hb .fill{height:14px;border-radius:0 4px 4px 0;background:var(--accent);min-width:2px}
+.hb .v{font-size:11.5px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hb .track:hover .fill,.hb .track:focus-visible .fill{filter:brightness(1.15)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.pcard{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;
+  background:linear-gradient(135deg,var(--ph1),var(--ph2));border:0;padding:0;text-align:left;display:block}
+.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.pcard:hover img{transform:scale(1.05)}
+.pcard .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 8px;color:#fff;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.72))}
+.pcard .cap b{display:block;font:600 14px/1.2 var(--sans)}
+.pcard .cap small{font-size:11.5px;opacity:.9;font-variant-numeric:tabular-nums}
+.pcard .rank{position:absolute;top:8px;left:8px;background:var(--glass);color:var(--ink);
+  font:600 11px var(--sans);border-radius:999px;padding:2px 8px}
+.vtable{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums;margin-top:8px}
+.vtable th,.vtable td{padding:4px 6px;border-bottom:1px solid var(--line);text-align:right}
+.vtable th:first-child,.vtable td:first-child{text-align:left}
+.vcard details summary{cursor:pointer;color:var(--dim);font-size:12px}
+#vtip{position:fixed;z-index:80;pointer-events:none;background:var(--panel);color:var(--ink);
+  border:1px solid var(--line);box-shadow:var(--shadow);border-radius:8px;padding:6px 9px;
+  font-size:12px;line-height:1.45;max-width:240px;display:none}
+#vtip b{font-size:13px;font-variant-numeric:tabular-nums}
+
 #panel{position:fixed;top:var(--head);right:0;bottom:0;width:360px;background:var(--panel);
   border-left:1px solid var(--line);box-shadow:var(--shadow);padding:18px;
   overflow:auto;z-index:45;transform:translateX(100%);transition:transform .22s}
@@ -691,8 +740,18 @@ function chip(label, value, key, n, title){
   b.innerHTML = `${label}<span class="n">${n}</span>`;
   if (title) b.title = title;
   b.setAttribute("aria-pressed", String(state[key] === value));
-  b.onclick = () => { state[key] = value; renderAside(); render(); closeAside(); };
+  b.onclick = () => { state[key] = value; focusFiltered(); renderAside(); render(); closeAside(); };
   return b;
+}
+/** 왼쪽에서 시대·성격을 고르면 지도가 그 장소들로 다가간다.
+    구글 지도는 다음에 그릴 때 그 점들에 맞추고, 번들 지도는 다 들어가는 가장 좁은 판을 고른다. */
+function focusFiltered(){
+  if (state.gmap){ state.gfit = true; state.gcamKey = null; return; }
+  const pts = visiblePlaces();
+  if (!pts.length) return;
+  const fits = v => pts.every(p => p.lng >= v.lon[0] && p.lng <= v.lon[1] &&
+                                   p.lat <= v.lat[0] && p.lat >= v.lat[1]);
+  state.scale = ["china", "asia", "world"].find(k => fits(VIEWS[k]));
 }
 
 /* ── 상단 도구 ── */
@@ -793,6 +852,15 @@ function mountGoogleMap(){
       });
       m.addListener("click", () => openPlace(p.name));
     }
+    if (state.gfit && pts.length){   // 왼쪽에서 고른 것에 맞춘다 — 한 도시뿐이면 너무 파고들지 않게
+      const bounds = new google.maps.LatLngBounds();
+      pts.forEach(p => bounds.extend({lat: p.lat, lng: p.lng}));
+      map.fitBounds(bounds, 48);
+      google.maps.event.addListenerOnce(map, "idle", () => {
+        if (map.getZoom() > 9) map.setZoom(9);
+      });
+    }
+    state.gfit = false;
     map.addListener("idle", () => {   // 연도 막대를 움직여 다시 그려도 시점이 튀지 않게
       const c = map.getCenter();
       state.gcam = {lat: c.lat(), lng: c.lng(), zoom: map.getZoom()};
@@ -888,6 +956,40 @@ function viewRegion(){
 }
 
 /* ── 통계 ── */
+/* 통계 — 왼쪽의 시대·성격과 위의 연도 막대가 고른 여정만 센다.
+   목적 일곱 가지는 색만으로 다 가려지지 않아(출장·주재는 색약에게 같아 보인다) 쌓는 그림에서는 넷으로 묶는다.
+   색은 지도와 같은 목적 색이고, 쌓는 순서는 이웃끼리 가려지도록 정했다. */
+const t2n = t => String(t.start).padEnd(10,"0");
+const GROUPS = [["business","출장"], ["family","가족·친구"], ["expat","주재"], ["solo","기타"]];
+const GROUP_OF = {business:"business", expat:"expat", family:"family", couple:"family",
+  friends:"family", pilgrimage:"solo", solo:"solo"};
+/** 여정 일수. 달까지만 아는 날짜(주재 기간 등)는 그 달 전체로 센다. 해만 아는 것은 null. */
+function tripDays(t){
+  const a = String(t.start), b = String(t.end || t.start);
+  if (a.length < 7 || b.length < 7) return null;
+  const from = a.length >= 10 ? Date.parse(a) : Date.parse(a + "-01");
+  const to = b.length >= 10 ? Date.parse(b)
+    : Date.UTC(+b.slice(0, 4), +b.slice(5, 7), 0);        // 그 달의 마지막 날
+  const n = Math.round((to - from) / 864e5) + 1;
+  return n > 0 ? n : null;
+}
+/** 눈금 — 최댓값을 덮는 깔끔한 수 */
+function niceMax(v){
+  if (v <= 4) return 4;
+  const step = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000].find(s => v / s <= 4) || 10000;
+  return Math.ceil(v / step) * step;
+}
+const gridLines = max => [0, .5, 1].map(f => `<div class="grid" style="bottom:${f * 100}%">
+  <span>${Math.round(max * f).toLocaleString()}</span></div>`).join("");
+/** 가로 막대. rows = [{label, value, tip, place?}] — place 가 있으면 누르면 상세가 열린다 */
+function hbars(rows, unit){
+  const max = Math.max(1, ...rows.map(r => r.value));
+  return `<div class="hb">` + rows.map(r => `<span class="lab" title="${esc(r.label)}">${esc(r.label)}</span>
+    <div class="track" tabindex="0" data-tip="${esc(r.tip)}"${r.place ? ` data-place="${esc(r.place)}" style="cursor:pointer"` : ""}>
+      <span class="fill" style="width:${(r.value / max * 86).toFixed(1)}%"></span>
+      <span class="v">${r.value.toLocaleString()}${unit}</span></div>`).join("") + `</div>`;
+}
+
 function viewStats(){
   const ts = visibleTrips();
   const cities = new Set(), countries = new Set();
@@ -896,26 +998,155 @@ function viewStats(){
     if (p.level !== "poi") cities.add(c);
     if (p.country) countries.add(p.country);
   }));
-  const counted = ts.filter(t => !t.umbrella);
-  const top = [...byName.values()].filter(p=>p.visits).sort((a,b)=>b.visits-a.visits).slice(0,8);
-  const first = counted.filter(t=>t.confidence!=="low").sort((a,b)=>t2n(a)-t2n(b))[0];
+  const counted = ts.filter(t => !t.umbrella && !t.planned);
+  const planned = ts.filter(t => t.planned && !t.umbrella).length;
+  if (!counted.length) return `<div class="empty">이 조건에 해당하는 여정이 없습니다.</div>`;
+  const dayList = counted.map(t => [t, tripDays(t)]).filter(([, d]) => d);
+  const abroad = dayList.filter(([t]) => t.scope !== "domestic");
+  const totalDays = abroad.reduce((a, [, d]) => a + d, 0);
+  const longest = abroad.slice().sort((a, b) => b[1] - a[1])[0];   // 국내 '한 해 기록' 같은 묶음은 빼고
+  const first = counted.filter(t=>t.confidence!=="low").sort((a,b)=>t2n(a).localeCompare(t2n(b)))[0];
   const cards = [
     [cities.size, "도시"], [countries.size, "나라"], [counted.length, "여정"],
-    [new Set(ts.map(t=>t.era)).size, "시대"],
-    [ts.filter(t=>t.purpose==="business").length, "출장"],
-    [ts.filter(t=>["family","couple","friends"].includes(t.purpose)).length, "가족·친구 여행"]
+    [totalDays.toLocaleString(), "해외에서 보낸 날"],
+    [longest ? longest[1].toLocaleString() + "일" : "–", "가장 긴 해외 여정"],
+    [new Set(counted.map(t=>t.era)).size, "시대"],
   ];
+
+  // ① 해마다 몇 번 떠났나 — 목적별로 쌓는다. 시대가 바뀐 해에 점선을 긋는다.
+  const ys = counted.map(year), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const years = []; for (let y = y0; y <= y1; y++) years.push(y);
+  const byYear = new Map(years.map(y => [y, Object.fromEntries(GROUPS.map(([k]) => [k, 0]))]));
+  counted.forEach(t => byYear.get(year(t))[GROUP_OF[t.purpose] || "solo"]++);
+  const sum = y => GROUPS.reduce((a, [k]) => a + byYear.get(y)[k], 0);
+  const yMax = niceMax(Math.max(...years.map(sum)));
+  const span = years.length;
+  const bands = ERAS.map(e => {
+    const a = +e.start.slice(0, 4);
+    if (a < y0 || a > y1) return "";
+    return `<div class="eraline" style="left:${((a - y0) / span * 100).toFixed(2)}%"
+      title="${esc(e.id + " " + e.name)}"><b>${e.id}</b></div>`;
+  }).join("");
+  const step = span > 20 ? 5 : span > 8 ? 2 : 1;
+  const cols = years.map(y => {
+    const c = byYear.get(y), n = sum(y);
+    const parts = GROUPS.filter(([k]) => c[k]).map(([k, l]) => `${l} ${c[k]}`).join(" · ");
+    return `<div class="col" tabindex="0" data-tip="${y}년|${n}건${parts ? "|" + parts : ""}">
+      ${GROUPS.filter(([k]) => c[k]).map(([k]) =>
+        `<div class="seg" style="height:calc(${(c[k] / yMax * 100).toFixed(2)}% - 2px);background:var(--${k})"></div>`).join("")}
+      ${y % step === 0 ? `<span class="x">${y}</span>` : ""}</div>`;
+  }).join("");
+  const key = `<div class="vkey">${GROUPS.map(([k, l]) =>
+    `<span><i style="background:var(--${k})"></i>${l}</span>`).join("")}</div>`;
+  const yearTable = `<details><summary>표로 보기</summary><table class="vtable">
+    <tr><th>연도</th>${GROUPS.map(([, l]) => `<th>${l}</th>`).join("")}<th>합계</th></tr>
+    ${years.filter(sum).map(y => `<tr><td>${y}</td>${
+      GROUPS.map(([k]) => `<td>${byYear.get(y)[k] || ""}</td>`).join("")}<td>${sum(y)}</td></tr>`).join("")}
+    </table></details>`;
+
+  // ② 무슨 일로 — 목적 일곱 가지를 그대로. 이름이 붙어 있어 색에 기대지 않는다.
+  const purposeRows = Object.entries(PURPOSE).map(([k, l]) => {
+    const n = counted.filter(t => t.purpose === k).length;
+    return {label: l, value: n, tip: `${l}|${n}건 · ${Math.round(n / counted.length * 100)}%`};
+  }).filter(r => r.value).sort((a, b) => b.value - a.value);
+
+  // ③ 어느 나라에 — 여정 하나가 들른 나라마다 한 번씩
+  const cn = new Map();
+  counted.forEach(t => new Set(spots(t).map(c => byName.get(c)?.country).filter(Boolean))
+    .forEach(c => cn.set(c, (cn.get(c) || 0) + 1)));
+  const countryRows = [...cn].sort((a, b) => b[1] - a[1]).slice(0, 10)
+    .map(([c, n]) => ({label: c, value: n, tip: `${c}|여정 ${n}건`}));
+
+  // ④ 몇 월에 — 날짜를 기억으로 놓은 여정(confidence low)은 뺀다
+  const months = Array(12).fill(0);
+  counted.filter(t => t.confidence !== "low" && String(t.start).length >= 7)
+    .forEach(t => months[+String(t.start).slice(5, 7) - 1]++);
+  const mMax = niceMax(Math.max(...months));
+  const monthCols = months.map((n, i) => `<div class="col" tabindex="0" data-tip="${i + 1}월|출발 ${n}건">
+    ${n ? `<div class="seg" style="height:${(n / mMax * 100).toFixed(2)}%;background:var(--accent)"></div>` : ""}
+    <span class="x">${i + 1}월</span></div>`).join("");
+
+  // ⑤ 얼마나 길게 — 해만 아는 여정은 뺀다
+  const bins = [["1–3일", 1, 3], ["4–7일", 4, 7], ["8–14일", 8, 14], ["15–30일", 15, 30],
+                ["31–180일", 31, 180], ["반년 넘게", 181, Infinity]];
+  const lenRows = bins.map(([l, a, b]) => {
+    const n = dayList.filter(([, d]) => d >= a && d <= b).length;
+    return {label: l, value: n, tip: `${l}|${n}건`};
+  });
+  const unknown = counted.length - dayList.length;
+
+  // ⑥ 시대마다 바깥에서 보낸 날
+  const eraRows = ERAS.map(e => {
+    const d = abroad.filter(([t]) => t.era === e.id).reduce((a, [, n]) => a + n, 0);
+    return {label: `${e.id} ${e.name}`, value: d,
+      tip: `${e.id} ${e.name}|${d.toLocaleString()}일|${e.start.slice(0, 4)}~${e.end ? e.end.slice(0, 4) : "현재"}`};
+  }).filter(r => r.value);
+
+  // ⑦ 가장 많이 간 곳 — 사진으로
+  const vis = new Map();
+  counted.forEach(t => new Set(t.cities).forEach(c => {
+    const p = byName.get(c); if (p && p.level !== "poi") vis.set(c, (vis.get(c) || 0) + 1);
+  }));
+  const photos = [...vis].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([c, n], i) => {
+    const d = destOf.get(c);
+    return `<button class="pcard" data-place="${esc(c)}">
+      ${d?.cover ? shot(sized(d.cover, 480, 360), c + " 사진") : ""}
+      <span class="rank">${i + 1}</span>
+      <span class="cap"><b>${esc(c)}</b><small>${n}번 다녀옴${d?.country ? " · " + esc(d.country) : ""}</small></span></button>`;
+  }).join("");
+
   return `<div class="cards">` + cards.map(([n,l]) =>
     `<div class="card"><b>${n}</b><small>${l}</small></div>`).join("") + `</div>
-    <div class="card" style="margin-top:12px">
-      <h4 style="font-size:12px;color:var(--dim);margin:0 0 8px">가장 많이 간 곳</h4>
-      ${top.map(p=>`<button class="rowlink" data-place="${esc(p.name)}">${esc(p.name)}
-        <span class="n">${p.visits}회</span></button>`).join("") || "<small>없음</small>"}
-      ${first?`<p style="font-size:12.5px;color:var(--dim);margin:10px 0 0">
-        가장 이른 확정 여정 · ${esc(first.title)} (${first.start})</p>`:""}
-    </div>`;
+    <div class="viz">
+      <section class="vcard wide"><h4>해마다 떠난 여정</h4>
+        <p class="sub">${y0}–${y1} · 목적별로 쌓았습니다. 점선은 시대가 바뀐 해입니다.</p>
+        ${key}<div class="plot">${gridLines(yMax)}${bands}<div class="cols">${cols}</div></div>${yearTable}</section>
+      <section class="vcard wide"><h4>가장 많이 간 곳</h4>
+        <p class="sub">다녀온 여정 수 순서 · 사진을 누르면 상세가 열립니다.</p>
+        <div class="pgrid">${photos}</div></section>
+      <section class="vcard"><h4>무슨 일로 떠났나</h4><p class="sub">여정 ${counted.length}건의 목적</p>
+        ${hbars(purposeRows, "건")}</section>
+      <section class="vcard"><h4>어느 나라에</h4><p class="sub">그 나라를 들른 여정 수 · 상위 ${countryRows.length}</p>
+        ${hbars(countryRows, "건")}</section>
+      <section class="vcard"><h4>몇 월에 떠났나</h4><p class="sub">출발한 달 · 날짜가 확실한 여정만</p>
+        <div class="plot" style="height:150px">${gridLines(mMax)}<div class="cols">${monthCols}</div></div></section>
+      <section class="vcard"><h4>얼마나 길게</h4><p class="sub">여정 길이${
+        unknown ? ` · 해만 아는 ${unknown}건은 뺐습니다` : ""}</p>
+        ${hbars(lenRows, "건")}</section>
+      <section class="vcard wide"><h4>시대마다 바깥에서 보낸 날</h4><p class="sub">해외 여정의 일수 합계 · 달까지만 아는 날짜는 그 달 전체로 셌습니다${
+        planned ? ` · 예정 여정 ${planned}건은 세지 않았습니다` : ""}</p>
+        ${hbars(eraRows, "일")}</section>
+    </div>
+    ${first ? `<p style="font-size:12.5px;color:var(--dim);margin:12px 2px 0">
+      가장 이른 확정 여정 · ${esc(first.title)} (${first.start})</p>` : ""}`;
 }
-const t2n = t => String(t.start).padEnd(10,"0");
+
+/* 막대에 마우스를 올리거나 초점을 주면 값이 뜬다. 같은 값은 표와 글자로도 다 읽힌다. */
+(() => {
+  let tip;
+  const show = (el, x, y) => {
+    if (!tip){ tip = document.createElement("div"); tip.id = "vtip"; document.body.append(tip); }
+    const [head, val, ...rest] = el.dataset.tip.split("|");
+    const b = document.createElement("b"); b.textContent = val || head;
+    tip.replaceChildren(b);
+    if (val) tip.append(document.createElement("br"), head);
+    rest.forEach(r => tip.append(document.createElement("br"), r));
+    tip.style.display = "block";
+    tip.style.left = Math.max(8, Math.min(x + 12, innerWidth - tip.offsetWidth - 8)) + "px";
+    tip.style.top = Math.max(8, y - tip.offsetHeight - 12) + "px";
+  };
+  const hide = () => { if (tip) tip.style.display = "none"; };
+  document.addEventListener("pointermove", e => {
+    const el = e.target.closest?.(".vcard [data-tip]");
+    el ? show(el, e.clientX, e.clientY) : hide();
+  });
+  document.addEventListener("focusin", e => {
+    const el = e.target.closest?.(".vcard [data-tip]");
+    if (!el) return hide();
+    const r = el.getBoundingClientRect(); show(el, r.left + r.width / 2, r.top);
+  });
+  addEventListener("scroll", hide, true);
+})();
 
 /* ── 후보 승인 (PRD Phase 2) ──
    블로그에서 뽑은 여정 후보. 자동 등록하지 않고 여기서 승인한 것만 내보낸다. */
