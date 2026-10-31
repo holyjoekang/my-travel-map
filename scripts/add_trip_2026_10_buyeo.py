@@ -139,7 +139,7 @@ def main():
         "id": TID, "title": "부여·공주 1박 2일", "start": "2026-10-30", "end": "2026-10-31",
         "era": "E7", "purpose": "couple", "scope": "domestic", "cities": ["부여", "공주"],
         "places": ["공산성"], "companions": ["wife"], "summary": summary, "summaryPublic": summary,
-        "links": [{"label": "블로그 · 공주·부여 1박 2일", "url": BLOG},
+        "links": [{"label": "블로그 · 선배 만나러 갔다가, 살아보고 싶어진 공주", "url": BLOG},
                   {"label": "저녁 대화 기록 · 나눔과 맺음의 30년", "url": f"story.html?id={story['id']}"}],
         "sources": ["blog", "memory"], "confidence": "high"})
     path.write_text(json.dumps(doc, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
