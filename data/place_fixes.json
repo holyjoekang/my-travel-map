@@ -391,6 +391,16 @@
       "country": "네덜란드",
       "region": "South Holland, The Hague",
       "parent": "헤이그"
+    },
+    {
+      "name": "공산성",
+      "add": true,
+      "level": "poi",
+      "kind": "역사 유적지",
+      "country": "대한민국",
+      "region": "Chungcheongnam-do, Gongju",
+      "parent": "공주",
+      "note": "백제 웅진 시기의 산성. 2026년 10월 부여·공주 여정으로 보탰다."
     }
   ]
 }

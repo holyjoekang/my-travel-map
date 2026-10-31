@@ -376,6 +376,52 @@
    "needsReview": false
   },
   {
+   "name": "공산성",
+   "level": "poi",
+   "country": "대한민국",
+   "region": "Chungcheongnam-do, Gongju",
+   "parent": "공주",
+   "kind": "역사 유적지",
+   "lat": 36.4647,
+   "lng": 127.1257,
+   "sources": [
+    "fix",
+    "blog",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2026-10-30"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false,
+   "note": "백제 웅진 시기의 산성. 2026년 10월 부여·공주 여정으로 보탰다."
+  },
+  {
+   "name": "공주",
+   "level": "city",
+   "country": "대한민국",
+   "region": null,
+   "parent": null,
+   "kind": null,
+   "lat": 36.46,
+   "lng": 127.12,
+   "sources": [
+    "blog",
+    "memory"
+   ],
+   "tripIds": [
+    "t-2026-10-30"
+   ],
+   "eras": [
+    "E7"
+   ],
+   "aliasesSeen": [],
+   "needsReview": false
+  },
+  {
    "name": "남해",
    "level": "city",
    "country": "대한민국",
@@ -406,10 +452,12 @@
    "lat": 36.28,
    "lng": 126.91,
    "sources": [
-    "blog"
+    "blog",
+    "memory"
    ],
    "tripIds": [
-    "t-2026-07-11"
+    "t-2026-07-11",
+    "t-2026-10-30"
    ],
    "eras": [
     "E7"

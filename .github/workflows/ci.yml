@@ -5,9 +5,11 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+  schedule:   # 매일 05:30 KST — joyhouse(06:00)·myblog(07:00) 동기화보다 먼저 새 여행 글을 여정에 붙인다
+    - cron: "30 20 * * *"
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -27,6 +29,18 @@ jobs:
       # data/private.json 은 저장소에 없다. 그래서 CI는 공개 표기만으로 빌드한다.
       # 구글 지도 키 — 저장소 비밀에 GOOGLE_MAPS_KEY 가 있을 때만 들어간다(없으면 번들 지도).
       # 그 키에는 반드시 HTTP 리퍼러 제한을 걸어 둔다(README '구글 지도').
+      # 블로그 RSS의 새 여행 글 → data/trips.json (규칙만 · LLM 없음). 바뀌면 data/ 를 커밋한다.
+      - name: 블로그 여행 글 동기화
+        if: github.event_name != 'pull_request'
+        run: |
+          python scripts/sync_blog_trips.py || echo "RSS 실패 — 지난 데이터로 빌드"
+          python scripts/build_places.py
+          if [ -n "$(git status --porcelain data)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data && git commit -m "블로그 여행 글 자동 반영" && git push
+          fi
+
       - name: 빌드
         run: python scripts/build_all.py --public
         env:
@@ -49,6 +63,7 @@ jobs:
           # 키는 리퍼러 제한(holyjoekang.github.io)이 걸린 브라우저 키라 공개본에 이미 들어 있는 것이다.
           python -c "import json; k=json.load(open('app/data/app.public.json',encoding='utf-8')).get('mapsKey',''); json.dump({'googleMapsKey':k},open('_site/maps.json','w'))"
           if [ -d app/art ]; then cp -r app/art _site/art; fi
+          cp app/story.html _site/story.html && cp -r app/stories _site/stories
           if [ -d app/itinerary ]; then cp -r app/itinerary _site/itinerary; fi
       - uses: actions/upload-pages-artifact@v3
         with:

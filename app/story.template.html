@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>여행 이야기 · 나의 여행 지도</title>
+<style>
+:root{--bg:#f7f5f0;--panel:#fffdf8;--line:#e2dcd0;--ink:#1f1c17;--dim:#7b7264;--acc:#9a4a2a}
+@media (prefers-color-scheme:dark){:root{--bg:#16150f;--panel:#201e17;--line:#38342a;--ink:#ece7dc;--dim:#9a9184;--acc:#e0a07e}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.8 "Pretendard","Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+main{max-width:760px;margin:0 auto;padding:28px 20px 80px}
+nav a,.more{color:var(--acc);text-decoration:none;font-size:14px}
+h1{font-size:30px;line-height:1.35;margin:22px 0 6px}.sub{color:var(--dim);font-size:14px;margin:0 0 26px}
+h2{font-size:20px;margin:42px 0 10px;padding-top:18px;border-top:1px solid var(--line)}
+.note{font-size:14px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+blockquote{margin:18px 0;padding:14px 20px;border-left:4px solid var(--acc);background:var(--panel);font-size:19px;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:15px;margin:12px 0}th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{color:var(--dim);font-weight:600}td:first-child{white-space:nowrap;font-weight:600}
+ul{padding-left:22px}footer{margin-top:48px;display:flex;gap:20px;flex-wrap:wrap}
+</style></head>
+<body><main id="story"><nav><a href="./">← 나의 여행 지도</a></nav><p class="sub">불러오는 중…</p></main>
+<script>
+/* data/stories/<id>.json 을 받아 그린다 (빌드가 app/stories/ 로 옮긴다). 고칠 때는 JSON 을 고친다. */
+(async () => {
+  const el = document.getElementById("story");
+  const esc = s => String(s).replace(/[&<>"']/g, c => `&#${c.charCodeAt(0)};`);
+  const id = new URLSearchParams(location.search).get("id");
+  try {
+    const s = await (await fetch(`stories/${encodeURIComponent(id)}.json`)).json();
+    document.title = `${s.title} · 나의 여행 지도`;
+    const B = {
+      p: b => `<p>${esc(b.text)}</p>`, "##": b => `<h2>${esc(b.text)}</h2>`,
+      "!": b => `<p class="note">${esc(b.text)}</p>`, ">": b => `<blockquote>${esc(b.text)}</blockquote>`,
+      "-": b => `<ul>${b.items.map(i => `<li>${esc(i)}</li>`).join("")}</ul>`,
+      "|": b => `<table><tr>${b.items[0].map(c => `<th>${esc(c)}</th>`).join("")}</tr>${
+        b.items.slice(1).map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</table>`,
+    };
+    el.innerHTML = `<nav><a href="./">← 나의 여행 지도</a></nav><h1>${esc(s.title)}</h1><p class="sub">${esc(s.subtitle)}</p>
+      ${s.blocks.map(b => (B[b.t] || B.p)(b)).join("")}
+      <footer><a class="more" href="./">← 여행 지도로</a>${s.blog ? `<a class="more" href="${esc(s.blog)}" target="_blank" rel="noopener">블로그 글 읽기 ↗</a>` : ""}</footer>`;
+  } catch (e) { el.querySelector(".sub").textContent = "이야기를 찾지 못했습니다."; }
+})();
+</script></body></html>

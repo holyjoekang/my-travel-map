@@ -16,6 +16,7 @@ import hashlib
 import json
 import os
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -179,6 +180,8 @@ def build_payload(public: bool) -> dict:
                 "planned": bool(t.get("planned")),
                 # 앨범: trips.json 의 album 은 공개, private.json 의 albums 는 개인 빌드에만.
                 # 개인 앨범 주소는 gitignore 된 파일에만 두므로 저장소·공개본에 새지 않는다.
+                # 기록 링크: 블로그 글 · 대화 기록(story.html) — scripts/sync_blog_trips.py 가 블로그 글을 붙인다
+                "links": t.get("links", []),
                 "albums": album_links(t.get("album"), private=False)
                 + ([] if public else album_links(priv_albums.get(t["id"]), private=True)),
             }
@@ -250,6 +253,15 @@ def check_public(html: str, trips_doc: dict) -> list[str]:
     return leaked
 
 
+def emit_stories() -> None:
+    """data/stories/*.json(공개 표기로만 쓴 대화·여행 기록) → app/stories/ · 읽는 화면 app/story.html"""
+    out = APP / "stories"
+    out.mkdir(parents=True, exist_ok=True)
+    for f in (DATA / "stories").glob("*.json"):
+        shutil.copyfile(f, out / f.name)
+    shutil.copyfile(APP / "story.template.html", APP / "story.html")
+
+
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     public = "--public" in sys.argv
@@ -272,6 +284,7 @@ def main() -> None:
     (OUT_DATA / name).write_text(body, encoding="utf-8")
     out = OUT.with_name("index.public.html") if public else OUT
     out.write_text(html, encoding="utf-8")
+    emit_stories()
     print(
         f"{out} ({out.stat().st_size / 1024:,.0f}KB) + {OUT_DATA / name} ({len(body.encode()) / 1024:,.0f}KB): "
         f"여정 {len(payload['trips'])} · 장소 {len(payload['places'])} · {'공개' if public else '개인'} 빌드"

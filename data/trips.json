@@ -1369,7 +1369,7 @@
         "blog"
       ],
       "confidence": "medium",
-      "itinerary": "웨이하이_출장여행_일정_2026-09-04.html"
+      "itinerary": "2026-09-07_웨이하이 시.html"
     },
     {
       "id": "t-2026-11-18",
@@ -1616,6 +1616,42 @@
       ],
       "confidence": "high",
       "itinerary": "2026-10-06_쿠알라룸푸르.html"
+    },
+    {
+      "id": "t-2026-10-30",
+      "title": "부여·공주 1박 2일",
+      "start": "2026-10-30",
+      "end": "2026-10-31",
+      "era": "E7",
+      "purpose": "couple",
+      "scope": "domestic",
+      "cities": [
+        "부여",
+        "공주"
+      ],
+      "places": [
+        "공산성"
+      ],
+      "companions": [
+        "wife"
+      ],
+      "summary": "스마트팜 김 대표님과 부여에서 저녁, 청년·AI·앞으로의 30년 이야기. 다음 날 공주 수영장과 공산성.",
+      "summaryPublic": "스마트팜 김 대표님과 부여에서 저녁, 청년·AI·앞으로의 30년 이야기. 다음 날 공주 수영장과 공산성.",
+      "links": [
+        {
+          "label": "블로그 · 공주·부여 1박 2일",
+          "url": "https://blog.naver.com/joekang/224460326630"
+        },
+        {
+          "label": "저녁 대화 기록 · 나눔과 맺음의 30년",
+          "url": "story.html?id=2026-10-30_부여"
+        }
+      ],
+      "sources": [
+        "blog",
+        "memory"
+      ],
+      "confidence": "high"
     }
   ]
 }
